@@ -1,0 +1,48 @@
+{
+  "concepts": [
+    {
+      "modality": "numbered_list_graphic",
+      "headline": "Being Exceptional Equals Volume",
+      "subtext": "A $1,500 coaching session revealed the only real gap between average and exceptional creators.",
+      "data_points": [
+        "1: Average wait for 1 good idea. Exceptional ship 1 bad idea to learn.",
+        "2: Average quit after 3 failures. Exceptional improve through 300 failures.",
+        "3: The effort gap is not 10% more. It is closer to 1,000% more.",
+        "4: Track everything. $1m+ per year followed."
+      ],
+      "layout_description": "Dark background (#111111) canvas at 1200x630px. Top-left header block with headline in 52px Inter bold and subtext in 16px. Four numbered rows stacked vertically in the right two-thirds, each row with a chartreuse (#e6ff00) number badge on the left, bold title in white, and descriptor in muted gray (#888). Rows separated by subtle #1a1a1a card backgrounds with 6px border radius.",
+      "color_usage": "Dark canvas #111111, row cards #1a1a1a, number badges filled with #e6ff00 in black text, headline in white (#faf9f6), descriptors in #888, thin warm border #d7c8af on cards.",
+      "reasoning": "The post is structured as a contrast-driven list of lessons about volume and behavior. A numbered list graphic surfaces these contrasts cleanly and maps directly to the post's four core takeaways."
+    },
+    {
+      "modality": "multi_stat_panel",
+      "headline": "$1,500 Session. One Lesson. Massive Results.",
+      "subtext": "Volume separates average from exceptional. The numbers prove it.",
+      "data_points": [
+        "$1,500 coaching investment",
+        "500 posts tracked in one spreadsheet",
+        "1,000% more effort required",
+        "$1m+ annual revenue achieved"
+      ],
+      "layout_description": "Warm off-white canvas (#faf9f6) at 1200x630px. Full-width header row at top with headline in 56px Inter bold and subtext below in 18px. Below that, a 2x2 CSS grid of four stat tiles. Each tile has a large bold number in 48px on top, descriptor in 14px DM Mono below. Tiles have #f0efe9 background, 8px border radius, and #d7c8af border. Chartreuse accent used as a left-border stripe on each tile.",
+      "color_usage": "Canvas #faf9f6, tile backgrounds #f0efe9, tile borders #d7c8af, stat numbers #000000 or #e6ff00 for key figure, descriptors #555, headline #111111, chartreuse left-border accent per tile.",
+      "reasoning": "The post contains four strong quantitative proof points that together tell a story of scale. A multi-stat panel lets each number land with visual weight and reinforces the volume argument visually."
+    },
+    {
+      "modality": "event_details_card",
+      "headline": "The $1,500 Lesson on Exceptional Output",
+      "subtext": "One coaching call. A 500-post spreadsheet. And a framework that unlocked $1m in annual revenue.",
+      "data_points": [
+        "Investment: $1,500 coaching session",
+        "Framework: Being exceptional equals volume",
+        "Evidence: 500 posts tracked, every metric logged",
+        "Outcome: $1m+ per year in business revenue"
+      ],
+      "layout_description": "Centered card on dark canvas (#1a1a1a) at 1200x630px. Card in #faf9f6 with 8px border radius, 64px padding. Bold headline at top in 52px Inter. Below, a two-column icon-label detail grid showing the four data points as structured rows. Chartreuse CTA-style badge at bottom reading 'Volume is the strategy' in black bold text on #e6ff00 background pill.",
+      "color_usage": "Canvas #1a1a1a, card #faf9f6, headline #111111, detail labels #555, detail values #000000 bold, CTA pill #e6ff00 with #000000 text, warm border shadow #d7c8af on card.",
+      "reasoning": "Adapting the event card modality as a structured insight card lets the post's key facts be surfaced as a scannable grid, with a memorable chartreuse callout anchoring the core lesson."
+    }
+  ],
+  "selected": 0,
+  "selection_reasoning": "The numbered list graphic best matches the post's structure, which is fundamentally a contrast-driven set of behavioral insights. The four rows map directly to the post's four lessons. The dark background with chartreuse number badges creates high visual impact on LinkedIn feeds, and the format is immediately scannable without requiring prior context."
+}

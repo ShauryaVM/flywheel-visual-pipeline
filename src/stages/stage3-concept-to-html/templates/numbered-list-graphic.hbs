@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #faf9f6;
+      color: #111111;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 1200px;
+      height: 630px;
+      display: flex;
+      padding: 44px 56px;
+      gap: 40px;
+      position: relative;
+    }
+
+    .left-panel {
+      flex: 0 0 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .accent-line {
+      width: 40px;
+      height: 4px;
+      background: #e6ff00;
+      margin-bottom: 18px;
+      border-radius: 2px;
+    }
+
+    .headline {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: #111111;
+    }
+
+    .subtext {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #666666;
+      margin-top: 12px;
+    }
+
+    .right-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      overflow: hidden;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.02);
+      min-height: 44px;
+    }
+
+    .list-item:nth-child(odd) {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .item-number {
+      flex: 0 0 30px;
+      height: 30px;
+      background: #111111;
+      color: #e6ff00;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .item-text {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: #333333;
+      flex: 1;
+    }
+
+    .logo {
+      position: absolute;
+      bottom: 24px;
+      right: 40px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: #bbbbbb;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="accent-line"></div>
+      <h1 class="headline">{{headline}}</h1>
+      {{#if subtext}}
+      <p class="subtext">{{subtext}}</p>
+      {{/if}}
+    </div>
+    <div class="right-panel">
+      {{#each data_points}}
+      <div class="list-item">
+        <div class="item-number">{{addOne @index}}</div>
+        <div class="item-text">{{this}}</div>
+      </div>
+      {{/each}}
+    </div>
+    <div class="logo">Flywheel</div>
+  </div>
+</body>
+</html>

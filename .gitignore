@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+data/outputs/*.png
+data/outputs/*.pdf
+data/outputs/*.html
+*.tsbuildinfo
+.eslintcache

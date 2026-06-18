@@ -1,0 +1,49 @@
+{
+  "concepts": [
+    {
+      "modality": "numbered_list_graphic",
+      "headline": "Essential Books for Product Builders",
+      "subtext": "Curated by jobs-to-be-done. Three books per category, all completed, all high signal.",
+      "data_points": [
+        "Organized by jobs-to-be-done",
+        "3 books per category, strictly curated",
+        "Classics and under-the-radar gems",
+        "Only books over 10 years old considered",
+        "Built for builders and leaders"
+      ],
+      "layout_description": "Dark (#111111) canvas, 1200x630px. Top-left header block with chartreuse (#e6ff00) overline label 'Reading List' in DM Mono 13px. Main headline in Inter bold 48px white. Below, five horizontally arranged category pill badges in warm off-white (#faf9f6) with black text, each 180px wide with 6px radius. Bottom strip shows the key curation rule in muted gray text: '3 books per category. Classics only. All completed.' Left edge has a vertical chartreuse accent bar.",
+      "color_usage": "Background #111111, headline white, overline #e6ff00, category pills #faf9f6 with #000000 text, muted rule text #888, vertical accent bar #e6ff00",
+      "reasoning": "The post is fundamentally a categorized list resource. Surfacing the category structure as visual pills communicates the organizational logic immediately, making the image useful as a reference teaser."
+    },
+    {
+      "modality": "headline_subtext_card",
+      "headline": "The Only Product Reading List You Need",
+      "subtext": "Curated favorites organized by jobs-to-be-done. Three books per category, zero filler, all proven.",
+      "data_points": [
+        "3 books per category",
+        "Jobs-to-be-done framework",
+        "Classics that stood the test of time"
+      ],
+      "layout_description": "Warm off-white (#faf9f6) canvas 1200x630px. Centered layout. Top: small DM Mono label 'For Product Builders' in #888. Below: bold Inter headline at 64px, tight letter-spacing -0.04em, black. Thin chartreuse (#e6ff00) horizontal rule 80px wide centered below headline. Subtext in Inter 18px #555 max 520px wide. Bottom: three stat badges side by side, each a rounded pill with dark background (#111111) and white text: '3 per category', 'Jobs-to-be-done', '10+ years proven'. Right side has a faint large quotation mark watermark in #d7c8af for texture.",
+      "color_usage": "Background #faf9f6, headline #000000, overline #888, accent rule #e6ff00, subtext #555, stat pills #111111 with white text, watermark #d7c8af",
+      "reasoning": "Clean and editorial, this format lets the headline do heavy lifting while the three stat pills communicate the curation rigor. Works well for a thought-leadership post inviting engagement."
+    },
+    {
+      "modality": "event_details_card",
+      "headline": "A Curated Reading List for Product Builders",
+      "subtext": "Books organized by development area. Three per category. Only the ones that truly made the cut.",
+      "data_points": [
+        "Framework: Jobs-to-be-done",
+        "Books per category: 3",
+        "Standard: Completed and proven",
+        "Preference: Books over 10 years old",
+        "Goal: Zero noise, all signal"
+      ],
+      "layout_description": "Dark card (#1a1a1a) centered on warm canvas (#f0efe9), card 860px wide, 500px tall, 8px radius, shadow with #d7c8af. Top header band in #111111 with chartreuse (#e6ff00) headline text at 36px bold. Below header: two-column detail grid with five icon-label rows. Left column: Framework and Standard. Right column: Books per Category, Preference, Goal. Each row has a small chartreuse square bullet, label in #888 DM Mono 12px, value in white Inter 16px bold. Bottom CTA strip: 'What book did I miss?' in Inter 15px #888 with a chartreuse underline accent.",
+      "color_usage": "Canvas #f0efe9, card #1a1a1a, header band #111111, headline #e6ff00, detail labels #888, detail values #ffffff, CTA text #888, CTA underline #e6ff00, shadow #d7c8af",
+      "reasoning": "Repurposes the event card format as a resource spec card, making the curation criteria feel structured and credible. The two-column detail grid surfaces the rigor behind the list selection."
+    }
+  ],
+  "selected": 1,
+  "selection_reasoning": "The headline subtext card best matches the editorial, thought-leadership tone of the post. The three stat pills efficiently communicate the curation criteria while the clean warm background and strong typography create a scroll-stopping image that invites curiosity without over-engineering the layout. It scales well at LinkedIn dimensions and keeps focus on the headline hook."
+}

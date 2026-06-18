@@ -1,0 +1,466 @@
+{
+  "metadata": {
+    "source_url": "https://flywheelos.com",
+    "crawled_at": "2026-06-17T14:33:41.480Z",
+    "pages_analyzed": [
+      "https://flywheelos.com",
+      "https://flywheelos.com/pricing",
+      "https://flywheelos.com/login",
+      "https://flywheelos.com/terms"
+    ]
+  },
+  "colors": {
+    "primary": {
+      "hex": "#000000",
+      "usage": "Primary brand color, used for headings, body text, buttons, and main CTA elements"
+    },
+    "secondary": {
+      "hex": "#111111",
+      "usage": "Near-black used for high-emphasis text elements like active nav links and CTA button text"
+    },
+    "accent": {
+      "hex": "#e6ff00",
+      "usage": "Bright yellow-green accent color, defined as --color-accent and --color-yellow, used for brand highlights"
+    },
+    "background": {
+      "hex": "#ffffff",
+      "usage": "Main page background, header background, and primary section background"
+    },
+    "text": {
+      "hex": "#000000",
+      "usage": "Default foreground/body text color"
+    },
+    "palette": [
+      {
+        "hex": "#000000",
+        "name": "black",
+        "usage_context": "Primary text, foreground, button backgrounds"
+      },
+      {
+        "hex": "#111111",
+        "name": "text-primary",
+        "usage_context": "High-emphasis text, active nav links, CTA button label"
+      },
+      {
+        "hex": "#333333",
+        "name": "text-secondary",
+        "usage_context": "Secondary text content, --color-text-secondary"
+      },
+      {
+        "hex": "#444444",
+        "name": "text-tertiary",
+        "usage_context": "Tertiary text, --color-text-tertiary, --color-gray-800"
+      },
+      {
+        "hex": "#555555",
+        "name": "text-subtle",
+        "usage_context": "Subtle body text, paragraph descriptions, --color-text-subtle"
+      },
+      {
+        "hex": "#666666",
+        "name": "text-muted",
+        "usage_context": "Muted supporting text like subtitles, --color-text-muted"
+      },
+      {
+        "hex": "#888888",
+        "name": "text-faint",
+        "usage_context": "Faint text, --color-text-faint, --color-gray-600"
+      },
+      {
+        "hex": "#999999",
+        "name": "text-placeholder",
+        "usage_context": "Placeholder text, disabled secondary text, --color-gray-500"
+      },
+      {
+        "hex": "#aaaaaa",
+        "name": "text-disabled",
+        "usage_context": "Disabled text, --color-text-disabled, --color-gray-400"
+      },
+      {
+        "hex": "#6b7a7c",
+        "name": "nav-link",
+        "usage_context": "Navigation link and button text in non-active state, --color-nav-link"
+      },
+      {
+        "hex": "#e5e5e5",
+        "name": "border",
+        "usage_context": "Default border color across elements, --color-border, --color-gray-200"
+      },
+      {
+        "hex": "#eeeeee",
+        "name": "gray-100",
+        "usage_context": "Surface active state, light background tint, --color-gray-100"
+      },
+      {
+        "hex": "#f5f5f5",
+        "name": "surface-hover",
+        "usage_context": "Hover state background for surfaces, --color-surface-hover, --color-gray-50"
+      },
+      {
+        "hex": "#faf9f6",
+        "name": "surface",
+        "usage_context": "Footer background, secondary section background, --color-surface, --color-sand-50"
+      },
+      {
+        "hex": "#ffffff",
+        "name": "white",
+        "usage_context": "Page background, header, card backgrounds, --color-white"
+      },
+      {
+        "hex": "#e6ff00",
+        "name": "accent-yellow",
+        "usage_context": "Brand accent color, --color-accent, --color-yellow"
+      },
+      {
+        "hex": "#d7c8af",
+        "name": "shadow-warm",
+        "usage_context": "Warm shadow color used in CTA button box-shadow, --color-shadow-warm, --color-shadow-sand"
+      },
+      {
+        "hex": "#f0efe9",
+        "name": "card-bg",
+        "usage_context": "Card background with 85% opacity, used in floating content cards"
+      },
+      {
+        "hex": "#222828",
+        "name": "nav-hamburger-bg",
+        "usage_context": "Mobile hamburger menu background, --color-nav-hamburger-bg"
+      },
+      {
+        "hex": "#0c0d0e",
+        "name": "nav-dark",
+        "usage_context": "Dark navigation background variant, --color-nav-dark"
+      },
+      {
+        "hex": "#f1f3f3",
+        "name": "nav-button-bg",
+        "usage_context": "Navigation button background, --color-nav-button-bg"
+      }
+    ]
+  },
+  "typography": {
+    "font_families": [
+      {
+        "family": "Inter",
+        "weights": [
+          "400",
+          "500",
+          "600",
+          "700"
+        ],
+        "source": "system"
+      },
+      {
+        "family": "DM Mono",
+        "weights": [
+          "400"
+        ],
+        "source": "google-fonts"
+      }
+    ],
+    "scale": {
+      "h1": {
+        "font_family": "Inter",
+        "font_size": "84px",
+        "font_weight": "600",
+        "line_height": "0.92",
+        "letter_spacing": "-0.04em",
+        "color": "#000000"
+      },
+      "h2": {
+        "font_family": "Inter",
+        "font_size": "64px",
+        "font_weight": "600",
+        "line_height": "1.0",
+        "letter_spacing": "-0.03em",
+        "color": "#000000"
+      },
+      "h3": {
+        "font_family": "Inter",
+        "font_size": "20px",
+        "font_weight": "600",
+        "line_height": "1.5",
+        "letter_spacing": "-0.025em",
+        "color": "#000000"
+      },
+      "body": {
+        "font_family": "Inter",
+        "font_size": "16px",
+        "font_weight": "400",
+        "line_height": "1.5",
+        "color": "#000000"
+      },
+      "small": {
+        "font_family": "Inter",
+        "font_size": "14px",
+        "font_weight": "400",
+        "line_height": "1.43",
+        "color": "#000000"
+      },
+      "caption": {
+        "font_family": "Inter",
+        "font_size": "12px",
+        "font_weight": "400",
+        "line_height": "1.33",
+        "color": "#888888"
+      }
+    }
+  },
+  "spacing": {
+    "unit": "4px",
+    "scale": {
+      "xs": "4px",
+      "sm": "8px",
+      "md": "16px",
+      "lg": "24px",
+      "xl": "32px",
+      "xxl": "48px"
+    }
+  },
+  "borders": {
+    "radius": {
+      "none": "0px",
+      "sm": "4px",
+      "md": "6px",
+      "lg": "8px",
+      "xl": "12px",
+      "xxl": "16px",
+      "full": "9999px"
+    },
+    "widths": [
+      "1px"
+    ],
+    "colors": [
+      "#e5e5e5",
+      "#d7c8af"
+    ]
+  },
+  "logo": {
+    "url": "",
+    "svg_data": "",
+    "dimensions": {
+      "width": 94,
+      "height": 20
+    }
+  },
+  "components": {
+    "buttons": [
+      {
+        "variant": "primary-cta",
+        "description": "Main call-to-action button with warm sand border and shadow (e.g. 'Book a Call')",
+        "styles": {
+          "background-color": "transparent",
+          "color": "#111111",
+          "border-radius": "0px",
+          "border": "1px solid rgba(215, 200, 175, 0.5)",
+          "padding": "16px 32px",
+          "font-size": "14px",
+          "font-weight": "600",
+          "box-shadow": "rgba(215, 200, 175, 0.25) 0px 4px 20px 0px, rgba(0, 0, 0, 0.06) 0px 1px 4px 0px, rgba(255, 252, 248, 0.5) 0px 1px 1px 0px inset, rgba(215, 200, 175, 0.15) 0px -1px 1px 0px inset"
+        }
+      },
+      {
+        "variant": "nav-link",
+        "description": "Navigation button/link style (e.g. 'Resources', inactive nav items)",
+        "styles": {
+          "background-color": "transparent",
+          "color": "#6b7a7c",
+          "border-radius": "6px",
+          "padding": "8px 16px",
+          "font-size": "15px",
+          "font-weight": "500",
+          "border": "none"
+        }
+      },
+      {
+        "variant": "nav-link-active",
+        "description": "Active navigation link (e.g. 'Home')",
+        "styles": {
+          "background-color": "transparent",
+          "color": "#111111",
+          "border-radius": "6px",
+          "padding": "8px 16px",
+          "font-size": "15px",
+          "font-weight": "500",
+          "border": "none"
+        }
+      }
+    ],
+    "cards": [
+      {
+        "variant": "content-card",
+        "description": "Floating content schedule card with warm translucent background",
+        "styles": {
+          "background-color": "rgba(240, 239, 233, 0.85)",
+          "border-radius": "8px",
+          "border": "1px solid #e5e5e5",
+          "padding": "12px",
+          "box-shadow": "none"
+        }
+      }
+    ],
+    "badges": [],
+    "sections": [
+      {
+        "variant": "hero",
+        "description": "Main hero section on white background",
+        "styles": {
+          "background-color": "#ffffff",
+          "padding": "48px",
+          "text-align": "left"
+        }
+      },
+      {
+        "variant": "surface",
+        "description": "Secondary section with warm off-white surface background (used for footer, panels)",
+        "styles": {
+          "background-color": "#faf9f6",
+          "padding": "16px",
+          "text-align": "left"
+        }
+      },
+      {
+        "variant": "login-split",
+        "description": "Split layout login section with white main panel and surface sidebar",
+        "styles": {
+          "background-color": "#ffffff",
+          "padding": "48px"
+        }
+      }
+    ]
+  },
+  "css_variables": {
+    "--background": "0 0% 100%",
+    "--foreground": "0 0% 0%",
+    "--border": "0 0% 89.8%",
+    "--primary": "0 0% 0%",
+    "--primary-foreground": "0 0% 100%",
+    "--radius": "0px",
+    "--radius-sm": "0.25rem",
+    "--radius-md": "0.375rem",
+    "--radius-lg": "0.5rem",
+    "--radius-xl": "0.75rem",
+    "--radius-2xl": "1rem",
+    "--container-sm": "24rem",
+    "--container-md": "28rem",
+    "--container-lg": "32rem",
+    "--container-7xl": "80rem",
+    "--spacing": "0.25rem",
+    "--color-accent": "#e6ff00",
+    "--color-yellow": "#e6ff00",
+    "--color-black": "#000",
+    "--color-white": "#fff",
+    "--color-surface": "#faf9f6",
+    "--color-sand-50": "#faf9f6",
+    "--color-surface-hover": "#f5f5f5",
+    "--color-surface-active": "#eee",
+    "--color-border": "#e5e5e5",
+    "--color-shadow-warm": "#d7c8af",
+    "--color-shadow-sand": "#d7c8af",
+    "--color-nav-text": "#6b7a7c",
+    "--color-nav-link": "#6b7a7c",
+    "--color-nav-dark": "#0c0d0e",
+    "--color-nav-hamburger-bg": "#222828",
+    "--color-nav-button-bg": "#f1f3f3",
+    "--color-overlay-dark": "#0c0d0ebf",
+    "--color-text-primary": "#111",
+    "--color-text-secondary": "#333",
+    "--color-text-tertiary": "#444",
+    "--color-text-subtle": "#555",
+    "--color-text-muted": "#666",
+    "--color-text-faint": "#888",
+    "--color-text-placeholder": "#999",
+    "--color-text-disabled": "#aaa",
+    "--color-gray-50": "#f5f5f5",
+    "--color-gray-100": "#eee",
+    "--color-gray-200": "#e5e5e5",
+    "--color-gray-300": "#ccc",
+    "--color-gray-400": "#aaa",
+    "--color-gray-500": "#999",
+    "--color-gray-600": "#888",
+    "--color-gray-700": "#666",
+    "--color-gray-750": "#555",
+    "--color-gray-800": "#444",
+    "--color-gray-850": "#333",
+    "--color-gray-900": "#111",
+    "--default-font-family": "\"Inter\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif",
+    "--default-mono-font-family": "\"DM Mono\",Monaco,Consolas,monospace",
+    "--font-weight-normal": "400",
+    "--font-weight-medium": "500",
+    "--font-weight-semibold": "600",
+    "--font-weight-bold": "700",
+    "--text-xs": "0.75rem",
+    "--text-sm": "0.875rem",
+    "--text-base": "1rem",
+    "--text-lg": "1.125rem",
+    "--text-2xl": "1.5rem",
+    "--text-4xl": "2.25rem",
+    "--text-5xl": "3rem",
+    "--text-6xl": "3.75rem",
+    "--leading-tight": "1.25",
+    "--leading-snug": "1.375",
+    "--leading-normal": "1.5",
+    "--leading-relaxed": "1.625",
+    "--tracking-tight": "-0.025em",
+    "--tracking-wide": "0.025em",
+    "--tracking-wider": "0.05em",
+    "--tracking-widest": "0.1em",
+    "--default-transition-duration": "0.15s",
+    "--default-transition-timing-function": "cubic-bezier(.4,0,.2,1)",
+    "--ease-in-out": "cubic-bezier(.4,0,.2,1)",
+    "--ease-out": "cubic-bezier(0,0,.2,1)",
+    "--blur-sm": "8px",
+    "--blur-md": "12px",
+    "--blur-xl": "24px",
+    "--blur-2xl": "40px",
+    "--drop-shadow-lg": "0 4px 4px #00000026",
+    "--animate-pulse": "pulse 2s cubic-bezier(.4,0,.6,1) infinite",
+    "--animate-spin": "spin 1s linear infinite"
+  },
+  "raw_tokens": {
+    "font_sizes": {
+      "xs": "12px",
+      "sm": "14px",
+      "base": "16px",
+      "lg": "18px",
+      "xl": "20px",
+      "2xl": "24px",
+      "3xl": "32px",
+      "4xl": "40px",
+      "5xl": "48px",
+      "6xl": "56px",
+      "7xl": "64px",
+      "display": "84px"
+    },
+    "observed_padding_values": [
+      "4px",
+      "8px",
+      "12px",
+      "16px",
+      "24px",
+      "32px",
+      "48px"
+    ],
+    "observed_margin_values": [
+      "12px",
+      "16px",
+      "24px",
+      "32px",
+      "40px",
+      "48px"
+    ],
+    "border_radii_observed": [
+      "0px",
+      "6px",
+      "8px"
+    ],
+    "border_radii_defined": [
+      "0px",
+      "4px",
+      "6px",
+      "8px",
+      "12px",
+      "16px"
+    ]
+  }
+}

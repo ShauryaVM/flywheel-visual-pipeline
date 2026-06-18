@@ -1,0 +1,510 @@
+{
+  "generated_at": "2026-06-17T15:49:45.141Z",
+  "test_set_size": 50,
+  "training_set_size": 251,
+  "overall_accuracy_pct": 42,
+  "correct_predictions": 21,
+  "total_predictions": 50,
+  "decision_rules": {
+    "career_personal_milestone": {
+      "predicted_modality": "headline_subtext_card",
+      "training_count": 19,
+      "total_for_type": 45
+    },
+    "partnership_announcement": {
+      "predicted_modality": "headline_subtext_card",
+      "training_count": 5,
+      "total_for_type": 8
+    },
+    "industry_news_commentary": {
+      "predicted_modality": "numbered_list_graphic",
+      "training_count": 6,
+      "total_for_type": 34
+    },
+    "company_milestone_announcement": {
+      "predicted_modality": "multi_stat_panel",
+      "training_count": 13,
+      "total_for_type": 35
+    },
+    "retrospective_lessons": {
+      "predicted_modality": "numbered_list_graphic",
+      "training_count": 9,
+      "total_for_type": 9
+    },
+    "personal_narrative_reflection": {
+      "predicted_modality": "key_takeaway_card",
+      "training_count": 10,
+      "total_for_type": 22
+    },
+    "educational_explainer": {
+      "predicted_modality": "numbered_list_graphic",
+      "training_count": 7,
+      "total_for_type": 14
+    },
+    "in_progress_event_update": {
+      "predicted_modality": "headline_subtext_card",
+      "training_count": 1,
+      "total_for_type": 3
+    },
+    "event_promotion_announcement": {
+      "predicted_modality": "event_details_card",
+      "training_count": 13,
+      "total_for_type": 13
+    },
+    "opinion_hot_take": {
+      "predicted_modality": "bold_statement_card",
+      "training_count": 11,
+      "total_for_type": 17
+    },
+    "product_feature_pitch": {
+      "predicted_modality": "feature_list_graphic",
+      "training_count": 15,
+      "total_for_type": 19
+    },
+    "event_community_recap": {
+      "predicted_modality": "pull_quote_card",
+      "training_count": 7,
+      "total_for_type": 13
+    },
+    "recruitment_job_posting": {
+      "predicted_modality": "headline_subtext_card",
+      "training_count": 3,
+      "total_for_type": 4
+    },
+    "data_research_insight": {
+      "predicted_modality": "multi_stat_panel",
+      "training_count": 4,
+      "total_for_type": 6
+    },
+    "link_share_minimal_commentary": {
+      "predicted_modality": "attribution_quote_card",
+      "training_count": 1,
+      "total_for_type": 3
+    },
+    "narrative_scenario_case_study": {
+      "predicted_modality": "checklist_graphic",
+      "training_count": 3,
+      "total_for_type": 6
+    }
+  },
+  "per_content_type_accuracy": {
+    "educational_explainer": {
+      "correct": 2,
+      "total": 2,
+      "accuracy_pct": 100
+    },
+    "event_promotion_announcement": {
+      "correct": 6,
+      "total": 6,
+      "accuracy_pct": 100
+    },
+    "data_research_insight": {
+      "correct": 0,
+      "total": 2,
+      "accuracy_pct": 0
+    },
+    "partnership_announcement": {
+      "correct": 1,
+      "total": 1,
+      "accuracy_pct": 100
+    },
+    "career_personal_milestone": {
+      "correct": 3,
+      "total": 7,
+      "accuracy_pct": 42.86
+    },
+    "narrative_scenario_case_study": {
+      "correct": 0,
+      "total": 1,
+      "accuracy_pct": 0
+    },
+    "industry_news_commentary": {
+      "correct": 1,
+      "total": 7,
+      "accuracy_pct": 14.29
+    },
+    "product_feature_pitch": {
+      "correct": 2,
+      "total": 7,
+      "accuracy_pct": 28.57
+    },
+    "opinion_hot_take": {
+      "correct": 1,
+      "total": 5,
+      "accuracy_pct": 20
+    },
+    "company_milestone_announcement": {
+      "correct": 2,
+      "total": 6,
+      "accuracy_pct": 33.33
+    },
+    "event_community_recap": {
+      "correct": 0,
+      "total": 1,
+      "accuracy_pct": 0
+    },
+    "link_share_minimal_commentary": {
+      "correct": 0,
+      "total": 2,
+      "accuracy_pct": 0
+    },
+    "personal_narrative_reflection": {
+      "correct": 3,
+      "total": 3,
+      "accuracy_pct": 100
+    }
+  },
+  "predictions": [
+    {
+      "post_id": "b15061a7-7ae3-4e0f-95f0-96da28e3a9e4",
+      "content_type": "educational_explainer",
+      "actual_modality": "numbered_list_graphic",
+      "predicted_modality": "numbered_list_graphic",
+      "correct": true
+    },
+    {
+      "post_id": "6a404d3e-402f-49f2-8e86-95367c9f8aa7",
+      "content_type": "event_promotion_announcement",
+      "actual_modality": "event_details_card",
+      "predicted_modality": "event_details_card",
+      "correct": true
+    },
+    {
+      "post_id": "01fdbd91-c0d0-42e9-8949-fa3c64e996e5",
+      "content_type": "data_research_insight",
+      "actual_modality": "ranked_list_graphic",
+      "predicted_modality": "multi_stat_panel",
+      "correct": false
+    },
+    {
+      "post_id": "9c6fe5ea-89ed-4d04-bd35-50222b207676",
+      "content_type": "partnership_announcement",
+      "actual_modality": "headline_subtext_card",
+      "predicted_modality": "headline_subtext_card",
+      "correct": true
+    },
+    {
+      "post_id": "84dbe372-59fc-4064-b896-489be8f1025d",
+      "content_type": "career_personal_milestone",
+      "actual_modality": "headline_subtext_card",
+      "predicted_modality": "headline_subtext_card",
+      "correct": true
+    },
+    {
+      "post_id": "f9495b2c-8eb9-4cde-9afe-112073698051",
+      "content_type": "narrative_scenario_case_study",
+      "actual_modality": "feature_list_graphic",
+      "predicted_modality": "checklist_graphic",
+      "correct": false
+    },
+    {
+      "post_id": "868e6147-9e8a-475c-9280-737a3ad43734",
+      "content_type": "industry_news_commentary",
+      "actual_modality": "bold_statement_card",
+      "predicted_modality": "numbered_list_graphic",
+      "correct": false
+    },
+    {
+      "post_id": "45ca5d20-ff06-4340-8bd9-5b0b661fb96f",
+      "content_type": "product_feature_pitch",
+      "actual_modality": "feature_list_graphic",
+      "predicted_modality": "feature_list_graphic",
+      "correct": true
+    },
+    {
+      "post_id": "27eaee98-c9e6-47c8-bf19-38e6647b55eb",
+      "content_type": "opinion_hot_take",
+      "actual_modality": "numbered_list_graphic",
+      "predicted_modality": "bold_statement_card",
+      "correct": false
+    },
+    {
+      "post_id": "56c1aa1b-44b0-4702-9500-da01eddf3ed0",
+      "content_type": "industry_news_commentary",
+      "actual_modality": "attribution_quote_card",
+      "predicted_modality": "numbered_list_graphic",
+      "correct": false
+    },
+    {
+      "post_id": "3038ad61-c0a1-4275-8c59-c3bc43a3b885",
+      "content_type": "educational_explainer",
+      "actual_modality": "numbered_list_graphic",
+      "predicted_modality": "numbered_list_graphic",
+      "correct": true
+    },
+    {
+      "post_id": "d0ca0dcf-9306-4fde-b6a0-5a287ffafe43",
+      "content_type": "industry_news_commentary",
+      "actual_modality": "key_takeaway_card",
+      "predicted_modality": "numbered_list_graphic",
+      "correct": false
+    },
+    {
+      "post_id": "01fbe1e1-fb20-4248-a934-a1be5ce0c471",
+      "content_type": "product_feature_pitch",
+      "actual_modality": "numbered_list_graphic",
+      "predicted_modality": "feature_list_graphic",
+      "correct": false
+    },
+    {
+      "post_id": "08dbf8d9-5a3d-4db3-ba1a-80e7f7b6f42a",
+      "content_type": "company_milestone_announcement",
+      "actual_modality": "headline_subtext_card",
+      "predicted_modality": "multi_stat_panel",
+      "correct": false
+    },
+    {
+      "post_id": "9d00c59e-3f52-4bc9-8265-7b64b2d7c912",
+      "content_type": "event_community_recap",
+      "actual_modality": "numbered_list_graphic",
+      "predicted_modality": "pull_quote_card",
+      "correct": false
+    },
+    {
+      "post_id": "93770b56-c27f-4760-9911-7ba0e16c467a",
+      "content_type": "company_milestone_announcement",
+      "actual_modality": "headline_subtext_card",
+      "predicted_modality": "multi_stat_panel",
+      "correct": false
+    },
+    {
+      "post_id": "1a255172-73aa-4b7e-98d9-3c46d756a34d",
+      "content_type": "industry_news_commentary",
+      "actual_modality": "comparison_table",
+      "predicted_modality": "numbered_list_graphic",
+      "correct": false
+    },
+    {
+      "post_id": "df48f1ae-6f91-43ca-9fc2-95c5596f962b",
+      "content_type": "product_feature_pitch",
+      "actual_modality": "pull_quote_card",
+      "predicted_modality": "feature_list_graphic",
+      "correct": false
+    },
+    {
+      "post_id": "f372b66d-2e65-41f7-98d3-ee942124dab0",
+      "content_type": "career_personal_milestone",
+      "actual_modality": "headline_subtext_card",
+      "predicted_modality": "headline_subtext_card",
+      "correct": true
+    },
+    {
+      "post_id": "4065f689-3c8a-4b12-a431-5b27920a0b60",
+      "content_type": "career_personal_milestone",
+      "actual_modality": "key_takeaway_card",
+      "predicted_modality": "headline_subtext_card",
+      "correct": false
+    },
+    {
+      "post_id": "7befbf51-4ab7-46b7-a1d1-a66fc2a4e855",
+      "content_type": "product_feature_pitch",
+      "actual_modality": "headline_subtext_card",
+      "predicted_modality": "feature_list_graphic",
+      "correct": false
+    },
+    {
+      "post_id": "eb0f03d2-39f1-4c5d-979b-0176fe75d287",
+      "content_type": "data_research_insight",
+      "actual_modality": "ranked_list_graphic",
+      "predicted_modality": "multi_stat_panel",
+      "correct": false
+    },
+    {
+      "post_id": "676fccc5-dfa1-4695-a9d6-ca8d399a741f",
+      "content_type": "link_share_minimal_commentary",
+      "actual_modality": "pull_quote_card",
+      "predicted_modality": "attribution_quote_card",
+      "correct": false
+    },
+    {
+      "post_id": "a4c613be-152b-45e2-8875-0454181f8f6e",
+      "content_type": "company_milestone_announcement",
+      "actual_modality": "headline_subtext_card",
+      "predicted_modality": "multi_stat_panel",
+      "correct": false
+    },
+    {
+      "post_id": "384b1e64-6eab-4720-9fd5-181bc2c6a096",
+      "content_type": "event_promotion_announcement",
+      "actual_modality": "event_details_card",
+      "predicted_modality": "event_details_card",
+      "correct": true
+    },
+    {
+      "post_id": "59b575ac-ae70-4b4b-ae62-d00b87a17668",
+      "content_type": "personal_narrative_reflection",
+      "actual_modality": "key_takeaway_card",
+      "predicted_modality": "key_takeaway_card",
+      "correct": true
+    },
+    {
+      "post_id": "9d713a24-c538-41e4-9911-4fbb7db1e799",
+      "content_type": "industry_news_commentary",
+      "actual_modality": "attribution_quote_card",
+      "predicted_modality": "numbered_list_graphic",
+      "correct": false
+    },
+    {
+      "post_id": "abd2aed3-3cd0-479d-ba2f-7369f795a0f7",
+      "content_type": "event_promotion_announcement",
+      "actual_modality": "event_details_card",
+      "predicted_modality": "event_details_card",
+      "correct": true
+    },
+    {
+      "post_id": "4084ec1f-427e-4365-93eb-a2eaca56a50b",
+      "content_type": "event_promotion_announcement",
+      "actual_modality": "event_details_card",
+      "predicted_modality": "event_details_card",
+      "correct": true
+    },
+    {
+      "post_id": "52e22dc0-e460-41de-806c-5db5f30cd889",
+      "content_type": "career_personal_milestone",
+      "actual_modality": "bold_statement_card",
+      "predicted_modality": "headline_subtext_card",
+      "correct": false
+    },
+    {
+      "post_id": "8e60812e-0f46-4797-8e54-7e1bff07817d",
+      "content_type": "career_personal_milestone",
+      "actual_modality": "pull_quote_card",
+      "predicted_modality": "headline_subtext_card",
+      "correct": false
+    },
+    {
+      "post_id": "8e850ca2-4d83-4d83-a653-d6a62d93f014",
+      "content_type": "company_milestone_announcement",
+      "actual_modality": "multi_stat_panel",
+      "predicted_modality": "multi_stat_panel",
+      "correct": true
+    },
+    {
+      "post_id": "f50f72fa-8d51-42e6-891e-3e161d716f83",
+      "content_type": "link_share_minimal_commentary",
+      "actual_modality": "headline_subtext_card",
+      "predicted_modality": "attribution_quote_card",
+      "correct": false
+    },
+    {
+      "post_id": "d26d0ab4-ad41-4307-9091-d7e85d3d3907",
+      "content_type": "personal_narrative_reflection",
+      "actual_modality": "key_takeaway_card",
+      "predicted_modality": "key_takeaway_card",
+      "correct": true
+    },
+    {
+      "post_id": "f6c3babb-6f80-4b05-b3a1-7cf8751a69ea",
+      "content_type": "industry_news_commentary",
+      "actual_modality": "headline_subtext_card",
+      "predicted_modality": "numbered_list_graphic",
+      "correct": false
+    },
+    {
+      "post_id": "2de9013d-d390-4ef3-a9e0-499edaa5b08e",
+      "content_type": "event_promotion_announcement",
+      "actual_modality": "event_details_card",
+      "predicted_modality": "event_details_card",
+      "correct": true
+    },
+    {
+      "post_id": "27c62045-0e8d-42c0-9caa-ae4ae293e27d",
+      "content_type": "event_promotion_announcement",
+      "actual_modality": "event_details_card",
+      "predicted_modality": "event_details_card",
+      "correct": true
+    },
+    {
+      "post_id": "4873a64d-ced2-48ec-94f0-fca592d30a54",
+      "content_type": "career_personal_milestone",
+      "actual_modality": "pull_quote_card",
+      "predicted_modality": "headline_subtext_card",
+      "correct": false
+    },
+    {
+      "post_id": "00488050-fdf4-469b-8b58-5d56e99dc004",
+      "content_type": "opinion_hot_take",
+      "actual_modality": "pull_quote_card",
+      "predicted_modality": "bold_statement_card",
+      "correct": false
+    },
+    {
+      "post_id": "22899147-4abe-4528-9c7f-c2c3e7a2dfde",
+      "content_type": "opinion_hot_take",
+      "actual_modality": "bold_statement_card",
+      "predicted_modality": "bold_statement_card",
+      "correct": true
+    },
+    {
+      "post_id": "5c8bdea9-a344-474b-bafc-9769829e27a4",
+      "content_type": "personal_narrative_reflection",
+      "actual_modality": "key_takeaway_card",
+      "predicted_modality": "key_takeaway_card",
+      "correct": true
+    },
+    {
+      "post_id": "203af5c9-5fe1-4018-aa97-5decf90a8580",
+      "content_type": "opinion_hot_take",
+      "actual_modality": "pull_quote_card",
+      "predicted_modality": "bold_statement_card",
+      "correct": false
+    },
+    {
+      "post_id": "756bb76c-b261-40e0-ae68-f1b963ec221c",
+      "content_type": "product_feature_pitch",
+      "actual_modality": "bold_statement_card",
+      "predicted_modality": "feature_list_graphic",
+      "correct": false
+    },
+    {
+      "post_id": "b7dfa704-5366-4ed0-acbd-9868dfbf51c2",
+      "content_type": "industry_news_commentary",
+      "actual_modality": "numbered_list_graphic",
+      "predicted_modality": "numbered_list_graphic",
+      "correct": true
+    },
+    {
+      "post_id": "d6cb7a17-8bd8-4c21-a096-5de25ee0e2b2",
+      "content_type": "company_milestone_announcement",
+      "actual_modality": "headline_subtext_card",
+      "predicted_modality": "multi_stat_panel",
+      "correct": false
+    },
+    {
+      "post_id": "e57a3388-2174-47ae-8d0d-ebd477a32c9e",
+      "content_type": "product_feature_pitch",
+      "actual_modality": "feature_list_graphic",
+      "predicted_modality": "feature_list_graphic",
+      "correct": true
+    },
+    {
+      "post_id": "238260e8-02c3-44ad-8f4f-b7ce6c15bbeb",
+      "content_type": "career_personal_milestone",
+      "actual_modality": "headline_subtext_card",
+      "predicted_modality": "headline_subtext_card",
+      "correct": true
+    },
+    {
+      "post_id": "444543bd-f109-4144-a346-b79d6fa58256",
+      "content_type": "company_milestone_announcement",
+      "actual_modality": "multi_stat_panel",
+      "predicted_modality": "multi_stat_panel",
+      "correct": true
+    },
+    {
+      "post_id": "38a35d2e-12ab-484e-b7fd-67d4aaabd094",
+      "content_type": "opinion_hot_take",
+      "actual_modality": "numbered_list_graphic",
+      "predicted_modality": "bold_statement_card",
+      "correct": false
+    },
+    {
+      "post_id": "7306bb9d-fec5-4f9d-a8df-57ad0b9c2288",
+      "content_type": "product_feature_pitch",
+      "actual_modality": "numbered_list_graphic",
+      "predicted_modality": "feature_list_graphic",
+      "correct": false
+    }
+  ],
+  "interpretation": "Low baseline accuracy (42.0%): visual modality choices are diverse within content types, suggesting the mapping is not deterministic."
+}

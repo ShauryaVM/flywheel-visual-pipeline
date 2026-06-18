@@ -1,0 +1,827 @@
+{
+  "generated_at": "2026-06-17T15:49:48.228Z",
+  "total_posts_analyzed": 301,
+  "overall_modality_engagement": [
+    {
+      "visual_modality": "multi_stat_panel",
+      "count": 23,
+      "median_engagement": 2032,
+      "mean_engagement": 4246
+    },
+    {
+      "visual_modality": "two_column_process_diagram",
+      "count": 1,
+      "median_engagement": 833,
+      "mean_engagement": 833
+    },
+    {
+      "visual_modality": "feature_list_graphic",
+      "count": 22,
+      "median_engagement": 197,
+      "mean_engagement": 2642
+    },
+    {
+      "visual_modality": "bold_statement_card",
+      "count": 30,
+      "median_engagement": 195,
+      "mean_engagement": 2722
+    },
+    {
+      "visual_modality": "ranked_list_graphic",
+      "count": 4,
+      "median_engagement": 195,
+      "mean_engagement": 912
+    },
+    {
+      "visual_modality": "headline_subtext_card",
+      "count": 60,
+      "median_engagement": 166,
+      "mean_engagement": 1459
+    },
+    {
+      "visual_modality": "timeline_graphic",
+      "count": 4,
+      "median_engagement": 153,
+      "mean_engagement": 3331
+    },
+    {
+      "visual_modality": "pull_quote_card",
+      "count": 28,
+      "median_engagement": 141,
+      "mean_engagement": 683
+    },
+    {
+      "visual_modality": "numbered_list_graphic",
+      "count": 39,
+      "median_engagement": 70,
+      "mean_engagement": 989
+    },
+    {
+      "visual_modality": "attribution_quote_card",
+      "count": 19,
+      "median_engagement": 70,
+      "mean_engagement": 1336
+    },
+    {
+      "visual_modality": "event_details_card",
+      "count": 21,
+      "median_engagement": 70,
+      "mean_engagement": 114
+    },
+    {
+      "visual_modality": "comparison_table",
+      "count": 7,
+      "median_engagement": 70,
+      "mean_engagement": 1396
+    },
+    {
+      "visual_modality": "key_takeaway_card",
+      "count": 39,
+      "median_engagement": 69,
+      "mean_engagement": 166
+    },
+    {
+      "visual_modality": "checklist_graphic",
+      "count": 4,
+      "median_engagement": 30,
+      "mean_engagement": 39
+    }
+  ],
+  "per_content_type": [
+    {
+      "content_type": "career_personal_milestone",
+      "total_posts": 52,
+      "modality_breakdown": [
+        {
+          "visual_modality": "pull_quote_card",
+          "count": 7,
+          "median_engagement": 170,
+          "mean_engagement": 148,
+          "min_engagement": 6,
+          "max_engagement": 206
+        },
+        {
+          "visual_modality": "attribution_quote_card",
+          "count": 2,
+          "median_engagement": 89,
+          "mean_engagement": 89,
+          "min_engagement": 4,
+          "max_engagement": 173
+        },
+        {
+          "visual_modality": "key_takeaway_card",
+          "count": 15,
+          "median_engagement": 55,
+          "mean_engagement": 88,
+          "min_engagement": 1,
+          "max_engagement": 195
+        },
+        {
+          "visual_modality": "headline_subtext_card",
+          "count": 22,
+          "median_engagement": 49,
+          "mean_engagement": 96,
+          "min_engagement": 1,
+          "max_engagement": 348
+        },
+        {
+          "visual_modality": "bold_statement_card",
+          "count": 6,
+          "median_engagement": 20,
+          "mean_engagement": 47,
+          "min_engagement": 1,
+          "max_engagement": 194
+        }
+      ],
+      "insights": [
+        "pull_quote_card (median 170) outperforms bold_statement_card (median 20) by 8.5x",
+        "Top modality: pull_quote_card with median engagement 170 (n=7)"
+      ]
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "total_posts": 41,
+      "modality_breakdown": [
+        {
+          "visual_modality": "comparison_table",
+          "count": 2,
+          "median_engagement": 2440,
+          "mean_engagement": 2440,
+          "min_engagement": 29,
+          "max_engagement": 4851
+        },
+        {
+          "visual_modality": "bold_statement_card",
+          "count": 4,
+          "median_engagement": 2270,
+          "mean_engagement": 3368,
+          "min_engagement": 56,
+          "max_engagement": 8876
+        },
+        {
+          "visual_modality": "multi_stat_panel",
+          "count": 2,
+          "median_engagement": 801,
+          "mean_engagement": 801,
+          "min_engagement": 611,
+          "max_engagement": 990
+        },
+        {
+          "visual_modality": "pull_quote_card",
+          "count": 3,
+          "median_engagement": 192,
+          "mean_engagement": 194,
+          "min_engagement": 9,
+          "max_engagement": 382
+        },
+        {
+          "visual_modality": "timeline_graphic",
+          "count": 2,
+          "median_engagement": 132,
+          "mean_engagement": 132,
+          "min_engagement": 69,
+          "max_engagement": 194
+        },
+        {
+          "visual_modality": "numbered_list_graphic",
+          "count": 7,
+          "median_engagement": 112,
+          "mean_engagement": 1660,
+          "min_engagement": 68,
+          "max_engagement": 5263
+        },
+        {
+          "visual_modality": "attribution_quote_card",
+          "count": 7,
+          "median_engagement": 70,
+          "mean_engagement": 736,
+          "min_engagement": 23,
+          "max_engagement": 4748
+        },
+        {
+          "visual_modality": "feature_list_graphic",
+          "count": 1,
+          "median_engagement": 68,
+          "mean_engagement": 68,
+          "min_engagement": 68,
+          "max_engagement": 68
+        },
+        {
+          "visual_modality": "key_takeaway_card",
+          "count": 7,
+          "median_engagement": 55,
+          "mean_engagement": 105,
+          "min_engagement": 23,
+          "max_engagement": 198
+        },
+        {
+          "visual_modality": "ranked_list_graphic",
+          "count": 1,
+          "median_engagement": 30,
+          "mean_engagement": 30,
+          "min_engagement": 30,
+          "max_engagement": 30
+        },
+        {
+          "visual_modality": "headline_subtext_card",
+          "count": 5,
+          "median_engagement": 23,
+          "mean_engagement": 890,
+          "min_engagement": 23,
+          "max_engagement": 3712
+        }
+      ],
+      "insights": [
+        "comparison_table (median 2440) outperforms headline_subtext_card (median 23) by 106.1x",
+        "Top modality: comparison_table with median engagement 2440 (n=2)"
+      ]
+    },
+    {
+      "content_type": "company_milestone_announcement",
+      "total_posts": 41,
+      "modality_breakdown": [
+        {
+          "visual_modality": "multi_stat_panel",
+          "count": 15,
+          "median_engagement": 3759,
+          "mean_engagement": 5821,
+          "min_engagement": 68,
+          "max_engagement": 21390
+        },
+        {
+          "visual_modality": "headline_subtext_card",
+          "count": 16,
+          "median_engagement": 3743,
+          "mean_engagement": 3714,
+          "min_engagement": 23,
+          "max_engagement": 14329
+        },
+        {
+          "visual_modality": "attribution_quote_card",
+          "count": 2,
+          "median_engagement": 1725,
+          "mean_engagement": 1725,
+          "min_engagement": 170,
+          "max_engagement": 3280
+        },
+        {
+          "visual_modality": "bold_statement_card",
+          "count": 4,
+          "median_engagement": 277,
+          "mean_engagement": 991,
+          "min_engagement": 195,
+          "max_engagement": 3215
+        },
+        {
+          "visual_modality": "key_takeaway_card",
+          "count": 1,
+          "median_engagement": 198,
+          "mean_engagement": 198,
+          "min_engagement": 198,
+          "max_engagement": 198
+        },
+        {
+          "visual_modality": "numbered_list_graphic",
+          "count": 3,
+          "median_engagement": 174,
+          "mean_engagement": 375,
+          "min_engagement": 34,
+          "max_engagement": 917
+        }
+      ],
+      "insights": [
+        "multi_stat_panel (median 3759) outperforms numbered_list_graphic (median 174) by 21.6x",
+        "Top modality: multi_stat_panel with median engagement 3759 (n=15)"
+      ]
+    },
+    {
+      "content_type": "product_feature_pitch",
+      "total_posts": 26,
+      "modality_breakdown": [
+        {
+          "visual_modality": "multi_stat_panel",
+          "count": 1,
+          "median_engagement": 8322,
+          "mean_engagement": 8322,
+          "min_engagement": 8322,
+          "max_engagement": 8322
+        },
+        {
+          "visual_modality": "headline_subtext_card",
+          "count": 2,
+          "median_engagement": 4559,
+          "mean_engagement": 4559,
+          "min_engagement": 3711,
+          "max_engagement": 5406
+        },
+        {
+          "visual_modality": "bold_statement_card",
+          "count": 1,
+          "median_engagement": 4513,
+          "mean_engagement": 4513,
+          "min_engagement": 4513,
+          "max_engagement": 4513
+        },
+        {
+          "visual_modality": "feature_list_graphic",
+          "count": 17,
+          "median_engagement": 197,
+          "mean_engagement": 3261,
+          "min_engagement": 31,
+          "max_engagement": 14893
+        },
+        {
+          "visual_modality": "pull_quote_card",
+          "count": 2,
+          "median_engagement": 132,
+          "mean_engagement": 132,
+          "min_engagement": 69,
+          "max_engagement": 195
+        },
+        {
+          "visual_modality": "numbered_list_graphic",
+          "count": 3,
+          "median_engagement": 63,
+          "mean_engagement": 62,
+          "min_engagement": 54,
+          "max_engagement": 69
+        }
+      ],
+      "insights": [
+        "multi_stat_panel (median 8322) outperforms numbered_list_graphic (median 63) by 132.1x",
+        "Top modality: multi_stat_panel with median engagement 8322 (n=1)"
+      ]
+    },
+    {
+      "content_type": "personal_narrative_reflection",
+      "total_posts": 25,
+      "modality_breakdown": [
+        {
+          "visual_modality": "timeline_graphic",
+          "count": 1,
+          "median_engagement": 12948,
+          "mean_engagement": 12948,
+          "min_engagement": 12948,
+          "max_engagement": 12948
+        },
+        {
+          "visual_modality": "pull_quote_card",
+          "count": 2,
+          "median_engagement": 3152,
+          "mean_engagement": 3152,
+          "min_engagement": 93,
+          "max_engagement": 6211
+        },
+        {
+          "visual_modality": "bold_statement_card",
+          "count": 3,
+          "median_engagement": 193,
+          "mean_engagement": 387,
+          "min_engagement": 29,
+          "max_engagement": 939
+        },
+        {
+          "visual_modality": "key_takeaway_card",
+          "count": 13,
+          "median_engagement": 71,
+          "mean_engagement": 303,
+          "min_engagement": 6,
+          "max_engagement": 2760
+        },
+        {
+          "visual_modality": "attribution_quote_card",
+          "count": 3,
+          "median_engagement": 69,
+          "mean_engagement": 3916,
+          "min_engagement": 32,
+          "max_engagement": 11647
+        },
+        {
+          "visual_modality": "numbered_list_graphic",
+          "count": 1,
+          "median_engagement": 65,
+          "mean_engagement": 65,
+          "min_engagement": 65,
+          "max_engagement": 65
+        },
+        {
+          "visual_modality": "headline_subtext_card",
+          "count": 2,
+          "median_engagement": 55,
+          "mean_engagement": 55,
+          "min_engagement": 55,
+          "max_engagement": 55
+        }
+      ],
+      "insights": [
+        "timeline_graphic (median 12948) outperforms headline_subtext_card (median 55) by 235.4x",
+        "Top modality: timeline_graphic with median engagement 12948 (n=1)"
+      ]
+    },
+    {
+      "content_type": "opinion_hot_take",
+      "total_posts": 22,
+      "modality_breakdown": [
+        {
+          "visual_modality": "pull_quote_card",
+          "count": 5,
+          "median_engagement": 2382,
+          "mean_engagement": 2018,
+          "min_engagement": 12,
+          "max_engagement": 4211
+        },
+        {
+          "visual_modality": "key_takeaway_card",
+          "count": 1,
+          "median_engagement": 195,
+          "mean_engagement": 195,
+          "min_engagement": 195,
+          "max_engagement": 195
+        },
+        {
+          "visual_modality": "bold_statement_card",
+          "count": 12,
+          "median_engagement": 185,
+          "mean_engagement": 4857,
+          "min_engagement": 68,
+          "max_engagement": 30052
+        },
+        {
+          "visual_modality": "numbered_list_graphic",
+          "count": 3,
+          "median_engagement": 69,
+          "mean_engagement": 57,
+          "min_engagement": 31,
+          "max_engagement": 70
+        },
+        {
+          "visual_modality": "comparison_table",
+          "count": 1,
+          "median_engagement": 9,
+          "mean_engagement": 9,
+          "min_engagement": 9,
+          "max_engagement": 9
+        }
+      ],
+      "insights": [
+        "pull_quote_card (median 2382) outperforms comparison_table (median 9) by 264.7x",
+        "Top modality: pull_quote_card with median engagement 2382 (n=5)"
+      ]
+    },
+    {
+      "content_type": "event_promotion_announcement",
+      "total_posts": 19,
+      "modality_breakdown": [
+        {
+          "visual_modality": "event_details_card",
+          "count": 19,
+          "median_engagement": 70,
+          "mean_engagement": 119,
+          "min_engagement": 4,
+          "max_engagement": 567
+        }
+      ],
+      "insights": []
+    },
+    {
+      "content_type": "educational_explainer",
+      "total_posts": 16,
+      "modality_breakdown": [
+        {
+          "visual_modality": "feature_list_graphic",
+          "count": 1,
+          "median_engagement": 1828,
+          "mean_engagement": 1828,
+          "min_engagement": 1828,
+          "max_engagement": 1828
+        },
+        {
+          "visual_modality": "numbered_list_graphic",
+          "count": 9,
+          "median_engagement": 1377,
+          "mean_engagement": 1712,
+          "min_engagement": 56,
+          "max_engagement": 4708
+        },
+        {
+          "visual_modality": "two_column_process_diagram",
+          "count": 1,
+          "median_engagement": 833,
+          "mean_engagement": 833,
+          "min_engagement": 833,
+          "max_engagement": 833
+        },
+        {
+          "visual_modality": "checklist_graphic",
+          "count": 1,
+          "median_engagement": 89,
+          "mean_engagement": 89,
+          "min_engagement": 89,
+          "max_engagement": 89
+        },
+        {
+          "visual_modality": "comparison_table",
+          "count": 3,
+          "median_engagement": 70,
+          "mean_engagement": 71,
+          "min_engagement": 69,
+          "max_engagement": 75
+        },
+        {
+          "visual_modality": "key_takeaway_card",
+          "count": 1,
+          "median_engagement": 6,
+          "mean_engagement": 6,
+          "min_engagement": 6,
+          "max_engagement": 6
+        }
+      ],
+      "insights": [
+        "feature_list_graphic (median 1828) outperforms key_takeaway_card (median 6) by 304.7x",
+        "Top modality: feature_list_graphic with median engagement 1828 (n=1)"
+      ]
+    },
+    {
+      "content_type": "event_community_recap",
+      "total_posts": 14,
+      "modality_breakdown": [
+        {
+          "visual_modality": "attribution_quote_card",
+          "count": 1,
+          "median_engagement": 172,
+          "mean_engagement": 172,
+          "min_engagement": 172,
+          "max_engagement": 172
+        },
+        {
+          "visual_modality": "timeline_graphic",
+          "count": 1,
+          "median_engagement": 111,
+          "mean_engagement": 111,
+          "min_engagement": 111,
+          "max_engagement": 111
+        },
+        {
+          "visual_modality": "headline_subtext_card",
+          "count": 1,
+          "median_engagement": 96,
+          "mean_engagement": 96,
+          "min_engagement": 96,
+          "max_engagement": 96
+        },
+        {
+          "visual_modality": "key_takeaway_card",
+          "count": 1,
+          "median_engagement": 73,
+          "mean_engagement": 73,
+          "min_engagement": 73,
+          "max_engagement": 73
+        },
+        {
+          "visual_modality": "pull_quote_card",
+          "count": 7,
+          "median_engagement": 69,
+          "mean_engagement": 86,
+          "min_engagement": 25,
+          "max_engagement": 198
+        },
+        {
+          "visual_modality": "numbered_list_graphic",
+          "count": 3,
+          "median_engagement": 68,
+          "mean_engagement": 56,
+          "min_engagement": 32,
+          "max_engagement": 69
+        }
+      ],
+      "insights": [
+        "attribution_quote_card (median 172) outperforms numbered_list_graphic (median 68) by 2.5x",
+        "Top modality: attribution_quote_card with median engagement 172 (n=1)"
+      ]
+    },
+    {
+      "content_type": "retrospective_lessons",
+      "total_posts": 9,
+      "modality_breakdown": [
+        {
+          "visual_modality": "numbered_list_graphic",
+          "count": 9,
+          "median_engagement": 194,
+          "mean_engagement": 1086,
+          "min_engagement": 69,
+          "max_engagement": 4311
+        }
+      ],
+      "insights": []
+    },
+    {
+      "content_type": "partnership_announcement",
+      "total_posts": 9,
+      "modality_breakdown": [
+        {
+          "visual_modality": "feature_list_graphic",
+          "count": 1,
+          "median_engagement": 681,
+          "mean_engagement": 681,
+          "min_engagement": 681,
+          "max_engagement": 681
+        },
+        {
+          "visual_modality": "headline_subtext_card",
+          "count": 6,
+          "median_engagement": 195,
+          "mean_engagement": 1972,
+          "min_engagement": 172,
+          "max_engagement": 7242
+        },
+        {
+          "visual_modality": "event_details_card",
+          "count": 1,
+          "median_engagement": 69,
+          "mean_engagement": 69,
+          "min_engagement": 69,
+          "max_engagement": 69
+        },
+        {
+          "visual_modality": "attribution_quote_card",
+          "count": 1,
+          "median_engagement": 0,
+          "mean_engagement": 0,
+          "min_engagement": 0,
+          "max_engagement": 0
+        }
+      ],
+      "insights": [
+        "Top modality: feature_list_graphic with median engagement 681 (n=1)"
+      ]
+    },
+    {
+      "content_type": "data_research_insight",
+      "total_posts": 8,
+      "modality_breakdown": [
+        {
+          "visual_modality": "comparison_table",
+          "count": 1,
+          "median_engagement": 4670,
+          "mean_engagement": 4670,
+          "min_engagement": 4670,
+          "max_engagement": 4670
+        },
+        {
+          "visual_modality": "ranked_list_graphic",
+          "count": 3,
+          "median_engagement": 197,
+          "mean_engagement": 1206,
+          "min_engagement": 193,
+          "max_engagement": 3229
+        },
+        {
+          "visual_modality": "multi_stat_panel",
+          "count": 4,
+          "median_engagement": 66,
+          "mean_engagement": 87,
+          "min_engagement": 20,
+          "max_engagement": 196
+        }
+      ],
+      "insights": [
+        "comparison_table (median 4670) outperforms multi_stat_panel (median 66) by 70.8x",
+        "Top modality: comparison_table with median engagement 4670 (n=1)"
+      ]
+    },
+    {
+      "content_type": "narrative_scenario_case_study",
+      "total_posts": 7,
+      "modality_breakdown": [
+        {
+          "visual_modality": "multi_stat_panel",
+          "count": 1,
+          "median_engagement": 69,
+          "mean_engagement": 69,
+          "min_engagement": 69,
+          "max_engagement": 69
+        },
+        {
+          "visual_modality": "attribution_quote_card",
+          "count": 2,
+          "median_engagement": 68,
+          "mean_engagement": 68,
+          "min_engagement": 68,
+          "max_engagement": 68
+        },
+        {
+          "visual_modality": "feature_list_graphic",
+          "count": 1,
+          "median_engagement": 54,
+          "mean_engagement": 54,
+          "min_engagement": 54,
+          "max_engagement": 54
+        },
+        {
+          "visual_modality": "checklist_graphic",
+          "count": 3,
+          "median_engagement": 5,
+          "mean_engagement": 22,
+          "min_engagement": 5,
+          "max_engagement": 55
+        }
+      ],
+      "insights": [
+        "multi_stat_panel (median 69) outperforms checklist_graphic (median 5) by 13.8x",
+        "Top modality: multi_stat_panel with median engagement 69 (n=1)"
+      ]
+    },
+    {
+      "content_type": "link_share_minimal_commentary",
+      "total_posts": 5,
+      "modality_breakdown": [
+        {
+          "visual_modality": "attribution_quote_card",
+          "count": 1,
+          "median_engagement": 4553,
+          "mean_engagement": 4553,
+          "min_engagement": 4553,
+          "max_engagement": 4553
+        },
+        {
+          "visual_modality": "pull_quote_card",
+          "count": 2,
+          "median_engagement": 122,
+          "mean_engagement": 122,
+          "min_engagement": 69,
+          "max_engagement": 174
+        },
+        {
+          "visual_modality": "headline_subtext_card",
+          "count": 2,
+          "median_engagement": 23,
+          "mean_engagement": 23,
+          "min_engagement": 22,
+          "max_engagement": 23
+        }
+      ],
+      "insights": [
+        "attribution_quote_card (median 4553) outperforms headline_subtext_card (median 23) by 198.0x",
+        "Top modality: attribution_quote_card with median engagement 4553 (n=1)"
+      ]
+    },
+    {
+      "content_type": "recruitment_job_posting",
+      "total_posts": 4,
+      "modality_breakdown": [
+        {
+          "visual_modality": "headline_subtext_card",
+          "count": 3,
+          "median_engagement": 70,
+          "mean_engagement": 96,
+          "min_engagement": 23,
+          "max_engagement": 196
+        },
+        {
+          "visual_modality": "feature_list_graphic",
+          "count": 1,
+          "median_engagement": 68,
+          "mean_engagement": 68,
+          "min_engagement": 68,
+          "max_engagement": 68
+        }
+      ],
+      "insights": [
+        "Top modality: headline_subtext_card with median engagement 70 (n=3)"
+      ]
+    },
+    {
+      "content_type": "in_progress_event_update",
+      "total_posts": 3,
+      "modality_breakdown": [
+        {
+          "visual_modality": "headline_subtext_card",
+          "count": 1,
+          "median_engagement": 89,
+          "mean_engagement": 89,
+          "min_engagement": 89,
+          "max_engagement": 89
+        },
+        {
+          "visual_modality": "event_details_card",
+          "count": 1,
+          "median_engagement": 71,
+          "mean_engagement": 71,
+          "min_engagement": 71,
+          "max_engagement": 71
+        },
+        {
+          "visual_modality": "numbered_list_graphic",
+          "count": 1,
+          "median_engagement": 63,
+          "mean_engagement": 63,
+          "min_engagement": 63,
+          "max_engagement": 63
+        }
+      ],
+      "insights": [
+        "Top modality: headline_subtext_card with median engagement 89 (n=1)"
+      ]
+    }
+  ]
+}

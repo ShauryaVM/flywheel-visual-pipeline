@@ -1,0 +1,47 @@
+{
+  "concepts": [
+    {
+      "modality": "headline_subtext_card",
+      "headline": "900+ Stars in 48 Hours",
+      "subtext": "Mike, the open source legal AI, launched and already has 200+ forks and community-built extensions live.",
+      "data_points": [
+        "900+ GitHub stars",
+        "200+ forks",
+        "48 hours since launch"
+      ],
+      "layout_description": "Dark background canvas (#111111). Centered layout. Large '900+' stat in chartreuse (#e6ff00) at 72px dominates upper half. 'Stars in 48 Hours' in white Inter 500 at 48px below. Thin chartreuse horizontal rule separates stat from subtext. Subtext in muted gray (#888) at 18px. Small 'mikeoss.com' URL pill badge in bottom right with chartreuse border. Flywheel wordmark bottom left.",
+      "color_usage": "Dark background #111111, chartreuse #e6ff00 for the large stat number and accent rule, white for headline text, #888 for subtext, warm border #d7c8af for pill badge",
+      "reasoning": "The 900+ stars in 48 hours is a striking, singular metric that anchors the story. A headline card with a dominant number creates immediate visual impact for a launch announcement."
+    },
+    {
+      "modality": "numbered_list_graphic",
+      "headline": "Mike: Open Source Legal AI Milestones",
+      "subtext": "48 hours post-launch. Community already building on top.",
+      "data_points": [
+        "900+ GitHub stars in 48 hours",
+        "200+ forks created",
+        "Local deployments for secure legal workflows",
+        "Extensions built: CourtListener API integration"
+      ],
+      "layout_description": "Warm off-white canvas (#faf9f6). Left-aligned header block with title in black Inter 700 at 32px. Below, four numbered row cards stacked vertically in a max 640px column centered on canvas. Each row has a chartreuse square badge with bold black number, a short bold title in 16px black, and a one-line descriptor in 13px gray (#666). Left accent border in chartreuse on each row card. Generous 48px outer padding.",
+      "color_usage": "Background #faf9f6, row cards #f0efe9 with chartreuse #e6ff00 left border accents, number badges in #e6ff00 with #000000 text, titles in #000000, descriptors in #666",
+      "reasoning": "The post contains four distinct, sequentially compelling milestones. A numbered list gives each fact equal visual weight and communicates the momentum of the launch at a glance."
+    },
+    {
+      "modality": "event_details_card",
+      "headline": "Mike Is Live: Open Source Legal AI",
+      "subtext": "Run legal workflows locally, extend with APIs, and contribute to the fastest-growing open source legal tool.",
+      "data_points": [
+        "900+ stars",
+        "200+ forks",
+        "48 hours",
+        "mikeoss.com"
+      ],
+      "layout_description": "Dark card (#1a1a1a) centered on warm off-white canvas (#faf9f6) with drop shadow. Bold header block at top with 'Mike Is Live' in white 700 at 36px and tagline in chartreuse at 16px. Below, a two-column detail grid: left column shows star and fork counts as icon-label pairs in white with chartreuse icons; right column shows '48 hrs' launch time and 'Local + Secure' deployment badge. CTA button at bottom reading 'mikeoss.com' styled in black on chartreuse (#e6ff00) with 6px border radius. Pill badges for 'CourtListener API' and 'Local Deploy' in muted gray.",
+      "color_usage": "Card background #1a1a1a, canvas #faf9f6, headline text white, chartreuse #e6ff00 for tagline and CTA button fill, icon accents in #e6ff00, pill badges in #333 with #888 text",
+      "reasoning": "Framing the launch as a structured event card emphasizes actionability and directs viewers to mikeoss.com, making it useful for driving traffic alongside the announcement."
+    }
+  ],
+  "selected": 0,
+  "selection_reasoning": "The headline card anchors on the single most compelling data point: 900+ stars in 48 hours. It creates maximum visual impact with minimal cognitive load, which performs best in LinkedIn feeds. The dominant chartreuse stat on a dark background is instantly eye-catching and communicates viral momentum without requiring the viewer to read further."
+}

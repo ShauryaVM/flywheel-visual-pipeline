@@ -1,0 +1,470 @@
+{
+  "generated_at": "2026-06-17T16:35:20.597Z",
+  "rules": [
+    {
+      "content_type": "career_personal_milestone",
+      "rules": [
+        {
+          "condition": "mentions_person && word_count < 80 && exclamation_density < 0.05",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 75
+        },
+        {
+          "condition": "word_count >= 80 && !has_numbers",
+          "visual_modality": "key_takeaway_card",
+          "confidence": 60
+        },
+        {
+          "condition": "exclamation_density >= 0.05 && !has_numbers",
+          "visual_modality": "pull_quote_card",
+          "confidence": 55
+        },
+        {
+          "condition": "word_count < 50 && !mentions_person",
+          "visual_modality": "bold_statement_card",
+          "confidence": 50
+        },
+        {
+          "condition": "true",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 42
+        }
+      ]
+    },
+    {
+      "content_type": "company_milestone_announcement",
+      "rules": [
+        {
+          "condition": "mentions_metric_or_stat && has_numbers && word_count >= 80",
+          "visual_modality": "multi_stat_panel",
+          "confidence": 80
+        },
+        {
+          "condition": "has_numbers && !mentions_metric_or_stat",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 55
+        },
+        {
+          "condition": "has_list_structure && has_numbers",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 45
+        },
+        {
+          "condition": "word_count < 80 && !has_numbers",
+          "visual_modality": "bold_statement_card",
+          "confidence": 40
+        },
+        {
+          "condition": "true",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 39
+        }
+      ]
+    },
+    {
+      "content_type": "retrospective_lessons",
+      "rules": [
+        {
+          "condition": "has_list_structure && word_count >= 100",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 95
+        },
+        {
+          "condition": "has_list_structure && word_count < 100",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 90
+        },
+        {
+          "condition": "true",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 100
+        }
+      ]
+    },
+    {
+      "content_type": "personal_narrative_reflection",
+      "rules": [
+        {
+          "condition": "word_count >= 150 && !has_list_structure && !has_numbers",
+          "visual_modality": "key_takeaway_card",
+          "confidence": 62
+        },
+        {
+          "condition": "mentions_person && !has_numbers",
+          "visual_modality": "attribution_quote_card",
+          "confidence": 50
+        },
+        {
+          "condition": "word_count < 80 && !has_list_structure",
+          "visual_modality": "bold_statement_card",
+          "confidence": 48
+        },
+        {
+          "condition": "has_questions && word_count < 120",
+          "visual_modality": "pull_quote_card",
+          "confidence": 45
+        },
+        {
+          "condition": "true",
+          "visual_modality": "key_takeaway_card",
+          "confidence": 52
+        }
+      ]
+    },
+    {
+      "content_type": "opinion_hot_take",
+      "rules": [
+        {
+          "condition": "word_count < 60 && !has_list_structure && !has_numbers",
+          "visual_modality": "bold_statement_card",
+          "confidence": 70
+        },
+        {
+          "condition": "has_list_structure && word_count >= 80",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 55
+        },
+        {
+          "condition": "has_questions && word_count < 100",
+          "visual_modality": "pull_quote_card",
+          "confidence": 52
+        },
+        {
+          "condition": "mentions_metric_or_stat && has_numbers",
+          "visual_modality": "comparison_table",
+          "confidence": 40
+        },
+        {
+          "condition": "true",
+          "visual_modality": "bold_statement_card",
+          "confidence": 55
+        }
+      ]
+    },
+    {
+      "content_type": "educational_explainer",
+      "rules": [
+        {
+          "condition": "has_list_structure && word_count >= 120 && !has_numbers",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 60
+        },
+        {
+          "condition": "has_numbers && mentions_metric_or_stat && has_list_structure",
+          "visual_modality": "comparison_table",
+          "confidence": 55
+        },
+        {
+          "condition": "has_list_structure && word_count >= 80 && has_numbers",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 58
+        },
+        {
+          "condition": "has_questions && !has_list_structure",
+          "visual_modality": "key_takeaway_card",
+          "confidence": 40
+        },
+        {
+          "condition": "true",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 56
+        }
+      ]
+    },
+    {
+      "content_type": "data_research_insight",
+      "rules": [
+        {
+          "condition": "mentions_metric_or_stat && has_numbers && word_count >= 100",
+          "visual_modality": "multi_stat_panel",
+          "confidence": 50
+        },
+        {
+          "condition": "has_numbers && has_list_structure && word_count >= 80",
+          "visual_modality": "ranked_list_graphic",
+          "confidence": 45
+        },
+        {
+          "condition": "mentions_metric_or_stat && has_numbers && word_count < 100",
+          "visual_modality": "ranked_list_graphic",
+          "confidence": 42
+        },
+        {
+          "condition": "has_numbers && !has_list_structure",
+          "visual_modality": "multi_stat_panel",
+          "confidence": 40
+        },
+        {
+          "condition": "true",
+          "visual_modality": "multi_stat_panel",
+          "confidence": 50
+        }
+      ]
+    },
+    {
+      "content_type": "product_feature_pitch",
+      "rules": [
+        {
+          "condition": "has_list_structure && word_count >= 100 && has_url_links",
+          "visual_modality": "feature_list_graphic",
+          "confidence": 85
+        },
+        {
+          "condition": "has_list_structure && word_count >= 80",
+          "visual_modality": "feature_list_graphic",
+          "confidence": 80
+        },
+        {
+          "condition": "has_list_structure && has_numbers",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 55
+        },
+        {
+          "condition": "word_count < 80 && !has_list_structure",
+          "visual_modality": "pull_quote_card",
+          "confidence": 40
+        },
+        {
+          "condition": "true",
+          "visual_modality": "feature_list_graphic",
+          "confidence": 65
+        }
+      ]
+    },
+    {
+      "content_type": "partnership_announcement",
+      "rules": [
+        {
+          "condition": "mentions_person && !has_numbers && !has_list_structure",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 72
+        },
+        {
+          "condition": "has_url_links && mentions_person",
+          "visual_modality": "event_details_card",
+          "confidence": 45
+        },
+        {
+          "condition": "has_list_structure && word_count >= 80",
+          "visual_modality": "feature_list_graphic",
+          "confidence": 40
+        },
+        {
+          "condition": "mentions_person && has_numbers",
+          "visual_modality": "attribution_quote_card",
+          "confidence": 38
+        },
+        {
+          "condition": "true",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 67
+        }
+      ]
+    },
+    {
+      "content_type": "event_promotion_announcement",
+      "rules": [
+        {
+          "condition": "has_url_links && has_numbers",
+          "visual_modality": "event_details_card",
+          "confidence": 98
+        },
+        {
+          "condition": "has_url_links && !has_numbers",
+          "visual_modality": "event_details_card",
+          "confidence": 95
+        },
+        {
+          "condition": "has_numbers && mentions_person",
+          "visual_modality": "event_details_card",
+          "confidence": 95
+        },
+        {
+          "condition": "true",
+          "visual_modality": "event_details_card",
+          "confidence": 100
+        }
+      ]
+    },
+    {
+      "content_type": "in_progress_event_update",
+      "rules": [
+        {
+          "condition": "has_url_links && mentions_person",
+          "visual_modality": "event_details_card",
+          "confidence": 45
+        },
+        {
+          "condition": "has_list_structure && word_count >= 80",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 40
+        },
+        {
+          "condition": "word_count >= 100 && !has_list_structure",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 38
+        },
+        {
+          "condition": "true",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 35
+        }
+      ]
+    },
+    {
+      "content_type": "event_community_recap",
+      "rules": [
+        {
+          "condition": "mentions_person && word_count < 100 && !has_list_structure",
+          "visual_modality": "pull_quote_card",
+          "confidence": 58
+        },
+        {
+          "condition": "has_list_structure && mentions_person",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 50
+        },
+        {
+          "condition": "has_numbers && word_count >= 80",
+          "visual_modality": "timeline_graphic",
+          "confidence": 40
+        },
+        {
+          "condition": "mentions_person && word_count >= 100",
+          "visual_modality": "attribution_quote_card",
+          "confidence": 38
+        },
+        {
+          "condition": "true",
+          "visual_modality": "pull_quote_card",
+          "confidence": 50
+        }
+      ]
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "rules": [
+        {
+          "condition": "mentions_person && word_count >= 100 && !has_list_structure",
+          "visual_modality": "attribution_quote_card",
+          "confidence": 48
+        },
+        {
+          "condition": "has_list_structure && word_count >= 80 && !has_numbers",
+          "visual_modality": "numbered_list_graphic",
+          "confidence": 45
+        },
+        {
+          "condition": "mentions_metric_or_stat && has_numbers && !has_list_structure",
+          "visual_modality": "multi_stat_panel",
+          "confidence": 40
+        },
+        {
+          "condition": "word_count >= 120 && !has_list_structure && !mentions_metric_or_stat",
+          "visual_modality": "key_takeaway_card",
+          "confidence": 42
+        },
+        {
+          "condition": "has_questions && word_count < 100",
+          "visual_modality": "bold_statement_card",
+          "confidence": 38
+        },
+        {
+          "condition": "has_url_links && word_count < 80",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 38
+        },
+        {
+          "condition": "true",
+          "visual_modality": "key_takeaway_card",
+          "confidence": 35
+        }
+      ]
+    },
+    {
+      "content_type": "link_share_minimal_commentary",
+      "rules": [
+        {
+          "condition": "mentions_person && has_url_links",
+          "visual_modality": "attribution_quote_card",
+          "confidence": 45
+        },
+        {
+          "condition": "has_url_links && word_count < 30",
+          "visual_modality": "pull_quote_card",
+          "confidence": 42
+        },
+        {
+          "condition": "has_url_links && word_count >= 30",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 45
+        },
+        {
+          "condition": "true",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 40
+        }
+      ]
+    },
+    {
+      "content_type": "narrative_scenario_case_study",
+      "rules": [
+        {
+          "condition": "has_list_structure && word_count >= 120",
+          "visual_modality": "checklist_graphic",
+          "confidence": 55
+        },
+        {
+          "condition": "mentions_person && !has_list_structure && word_count >= 100",
+          "visual_modality": "attribution_quote_card",
+          "confidence": 48
+        },
+        {
+          "condition": "has_numbers && mentions_metric_or_stat",
+          "visual_modality": "multi_stat_panel",
+          "confidence": 38
+        },
+        {
+          "condition": "has_list_structure && word_count < 120",
+          "visual_modality": "feature_list_graphic",
+          "confidence": 38
+        },
+        {
+          "condition": "true",
+          "visual_modality": "checklist_graphic",
+          "confidence": 43
+        }
+      ]
+    },
+    {
+      "content_type": "recruitment_job_posting",
+      "rules": [
+        {
+          "condition": "has_url_links && word_count < 100",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 75
+        },
+        {
+          "condition": "has_list_structure && word_count >= 80",
+          "visual_modality": "feature_list_graphic",
+          "confidence": 50
+        },
+        {
+          "condition": "word_count >= 100 && !has_list_structure",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 65
+        },
+        {
+          "condition": "true",
+          "visual_modality": "headline_subtext_card",
+          "confidence": 75
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "total_posts": 300,
+    "correctly_predicted": 154,
+    "accuracy_pct": 51.33
+  }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #111111;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 1200px;
+      height: 630px;
+      display: flex;
+      flex-direction: column;
+      padding: 52px 64px;
+      position: relative;
+    }
+
+    .header {
+      margin-bottom: 40px;
+    }
+
+    .headline {
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+    }
+
+    .subtext {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.45);
+      margin-top: 10px;
+      max-width: 700px;
+      line-height: 1.5;
+    }
+
+    .stats-grid {
+      display: flex;
+      gap: 20px;
+      flex: 1;
+      align-items: center;
+    }
+
+    .stat-tile {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 160px;
+    }
+
+    .stat-text {
+      font-family: 'DM Mono', 'Courier New', monospace;
+      font-size: 18px;
+      font-weight: 400;
+      color: #e6ff00;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+
+    .logo {
+      position: absolute;
+      bottom: 32px;
+      right: 48px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.15);
+      text-transform: uppercase;
+    }
+
+    .accent-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #e6ff00 0%, #e6ff00 30%, transparent 100%);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="accent-line"></div>
+    <div class="header">
+      <h1 class="headline">Anthropic Is Doubling Down on Europe</h1>
+      <p class="subtext">Revenue up 9x year over year. Six European hubs and growing. Italy is the latest addition.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-tile">
+        <div class="stat-text">9x YoY revenue growth in Europe</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-text">6 European hubs</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-text">Cities: London, Dublin, Zurich, Paris, Munich, Milan</div>
+      </div>
+    </div>
+    <div class="logo">Flywheel</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "total": 300,
+  "by_format": {
+    "image": 205,
+    "carousel": 35,
+    "video": 35,
+    "article": 25
+  },
+  "with_downloaded_image": 133,
+  "reference_only": 167,
+  "unique_creators": 165,
+  "max_from_one_creator": 8,
+  "engagement": {
+    "min": 1,
+    "median": 130,
+    "max": 30052
+  },
+  "reposts": 59
+}

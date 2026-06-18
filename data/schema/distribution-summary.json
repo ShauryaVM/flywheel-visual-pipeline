@@ -1,0 +1,508 @@
+{
+  "generated_at": "2026-06-17T16:36:22.002Z",
+  "total_posts": 301,
+  "content_type_counts": {
+    "educational_explainer": 16,
+    "event_community_recap": 14,
+    "industry_news_commentary": 41,
+    "company_milestone_announcement": 41,
+    "personal_narrative_reflection": 25,
+    "product_feature_pitch": 26,
+    "event_promotion_announcement": 19,
+    "opinion_hot_take": 22,
+    "retrospective_lessons": 9,
+    "career_personal_milestone": 52,
+    "partnership_announcement": 9,
+    "in_progress_event_update": 3,
+    "data_research_insight": 8,
+    "narrative_scenario_case_study": 7,
+    "link_share_minimal_commentary": 5,
+    "recruitment_job_posting": 4
+  },
+  "visual_modality_counts": {
+    "numbered_list_graphic": 39,
+    "pull_quote_card": 28,
+    "attribution_quote_card": 19,
+    "headline_subtext_card": 60,
+    "key_takeaway_card": 39,
+    "multi_stat_panel": 23,
+    "timeline_graphic": 4,
+    "feature_list_graphic": 22,
+    "event_details_card": 21,
+    "bold_statement_card": 30,
+    "two_column_process_diagram": 1,
+    "ranked_list_graphic": 4,
+    "comparison_table": 7,
+    "checklist_graphic": 4
+  },
+  "cross_tabulation": [
+    {
+      "content_type": "educational_explainer",
+      "visual_modality": "numbered_list_graphic",
+      "count": 9
+    },
+    {
+      "content_type": "event_community_recap",
+      "visual_modality": "pull_quote_card",
+      "count": 7
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "visual_modality": "attribution_quote_card",
+      "count": 7
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "visual_modality": "headline_subtext_card",
+      "count": 5
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "visual_modality": "numbered_list_graphic",
+      "count": 7
+    },
+    {
+      "content_type": "company_milestone_announcement",
+      "visual_modality": "numbered_list_graphic",
+      "count": 3
+    },
+    {
+      "content_type": "personal_narrative_reflection",
+      "visual_modality": "key_takeaway_card",
+      "count": 13
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "visual_modality": "key_takeaway_card",
+      "count": 7
+    },
+    {
+      "content_type": "company_milestone_announcement",
+      "visual_modality": "multi_stat_panel",
+      "count": 15
+    },
+    {
+      "content_type": "event_community_recap",
+      "visual_modality": "timeline_graphic",
+      "count": 1
+    },
+    {
+      "content_type": "personal_narrative_reflection",
+      "visual_modality": "attribution_quote_card",
+      "count": 3
+    },
+    {
+      "content_type": "educational_explainer",
+      "visual_modality": "feature_list_graphic",
+      "count": 1
+    },
+    {
+      "content_type": "event_community_recap",
+      "visual_modality": "numbered_list_graphic",
+      "count": 3
+    },
+    {
+      "content_type": "product_feature_pitch",
+      "visual_modality": "feature_list_graphic",
+      "count": 17
+    },
+    {
+      "content_type": "event_promotion_announcement",
+      "visual_modality": "event_details_card",
+      "count": 19
+    },
+    {
+      "content_type": "opinion_hot_take",
+      "visual_modality": "numbered_list_graphic",
+      "count": 3
+    },
+    {
+      "content_type": "retrospective_lessons",
+      "visual_modality": "numbered_list_graphic",
+      "count": 9
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "visual_modality": "multi_stat_panel",
+      "count": 2
+    },
+    {
+      "content_type": "personal_narrative_reflection",
+      "visual_modality": "bold_statement_card",
+      "count": 3
+    },
+    {
+      "content_type": "event_community_recap",
+      "visual_modality": "headline_subtext_card",
+      "count": 1
+    },
+    {
+      "content_type": "educational_explainer",
+      "visual_modality": "two_column_process_diagram",
+      "count": 1
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "visual_modality": "ranked_list_graphic",
+      "count": 1
+    },
+    {
+      "content_type": "personal_narrative_reflection",
+      "visual_modality": "pull_quote_card",
+      "count": 2
+    },
+    {
+      "content_type": "career_personal_milestone",
+      "visual_modality": "pull_quote_card",
+      "count": 7
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "visual_modality": "comparison_table",
+      "count": 2
+    },
+    {
+      "content_type": "partnership_announcement",
+      "visual_modality": "feature_list_graphic",
+      "count": 1
+    },
+    {
+      "content_type": "educational_explainer",
+      "visual_modality": "checklist_graphic",
+      "count": 1
+    },
+    {
+      "content_type": "in_progress_event_update",
+      "visual_modality": "headline_subtext_card",
+      "count": 1
+    },
+    {
+      "content_type": "company_milestone_announcement",
+      "visual_modality": "headline_subtext_card",
+      "count": 16
+    },
+    {
+      "content_type": "opinion_hot_take",
+      "visual_modality": "bold_statement_card",
+      "count": 12
+    },
+    {
+      "content_type": "educational_explainer",
+      "visual_modality": "comparison_table",
+      "count": 3
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "visual_modality": "pull_quote_card",
+      "count": 3
+    },
+    {
+      "content_type": "event_community_recap",
+      "visual_modality": "key_takeaway_card",
+      "count": 1
+    },
+    {
+      "content_type": "data_research_insight",
+      "visual_modality": "multi_stat_panel",
+      "count": 4
+    },
+    {
+      "content_type": "career_personal_milestone",
+      "visual_modality": "headline_subtext_card",
+      "count": 22
+    },
+    {
+      "content_type": "opinion_hot_take",
+      "visual_modality": "pull_quote_card",
+      "count": 5
+    },
+    {
+      "content_type": "company_milestone_announcement",
+      "visual_modality": "bold_statement_card",
+      "count": 4
+    },
+    {
+      "content_type": "in_progress_event_update",
+      "visual_modality": "event_details_card",
+      "count": 1
+    },
+    {
+      "content_type": "opinion_hot_take",
+      "visual_modality": "comparison_table",
+      "count": 1
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "visual_modality": "bold_statement_card",
+      "count": 4
+    },
+    {
+      "content_type": "educational_explainer",
+      "visual_modality": "key_takeaway_card",
+      "count": 1
+    },
+    {
+      "content_type": "personal_narrative_reflection",
+      "visual_modality": "numbered_list_graphic",
+      "count": 1
+    },
+    {
+      "content_type": "product_feature_pitch",
+      "visual_modality": "numbered_list_graphic",
+      "count": 3
+    },
+    {
+      "content_type": "narrative_scenario_case_study",
+      "visual_modality": "checklist_graphic",
+      "count": 3
+    },
+    {
+      "content_type": "in_progress_event_update",
+      "visual_modality": "numbered_list_graphic",
+      "count": 1
+    },
+    {
+      "content_type": "career_personal_milestone",
+      "visual_modality": "key_takeaway_card",
+      "count": 15
+    },
+    {
+      "content_type": "career_personal_milestone",
+      "visual_modality": "attribution_quote_card",
+      "count": 2
+    },
+    {
+      "content_type": "career_personal_milestone",
+      "visual_modality": "bold_statement_card",
+      "count": 6
+    },
+    {
+      "content_type": "partnership_announcement",
+      "visual_modality": "headline_subtext_card",
+      "count": 6
+    },
+    {
+      "content_type": "link_share_minimal_commentary",
+      "visual_modality": "pull_quote_card",
+      "count": 2
+    },
+    {
+      "content_type": "personal_narrative_reflection",
+      "visual_modality": "timeline_graphic",
+      "count": 1
+    },
+    {
+      "content_type": "personal_narrative_reflection",
+      "visual_modality": "headline_subtext_card",
+      "count": 2
+    },
+    {
+      "content_type": "product_feature_pitch",
+      "visual_modality": "multi_stat_panel",
+      "count": 1
+    },
+    {
+      "content_type": "event_community_recap",
+      "visual_modality": "attribution_quote_card",
+      "count": 1
+    },
+    {
+      "content_type": "narrative_scenario_case_study",
+      "visual_modality": "feature_list_graphic",
+      "count": 1
+    },
+    {
+      "content_type": "product_feature_pitch",
+      "visual_modality": "headline_subtext_card",
+      "count": 2
+    },
+    {
+      "content_type": "company_milestone_announcement",
+      "visual_modality": "attribution_quote_card",
+      "count": 2
+    },
+    {
+      "content_type": "recruitment_job_posting",
+      "visual_modality": "headline_subtext_card",
+      "count": 3
+    },
+    {
+      "content_type": "link_share_minimal_commentary",
+      "visual_modality": "headline_subtext_card",
+      "count": 2
+    },
+    {
+      "content_type": "data_research_insight",
+      "visual_modality": "ranked_list_graphic",
+      "count": 3
+    },
+    {
+      "content_type": "partnership_announcement",
+      "visual_modality": "event_details_card",
+      "count": 1
+    },
+    {
+      "content_type": "company_milestone_announcement",
+      "visual_modality": "key_takeaway_card",
+      "count": 1
+    },
+    {
+      "content_type": "product_feature_pitch",
+      "visual_modality": "pull_quote_card",
+      "count": 2
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "visual_modality": "timeline_graphic",
+      "count": 2
+    },
+    {
+      "content_type": "data_research_insight",
+      "visual_modality": "comparison_table",
+      "count": 1
+    },
+    {
+      "content_type": "link_share_minimal_commentary",
+      "visual_modality": "attribution_quote_card",
+      "count": 1
+    },
+    {
+      "content_type": "partnership_announcement",
+      "visual_modality": "attribution_quote_card",
+      "count": 1
+    },
+    {
+      "content_type": "product_feature_pitch",
+      "visual_modality": "bold_statement_card",
+      "count": 1
+    },
+    {
+      "content_type": "narrative_scenario_case_study",
+      "visual_modality": "multi_stat_panel",
+      "count": 1
+    },
+    {
+      "content_type": "opinion_hot_take",
+      "visual_modality": "key_takeaway_card",
+      "count": 1
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "visual_modality": "feature_list_graphic",
+      "count": 1
+    },
+    {
+      "content_type": "recruitment_job_posting",
+      "visual_modality": "feature_list_graphic",
+      "count": 1
+    },
+    {
+      "content_type": "narrative_scenario_case_study",
+      "visual_modality": "attribution_quote_card",
+      "count": 2
+    }
+  ],
+  "confidence_distribution": {
+    "high": 173,
+    "medium": 76,
+    "low": 52
+  },
+  "thin_category_warnings": [
+    {
+      "axis": "content_type",
+      "category": "in_progress_event_update",
+      "count": 3
+    },
+    {
+      "axis": "content_type",
+      "category": "recruitment_job_posting",
+      "count": 4
+    },
+    {
+      "axis": "visual_modality",
+      "category": "timeline_graphic",
+      "count": 4
+    },
+    {
+      "axis": "visual_modality",
+      "category": "two_column_process_diagram",
+      "count": 1
+    },
+    {
+      "axis": "visual_modality",
+      "category": "ranked_list_graphic",
+      "count": 4
+    },
+    {
+      "axis": "visual_modality",
+      "category": "checklist_graphic",
+      "count": 4
+    }
+  ],
+  "coverage_report": [
+    {
+      "content_type": "career_personal_milestone",
+      "top_rules_coverage_pct": 84.62
+    },
+    {
+      "content_type": "company_milestone_announcement",
+      "top_rules_coverage_pct": 82.93
+    },
+    {
+      "content_type": "retrospective_lessons",
+      "top_rules_coverage_pct": 100
+    },
+    {
+      "content_type": "personal_narrative_reflection",
+      "top_rules_coverage_pct": 76
+    },
+    {
+      "content_type": "opinion_hot_take",
+      "top_rules_coverage_pct": 90.91
+    },
+    {
+      "content_type": "educational_explainer",
+      "top_rules_coverage_pct": 75
+    },
+    {
+      "content_type": "data_research_insight",
+      "top_rules_coverage_pct": 87.5
+    },
+    {
+      "content_type": "product_feature_pitch",
+      "top_rules_coverage_pct": 76.92
+    },
+    {
+      "content_type": "partnership_announcement",
+      "top_rules_coverage_pct": 88.89
+    },
+    {
+      "content_type": "event_promotion_announcement",
+      "top_rules_coverage_pct": 100
+    },
+    {
+      "content_type": "in_progress_event_update",
+      "top_rules_coverage_pct": 100
+    },
+    {
+      "content_type": "event_community_recap",
+      "top_rules_coverage_pct": 78.57
+    },
+    {
+      "content_type": "industry_news_commentary",
+      "top_rules_coverage_pct": 39.02
+    },
+    {
+      "content_type": "link_share_minimal_commentary",
+      "top_rules_coverage_pct": 100
+    },
+    {
+      "content_type": "narrative_scenario_case_study",
+      "top_rules_coverage_pct": 85.71
+    },
+    {
+      "content_type": "recruitment_job_posting",
+      "top_rules_coverage_pct": 100
+    }
+  ]
+}

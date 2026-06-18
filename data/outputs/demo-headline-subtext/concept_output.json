@@ -1,0 +1,48 @@
+{
+  "concepts": [
+    {
+      "modality": "multi_stat_panel",
+      "headline": "Anthropic Is Doubling Down on Europe",
+      "subtext": "Revenue up 9x year over year. Six European hubs and growing. Italy is the latest addition.",
+      "data_points": [
+        "9x YoY revenue growth in Europe",
+        "6 European hubs",
+        "Cities: London, Dublin, Zurich, Paris, Munich, Milan"
+      ],
+      "layout_description": "Dark background (#111111) canvas at 1200x630px. Full-width header row at top with headline in white 52px Inter bold and subtext below in #888. Below, a three-column stat tile grid centered on the canvas. Tile 1: '9x' in chartreuse (#e6ff00) at 56px with label 'YoY Revenue Growth in Europe'. Tile 2: '6' in chartreuse at 56px with label 'European Hubs'. Tile 3: 'Milan' in chartreuse at 48px with label 'Newest European Office'. Each tile has a subtle #1a1a1a background with a 1px #333 border and 8px radius. Bottom strip lists the six city names as small pill badges in #1a1a1a with #555 borders and white text.",
+      "color_usage": "Dark background #111111, headline white, stat numbers in #e6ff00, tile backgrounds #1a1a1a, borders #333, label text #888, city pills bordered in #555",
+      "reasoning": "The post contains three distinct quantitative proof points (9x growth, 6 hubs, new Milan office) that together tell a story of Anthropic's European scale, making a stat panel the strongest fit."
+    },
+    {
+      "modality": "numbered_list_graphic",
+      "headline": "Anthropic's European Hub Network",
+      "subtext": "Six cities, fastest growing region, 9x revenue growth. Anthropic is betting big on Europe.",
+      "data_points": [
+        "London",
+        "Dublin",
+        "Zurich",
+        "Paris",
+        "Munich",
+        "Milan (NEW)"
+      ],
+      "layout_description": "Warm off-white background (#faf9f6) at 1200x630px. Left half contains a bold header block: headline at 48px Inter 700 in #000000 with subtext at 18px in #555 below. Right half features a vertical flexbox column of six numbered row cards, max width 480px, each with a circular badge number in #e6ff00 with #000 text, city name in 17px bold #111111, and a short descriptor in 13px #666. Milan row is visually highlighted with a left border accent in #e6ff00 and a slightly elevated card shadow. Generous 60px horizontal padding overall.",
+      "color_usage": "Background #faf9f6, primary text #000000, number badges #e6ff00, descriptor text #666, Milan accent left-border #e6ff00, card borders #d7c8af",
+      "reasoning": "The six European hubs form a natural sequential list. The numbered list graphic lets each city register clearly while the highlighted Milan row communicates the news hook visually."
+    },
+    {
+      "modality": "event_details_card",
+      "headline": "Anthropic Expands: Milan Office Now Open",
+      "subtext": "Europe is Anthropic's fastest growing region. Dario Amodei headlines Wave by Vento in Turin this year.",
+      "data_points": [
+        "9x YoY European revenue growth",
+        "Wave by Vento, Turin",
+        "Dario Amodei headlining"
+      ],
+      "layout_description": "Canvas 1200x630px with #f0efe9 background. Centered card (max width 860px, 8px radius, #d7c8af border, soft shadow) with a bold top header block in #111111 background holding the headline in white 50px Inter 700. Below the header, a two-column icon-label detail grid: left column shows Europe stats (9x growth label, six city list as comma-separated text), right column shows the Turin event details (event name 'Wave by Vento', speaker 'Dario Amodei'). At the bottom, a chartreuse CTA strip reading 'Anthropic. Built for Europe.' in #000 bold 18px centered text, full card width.",
+      "color_usage": "Card background white, header block #111111, headline white, detail labels #555, values #111111, CTA strip #e6ff00 with #000 text, card border #d7c8af, outer background #f0efe9",
+      "reasoning": "The post contains both a business expansion announcement and an upcoming speaker event, making the event details card a natural fit to surface both the Milan office news and the Turin conference logistics together."
+    }
+  ],
+  "selected": 0,
+  "selection_reasoning": "The multi-stat panel best captures the core news value: quantified European growth. The 9x revenue figure, six-hub count, and Milan launch are each visually impactful as standalone stats. The dark background creates maximum contrast and LinkedIn scroll-stopping power, while the chartreuse numbers draw the eye immediately to the key proof points."
+}

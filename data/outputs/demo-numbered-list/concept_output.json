@@ -1,0 +1,56 @@
+{
+  "concepts": [
+    {
+      "modality": "numbered_list_graphic",
+      "headline": "7 Free Google AI Courses With Certificates",
+      "subtext": "Google is offering free AI courses with certificates. Seven tracks from fundamentals to app building.",
+      "data_points": [
+        "1. AI Fundamentals: Core concepts for professional AI use",
+        "2. AI for Brainstorming: Evaluate and prioritize ideas",
+        "3. AI for Research: Gemini and NotebookLM for faster research",
+        "4. AI for Writing: Turn meeting notes into clear summaries",
+        "5. AI for Content Creation: Generate images and videos",
+        "6. AI for Data Analysis: Track metrics, clean messy data",
+        "7. AI for App Building: Build web apps, no code needed"
+      ],
+      "layout_description": "1200x630px landscape canvas with a dark (#111111) left panel taking 38% width containing the headline in 48px Inter bold and subtext in 16px. Right panel on warm off-white (#faf9f6) holds a vertical stack of 7 numbered rows. Each row has a chartreuse (#e6ff00) number badge on the left, bold 14px course title, and a 12px descriptor in #666. Rows are separated by 1px dividers in #d7c8af. Compact row height to fit all 7 within the canvas.",
+      "color_usage": "Dark left panel #111111 with white headline and #e6ff00 accent subtext label. Right panel background #faf9f6. Number badges #e6ff00 with #000000 text. Row titles #111111, descriptors #666. Dividers #d7c8af.",
+      "reasoning": "The post is a clean sequential list of 7 items, making the numbered list graphic the most direct and readable visual translation. Each course maps perfectly to a numbered row."
+    },
+    {
+      "modality": "feature_list_graphic",
+      "headline": "Google AI Courses: Free and Certified",
+      "subtext": "Seven skill tracks covering research, writing, data, content creation, and app building. All free with certificates.",
+      "data_points": [
+        "AI Fundamentals",
+        "AI for Brainstorming",
+        "AI for Research",
+        "AI for Writing",
+        "AI for Content Creation",
+        "AI for Data Analysis",
+        "AI for App Building"
+      ],
+      "layout_description": "1200x630px canvas with warm off-white (#faf9f6) background. Centered card container max-width 900px with subtle shadow and 8px border radius. Header block at top with bold 52px headline and 18px subtext. Below, two-column grid of feature rows: left column holds 4 items, right column holds 3. Each row has a small chartreuse square icon placeholder, bold course name in 15px, and a one-line use-case descriptor in 13px #666. A Google-referencing label badge in chartreuse at top right of card reads 'Google Certified'.",
+      "color_usage": "Canvas #faf9f6, card background #ffffff with #d7c8af border shadow. Headline #000000, subtext #555. Feature icons #e6ff00 filled squares. Feature titles #111111, descriptors #666. Badge background #e6ff00, badge text #000000.",
+      "reasoning": "The feature list modality suits this content as a product-style breakdown of seven discrete capabilities, presenting the courses as a valuable skill suite rather than just a list."
+    },
+    {
+      "modality": "event_details_card",
+      "headline": "7 Free Google AI Courses Available Now",
+      "subtext": "Earn certificates across AI writing, research, data, content creation, and app building. No cost required.",
+      "data_points": [
+        "Provider: Google",
+        "Cost: Free with certificates",
+        "Tracks: 7 courses",
+        "Tools: Gemini, NotebookLM",
+        "Skill level: Beginner to builder",
+        "CTA: Enroll now"
+      ],
+      "layout_description": "1200x630px canvas on dark background #1a1a1a. Centered card at 640px wide with #111111 fill and 8px radius. Bold header block with 52px headline in white and chartreuse accent on the word 'Free'. Below header, a two-column icon-label detail grid showing Provider, Cost, Tracks, Tools, and Skill Level. Each label uses a small chartreuse square icon. Bottom of card has a wide CTA button in #e6ff00 with bold black text reading 'Enroll Free via Google'. Pill badges for Gemini and NotebookLM float near the tools row.",
+      "color_usage": "Canvas #1a1a1a, card #111111. Headline white with #e6ff00 accent word. Detail labels #888, values #ffffff. Icon shapes #e6ff00. CTA button #e6ff00 with #000000 text. Pill badges #e6ff00 background, #000000 text.",
+      "reasoning": "Framing the courses as an event or opportunity card drives urgency and action, surfacing the key value props including free, certified, and Google-backed in a scannable logistics format."
+    }
+  ],
+  "selected": 0,
+  "selection_reasoning": "The numbered list graphic is the strongest concept because the post's core structure is a numbered 7-item list. It translates directly and intuitively into a visual that LinkedIn audiences can scan in seconds. Each course gets its own clear row, the dark and light panel split creates visual hierarchy, and the chartreuse badges give the design energy without overwhelming the content."
+}

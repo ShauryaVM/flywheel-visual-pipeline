@@ -1,0 +1,294 @@
+{
+  "version": "v0",
+  "generated_at": "2026-06-17T14:07:19.840Z",
+  "content_types": [
+    {
+      "name": "career_personal_milestone",
+      "display_name": "Career and Personal Milestone",
+      "definition": "A post announcing a significant personal or professional life event, such as a new job, promotion, marriage, or other achievement. The tone is celebratory and emotionally driven rather than instructional or data-heavy.",
+      "inclusion_criteria": [
+        "First-person announcement of a life or career event",
+        "Celebratory or grateful tone with thanks to supporters",
+        "Short word count with no instructional content or data",
+        "No call to action beyond acknowledgment or congratulations",
+        "Subject is the author's own experience, not an external entity"
+      ],
+      "example_post_id": "155879fb-4783-4511-82cb-c42f23f80597"
+    },
+    {
+      "name": "company_milestone_announcement",
+      "display_name": "Company Milestone Announcement",
+      "definition": "A post announcing a significant company achievement such as a funding round, major valuation, product launch, or expansion, typically supported by multiple quantitative metrics to substantiate the news.",
+      "inclusion_criteria": [
+        "Announces a specific company event such as funding, launch, or expansion",
+        "Includes at least two quantitative metrics or milestone figures",
+        "Written from the perspective of a founder, executive, or official company voice",
+        "Celebratory framing with evidence-backed credibility",
+        "May include investor names, customer counts, or revenue figures as proof points"
+      ],
+      "example_post_id": "aaad8a35-7b65-4ca6-8ace-bb6f080c8303"
+    },
+    {
+      "name": "retrospective_lessons",
+      "display_name": "Retrospective and Lessons Learned",
+      "definition": "A post that looks back on a completed period, project, or milestone and extracts numbered or structured lessons for an audience. Combines a milestone hook with a structured retrospective body.",
+      "inclusion_criteria": [
+        "References a completed phase, milestone, or time period as the anchor",
+        "Body contains numbered or explicitly sequenced takeaways",
+        "Each lesson includes a brief explanatory narrative",
+        "Author writes from direct experience rather than external research",
+        "Intended to be actionable or instructive for peers in similar situations"
+      ],
+      "example_post_id": "db895ff8-90d4-466e-b1a3-871104fda226"
+    },
+    {
+      "name": "opinion_hot_take",
+      "display_name": "Opinion and Hot Take",
+      "definition": "A post centered on a single strong opinion, provocative claim, or contrarian argument. The post prioritizes persuasion and reaction over information delivery, often using a striking contrast or rhetorical question as the hook.",
+      "inclusion_criteria": [
+        "Opens with a bold, debatable claim or provocative framing",
+        "Minimal data presented; argument is driven by reasoning or analogy",
+        "Author positions themselves against a common assumption or behavior",
+        "Rhetorical questions or direct challenges to the audience are present",
+        "Short to medium length with a punchy, memorable core statement"
+      ],
+      "example_post_id": "00488050-fdf4-469b-8b58-5d56e99dc004"
+    },
+    {
+      "name": "educational_explainer",
+      "display_name": "Educational Explainer",
+      "definition": "A post that teaches a concept, framework, or technical topic to an audience. It uses structured comparisons, step-by-step breakdowns, or research citations to build understanding rather than to promote or announce.",
+      "inclusion_criteria": [
+        "Primary goal is audience comprehension of a concept or methodology",
+        "Uses contrast, comparison, or sequential explanation as a structural device",
+        "References external research, papers, or authoritative sources",
+        "No product or personal promotion embedded as the main purpose",
+        "Ends with a learning prompt or open question to the audience"
+      ],
+      "example_post_id": "3fad41bc-3c56-40f7-893c-5ce723665328"
+    },
+    {
+      "name": "data_research_insight",
+      "display_name": "Data and Research Insight",
+      "definition": "A post that presents original or curated quantitative findings, research observations, or ranked data to surface a non-obvious insight. The post's credibility rests on the data rather than on personal authority alone.",
+      "inclusion_criteria": [
+        "Contains at least one specific statistic, percentage, or ranked data set",
+        "References a research methodology, sample, or data source",
+        "Frames the data around a finding or trend rather than pure announcement",
+        "May segment data across dimensions such as company size or time period",
+        "Author positions themselves as analyst or curator of the evidence"
+      ],
+      "example_post_id": "8b47db51-5cba-45a1-9bc7-b2301a7cb46d"
+    },
+    {
+      "name": "product_feature_pitch",
+      "display_name": "Product Feature and Pitch",
+      "definition": "A post that announces, explains, or promotes a specific product or set of features, either from the product creator or an enthusiast reviewer. The post enumerates capabilities with the intent to drive adoption or interest.",
+      "inclusion_criteria": [
+        "Enumerates three or more distinct product features or capabilities",
+        "Language is promotional or launch-focused with superlatives or comparisons to alternatives",
+        "May include step-by-step instructions or a 'how it works' section",
+        "Closes with a URL, sign-up prompt, or call to try the product",
+        "May reference integrations, pricing tiers, or competitor positioning"
+      ],
+      "example_post_id": "7628ce8b-a40b-4771-af01-5342523b5ddb"
+    },
+    {
+      "name": "event_promotion_announcement",
+      "display_name": "Event Promotion and Announcement",
+      "definition": "A post promoting an upcoming in-person or virtual event, conference, or session. It includes actionable logistics such as date, location, and registration details, with a clear call to attend.",
+      "inclusion_criteria": [
+        "Specifies a named event with a date, time, or location",
+        "Includes a registration link, RSVP prompt, or attendance instruction",
+        "Names co-hosts, speakers, or organizing entities",
+        "Written before the event occurs with forward-looking urgency",
+        "May list multiple sessions or sub-events within a broader program"
+      ],
+      "example_post_id": "abd2aed3-3cd0-479d-ba2f-7369f795a0f7"
+    },
+    {
+      "name": "event_community_recap",
+      "display_name": "Event and Community Recap",
+      "definition": "A post reflecting on a completed event or community gathering, highlighting who attended, what was discussed, and the value created. The tone is warm and relationship-focused, often naming participants.",
+      "inclusion_criteria": [
+        "References an event that has already occurred",
+        "Names specific attendees, speakers, or participating companies",
+        "Tone is celebratory, grateful, or reflective rather than instructional",
+        "May include timestamps, agenda items, or a chronological narrative",
+        "Often closes with a thank-you or signals future repetition of the event"
+      ],
+      "example_post_id": "189f5da0-e676-4280-a214-88402af160db"
+    },
+    {
+      "name": "industry_news_commentary",
+      "display_name": "Industry News Commentary",
+      "definition": "A post in which the author summarizes or reacts to an external news story, industry development, or third-party announcement. The author is not the subject of the news and adds editorial framing or interpretation.",
+      "inclusion_criteria": [
+        "Subject of the post is an external company, person, or event the author did not create",
+        "Author adds interpretive commentary or a closing editorial observation",
+        "References specific figures, quotes, or facts from the external story",
+        "May link to an external article or source",
+        "Tone ranges from neutral curation to strong opinion about the news"
+      ],
+      "example_post_id": "e44af113-c294-40ba-9259-99623907de42"
+    },
+    {
+      "name": "narrative_scenario_case_study",
+      "display_name": "Narrative Scenario and Case Study",
+      "definition": "A post that uses a story, fictional scenario, or real customer example to illustrate a risk, opportunity, or product benefit. The narrative structure is the primary vehicle for the argument or proof.",
+      "inclusion_criteria": [
+        "Uses a story arc with a setup, complication, and resolution or lesson",
+        "May be a fictional but realistic scenario or a named real-world example",
+        "Outcome or moral of the story supports a product, methodology, or opinion",
+        "Contains specific detail such as names, amounts, or dialogue to build credibility",
+        "Story functions as evidence rather than mere illustration"
+      ],
+      "example_post_id": "272c05ef-718f-4270-9f3e-c078a1d67a3e"
+    },
+    {
+      "name": "recruitment_job_posting",
+      "display_name": "Recruitment and Job Posting",
+      "definition": "A post whose primary purpose is to attract candidates for an open role at a company. It names the position, team, location, and application method without embedding significant instructional or opinion content.",
+      "inclusion_criteria": [
+        "Names a specific open role or category of roles being hired",
+        "Includes team name, company name, or location information",
+        "Contains an application link or instruction on how to apply",
+        "Short word count focused on attracting candidates rather than sharing insight",
+        "No extended narrative or opinion; transactional and informational in structure"
+      ],
+      "example_post_id": "b2fec3c1-eb0c-47f6-a0dc-51ade4dd8a02"
+    }
+  ],
+  "visual_modalities": [
+    {
+      "name": "quote_card",
+      "display_name": "Quote Card",
+      "definition": "A visually prominent card that isolates a single statement, opinion, or memorable phrase in large typography, attributed to a person or source. Designed to make one idea the sole focus.",
+      "inclusion_criteria": [
+        "Post has a single punchy, memorable sentence that carries the core message",
+        "Content is opinion-driven, celebratory, or announcement-style with no data to visualize",
+        "The goal is emotional resonance or shareability rather than information density",
+        "Post is short with minimal structured content beyond the key statement"
+      ],
+      "renderability_spec": "Centered flex container with a large blockquote element in a bold or serif font at 24-36px. Attribution line in smaller muted type below. Background uses a solid brand color or a subtle gradient. Optional decorative quotation mark in a contrasting accent color. Max width 600px with generous padding.",
+      "example_post_id": "155879fb-4783-4511-82cb-c42f23f80597"
+    },
+    {
+      "name": "multi_stat_panel",
+      "display_name": "Multi-Stat Panel",
+      "definition": "A grid or row of labeled statistic tiles, each displaying a headline number with a short descriptor. Used when a post contains three or more distinct quantitative proof points that together tell a story of scale or achievement.",
+      "inclusion_criteria": [
+        "Post contains three or more distinct numeric metrics or milestone figures",
+        "Metrics are parallel in nature and reinforce a single overarching claim",
+        "Content is announcement, funding, or data-insight oriented",
+        "Each metric can stand alone with a two-to-four word label"
+      ],
+      "renderability_spec": "CSS grid with 2-4 columns of stat tiles. Each tile has a large bold number in a brand accent color at 32-48px, a short descriptor label below in 12-14px, and a light border or background tint to separate tiles. Responsive to single-column on narrow widths. Optional header row with the announcement title spanning full width.",
+      "example_post_id": "aaad8a35-7b65-4ca6-8ace-bb6f080c8303"
+    },
+    {
+      "name": "numbered_list_graphic",
+      "display_name": "Numbered List Graphic",
+      "definition": "A vertically stacked series of numbered rows, each containing a short title and one-line description. Used when post content is structured as a sequential list of lessons, steps, bets, or takeaways.",
+      "inclusion_criteria": [
+        "Post contains three or more explicitly numbered or sequenced items",
+        "Each item has a short title and brief explanatory note",
+        "Content is retrospective, instructional, or feature-listing in nature",
+        "Order of items is meaningful or carries narrative progression"
+      ],
+      "renderability_spec": "Vertical flexbox column of row cards. Each row has a large bold number on the left in a circle or square badge, a title in 16-18px bold, and a subtitle in 13px regular weight. Alternating light background tints or left-border accents differentiate rows. Header block at top with overall title. Max width 640px.",
+      "example_post_id": "db895ff8-90d4-466e-b1a3-871104fda226"
+    },
+    {
+      "name": "feature_list_graphic",
+      "display_name": "Feature List Graphic",
+      "definition": "A structured list of product features or capabilities, each represented as a labeled row with an optional icon or short descriptor. Used for product announcements, pitches, and reviews where multiple discrete capabilities need to be communicated.",
+      "inclusion_criteria": [
+        "Post enumerates four or more distinct product features or specifications",
+        "Content is product announcement, pitch, or enthusiast review",
+        "Features are discrete and parallel rather than sequential steps",
+        "Post is promotional in tone with a call to try or learn more"
+      ],
+      "renderability_spec": "Vertical list of feature rows inside a branded card container. Each row has an icon placeholder on the left (CSS shape or emoji), a bold feature name, and a short descriptor in regular weight. Divider lines between rows. Header block with product name and tagline. Optional badge or label for new or key features. Max width 600px.",
+      "example_post_id": "7628ce8b-a40b-4771-af01-5342523b5ddb"
+    },
+    {
+      "name": "comparison_table",
+      "display_name": "Comparison Table",
+      "definition": "A two-column or multi-column table that contrasts two or more approaches, options, or states across several dimensions. Used for educational explainers and hot takes that hinge on a clear before-and-after or either-or contrast.",
+      "inclusion_criteria": [
+        "Post explicitly contrasts two or more approaches, systems, or conditions",
+        "Three or more comparison dimensions exist that can become table rows",
+        "Content is educational, analytical, or argument-driven",
+        "The contrast itself is the main persuasive or instructional device"
+      ],
+      "renderability_spec": "HTML table with a sticky header row naming each option. Each subsequent row represents one comparison dimension with a left-side label column and one cell per option. Background tinting alternates rows for readability. One column can be highlighted with a brand color border to indicate a preferred option. Max width 680px with responsive horizontal scroll.",
+      "example_post_id": "3fad41bc-3c56-40f7-893c-5ce723665328"
+    },
+    {
+      "name": "timeline_graphic",
+      "display_name": "Timeline Graphic",
+      "definition": "A chronologically ordered visual that plots events, milestones, or moments along a horizontal or vertical axis. Used for personal stories, event recaps, and expansion announcements with explicit time or sequence markers.",
+      "inclusion_criteria": [
+        "Post contains three or more time-stamped or sequenced events",
+        "Chronological order is meaningful to the narrative or argument",
+        "Content is a personal story, event recap, or expansion roadmap",
+        "Each event has a short label that can stand alone in a node"
+      ],
+      "renderability_spec": "Vertical or horizontal flexbox track with a central line drawn using a CSS border. Each node is a circle element positioned along the line with a year or time label and a short event description beside it. Alternating left-right layout for vertical timelines to avoid crowding. Future nodes styled with dashed borders or muted color. Max width 640px.",
+      "example_post_id": "4c11e9ce-d66d-47a2-b181-47de98914e8c"
+    },
+    {
+      "name": "event_details_card",
+      "display_name": "Event Details Card",
+      "definition": "A structured card that surfaces the key logistics of an upcoming event including name, date, time, location, hosts, and a call to action. Designed to communicate all actionable information at a glance.",
+      "inclusion_criteria": [
+        "Post promotes a specific upcoming event with a defined date and location",
+        "Multiple logistical details exist that benefit from structured layout",
+        "A clear call to action such as RSVP or register is present",
+        "Content is transactional and forward-looking rather than reflective"
+      ],
+      "renderability_spec": "Card container with a bold header block for event name and tagline. Below the header, a two-column detail grid with icon-label pairs for date, time, venue, and hosts. A prominent CTA button styled with brand color at the bottom. Optional co-host name badges rendered as pill elements. Max width 560px with rounded corners and a drop shadow.",
+      "example_post_id": "abd2aed3-3cd0-479d-ba2f-7369f795a0f7"
+    },
+    {
+      "name": "checklist_graphic",
+      "display_name": "Checklist Graphic",
+      "definition": "A visual list of items each marked with a pass, fail, or status indicator. Used for compliance scenarios, gap analyses, or requirement checklists where the presence or absence of each item is the core message.",
+      "inclusion_criteria": [
+        "Post contains a list of requirements, criteria, or items that can be checked or evaluated",
+        "Pass-fail or present-absent status is meaningful for each item",
+        "Content is compliance, audit, risk, or self-assessment oriented",
+        "The gap between required and actual state is the rhetorical engine of the post"
+      ],
+      "renderability_spec": "Vertical list of checklist rows. Each row has a status indicator on the left rendered as a CSS circle with a checkmark, X, or warning symbol using Unicode or CSS content. Item label in 14-16px with a strikethrough or muted style for failed items. Optional status badge on the right such as 'Missing' or 'Incomplete' rendered as a pill. Container has a light background with a header row. Max width 600px.",
+      "example_post_id": "272c05ef-718f-4270-9f3e-c078a1d67a3e"
+    },
+    {
+      "name": "two_column_process_diagram",
+      "display_name": "Two-Column Process Diagram",
+      "definition": "A side-by-side or stacked two-panel layout that represents two distinct phases, components, or approaches of a framework or methodology. Used for structured announcements of blueprints, strategies, or two-part systems.",
+      "inclusion_criteria": [
+        "Post describes exactly two phases, components, or contrasting approaches",
+        "Each component has its own sub-list of features or functions",
+        "Content is a framework announcement, methodology reveal, or structured explainer",
+        "The two parts are meant to be understood as complementary or sequential"
+      ],
+      "renderability_spec": "Two-column CSS grid or flexbox row, each column rendered as a card with a bold phase label at the top and a bullet list of functions below. A connector element such as an arrow or numbered badge between columns signals direction or sequence. Both columns share equal width with consistent padding. Optional header spanning both columns for the overall framework name. Max width 700px.",
+      "example_post_id": "7d64d0f3-7be2-4d02-b239-855ac8953e5c"
+    },
+    {
+      "name": "ranked_list_graphic",
+      "display_name": "Ranked List Graphic",
+      "definition": "A vertically ordered list where items are sorted by a quantitative value and each row displays the rank, label, and corresponding metric. Used for data insight posts built around comparative rankings.",
+      "inclusion_criteria": [
+        "Post contains five or more items that are explicitly or implicitly ranked by a numeric value",
+        "Rank order is central to the insight or argument being made",
+        "Content is data-driven with each item having a consistent comparable metric",
+        "Visual communication of relative magnitude adds meaningful interpretive value"
+      ],
+      "renderability_spec": "Vertical ordered list with a rank number column on the far left, an entity name column in the center, and a metric value column on the right. A horizontal bar of variable width behind each row can encode relative magnitude using CSS width percentages. Alternating row background tints improve readability. Header row labels each column. Top-ranked rows can use a brand accent color for emphasis. Max width 660px.",
+      "example_post_id": "01fdbd91-c0d0-42e9-8949-fa3c64e996e5"
+    }
+  ]
+}

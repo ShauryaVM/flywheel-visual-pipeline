@@ -1,0 +1,322 @@
+[
+  {
+    "post_id": "155879fb-4783-4511-82cb-c42f23f80597",
+    "content_type": "career_announcement",
+    "visual_modality": "quote_card",
+    "content_evidence": "Post opens with 'I'm thrilled to announce that I will be joining Rothschild & Co as a Summer Analyst' - a direct personal milestone announcement. Short word count (47), celebratory tone, and gratitude to specific supporters reinforce this as a career milestone share.",
+    "visual_evidence": "A quote card featuring the announcement text, institution name, and role title would visually frame the milestone. Clean typography with the Rothschild & Co name prominent would serve the celebratory purpose without requiring photos or complex data.",
+    "correlation": "Career announcements are personal and emotionally driven. A quote card isolates the core achievement statement and makes it visually shareable, which aligns with the high engagement this post type typically receives on LinkedIn."
+  },
+  {
+    "post_id": "6eb3a439-2a57-4ad7-8511-0071db024d2a",
+    "content_type": "product_review_breakdown",
+    "visual_modality": "feature_list_graphic",
+    "content_evidence": "Post walks through how Ideogram's Character Reference feature works step by step ('How it works: Snap a photo... Use an image... Or upload one'), lists integrations (Remix, Magic Fill, Masking tools), and positions the product against competitors (Midjourney, Flux). The structure is part explainer, part enthusiast review.",
+    "visual_evidence": "A feature list graphic with labeled sections for 'How It Works' and 'Integrations' would capture the dual-layer structure of the post. Bullet-style rows with icons and short labels translate naturally into scannable HTML/CSS card layouts.",
+    "correlation": "Product review breakdowns depend on communicating discrete features clearly. A feature list graphic mirrors the post's own list structure and gives readers a fast visual summary of the tool's capabilities, reinforcing the reviewer's credibility."
+  },
+  {
+    "post_id": "7e620de1-6acf-4714-b2bc-babd293c6d51",
+    "content_type": "opinion_provocation",
+    "visual_modality": "quote_card",
+    "content_evidence": "Post poses rhetorical questions ('Shouldn't we do something about this?'), challenges VC attitudes ('Some VCs will say yes, and will let companies die'), and references an HBR quote ('Last year, the fish were jumping in our boat. This year, we have to go fishing.') to provoke discussion around B2B sales difficulty. No data is presented - the post is driven by argument and opinion.",
+    "visual_evidence": "The HBR fishing quote is punchy and self-contained, making it ideal for a styled quote card. Displaying it with attribution and a contrasting background would draw attention to the core tension the post is building around.",
+    "correlation": "Opinion provocations rely on a memorable hook to generate engagement. A quote card isolates the most provocative line and invites readers to react, which directly supports the post's goal of sparking conversation."
+  },
+  {
+    "post_id": "def5e6fb-d41a-4895-982c-0eceb98f2d09",
+    "content_type": "field_research_insight",
+    "visual_modality": "single_stat_callout",
+    "content_evidence": "Post opens with 'I spoke to 12 engineering leaders last month' - a small research sample framing. Synthesizes findings into a core insight ('the value is determining what to fix in the first place') and a CTO direct quote. Ends with a community question. The structure is research observation leading to a thesis.",
+    "visual_evidence": "A single stat callout highlighting '12 engineering leaders interviewed' paired with the core finding ('The bottleneck is judgement, not throughput') would anchor the post's credibility visually. Simple bold typography on a branded background renders well in HTML/CSS.",
+    "correlation": "Field research insights gain authority from the sample size and the sharpness of the finding. A single stat callout foregrounds both, signaling that the opinion is grounded in real conversations rather than speculation."
+  },
+  {
+    "post_id": "db895ff8-90d4-466e-b1a3-871104fda226",
+    "content_type": "milestone_lessons_learned",
+    "visual_modality": "numbered_step_list_graphic",
+    "content_evidence": "Post announces '$100M ARR at Clay' and explicitly frames what follows as '6 biggest GTM bets.' Each lesson is numbered ('1. Building a self-serve motion,' '2. An irrational investment in brand,' '3. Switching to usage-based pricing') with explanatory narrative. Combines a major milestone with a structured retrospective.",
+    "visual_evidence": "A numbered step list graphic with six labeled rows, each showing a short bet title and one-line summary, would map directly onto the post's structure. This is straightforward to implement in HTML/CSS as a vertical card stack or numbered list panel.",
+    "correlation": "Milestone retrospectives with numbered lessons are built for scannable formats. A numbered step list graphic lets readers absorb the key bets at a glance and encourages them to read the full post for detail, matching the carousel format the creator used."
+  },
+  {
+    "post_id": "772bd167-3c96-42c5-b7f2-55e472217aa3",
+    "content_type": "job_posting",
+    "visual_modality": "announcement_banner",
+    "content_evidence": "Post is written in Korean and translates to a talent recruitment post for Kraft Technologies, describing their AI ETF business and linking to a job application. Short word count (41), includes a URL, and focuses entirely on attracting candidates rather than sharing insight or opinion.",
+    "visual_evidence": "An announcement banner with company name, role category (AI ETF Business), and a call-to-action would communicate the recruitment purpose efficiently. A horizontal banner with bold headline text and a URL reference renders cleanly in HTML/CSS.",
+    "correlation": "Job postings need immediate clarity on who is hiring and what for. An announcement banner foregrounds the company and opportunity without requiring narrative, which suits the short, transactional nature of the post."
+  },
+  {
+    "post_id": "629a285c-e84e-4667-8b30-49a0ffba642c",
+    "content_type": "podcast_episode_summary",
+    "visual_modality": "quote_card",
+    "content_evidence": "Post references a specific podcast episode ('this week's conversation on The Geek in Review'), names guests (Alex Su, Andres Chagui, Greg Lambert, Nikki Shaver), summarizes key takeaways about AI in legal, and closes with heavy hashtag use. The structure and framing are clearly a promotional summary of an audio episode.",
+    "visual_evidence": "A quote card featuring a key insight from the episode - such as 'AI may gain traction more quickly within legal departments' with the show name and guest attribution - would serve as a shareable visual teaser. Clean text-based design is fully implementable in HTML/CSS.",
+    "correlation": "Podcast summaries aim to surface the most compelling idea to drive listens. A quote card extracts the sharpest takeaway and pairs it with show branding, functioning as both a content preview and a promotional asset."
+  },
+  {
+    "post_id": "7d64d0f3-7be2-4d02-b239-855ac8953e5c",
+    "content_type": "thought_leadership_announcement",
+    "visual_modality": "two_part_process_diagram",
+    "content_evidence": "Post announces 'the first practical blueprint for implementing FINMA's AI Guidelines' developed with LatticeFlow AI. It describes a two-part approach ('1. Assessment, 2. Implementation') with distinct functions for each phase, and lists blueprint features using arrows and numbered emoji. This is a structured institutional deliverable announcement.",
+    "visual_evidence": "A two-part process diagram with labeled Phase 1 (Assessment) and Phase 2 (Implementation) boxes, each containing bullet points of their respective functions, maps directly to the post's structure. Side-by-side or stacked panels with connecting arrows are straightforward to build in HTML/CSS.",
+    "correlation": "Announcements of structured frameworks or blueprints benefit from visual representations of their architecture. A two-part process diagram makes the methodology tangible and positions the authors as systematic thinkers, reinforcing the credibility of the announcement."
+  },
+  {
+    "post_id": "aaad8a35-7b65-4ca6-8ace-bb6f080c8303",
+    "content_type": "funding_announcement",
+    "visual_modality": "multi_stat_panel",
+    "content_evidence": "Post opens with 'Today, ElevenLabs is announcing a $500M Series D at an $11B valuation' and includes metrics like '$330M in ARR', investor names, and product milestones. The structure is a formal company announcement with supporting data points.",
+    "visual_evidence": "Multiple key figures ($500M, $11B, $330M ARR) and named enterprise partners (Deutsche Telekom, Square, Deliveroo, Revolut) call for a panel that can display several stats and highlights simultaneously in a branded layout.",
+    "correlation": "Funding announcements carry multiple headline numbers and proof points that need visual hierarchy. A multi-stat panel lets each figure breathe while reinforcing the scale and credibility of the news."
+  },
+  {
+    "post_id": "1240dd64-ad2a-4608-bcdc-9918c4288bc1",
+    "content_type": "brand_humor",
+    "visual_modality": "list_graphic",
+    "content_evidence": "The post opens with a playful premise ('We commissioned the Biebs to sing about every product feature') and the body is a list of features each followed by 'Hallelujah', ending with a community-engagement question. The tone is celebratory and self-aware.",
+    "visual_evidence": "The content is literally a formatted list of product features, making a styled list graphic the direct visual translation. Each feature can appear as a row, styled with the Clay brand identity and the repeated 'Hallelujah' refrain as a design motif.",
+    "correlation": "Brand humor posts that riff on a list format (features, products, shoutouts) pair naturally with a list graphic because the joke or warmth lands when the audience can scan the full set quickly in a single visual unit."
+  },
+  {
+    "post_id": "abd2aed3-3cd0-479d-ba2f-7369f795a0f7",
+    "content_type": "event_promotion",
+    "visual_modality": "event_details_card",
+    "content_evidence": "The post promotes a specific in-person gathering ('Join dbt Labs, phData, and Hex for an evening of drinks and data at Beer Park on Tuesday, June 27') tied to a named conference (#snowflakesummit) with a registration link.",
+    "visual_evidence": "An event details card can surface the key logistics - date, time, venue, co-hosts - in a scannable format with clear branding, replacing the need for a photo while still communicating all actionable information.",
+    "correlation": "Event promotion posts are transactional: readers need who, what, where, and when at a glance. An event details card structures exactly those fields, reducing friction to registration and making the CTA obvious."
+  },
+  {
+    "post_id": "7628ce8b-a40b-4771-af01-5342523b5ddb",
+    "content_type": "product_announcement",
+    "visual_modality": "feature_list_graphic",
+    "content_evidence": "Post is titled 'ANNOUNCING THE ALL-NEW WHOOP' and contains a bulleted breakdown of new hardware specs, software features, membership tiers, and accessories. The language is launch-focused with superlatives like 'biggest leap forward' and 'complete reinvention'.",
+    "visual_evidence": "The post already contains a dense bullet list of discrete features (14+ day battery, Blood Pressure Insights, ECG, WHOOP Age, LeatherLuxe, Advanced Labs, three membership tiers). A feature list graphic organizes these into a scannable branded layout with icons or dividers per feature.",
+    "correlation": "Product announcements with multiple distinct features benefit from a visual list that lets audiences absorb each capability individually. The graphic acts as a shareable spec sheet that extends the reach of the launch messaging."
+  },
+  {
+    "post_id": "4873a64d-ced2-48ec-94f0-fca592d30a54",
+    "content_type": "personal_milestone",
+    "visual_modality": "quote_card",
+    "content_evidence": "The post is a brief, warm personal update: 'I got married to the love of my life last week!' followed by a self-aware pivot back to professional content. There are no metrics, no lists, no calls to action - it is purely a human moment shared publicly.",
+    "visual_evidence": "A quote card with the core phrase ('I got married to the love of my life') styled in celebratory typography provides a warm, shareable visual that matches the emotional register of the post without requiring photos.",
+    "correlation": "Personal milestone posts derive their engagement from emotional resonance rather than information. A quote card amplifies that single emotional beat visually, making it easy for the audience to react and share the sentiment."
+  },
+  {
+    "post_id": "189f5da0-e676-4280-a214-88402af160db",
+    "content_type": "community_event_recap",
+    "visual_modality": "timeline_graphic",
+    "content_evidence": "The post recaps a structured evening with explicit time stamps: '6:30-7p: Everyone rolled in', '7p - 7:30: Shmoozing', '7:30: GTM panel', '8p: Ping pong tournament', '9p - : wonderful networking'. The narrative follows the event chronologically with named participants.",
+    "visual_evidence": "The post's own structure is a timeline with timestamped blocks, making a timeline graphic the most faithful and readable visual representation of the evening's flow.",
+    "correlation": "Event recaps with explicit time-sequenced moments translate directly into timeline graphics, which validate the structure already present in the text and make the arc of the evening scannable for people who were not there."
+  },
+  {
+    "post_id": "6e633476-566e-48b0-b707-5332e4f0578d",
+    "content_type": "community_event_recap",
+    "visual_modality": "attendee_list_card",
+    "content_evidence": "The post describes a hosted dinner ('swsh hosted another experiential dinner on Tuesday at Jemma in Hollywood'), names the companies represented, explains the purpose of the dinner series, and closes with a thank-you list of named attendees. The tone is warm and relationship-focused.",
+    "visual_evidence": "The core value of the post is community recognition: the companies and people who showed up. An attendee list card, styled with logos or names in a grid or column layout, visually celebrates the room and signals exclusivity and curation.",
+    "correlation": "Community event recaps that center on 'who was in the room' naturally pair with a visual that surfaces those names and affiliations prominently. It validates attendance, flatters participants, and signals to outsiders what joining looks like."
+  },
+  {
+    "post_id": "e44af113-c294-40ba-9259-99623907de42",
+    "content_type": "industry_news_commentary",
+    "visual_modality": "multi_stat_panel",
+    "content_evidence": "The post reports on Norm Ai's launch of Norm Law LLP with commentary framing: '$30 trillion in client assets', '$50 million from Blackstone', '35+ attorneys', and a closing editorial observation that 'every information business is about to be disrupted'. The author is not the company being covered.",
+    "visual_evidence": "The post's impact rests on a cluster of impressive figures ($30T, $50M, 35+ attorneys) and differentiating facts. A multi-stat panel surfaces these numbers with visual weight, letting the scale of the story land before the reader digs into the narrative.",
+    "correlation": "Industry news commentary posts build authority by anchoring opinion in hard data. A multi-stat panel foregrounds those numbers visually, establishing credibility and drawing in readers who might otherwise scroll past a text-heavy news summary."
+  },
+  {
+    "post_id": "da012a93-0439-4c92-a0d0-9d643641f224",
+    "content_type": "community_celebration",
+    "visual_modality": "event_recap_card",
+    "content_evidence": "Post celebrates the first Tally Office Hours event, mentions '1 hour with 20 people', thanks participants, and signals future repetition. Tone is warm and reflective rather than instructional or promotional.",
+    "visual_evidence": "A branded card with the event name, key stat (20 people, 1 hour), and a warm thank-you message captures the celebratory tone without requiring photos or video.",
+    "correlation": "Community celebration posts thrive on simple, emotionally warm visuals that highlight participation numbers and signal belonging, which an event recap card delivers concisely."
+  },
+  {
+    "post_id": "1fb143b4-fd8d-4a31-9ce8-5f742e696556",
+    "content_type": "content_promotion",
+    "visual_modality": "article_preview_card",
+    "content_evidence": "The post directly announces 'New blog post' and names the topic (Covid-19 impact and FinTech opportunities in 2020), then solicits feedback. It is purely a pointer to external content.",
+    "visual_evidence": "An article preview card with the blog title, topic keywords, and a call-to-action label communicates the content promotion clearly without needing imagery.",
+    "correlation": "Content promotion posts are best served by a card that mimics a link preview, reinforcing the invitation to click and read the referenced material."
+  },
+  {
+    "post_id": "eb5d92b6-738c-4b70-baab-638deff75443",
+    "content_type": "event_announcement",
+    "visual_modality": "multi_stat_panel",
+    "content_evidence": "Post includes a specific market size figure (USD 228.1 billion growing to USD 322.9 billion at 7.2% CAGR), names panelists, an event date (Wed 7th June), a host organization (Financial Times Live), and a registration link.",
+    "visual_evidence": "A multi-stat panel can display the three headline numbers (current market size, forecast size, CAGR) alongside the event name and date, giving viewers the key data at a glance.",
+    "correlation": "Event announcements that lead with market data use stats to establish credibility and urgency, making a multi-stat panel the natural vehicle to surface those numbers alongside the event details."
+  },
+  {
+    "post_id": "916946cf-2b66-4f86-a0fe-ca6a614ef11b",
+    "content_type": "product_pitch",
+    "visual_modality": "feature_list_graphic",
+    "content_evidence": "Post opens with an AI security incident as a hook, cites a stat ('65% of organizations'), then pivots to a structured five-arrow list of product features (cryptographic identity, sub-5ms permissions, signed actions, trust scores, instant revocation) and closes with a company URL.",
+    "visual_evidence": "A feature list graphic with five labeled rows, each with a short descriptor and icon, mirrors the arrow-list structure in the post and communicates product capabilities without prose.",
+    "correlation": "Product pitches that enumerate specific differentiators map directly onto list graphics, letting each feature stand alone visually while reinforcing the cumulative value proposition."
+  },
+  {
+    "post_id": "4c11e9ce-d66d-47a2-b181-47de98914e8c",
+    "content_type": "personal_story",
+    "visual_modality": "timeline_graphic",
+    "content_evidence": "Post narrates a chronological personal journey using explicit years (1995, 2003, 2007) and contrasts historical moments to build toward a motivational conclusion about innovation and human persistence.",
+    "visual_evidence": "A timeline graphic with labeled year markers (1995, 2003, 2007) and short milestone descriptions renders the chronological structure of the story in a visually scannable format.",
+    "correlation": "Personal stories anchored to specific dates naturally express their arc through a timeline, making the progression of events intuitive and emotionally resonant for the reader."
+  },
+  {
+    "post_id": "9c6fe5ea-89ed-4d04-bd35-50222b207676",
+    "content_type": "announcement",
+    "visual_modality": "quote_card",
+    "content_evidence": "Post leads with 'Announcing' and names a partnership with Vimeo as the core news. The text is short, celebratory, and credits team members, with no data or instructional content.",
+    "visual_evidence": "A bold quote card featuring the partnership name and a brief tagline delivers the announcement with visual impact while remaining simple to produce in HTML/CSS.",
+    "correlation": "Short partnership announcements rely on a single punchy statement to generate excitement, which a quote card amplifies through typography and brand color without requiring supporting data."
+  },
+  {
+    "post_id": "3fad41bc-3c56-40f7-893c-5ce723665328",
+    "content_type": "educational_insight",
+    "visual_modality": "comparison_table",
+    "content_evidence": "Post contrasts traditional rule-based or RL-trained agents with modern LLM-tied agents, explains the memory-training approach from a research paper, and poses an open question to peers. It teaches a concept through contrast and evidence.",
+    "visual_evidence": "A comparison table with columns for 'Traditional Agents' versus 'LLM-based Agents' and rows for training method, memory approach, and adaptability visually anchors the conceptual contrast the post builds around.",
+    "correlation": "Educational insight posts that hinge on a before-and-after or two-approach contrast are clarified by comparison tables, which organize the distinctions in a format readers can quickly parse."
+  },
+  {
+    "post_id": "00488050-fdf4-469b-8b58-5d56e99dc004",
+    "content_type": "hot_take",
+    "visual_modality": "quote_card",
+    "content_evidence": "Post delivers a single strong opinion in one sentence ('Undermining the legal system would destroy our life's work'), backed by a credibility framing ('30 years making Israel a global tech superpower'), then links to an article. The brevity and conviction signal a hot take.",
+    "visual_evidence": "A quote card isolating the core statement in large type with the author's name communicates the opinion's weight immediately and needs no additional visual complexity.",
+    "correlation": "Hot takes derive their power from a single, forceful claim. A quote card amplifies that singularity by stripping away everything except the statement itself, maximizing rhetorical impact."
+  },
+  {
+    "post_id": "8b47db51-5cba-45a1-9bc7-b2301a7cb46d",
+    "content_type": "data_insight",
+    "visual_modality": "multi_stat_panel",
+    "content_evidence": "Post presents research findings with a specific statistic (53% of roles filled from inbound), compares behaviors across company size segments, and links to a trend report. Language like 'our analysis went a level deeper' and 'we observed a very different distribution' signals data-driven reporting.",
+    "visual_evidence": "Multiple data points exist across segments (all companies vs. large vs. small <100), making a panel that displays each finding as a labeled stat block the clearest way to communicate the segmented insight.",
+    "correlation": "Data insight posts naturally pair with multi-stat panels because the rhetorical goal is to present evidence across dimensions, and a panel lets each data point breathe while signaling analytical depth."
+  },
+  {
+    "post_id": "2e1a14c8-4292-47a0-a139-2414132e189b",
+    "content_type": "event_recap_and_promotion",
+    "visual_modality": "quote_card",
+    "content_evidence": "Post recaps a gala dinner keynote, paraphrases a notable speaker (President of Singapore), promotes the company's participation in the Global AI Assurance Pilot, and invites attendance at a roundtable the next day. It blends recapping past moments with promoting an upcoming one.",
+    "visual_evidence": "The most memorable and shareable element is the president's framing of AI governance tensions. A quote card surfaces that authority and gravitas, anchoring the post's credibility.",
+    "correlation": "Event recap posts often derive authority from notable speakers or moments. Pairing with a quote card lets the creator borrow that authority visually, which reinforces both the recap and the promotional call to attend the roundtable."
+  },
+  {
+    "post_id": "1a9d34ff-9433-4d96-aca5-1da26b7b3d5a",
+    "content_type": "event_announcement",
+    "visual_modality": "list_graphic",
+    "content_evidence": "Post announces Boston Tech Week is happening 'THIS WEEK' and lists four distinct events with RSVP links. The urgency framing ('it's not too late to RSVP') and the enumeration of specific sessions are classic event announcement signals.",
+    "visual_evidence": "Four named events each with a title naturally map to a vertically stacked list graphic with event name, day, and a visual CTA per row - scannable and action-oriented.",
+    "correlation": "Event announcements with multiple sessions need a scannable format so readers can quickly find what is relevant to them. A list graphic directly mirrors the post's enumerated structure and reduces friction to action."
+  },
+  {
+    "post_id": "7306bb9d-fec5-4f9d-a8df-57ad0b9c2288",
+    "content_type": "hot_take",
+    "visual_modality": "quote_card",
+    "content_evidence": "Post opens with a provocative framing ('terrifying warning sign'), makes a bold prescriptive claim ('we need a new default: Preventative Maintenance for Code'), and uses a discovery story to support an opinion rather than to purely inform. The call-to-action gating (Comment CODE) is a secondary promotional layer on top of an opinion-first structure.",
+    "visual_evidence": "The post's rhetorical core is the creator's pointed takeaway. A quote card isolating 'We need a new default: Preventative Maintenance for Code' or the Anthropic quote would distill the hot take into a shareable, high-contrast visual.",
+    "correlation": "Hot takes are driven by a single strong opinion or claim. Quote cards are purpose-built to isolate and amplify one bold statement, making them the natural visual partner for opinion-forward posts."
+  },
+  {
+    "post_id": "f0f03ed0-a915-44b5-b899-3ae9e5b1e7f6",
+    "content_type": "milestone_announcement",
+    "visual_modality": "multi_stat_panel",
+    "content_evidence": "Post announces a Series D funding round and $4.15B valuation, then substantiates the milestone with four bullet-point metrics (200M+ assets monitored, 1.5M employees managed, 1.7B vulnerabilities remediated, 10M Trust Center views). The framing is celebratory and evidence-backed.",
+    "visual_evidence": "The four bulleted metrics are distinct, quantified, and parallel in structure - a natural fit for a panel where each metric gets its own labeled block with a number callout and brief descriptor.",
+    "correlation": "Milestone announcements use metrics to justify the significance of the news. A multi-stat panel transforms a list of numbers into a visual proof-of-scale that reinforces the credibility of the funding announcement."
+  },
+  {
+    "post_id": "d54c91d3-dc65-4dd3-b3ce-c987dfffa7be",
+    "content_type": "news_share",
+    "visual_modality": "quote_card",
+    "content_evidence": "Post is a brief summary of an external news story about the Texas Cyber Command launching a website and recruiting leaders. No personal opinion, no data, no call to action beyond hashtags. It functions as a content curator sharing an industry development.",
+    "visual_evidence": "With minimal original content, a quote card pulling the headline or a key line ('Texas Cyber Command Launches Website, Seeks IT Services Head') gives the post a visual anchor that signals the topic clearly.",
+    "correlation": "News share posts have little original text to visualize, so a quote card that highlights the headline or key fact gives the post a visual identity without requiring data or diagrams."
+  },
+  {
+    "post_id": "fb4c414d-01a2-4397-af25-a7636745c373",
+    "content_type": "customer_testimonial",
+    "visual_modality": "multi_stat_panel",
+    "content_evidence": "Post is structured around a named customer (CISO Erik Wille) and his measurable outcomes from using the product. Each bullet is a discrete result - time savings, trust built, analyst leveling up, team sentiment. The post's purpose is social proof.",
+    "visual_evidence": "The three outcome bullets each contain a distinct, quotable or quantifiable claim. A multi-stat panel can render each outcome as a labeled tile (e.g., 'Investigation Time: 30 min to under 5'), making the ROI scannable and compelling.",
+    "correlation": "Customer testimonials gain persuasive power when outcomes are visually isolated and easy to scan. A multi-stat panel transforms narrative proof points into a visual scorecard that decision-makers can absorb quickly."
+  },
+  {
+    "post_id": "f95019ec-2c0f-43e3-858f-b4027ac2812a",
+    "content_type": "milestone_announcement",
+    "visual_modality": "multi_stat_panel",
+    "content_evidence": "Post announces the opening of a new Global HQ and ties it to a 10-year company anniversary. It includes multiple forward-looking metrics (65M customers, 39 markets, $13B investment, $4B UK investment, 100M customer target by 2027, 30 new markets by 2030) framed as evidence of scale and ambition.",
+    "visual_evidence": "Six or more distinct numeric milestones and targets exist across past achievements and future goals - ideal for a panel that separates 'where we are' stats from 'where we are going' targets with clear visual hierarchy.",
+    "correlation": "Milestone announcements for scaled companies rely on numbers to communicate magnitude. A multi-stat panel organizes those numbers into a visual argument for significance, which is precisely what the announcement intends to convey."
+  },
+  {
+    "post_id": "9b80499e-457e-4818-b45e-a3c1758b8898",
+    "content_type": "hot_take",
+    "visual_modality": "comparison_stat_card",
+    "content_evidence": "The post makes a provocative claim about AI disrupting creative fields: 'I don't think creative jobs are going away overnight' and contrasts $30/30 minutes vs $5-50k/4-6 weeks. It challenges the assumption that 'creative fields are immune to AI.'",
+    "visual_evidence": "The stark cost and time contrast ($30 in 30 minutes vs $5-50k over 4-6 weeks) is the core persuasive data point. A side-by-side comparison card visually dramatizes the disruption argument without needing photos or video.",
+    "correlation": "Hot takes derive power from a single surprising contrast or claim. A comparison stat card isolates that contrast visually, making the provocative point land immediately before the reader engages with the reasoning."
+  },
+  {
+    "post_id": "b2fec3c1-eb0c-47f6-a0dc-51ade4dd8a02",
+    "content_type": "job_announcement",
+    "visual_modality": "role_listing_card",
+    "content_evidence": "'We're growing the team in the US (West Coast) and looking to hire an Investment Associate to the HSBC Ventures team' signals a direct hiring post with a specific role, location, and application link.",
+    "visual_evidence": "A role listing card with the position title, team name, location, and key focus areas (Financial Services, Enterprise Software, AI) gives candidates scannable information in a branded format without requiring photos.",
+    "correlation": "Job announcements need to communicate role details quickly to the right candidates. A role listing card mirrors the structure of the post itself and makes the opportunity visually distinct in a feed."
+  },
+  {
+    "post_id": "01fdbd91-c0d0-42e9-8949-fa3c64e996e5",
+    "content_type": "data_insight",
+    "visual_modality": "ranked_list_graphic",
+    "content_evidence": "The post presents a structured table of investor entry prices (Index Ventures $0.088 through Durable $21.29) alongside deal metrics like '50 times Figma's reported $400M ARR' and '$25M per employee' valuation.",
+    "visual_evidence": "The data is already formatted as a ranked list of investors with corresponding share prices, making a ranked list graphic a direct translation. Color coding can highlight the magnitude of returns across tiers.",
+    "correlation": "Data insight posts built around ranked comparisons are best served by ranked list graphics that preserve the ordering logic and make relative differences scannable at a glance."
+  },
+  {
+    "post_id": "444543bd-f109-4144-a346-b79d6fa58256",
+    "content_type": "announcement",
+    "visual_modality": "multi_stat_panel",
+    "content_evidence": "'Today we're announcing Clay's $100M Series C at a $3.1B valuation' is a classic funding announcement, supported by community milestone stats: 108+ agencies, 400+ jobs posted, 60 clubs across 29 countries, $50M+ generated for partners.",
+    "visual_evidence": "The post contains four distinct bullet-point metrics that together tell the community growth story. A multi-stat panel displays each figure in its own cell with a label, creating a visual proof of traction that supports the announcement.",
+    "correlation": "Funding announcements gain credibility from traction data. A multi-stat panel lets the numbers do the persuasive work visually, reinforcing the announcement's legitimacy with concrete community evidence."
+  },
+  {
+    "post_id": "765a832a-bd7d-4ae7-b78b-6771817301f1",
+    "content_type": "team_celebration",
+    "visual_modality": "quote_card",
+    "content_evidence": "'The team has already blown past the annual target for the region within the first three quarters' and 'At Torq, we believe in achieving exceptional results while enjoying the journey together' signal internal celebration and culture reinforcement.",
+    "visual_evidence": "The post's emotional peak is a culture statement about results and team spirit. A quote card isolating 'achieving exceptional results while enjoying the journey together' or the milestone achievement creates a shareable, morale-driven visual.",
+    "correlation": "Team celebration posts are driven by pride and culture messaging rather than data or instruction. Quote cards amplify the emotional tone and give the celebratory sentiment a visual identity that resonates with both team members and external audiences."
+  },
+  {
+    "post_id": "9b988d49-506b-4d31-98f6-1db4300aa9f2",
+    "content_type": "case_study_showcase",
+    "visual_modality": "multi_stat_panel",
+    "content_evidence": "The post presents multiple named employees building AI tools with measurable outcomes: $120K saved, campaign creation cut from 1.5 hours to 2 minutes, bookings happening between flights. It uses real examples to demonstrate a platform's impact.",
+    "visual_evidence": "Each micro-app story has a distinct outcome metric. A multi-stat panel with one cell per use case (role, tool built, result) condenses the proof points into a scannable grid that shows breadth of platform impact across different functions.",
+    "correlation": "Case study showcases rely on multiple parallel examples to build cumulative proof. A multi-stat panel mirrors that parallel structure, letting each example reinforce the others without requiring the reader to parse dense prose."
+  },
+  {
+    "post_id": "272c05ef-718f-4270-9f3e-c078a1d67a3e",
+    "content_type": "narrative_scenario",
+    "visual_modality": "checklist_graphic",
+    "content_evidence": "The post opens with a fictional but realistic FCA regulatory letter containing a 5-item documentation checklist, then shows the team's failed responses to each item. It dramatizes a risk scenario to make a compliance argument.",
+    "visual_evidence": "The FCA's 5 requirements and the team's gap responses map directly to a checklist format. A checklist graphic with items marked as missing or insufficient visually communicates the documentation gap that is the post's core lesson.",
+    "correlation": "Narrative scenario posts about compliance or risk use the gap between what is required and what exists as their persuasive engine. A checklist graphic makes that gap visible and actionable, converting the story into a practical self-assessment tool."
+  },
+  {
+    "post_id": "0b07d3c3-5eb2-462f-b333-a8f3d59b3b5d",
+    "content_type": "announcement",
+    "visual_modality": "milestone_timeline_graphic",
+    "content_evidence": "'We opened Nothing's first India store in Bengaluru today' anchors the announcement, with explicit mention of a geographic expansion sequence: London, Bengaluru, then New York and Tokyo next.",
+    "visual_evidence": "The post explicitly sequences four city locations in order, making a timeline or roadmap graphic a natural fit. Each stop on the expansion path can be rendered as a node with city name and status (open vs. coming soon).",
+    "correlation": "Expansion announcements with a sequential rollout plan pair naturally with timeline or roadmap graphics because the geographic sequence is itself the story. Visualizing the path makes the momentum tangible and builds anticipation for future locations."
+  }
+]

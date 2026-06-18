@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: {{colors.primary}};
+      font-family: '{{typography.bodyFont.family}}', system-ui, sans-serif;
+      color: {{colors.background}};
+    }
+
+    .card {
+      width: 1080px;
+      min-height: 1080px;
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .stat-value {
+      font-size: 160px;
+      font-weight: 800;
+      line-height: 1;
+      font-family: '{{typography.headingFont.family}}', system-ui, sans-serif;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 36px;
+      font-weight: 500;
+      opacity: 0.9;
+      margin-bottom: 48px;
+      max-width: 700px;
+    }
+
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: {{colors.background}};
+      opacity: 0.3;
+      margin-bottom: 48px;
+    }
+
+    .body-text {
+      font-size: 24px;
+      line-height: 1.6;
+      opacity: 0.8;
+      max-width: 700px;
+    }
+
+    .corner-accent {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 4px solid {{colors.background}};
+      opacity: 0.1;
+    }
+
+    .corner-accent.top-left {
+      top: 40px;
+      left: 40px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .corner-accent.bottom-right {
+      bottom: 40px;
+      right: 40px;
+      border-left: none;
+      border-top: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="corner-accent top-left"></div>
+    <div class="corner-accent bottom-right"></div>
+    <div class="stat-value">{{statistic}}</div>
+    <div class="stat-label">{{headline}}</div>
+    <div class="divider"></div>
+    <div class="body-text">{{bodyText}}</div>
+  </div>
+</body>
+</html>
