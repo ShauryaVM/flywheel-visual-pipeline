@@ -1,0 +1,35 @@
+{
+  "concepts": [
+    {
+      "modality": "bold_statement_card",
+      "headline": "Structure beats substance. Every time.",
+      "subtext": "After analyzing 10,000 LinkedIn posts, one pattern explains all top-performing content.",
+      "data_points": [],
+      "layout_description": "Centered statement composition on #faf9f6 warm off-white background. The headline sits dead-center vertically and horizontally at 52px, weight 600, letter-spacing -0.04em, in #111. Below it, the subtext renders at 18px, #555, with 36px gap. A 2px warm sand accent bar (#d7c8af) sits 48px above the headline, 120px wide, centered, fading to transparent at both ends. FLYWHEEL watermark at 160px bold uppercase, opacity 0.03, centered behind all content. Particle dot network scattered in the upper-right quadrant and lower-left corner at 0.08 opacity. Brand mark bottom-center at 13px DM Mono uppercase, #888. 64px padding all edges.",
+      "color_usage": "Background #faf9f6, headline #111, subtext #555, accent bar #d7c8af, watermark #000 at 0.03 opacity, brand mark #888, particle dots #6b7a7c at 0.08 opacity",
+      "reasoning": "The post makes a single provocative declaration: structure beats substance. A bold statement card is the exact right modality because it lets the typography do the arguing. Centering the statement forces the reader to sit with it. The warm off-white surface and extreme sparsity reinforce the irony: a post about structure is itself impeccably structured."
+    },
+    {
+      "modality": "headline_subtext_card",
+      "headline": "The clearest post wins, not the smartest.",
+      "subtext": "Ten thousand posts analyzed. Structure, not insight, drives engagement every time.",
+      "data_points": [],
+      "layout_description": "Left-anchored hero layout on #ffffff background. Eyebrow label at top-left reads '10,000 POSTS ANALYZED' in 11px DM Mono uppercase, #888, letter-spacing 0.08em. Below it, 24px gap, then the headline at 48px, weight 600, letter-spacing -0.03em, #111, max-width 560px, left-aligned. A 2px warm sand horizontal rule (#d7c8af) sits between headline and subtext, 80px wide, left-aligned, fading right. Subtext at 18px, #555, weight 400, left-aligned, 20px gap below the rule. Particle dot network occupies the right 40% of the canvas at 0.10 opacity, with hairline 0.5px connectors. Brand mark sits bottom-left in 12px DM Mono uppercase, #888. 64px left and top padding, 80px right padding.",
+      "color_usage": "Background #ffffff, eyebrow #888, headline #111, accent rule #d7c8af, subtext #555, particle dots #6b7a7c at 0.10, brand mark #888",
+      "reasoning": "The left-anchored layout mirrors the post's argument about visual clarity: content that is easy to scan wins. The eyebrow stat grounds the claim in data without a busy panel. Right-side particle network provides asymmetric tension while keeping the left side clean and readable. This modality lets the hierarchy speak for itself."
+    },
+    {
+      "modality": "stat_callout",
+      "headline": "Ten thousand posts. One lesson.",
+      "subtext": "Structure is what gets content read. Not insight, not originality. Clarity.",
+      "data_points": [
+        "10,000 | Posts analyzed"
+      ],
+      "layout_description": "Left-anchored composition on #faf9f6 surface. Top-left eyebrow in 11px DM Mono uppercase, #888, reads 'LINKEDIN CONTENT ANALYSIS'. Below, 32px gap, the hero stat '10,000' renders at 80px, weight 700, DM Mono, #111, letter-spacing -0.04em. Directly beneath, 'posts analyzed' in 13px DM Mono uppercase, #888, letter-spacing 0.06em. A 2px warm sand accent bar left-aligns under the stat block, 64px wide. Then 40px gap to the headline at 42px, weight 600, #111, letter-spacing -0.03em. Subtext follows at 17px, #555, max-width 480px. Right side of canvas holds a sparse particle dot cluster at 0.12 opacity. Brand mark bottom-left, 12px DM Mono, #888. 64px padding all edges. Warm sand box-shadow rgba(215,200,175,0.25) on the stat figure.",
+      "color_usage": "Background #faf9f6, eyebrow #888, stat #111, stat label #888, accent bar #d7c8af, headline #111, subtext #555, particle dots #6b7a7c at 0.12, shadow rgba(215,200,175,0.25)",
+      "reasoning": "The 10,000 figure is the most credible element in the post. Leading with it as a hero stat establishes authority before the claim lands. The DM Mono treatment gives it a data-journalism feel, consistent with Flywheel's editorial voice. The hierarchy moves from proof to conclusion, which mirrors the post's own logical structure."
+    }
+  ],
+  "selected": 0,
+  "selection_reasoning": "Concept 0 is the strongest expression of Flywheel's editorial restraint. The post's central argument is a single bold declaration, and the bold statement card is the only modality that forces the reader to reckon with it without distraction. Centering the statement creates the compositional tension the brand favors. The FLYWHEEL watermark, particle dots, and warm sand accent bar are present but invisible at first glance, which is precisely how Flywheel signature motifs should operate. The irony of a maximally sparse layout making the argument for structural clarity is also on-brand: the design proves the point."
+}

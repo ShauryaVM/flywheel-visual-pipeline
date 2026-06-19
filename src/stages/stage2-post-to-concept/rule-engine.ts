@@ -83,9 +83,13 @@ export function evaluateRules(
   for (const ctRules of rulesData.rules) {
     for (const rule of ctRules.rules) {
       if (evaluateCondition(rule.condition, signals)) {
+        const isCatchAll = rule.condition.trim() === 'true';
+        const confidence = isCatchAll
+          ? Math.min(rule.confidence, 50)
+          : rule.confidence;
         candidates.push({
           modality: rule.visual_modality,
-          confidence: rule.confidence,
+          confidence,
           source_content_type: ctRules.content_type,
         });
         break;
@@ -103,5 +107,5 @@ export function evaluateRules(
 
   return Array.from(deduped.values())
     .sort((a, b) => b.confidence - a.confidence)
-    .slice(0, 3);
+    .slice(0, 5);
 }

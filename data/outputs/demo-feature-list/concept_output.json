@@ -2,48 +2,45 @@
   "concepts": [
     {
       "modality": "numbered_list_graphic",
-      "headline": "Essential Books for Product Builders",
-      "subtext": "Curated by jobs-to-be-done. Three books per category, all completed, all high signal.",
+      "headline": "Essential books for product builders.",
+      "subtext": "A curated collection organized by jobs-to-be-done. Three books per category, all completed, all worth your time.",
       "data_points": [
-        "Organized by jobs-to-be-done",
-        "3 books per category, strictly curated",
-        "Classics and under-the-radar gems",
-        "Only books over 10 years old considered",
-        "Built for builders and leaders"
+        "Strategy: how to think about markets and positioning",
+        "Execution: shipping products that actually work",
+        "Leadership: managing teams through ambiguity",
+        "User insight: understanding what people really want",
+        "Systems thinking: seeing the whole, not just the parts",
+        "Communication: writing and persuading with clarity",
+        "Classics only: books that have stood the test of time"
       ],
-      "layout_description": "Dark (#111111) canvas, 1200x630px. Top-left header block with chartreuse (#e6ff00) overline label 'Reading List' in DM Mono 13px. Main headline in Inter bold 48px white. Below, five horizontally arranged category pill badges in warm off-white (#faf9f6) with black text, each 180px wide with 6px radius. Bottom strip shows the key curation rule in muted gray text: '3 books per category. Classics only. All completed.' Left edge has a vertical chartreuse accent bar.",
-      "color_usage": "Background #111111, headline white, overline #e6ff00, category pills #faf9f6 with #000000 text, muted rule text #888, vertical accent bar #e6ff00",
-      "reasoning": "The post is fundamentally a categorized list resource. Surfacing the category structure as visual pills communicates the organizational logic immediately, making the image useful as a reference teaser."
+      "layout_description": "Left-anchored hero layout on 1200x630 canvas. Eyebrow label 'PRODUCT READING LIST' in DM Mono 11px uppercase at top-left, 64px from edges. Headline in Inter 600 48px below, left-aligned, tight letter-spacing -0.03em. Seven vertically stacked rows each with a square number marker (20x20px, #f0efe9 fill, #e5e5e5 border, 0px border-radius) in DM Mono and a short category label in Inter 500 16px. Rows span left 55% of canvas. Right 45% is reserved negative space with a sparse particle dot network (8-12 circles, 3-6px, opacity 0.08) and hairline 0.5px connectors at opacity 0.10. A 2px warm sand accent bar (#d7c8af) runs horizontally at top of content block, 180px wide, fading to transparent. 64px padding on all edges. FLYWHEEL wordmark bottom-left in Inter 700 11px uppercase, #888.",
+      "color_usage": "Background #ffffff. Canvas surface #faf9f6. Headline #111. Subtext #555. Number markers #f0efe9 fill with #e5e5e5 border. Category text #333. Eyebrow label #888 DM Mono. Accent bar #d7c8af. Particle dots #6b7a7c at 0.08 opacity. FLYWHEEL mark #888.",
+      "reasoning": "The post is explicitly a categorized list of books organized by jobs-to-be-done, making numbered_list_graphic the natural fit. The stacked row treatment with square number markers reflects Flywheel's square geometry signature, and the sparse right-side particle network maintains the required 60% negative space while adding editorial texture."
     },
     {
-      "modality": "headline_subtext_card",
-      "headline": "The Only Product Reading List You Need",
-      "subtext": "Curated favorites organized by jobs-to-be-done. Three books per category, zero filler, all proven.",
-      "data_points": [
-        "3 books per category",
-        "Jobs-to-be-done framework",
-        "Classics that stood the test of time"
-      ],
-      "layout_description": "Warm off-white (#faf9f6) canvas 1200x630px. Centered layout. Top: small DM Mono label 'For Product Builders' in #888. Below: bold Inter headline at 64px, tight letter-spacing -0.04em, black. Thin chartreuse (#e6ff00) horizontal rule 80px wide centered below headline. Subtext in Inter 18px #555 max 520px wide. Bottom: three stat badges side by side, each a rounded pill with dark background (#111111) and white text: '3 per category', 'Jobs-to-be-done', '10+ years proven'. Right side has a faint large quotation mark watermark in #d7c8af for texture.",
-      "color_usage": "Background #faf9f6, headline #000000, overline #888, accent rule #e6ff00, subtext #555, stat pills #111111 with white text, watermark #d7c8af",
-      "reasoning": "Clean and editorial, this format lets the headline do heavy lifting while the three stat pills communicate the curation rigor. Works well for a thought-leadership post inviting engagement."
+      "modality": "bold_statement_card",
+      "headline": "Read books older than ten years.",
+      "subtext": "They are the ones that have stood the test of time. A curated signal-only reading list for product builders.",
+      "data_points": [],
+      "layout_description": "Centered statement layout on 1200x630 canvas with #faf9f6 warm off-white background. A faint FLYWHEEL watermark in Inter 700 140px uppercase sits centered behind content at opacity 0.03. Primary headline in Inter 600 54px centered, color #111, letter-spacing -0.04em, two lines balanced symmetrically. Below the headline, a 2px warm sand accent bar (#d7c8af) 80px wide centered, at opacity 0.6. Subtext in Inter 400 18px centered, color #555, max-width 520px. Generous 80px vertical gap between headline and subtext. FLYWHEEL wordmark bottom-center in DM Mono 11px uppercase, #888, 64px from bottom edge. Entire composition breathes with 70px padding all sides. No decorative elements beyond the faint watermark and accent bar.",
+      "color_usage": "Background #faf9f6. Headline #111. Subtext #555. Accent bar #d7c8af. FLYWHEEL watermark #000 at 0.03 opacity. Brand mark #888.",
+      "reasoning": "The Marc Andreessen principle buried in the post is the sharpest single insight worth amplifying. A bold statement card centered on that idea gives it the editorial gravity it deserves, referencing the Flywheel centered-statement pattern with maximum negative space and minimum elements."
     },
     {
-      "modality": "event_details_card",
-      "headline": "A Curated Reading List for Product Builders",
-      "subtext": "Books organized by development area. Three per category. Only the ones that truly made the cut.",
+      "modality": "key_takeaway_card",
+      "headline": "High signal reading for product builders.",
+      "subtext": "Three books per category, all completed. Organized by jobs-to-be-done so you know exactly what to read next.",
       "data_points": [
-        "Framework: Jobs-to-be-done",
-        "Books per category: 3",
-        "Standard: Completed and proven",
-        "Preference: Books over 10 years old",
-        "Goal: Zero noise, all signal"
+        "Strategy and market positioning",
+        "Execution and shipping",
+        "Leadership under ambiguity",
+        "User insight and research"
       ],
-      "layout_description": "Dark card (#1a1a1a) centered on warm canvas (#f0efe9), card 860px wide, 500px tall, 8px radius, shadow with #d7c8af. Top header band in #111111 with chartreuse (#e6ff00) headline text at 36px bold. Below header: two-column detail grid with five icon-label rows. Left column: Framework and Standard. Right column: Books per Category, Preference, Goal. Each row has a small chartreuse square bullet, label in #888 DM Mono 12px, value in white Inter 16px bold. Bottom CTA strip: 'What book did I miss?' in Inter 15px #888 with a chartreuse underline accent.",
-      "color_usage": "Canvas #f0efe9, card #1a1a1a, header band #111111, headline #e6ff00, detail labels #888, detail values #ffffff, CTA text #888, CTA underline #e6ff00, shadow #d7c8af",
-      "reasoning": "Repurposes the event card format as a resource spec card, making the curation criteria feel structured and credible. The two-column detail grid surfaces the rigor behind the list selection."
+      "layout_description": "Left-anchored hero layout on 1200x630 canvas. Eyebrow label 'CURATED READING LIST' in DM Mono 11px uppercase, color #888, top-left at 64px padding. A 2px warm sand accent bar (#d7c8af) 120px wide sits below the eyebrow at opacity 0.7. Headline in Inter 600 46px left-aligned, #111, letter-spacing -0.03em, max-width 560px. Subtext in Inter 400 18px left-aligned, #555, max-width 480px, 28px below headline. Four category items rendered as square-bordered chips (0px border-radius, 1px #e5e5e5 border, #f0efe9 fill, DM Mono 12px, #444) arranged in a 2x2 grid, 36px below subtext. Right 40% of canvas is open negative space with a faint particle dot network (6 nodes, 4px circles, #6b7a7c at 0.07 opacity, hairline connectors at 0.08). FLYWHEEL wordmark bottom-left, DM Mono 11px uppercase, #888. 64px padding all edges.",
+      "color_usage": "Background #ffffff. Headline #111. Subtext #555. Eyebrow #888. Category chips #f0efe9 fill, #e5e5e5 border, #444 text. Accent bar #d7c8af. Particle dots #6b7a7c at 0.07. Brand mark #888.",
+      "reasoning": "The key_takeaway_card suits a post that distills a curated methodology rather than a raw list. The square-bordered category chips reflect Flywheel's square geometry, and the sparse 2x2 grid communicates structure without cluttering the composition. Left-anchored with open right space satisfies the 60% negative space rule."
     }
   ],
-  "selected": 1,
-  "selection_reasoning": "The headline subtext card best matches the editorial, thought-leadership tone of the post. The three stat pills efficiently communicate the curation criteria while the clean warm background and strong typography create a scroll-stopping image that invites curiosity without over-engineering the layout. It scales well at LinkedIn dimensions and keeps focus on the headline hook."
+  "selected": 0,
+  "selection_reasoning": "The numbered_list_graphic best reflects the actual content structure of the post, which is explicitly organized by categories with a deliberate signal-to-noise filtering methodology. It demonstrates Flywheel's editorial precision through the stacked row treatment, square number markers, and left-anchored layout with particle dot negative space on the right. The concept is immediately legible and actionable, communicating the curatorial rigor of the reading list without marketing excess."
 }

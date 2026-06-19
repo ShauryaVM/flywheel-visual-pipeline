@@ -3,92 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       width: 1200px;
       height: 630px;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f0efe9;
-      color: #111111;
+      font-family: {{{ds.fontFamily}}};
+      background: {{ds.surface}};
+      color: {{ds.textPrimary}};
       overflow: hidden;
     }
 
-    .container {
+    .canvas {
       width: 1200px;
       height: 630px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 56px 80px;
       position: relative;
     }
 
+    .dot-field {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .dot-field circle { fill: #000000; }
+
+    .warm-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, {{ds.accent}} 0%, transparent 60%);
+    }
+
     .card {
-      background: #ffffff;
-      border-radius: 8px;
-      padding: 48px 56px;
+      background: {{ds.background}};
+      border: 1px solid rgba(215, 200, 175, 0.5);
+      box-shadow: rgba(215, 200, 175, 0.25) 0px 4px 20px 0px, rgba(0, 0, 0, 0.06) 0px 1px 4px 0px, rgba(255, 252, 248, 0.5) 0px 1px 1px 0px inset, rgba(215, 200, 175, 0.15) 0px -1px 1px 0px inset;
+      padding: 56px 72px;
       max-width: 880px;
       width: 100%;
-      border-left: 5px solid #e6ff00;
-      box-shadow: 0 2px 24px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: {{ds.accent}};
     }
 
     .badge {
       display: inline-block;
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #111111;
-      background: #e6ff00;
+      color: {{ds.background}};
+      background: {{ds.primary}};
       padding: 5px 14px;
-      border-radius: 4px;
       margin-bottom: 24px;
     }
 
     .headline {
-      font-size: 40px;
-      font-weight: 700;
+      font-size: 36px;
+      font-weight: 600;
       line-height: 1.15;
       letter-spacing: -0.03em;
-      color: #111111;
-      margin-bottom: 16px;
+      color: {{ds.primary}};
+      margin-bottom: 20px;
     }
 
     .subtext {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 400;
       line-height: 1.55;
-      color: #555555;
+      color: {{ds.textSubtle}};
     }
 
-    .logo {
+    .footer {
       position: absolute;
-      bottom: 32px;
-      right: 48px;
-      font-size: 13px;
+      bottom: 28px;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      z-index: 1;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand svg { width: 16px; height: 16px; }
+
+    .brand-name {
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.06em;
-      color: #aaaaaa;
+      color: {{ds.textDisabled}};
       text-transform: uppercase;
+    }
+
+    .url {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 11px;
+      color: {{ds.textFaint}};
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="canvas">
+    <div class="dot-field">
+      <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="55" cy="35" r="5" opacity="0.1"/>
+        <circle cx="130" cy="58" r="9" opacity="0.07"/>
+        <circle cx="200" cy="40" r="3" opacity="0.16"/>
+        <circle cx="920" cy="30" r="12" opacity="0.06"/>
+        <circle cx="990" cy="55" r="6" opacity="0.12"/>
+        <circle cx="1060" cy="35" r="4" opacity="0.15"/>
+        <circle cx="1130" cy="60" r="15" opacity="0.06"/>
+        <circle cx="1170" cy="38" r="3" opacity="0.2"/>
+        <circle cx="75" cy="100" r="4" opacity="0.12"/>
+        <circle cx="145" cy="125" r="7" opacity="0.08"/>
+        <circle cx="1100" cy="95" r="3" opacity="0.18"/>
+        <circle cx="1160" cy="130" r="10" opacity="0.07"/>
+        <circle cx="1040" cy="115" r="4" opacity="0.14"/>
+        <circle cx="50" cy="180" r="6" opacity="0.08"/>
+        <circle cx="1150" cy="185" r="5" opacity="0.1"/>
+        <circle cx="1080" cy="215" r="3" opacity="0.16"/>
+        <circle cx="40" cy="255" r="8" opacity="0.07"/>
+        <circle cx="115" cy="280" r="3" opacity="0.14"/>
+        <circle cx="1170" cy="260" r="6" opacity="0.08"/>
+        <circle cx="1100" cy="305" r="14" opacity="0.06"/>
+        <circle cx="60" cy="345" r="4" opacity="0.12"/>
+        <circle cx="1140" cy="355" r="4" opacity="0.12"/>
+        <circle cx="1060" cy="385" r="3" opacity="0.16"/>
+        <circle cx="50" cy="420" r="5" opacity="0.08"/>
+        <circle cx="125" cy="445" r="3" opacity="0.14"/>
+        <circle cx="1160" cy="425" r="8" opacity="0.07"/>
+        <circle cx="1090" cy="455" r="3" opacity="0.18"/>
+        <circle cx="60" cy="490" r="7" opacity="0.07"/>
+        <circle cx="1130" cy="495" r="5" opacity="0.1"/>
+        <circle cx="1050" cy="525" r="4" opacity="0.12"/>
+        <circle cx="70" cy="540" r="10" opacity="0.06"/>
+        <circle cx="145" cy="565" r="3" opacity="0.14"/>
+        <circle cx="1160" cy="550" r="6" opacity="0.08"/>
+        <circle cx="1080" cy="580" r="3" opacity="0.16"/>
+        <circle cx="55" cy="590" r="4" opacity="0.1"/>
+        <circle cx="200" cy="580" r="3" opacity="0.08"/>
+        <circle cx="950" cy="580" r="5" opacity="0.07"/>
+        <circle cx="850" cy="35" r="3" opacity="0.1"/>
+        <circle cx="750" cy="590" r="4" opacity="0.08"/>
+        <circle cx="350" cy="30" r="4" opacity="0.08"/>
+        <circle cx="500" cy="595" r="3" opacity="0.07"/>
+        <circle cx="650" cy="32" r="3" opacity="0.08"/>
+        <circle cx="450" cy="598" r="4" opacity="0.06"/>
+        <line x1="55" y1="35" x2="130" y2="58" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="920" y1="30" x2="990" y2="55" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
+        <line x1="1060" y1="35" x2="1130" y2="60" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="75" y1="100" x2="145" y2="125" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
+        <line x1="1160" y1="130" x2="1100" y2="95" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
+        <line x1="1100" y1="305" x2="1140" y2="355" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="1160" y1="425" x2="1090" y2="455" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="1130" y1="495" x2="1050" y2="525" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
+        <line x1="70" y1="540" x2="145" y2="565" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="1160" y1="550" x2="1080" y2="580" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+      </svg>
+    </div>
+    <div class="warm-bar"></div>
     <div class="card">
+      <div class="card-accent"></div>
       <div class="badge">Key Takeaway</div>
       <h1 class="headline">{{headline}}</h1>
       {{#if subtext}}
       <p class="subtext">{{subtext}}</p>
       {{/if}}
     </div>
-    <div class="logo">Flywheel</div>
+    <div class="footer">
+      <div class="brand">
+        <svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg"><path d="M 4.448 1.186 C 9.412 -1.598 16.505 0.685 20.293 6.29 C 24.08 11.895 23.127 18.694 18.165 21.479 C 22.385 19.113 23.194 13.33 19.975 8.567 C 16.755 3.805 10.723 1.862 6.506 4.229 C 2.286 6.598 1.477 12.377 4.694 17.142 C 7.914 21.905 13.942 23.848 18.162 21.479 C 13.197 24.266 6.104 21.98 2.317 16.375 C -1.468 10.773 -0.515 3.971 4.447 1.186 Z" fill="{{ds.textDisabled}}" opacity="0.5"/></svg>
+        <span class="brand-name">Flywheel</span>
+      </div>
+      <span class="url">flywheelos.com</span>
+    </div>
   </div>
 </body>
 </html>

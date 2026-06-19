@@ -2,55 +2,48 @@
   "concepts": [
     {
       "modality": "numbered_list_graphic",
-      "headline": "7 Free Google AI Courses With Certificates",
-      "subtext": "Google is offering free AI courses with certificates. Seven tracks from fundamentals to app building.",
+      "headline": "Seven free Google AI courses with certificates.",
+      "subtext": "Google's free AI curriculum covers fundamentals through app building, each with a certificate.",
       "data_points": [
-        "1. AI Fundamentals: Core concepts for professional AI use",
-        "2. AI for Brainstorming: Evaluate and prioritize ideas",
-        "3. AI for Research: Gemini and NotebookLM for faster research",
-        "4. AI for Writing: Turn meeting notes into clear summaries",
-        "5. AI for Content Creation: Generate images and videos",
-        "6. AI for Data Analysis: Track metrics, clean messy data",
-        "7. AI for App Building: Build web apps, no code needed"
+        "AI Fundamentals: core concepts and professional foundation",
+        "AI for Brainstorming: evaluate and prioritize ideas creatively",
+        "AI for Research: Gemini and NotebookLM for faster sourcing",
+        "AI for Writing: turn meeting notes into clear summaries",
+        "AI for Content Creation: generate images and videos with Gemini",
+        "AI for Data Analysis: track metrics and clean messy data",
+        "AI for App Building: build a web app, no code needed"
       ],
-      "layout_description": "1200x630px landscape canvas with a dark (#111111) left panel taking 38% width containing the headline in 48px Inter bold and subtext in 16px. Right panel on warm off-white (#faf9f6) holds a vertical stack of 7 numbered rows. Each row has a chartreuse (#e6ff00) number badge on the left, bold 14px course title, and a 12px descriptor in #666. Rows are separated by 1px dividers in #d7c8af. Compact row height to fit all 7 within the canvas.",
-      "color_usage": "Dark left panel #111111 with white headline and #e6ff00 accent subtext label. Right panel background #faf9f6. Number badges #e6ff00 with #000000 text. Row titles #111111, descriptors #666. Dividers #d7c8af.",
-      "reasoning": "The post is a clean sequential list of 7 items, making the numbered list graphic the most direct and readable visual translation. Each course maps perfectly to a numbered row."
+      "layout_description": "Left-anchored layout on a #faf9f6 warm off-white canvas (1200x630px). 64px padding on all edges. Top-left: a 12px DM Mono uppercase label 'FREE COURSES' in #888, letter-spacing 0.07em. Below it, the headline in Inter 600 48px #111, letter-spacing -0.03em, max-width 580px. A 2px horizontal accent bar in #d7c8af, 80px wide, sits below the headline with 20px gap. Vertically stacked list of 7 rows below, each row: a square number badge (28x28px, background #f0efe9, border 1px #e5e5e5, border-radius 0px) with DM Mono 13px #555 number, followed by bold 15px Inter 600 #111 course name and 13px Inter 400 #666 descriptor. Rows spaced 14px apart. Right half (from 660px onward) holds a sparse particle dot network: 14 gray circles 3-6px at opacity 0.08, connected by 0.5px hairline strokes at opacity 0.06. FLYWHEEL wordmark bottom-left in Inter 700 13px uppercase #000, letter-spacing 0.06em.",
+      "color_usage": "Background #faf9f6, headline #111, body text #333 and #666, number badges #f0efe9 with #e5e5e5 border, accent bar #d7c8af, particle dots #6b7a7c at 0.08 opacity, label #888, brand mark #000.",
+      "reasoning": "Seven sequentially listed courses map perfectly to the numbered_list_graphic modality. The left-anchored stacked layout with square number markers and generous negative space on the right embodies Flywheel's editorial restraint. The particle dot network fills the right canvas without competing with content."
     },
     {
       "modality": "feature_list_graphic",
-      "headline": "Google AI Courses: Free and Certified",
-      "subtext": "Seven skill tracks covering research, writing, data, content creation, and app building. All free with certificates.",
+      "headline": "Google's free AI curriculum, start to finish.",
+      "subtext": "Seven courses covering writing, research, data, and app building with certificates included.",
       "data_points": [
-        "AI Fundamentals",
-        "AI for Brainstorming",
-        "AI for Research",
-        "AI for Writing",
-        "AI for Content Creation",
-        "AI for Data Analysis",
-        "AI for App Building"
+        "Fundamentals: build your AI foundation",
+        "Brainstorming: evaluate ideas with AI",
+        "Research: summarize sources with NotebookLM",
+        "Writing: clean up meeting notes with Gemini",
+        "Content Creation: generate images and video",
+        "Data Analysis: track metrics and clean data",
+        "App Building: ship a web app, no code"
       ],
-      "layout_description": "1200x630px canvas with warm off-white (#faf9f6) background. Centered card container max-width 900px with subtle shadow and 8px border radius. Header block at top with bold 52px headline and 18px subtext. Below, two-column grid of feature rows: left column holds 4 items, right column holds 3. Each row has a small chartreuse square icon placeholder, bold course name in 15px, and a one-line use-case descriptor in 13px #666. A Google-referencing label badge in chartreuse at top right of card reads 'Google Certified'.",
-      "color_usage": "Canvas #faf9f6, card background #ffffff with #d7c8af border shadow. Headline #000000, subtext #555. Feature icons #e6ff00 filled squares. Feature titles #111111, descriptors #666. Badge background #e6ff00, badge text #000000.",
-      "reasoning": "The feature list modality suits this content as a product-style breakdown of seven discrete capabilities, presenting the courses as a valuable skill suite rather than just a list."
+      "layout_description": "1200x630px canvas, background #ffffff with a subtle #faf9f6 left panel strip (0 to 560px wide) acting as a soft content zone. 72px top/left padding. Top-left: DM Mono 11px uppercase label 'GOOGLE AI — 2025' in #888, letter-spacing 0.08em. Headline in Inter 600 44px #111 below, two lines max, letter-spacing -0.04em. A thin 1px horizontal rule in #e5e5e5 at 200px from top spanning 480px. Feature rows below the rule: each row is a horizontal flex with a 10px square dot in #d7c8af on the far left, bold Inter 600 15px #111 feature category, followed by a colon and Inter 400 14px #555 descriptor. Rows separated by 1px #e5e5e5 hairlines, 18px vertical padding each. Right side (620px to 1130px): empty breathing space with a faint FLYWHEEL watermark at opacity 0.03 in Inter 700 120px rotated 0deg, centered vertically at 320px. Bottom-left: flywheelos.com in DM Mono 11px #888.",
+      "color_usage": "Background #ffffff, left zone #faf9f6, headline #111, feature names #111, descriptors #555, dot accents #d7c8af, rules #e5e5e5, label and URL #888, watermark #000 at 0.03 opacity.",
+      "reasoning": "Feature list modality suits the course-by-course breakdown where each entry has a named category and short descriptor. The two-zone canvas with a warm off-white left panel and open right space reflects Flywheel's asymmetric balance principle, while the #d7c8af dot markers use the warm sand accent correctly as a structural accent rather than fill."
     },
     {
-      "modality": "event_details_card",
-      "headline": "7 Free Google AI Courses Available Now",
-      "subtext": "Earn certificates across AI writing, research, data, content creation, and app building. No cost required.",
-      "data_points": [
-        "Provider: Google",
-        "Cost: Free with certificates",
-        "Tracks: 7 courses",
-        "Tools: Gemini, NotebookLM",
-        "Skill level: Beginner to builder",
-        "CTA: Enroll now"
-      ],
-      "layout_description": "1200x630px canvas on dark background #1a1a1a. Centered card at 640px wide with #111111 fill and 8px radius. Bold header block with 52px headline in white and chartreuse accent on the word 'Free'. Below header, a two-column icon-label detail grid showing Provider, Cost, Tracks, Tools, and Skill Level. Each label uses a small chartreuse square icon. Bottom of card has a wide CTA button in #e6ff00 with bold black text reading 'Enroll Free via Google'. Pill badges for Gemini and NotebookLM float near the tools row.",
-      "color_usage": "Canvas #1a1a1a, card #111111. Headline white with #e6ff00 accent word. Detail labels #888, values #ffffff. Icon shapes #e6ff00. CTA button #e6ff00 with #000000 text. Pill badges #e6ff00 background, #000000 text.",
-      "reasoning": "Framing the courses as an event or opportunity card drives urgency and action, surfacing the key value props including free, certified, and Google-backed in a scannable logistics format."
+      "modality": "bold_statement_card",
+      "headline": "Google just made AI education free.",
+      "subtext": "Seven certificate courses covering research, writing, data, content creation, and app building with no code required.",
+      "data_points": [],
+      "layout_description": "1200x630px canvas, background #ffffff. FLYWHEEL watermark centered at 315px vertical, 120px Inter 700 uppercase, opacity 0.03, letter-spacing 0.02em. Content centered in a 680px wide column starting at 260px from left. Top: DM Mono 12px uppercase label 'FREE CERTIFICATE COURSES' in #888, letter-spacing 0.07em, centered. 32px gap. Headline in Inter 600 56px #111, letter-spacing -0.04em, centered, two lines. A 48px gap. A 2px x 64px horizontal accent bar in #d7c8af centered below headline. 32px gap. Subtext in Inter 400 18px #555, centered, max-width 540px, line-height 1.6. Bottom center: FLYWHEEL logotype in Inter 700 12px uppercase #000, letter-spacing 0.08em, positioned 56px from bottom edge. Left and right sides are entirely empty, enforcing the 60%+ negative space rule. Sparse particle dots in top-right and bottom-left corners only, 6-8 circles at 3-5px, opacity 0.07.",
+      "color_usage": "Background #ffffff, watermark #000 at 0.03 opacity, label #888, headline #111, accent bar #d7c8af, subtext #555, brand mark #000, particle dots #6b7a7c at 0.07 opacity.",
+      "reasoning": "A bold statement card works when the core message is a single declarative insight. The centered layout with the FLYWHEEL watermark and extreme negative space on either side creates a museum-label stillness appropriate for Flywheel's aesthetic, though it sacrifices the detailed course enumeration of the other concepts."
     }
   ],
   "selected": 0,
-  "selection_reasoning": "The numbered list graphic is the strongest concept because the post's core structure is a numbered 7-item list. It translates directly and intuitively into a visual that LinkedIn audiences can scan in seconds. Each course gets its own clear row, the dark and light panel split creates visual hierarchy, and the chartreuse badges give the design energy without overwhelming the content."
+  "selection_reasoning": "Concept 0 best serves the post's content: seven named courses demand a numbered list treatment where viewers can scan each entry individually. The left-anchored stacked layout with square number badges, DM Mono labels, and a particle dot network filling the right half is the most canonically Flywheel composition. It delivers all seven data points with editorial restraint, generous spacing, and zero decorative excess, exactly matching the premium-publication standard."
 }

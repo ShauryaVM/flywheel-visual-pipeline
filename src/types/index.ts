@@ -119,8 +119,10 @@ export interface PipelineResult {
   concept: ConceptGenerationOutput;
   selectedConcept: VisualConcept;
   html: string;
+  htmlPath: string;
   pdfPath: string;
   pngPath: string;
+  evalScore?: EvalScore;
 }
 
 export interface Stage1Result {
@@ -130,6 +132,7 @@ export interface Stage1Result {
 
 export interface Stage3Result {
   html: string;
+  htmlPath: string;
   pdfPath: string;
   pngPath: string;
 }

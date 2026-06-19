@@ -1,0 +1,35 @@
+{
+  "concepts": [
+    {
+      "modality": "attribution_quote_card",
+      "headline": "Read what you love until you love to read.",
+      "subtext": "Naval Ravikant's rule that turned a reluctant reader into someone who reads 50+ books a year.",
+      "data_points": [
+        "Naval Ravikant"
+      ],
+      "layout_description": "Left-anchored hero layout on a 1200x630px warm off-white canvas (#faf9f6). 72px padding on all edges. A thin 2px warm sand accent bar (#d7c8af) at top-left spanning 120px, fading to transparent. The quote sits left-aligned, set in Inter 600 at 48px, color #111, letter-spacing -0.04em, spanning roughly 60% of the canvas width. Below the quote, a 32px gap, then the attribution in DM Mono 400 at 12px uppercase, letter-spacing 0.08em, color #888, reading 'NAVAL RAVIKANT'. Below the attribution, a 48px gap, then a single line of subtext in Inter 400 at 17px, color #555, max-width 520px. The right 35% of the canvas is entirely empty, occupied only by a particle dot network: 12-16 gray circles at 3-5px diameter, 0.08 opacity, connected by 0.5px hairline strokes at 0.06 opacity, clustered loosely in the upper-right quadrant. The Flywheel wordmark sits bottom-left in Inter 500 at 11px uppercase, letter-spacing 0.10em, color #888. No other elements.",
+      "color_usage": "Background #faf9f6, headline #111, attribution #888 in DM Mono, subtext #555, accent bar #d7c8af, particle dots gray at 0.08 opacity, Flywheel mark #888.",
+      "reasoning": "The Naval quote is the emotional and intellectual anchor of the post. An attribution quote card honors that origin while letting the typographic weight do all the work. The left-anchored layout with generous right-side negative space embodies Flywheel's editorial restraint precisely."
+    },
+    {
+      "modality": "bold_statement_card",
+      "headline": "The best habit is the one you actually enjoy.",
+      "subtext": "Optimizing for curiosity, not utility, is how 50+ books a year becomes effortless.",
+      "data_points": [],
+      "layout_description": "Centered statement layout on a 1200x630px white canvas (#ffffff). 80px padding on all edges. A faint FLYWHEEL watermark in Inter 700 at 140px, uppercase, opacity 0.03, centered behind all content. The headline sits perfectly centered, set in Inter 600 at 54px, color #111, letter-spacing -0.04em, max-width 640px, sentence case. Below the headline, a 28px gap, then a 2px warm sand bar (#d7c8af) centered at 60px wide. Below the bar, a 28px gap, then subtext in Inter 400 at 18px, color #555, centered, max-width 480px. The entire composition is vertically centered on the canvas. No particle dots, no decorative elements beyond the watermark and accent bar. The Flywheel wordmark in DM Mono 400 at 11px uppercase, letter-spacing 0.10em, color #888, sits bottom-center with 80px bottom clearance.",
+      "color_usage": "Background #ffffff, headline #111, accent bar #d7c8af, subtext #555, watermark #000 at 0.03 opacity, Flywheel mark #888.",
+      "reasoning": "The meta-lesson is the post's sharpest insight and deserves the full centered statement treatment. The FLYWHEEL watermark adds depth without clutter. Stripping away all decoration focuses attention entirely on the idea, which is itself about removing friction."
+    },
+    {
+      "modality": "headline_subtext_card",
+      "headline": "Stop optimizing for useful. Start optimizing for curious.",
+      "subtext": "The habit that survives is the one you enjoy. From zero books to 50+ a year, that was the only change.",
+      "data_points": [],
+      "layout_description": "Left-anchored hero layout on a 1200x630px warm surface canvas (#faf9f6). 64px padding on all edges. A DM Mono eyebrow label in 11px uppercase, letter-spacing 0.08em, color #888 sits top-left, reading 'ON READING'. Below the eyebrow, 20px gap, then a 2px warm sand accent bar (#d7c8af) at 80px wide, left-aligned. Below the bar, 24px gap, then the headline in Inter 600 at 50px, color #111, letter-spacing -0.04em, max-width 580px, left-aligned, sentence case. Below the headline, 32px gap, then subtext in Inter 400 at 18px, color #555, max-width 500px, left-aligned. All content anchored to a single left alignment edge. The right 38% of the canvas contains a particle dot cluster: 14 gray dots at 2-6px, 0.10 opacity, connected by hairline 0.5px strokes at 0.07 opacity, occupying roughly the right-center region with generous surrounding space. The Flywheel wordmark sits bottom-left in DM Mono 400 at 11px uppercase, letter-spacing 0.10em, color #888.",
+      "color_usage": "Background #faf9f6, eyebrow #888 in DM Mono, headline #111, accent bar #d7c8af, subtext #555, particle dots gray at 0.10 opacity, Flywheel mark #888.",
+      "reasoning": "The post's core reframe, shifting optimization from utility to curiosity, is punchy enough to carry a headline card. The eyebrow label grounds it as a personal essay format. Left-anchored asymmetry with a particle cloud on the right creates the editorial tension that defines Flywheel."
+    }
+  ],
+  "selected": 0,
+  "selection_reasoning": "The attribution quote card best honors the post's structure: it opens with Naval's quote, which is the most memorable and shareable element. Giving that line the full typographic treatment with proper attribution is both editorially correct and emotionally resonant. The left-anchored layout with open right-side negative space is the purest expression of Flywheel's aesthetic, and the warm sand accent bar and particle dots add texture without competing with the quote. The other concepts paraphrase the post's lesson, but the quote card lets the original language do the work, which is more authoritative and more Flywheel."
+}

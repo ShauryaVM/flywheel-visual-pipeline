@@ -41,6 +41,7 @@ export async function runStage3(input: Stage3Input): Promise<Stage3Result> {
 
   return {
     html,
+    htmlPath: exportResult.htmlPath,
     pdfPath: exportResult.pdfPath,
     pngPath: exportResult.pngPath,
   };

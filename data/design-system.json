@@ -1,140 +1,154 @@
 {
   "metadata": {
     "source_url": "https://flywheelos.com",
-    "crawled_at": "2026-06-17T14:33:41.480Z",
+    "crawled_at": "2026-06-19T01:53:00.000Z",
     "pages_analyzed": [
       "https://flywheelos.com",
       "https://flywheelos.com/pricing",
       "https://flywheelos.com/login",
       "https://flywheelos.com/terms"
-    ]
+    ],
+    "audit_notes": "Re-audited 2026-06-19. Removed #e6ff00 chartreuse from accent — it is defined as a CSS variable but never visually rendered on the marketing site. Real brand accent is warm sand #d7c8af used for button shadows, borders, and subtle warmth."
   },
   "colors": {
     "primary": {
       "hex": "#000000",
-      "usage": "Primary brand color, used for headings, body text, buttons, and main CTA elements"
+      "usage": "Primary brand color used for main text, buttons, and key UI elements"
     },
     "secondary": {
-      "hex": "#111111",
-      "usage": "Near-black used for high-emphasis text elements like active nav links and CTA button text"
+      "hex": "#6b7a7c",
+      "usage": "Navigation links, secondary text, muted UI elements"
     },
     "accent": {
-      "hex": "#e6ff00",
-      "usage": "Bright yellow-green accent color, defined as --color-accent and --color-yellow, used for brand highlights"
+      "hex": "#d7c8af",
+      "usage": "Warm sand accent used for CTA button borders, box shadows, warm border tints, and subtle emphasis throughout the site"
     },
     "background": {
       "hex": "#ffffff",
-      "usage": "Main page background, header background, and primary section background"
+      "usage": "Main page background, header background"
     },
     "text": {
       "hex": "#000000",
-      "usage": "Default foreground/body text color"
+      "usage": "Default body text and foreground color"
     },
     "palette": [
       {
         "hex": "#000000",
         "name": "black",
-        "usage_context": "Primary text, foreground, button backgrounds"
+        "usage_context": "Primary text, foreground, --color-black, --color-nav-dark base"
       },
       {
         "hex": "#111111",
-        "name": "text-primary",
-        "usage_context": "High-emphasis text, active nav links, CTA button label"
-      },
-      {
-        "hex": "#333333",
-        "name": "text-secondary",
-        "usage_context": "Secondary text content, --color-text-secondary"
-      },
-      {
-        "hex": "#444444",
-        "name": "text-tertiary",
-        "usage_context": "Tertiary text, --color-text-tertiary, --color-gray-800"
-      },
-      {
-        "hex": "#555555",
-        "name": "text-subtle",
-        "usage_context": "Subtle body text, paragraph descriptions, --color-text-subtle"
-      },
-      {
-        "hex": "#666666",
-        "name": "text-muted",
-        "usage_context": "Muted supporting text like subtitles, --color-text-muted"
-      },
-      {
-        "hex": "#888888",
-        "name": "text-faint",
-        "usage_context": "Faint text, --color-text-faint, --color-gray-600"
-      },
-      {
-        "hex": "#999999",
-        "name": "text-placeholder",
-        "usage_context": "Placeholder text, disabled secondary text, --color-gray-500"
-      },
-      {
-        "hex": "#aaaaaa",
-        "name": "text-disabled",
-        "usage_context": "Disabled text, --color-text-disabled, --color-gray-400"
-      },
-      {
-        "hex": "#6b7a7c",
-        "name": "nav-link",
-        "usage_context": "Navigation link and button text in non-active state, --color-nav-link"
-      },
-      {
-        "hex": "#e5e5e5",
-        "name": "border",
-        "usage_context": "Default border color across elements, --color-border, --color-gray-200"
-      },
-      {
-        "hex": "#eeeeee",
-        "name": "gray-100",
-        "usage_context": "Surface active state, light background tint, --color-gray-100"
-      },
-      {
-        "hex": "#f5f5f5",
-        "name": "surface-hover",
-        "usage_context": "Hover state background for surfaces, --color-surface-hover, --color-gray-50"
-      },
-      {
-        "hex": "#faf9f6",
-        "name": "surface",
-        "usage_context": "Footer background, secondary section background, --color-surface, --color-sand-50"
-      },
-      {
-        "hex": "#ffffff",
-        "name": "white",
-        "usage_context": "Page background, header, card backgrounds, --color-white"
-      },
-      {
-        "hex": "#e6ff00",
-        "name": "accent-yellow",
-        "usage_context": "Brand accent color, --color-accent, --color-yellow"
-      },
-      {
-        "hex": "#d7c8af",
-        "name": "shadow-warm",
-        "usage_context": "Warm shadow color used in CTA button box-shadow, --color-shadow-warm, --color-shadow-sand"
-      },
-      {
-        "hex": "#f0efe9",
-        "name": "card-bg",
-        "usage_context": "Card background with 85% opacity, used in floating content cards"
+        "name": "gray-900",
+        "usage_context": "--color-gray-900, --color-text-primary, h1/h4 headings, active nav links"
       },
       {
         "hex": "#222828",
         "name": "nav-hamburger-bg",
-        "usage_context": "Mobile hamburger menu background, --color-nav-hamburger-bg"
+        "usage_context": "--color-nav-hamburger-bg, mobile hamburger menu background"
       },
       {
-        "hex": "#0c0d0e",
-        "name": "nav-dark",
-        "usage_context": "Dark navigation background variant, --color-nav-dark"
+        "hex": "#333333",
+        "name": "gray-850",
+        "usage_context": "--color-gray-850, --color-text-secondary, secondary text"
+      },
+      {
+        "hex": "#444444",
+        "name": "gray-800",
+        "usage_context": "--color-gray-800, --color-text-tertiary, tertiary text"
+      },
+      {
+        "hex": "#555555",
+        "name": "gray-750",
+        "usage_context": "--color-gray-750, --color-text-subtle, subtle paragraph text"
+      },
+      {
+        "hex": "#666666",
+        "name": "gray-700",
+        "usage_context": "--color-gray-700, --color-text-muted, muted paragraph text"
+      },
+      {
+        "hex": "#888888",
+        "name": "gray-600",
+        "usage_context": "--color-gray-600, --color-text-faint, faint text"
+      },
+      {
+        "hex": "#999999",
+        "name": "gray-500",
+        "usage_context": "--color-gray-500, --color-text-placeholder, --color-text-disabled placeholder and disabled text"
+      },
+      {
+        "hex": "#aaaaaa",
+        "name": "gray-400",
+        "usage_context": "--color-gray-400, --color-text-disabled, disabled state text"
+      },
+      {
+        "hex": "#cccccc",
+        "name": "gray-300",
+        "usage_context": "--color-gray-300, light decorative borders"
+      },
+      {
+        "hex": "#e5e5e5",
+        "name": "border",
+        "usage_context": "--color-border, --color-gray-200, default border color throughout UI"
+      },
+      {
+        "hex": "#eeeeee",
+        "name": "gray-100",
+        "usage_context": "--color-gray-100, --color-surface-active, active surface state, nav button bg variant"
+      },
+      {
+        "hex": "#f5f5f5",
+        "name": "gray-50",
+        "usage_context": "--color-gray-50, --color-surface-hover, hover surface state"
+      },
+      {
+        "hex": "#ffffff",
+        "name": "white",
+        "usage_context": "--color-white, backgrounds, primary-foreground text on dark surfaces"
+      },
+      {
+        "hex": "#faf9f6",
+        "name": "surface",
+        "usage_context": "--color-surface, --color-sand-50, footer background, login side panel, section backgrounds"
       },
       {
         "hex": "#f1f3f3",
         "name": "nav-button-bg",
-        "usage_context": "Navigation button background, --color-nav-button-bg"
+        "usage_context": "--color-nav-button-bg, navigation button background"
+      },
+      {
+        "hex": "#6b7a7c",
+        "name": "nav-text",
+        "usage_context": "--color-nav-text, --color-nav-link, secondary/inactive navigation links"
+      },
+      {
+        "hex": "#d7c8af",
+        "name": "warm-sand",
+        "usage_context": "--color-shadow-warm, --color-shadow-sand, warm box shadow and border tints on CTA buttons, primary brand accent"
+      },
+      {
+        "hex": "#f0efe9",
+        "name": "card-bg",
+        "usage_context": "Card background color (rgba(240,239,233,0.85)), schedule/content cards"
+      },
+      {
+        "hex": "#0c0d0e",
+        "name": "overlay-dark",
+        "usage_context": "--color-nav-dark, base of overlay-dark (rgba(12,13,14,0.75)), dark overlays"
+      },
+      {
+        "hex": "#111111",
+        "name": "text-primary",
+        "usage_context": "rgb(17,17,17), heading text, active nav link text, CTA button text"
+      }
+    ],
+    "defined_but_unused": [
+      {
+        "hex": "#e6ff00",
+        "name": "chartreuse",
+        "css_variable": "--color-accent, --color-yellow",
+        "note": "Defined in CSS variables but never visually rendered on the marketing site. Not used for any visible element, button, badge, or accent. Excluded from templates to avoid misleading brand representation."
       }
     ]
   },
@@ -142,19 +156,12 @@
     "font_families": [
       {
         "family": "Inter",
-        "weights": [
-          "400",
-          "500",
-          "600",
-          "700"
-        ],
-        "source": "system"
+        "weights": ["400", "500", "600", "700"],
+        "source": "google-fonts"
       },
       {
         "family": "DM Mono",
-        "weights": [
-          "400"
-        ],
+        "weights": ["400"],
         "source": "google-fonts"
       }
     ],
@@ -183,6 +190,14 @@
         "letter_spacing": "-0.025em",
         "color": "#000000"
       },
+      "h4": {
+        "font_family": "Inter",
+        "font_size": "16px",
+        "font_weight": "600",
+        "line_height": "1.5",
+        "letter_spacing": "-0.025em",
+        "color": "#111111"
+      },
       "body": {
         "font_family": "Inter",
         "font_size": "16px",
@@ -190,19 +205,33 @@
         "line_height": "1.5",
         "color": "#000000"
       },
+      "body_lg": {
+        "font_family": "Inter",
+        "font_size": "18px",
+        "font_weight": "500",
+        "line_height": "1.5",
+        "color": "#666666"
+      },
       "small": {
+        "font_family": "Inter",
+        "font_size": "15px",
+        "font_weight": "400",
+        "line_height": "1.625",
+        "color": "#555555"
+      },
+      "caption": {
         "font_family": "Inter",
         "font_size": "14px",
         "font_weight": "400",
         "line_height": "1.43",
-        "color": "#000000"
+        "color": "#666666"
       },
-      "caption": {
-        "font_family": "Inter",
-        "font_size": "12px",
+      "mono": {
+        "font_family": "DM Mono",
+        "font_size": "14px",
         "font_weight": "400",
-        "line_height": "1.33",
-        "color": "#888888"
+        "line_height": "1.5",
+        "color": "#000000"
       }
     }
   },
@@ -214,7 +243,8 @@
       "md": "16px",
       "lg": "24px",
       "xl": "32px",
-      "xxl": "48px"
+      "xxl": "48px",
+      "xxxl": "80px"
     }
   },
   "borders": {
@@ -227,69 +257,110 @@
       "xxl": "16px",
       "full": "9999px"
     },
-    "widths": [
-      "1px"
-    ],
-    "colors": [
-      "#e5e5e5",
-      "#d7c8af"
-    ]
+    "widths": ["1px"],
+    "colors": ["#e5e5e5", "#d7c8af"]
   },
   "logo": {
+    "header": {
+      "description": "Flywheel icon mark (stylized overlapping curves forming a flywheel shape) + 'Flywheel' text wordmark, rendered in black on white",
+      "svg_icon": "<svg viewBox=\"0 0 23 23\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M 4.448 1.186 C 9.412 -1.598 16.505 0.685 20.293 6.29 C 24.08 11.895 23.127 18.694 18.165 21.479 C 22.385 19.113 23.194 13.33 19.975 8.567 C 16.755 3.805 10.723 1.862 6.506 4.229 C 2.286 6.598 1.477 12.377 4.694 17.142 C 7.914 21.905 13.942 23.848 18.162 21.479 C 13.197 24.266 6.104 21.98 2.317 16.375 C -1.468 10.773 -0.515 3.971 4.447 1.186 Z\" fill=\"currentColor\"/></svg>",
+      "wordmark": "Flywheel",
+      "dimensions": { "width": 94, "height": 20 }
+    },
+    "footer": {
+      "description": "Large 'FLYWHEEL' display type rendered in very large weight across the full width of the footer, uppercase, in a muted color on the warm surface background",
+      "text": "FLYWHEEL",
+      "style": "uppercase, full-width display, weight 700, color approx rgba(0,0,0,0.06) on #faf9f6 background"
+    },
     "url": "",
-    "svg_data": "",
-    "dimensions": {
-      "width": 94,
-      "height": 20
+    "svg_data": "<svg viewBox=\"0 0 23 23\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M 4.448 1.186 C 9.412 -1.598 16.505 0.685 20.293 6.29 C 24.08 11.895 23.127 18.694 18.165 21.479 C 22.385 19.113 23.194 13.33 19.975 8.567 C 16.755 3.805 10.723 1.862 6.506 4.229 C 2.286 6.598 1.477 12.377 4.694 17.142 C 7.914 21.905 13.942 23.848 18.162 21.479 C 13.197 24.266 6.104 21.98 2.317 16.375 C -1.468 10.773 -0.515 3.971 4.447 1.186 Z\" fill=\"currentColor\"/></svg>",
+    "dimensions": { "width": 94, "height": 20 }
+  },
+  "gradients": [
+    {
+      "name": "footer-fade",
+      "css": "linear-gradient(180deg, #ffffff 0%, #faf9f6 100%)",
+      "usage": "Transition from main white background to warm surface footer area"
+    },
+    {
+      "name": "warm-shadow-glow",
+      "css": "radial-gradient(circle, rgba(215, 200, 175, 0.08) 0%, transparent 70%)",
+      "usage": "Subtle warm glow behind CTA elements and cards"
+    },
+    {
+      "name": "logo-icon-gradient",
+      "css": "linear-gradient(180deg, rgb(81, 83, 84) 0%, rgb(1,1,1) 57%)",
+      "usage": "Applied to the flywheel icon mark SVG via linearGradient definition"
+    }
+  ],
+  "distinctive_elements": {
+    "particle_scatter": {
+      "description": "A network/knowledge-graph-style visualization of scattered dots (circles) in varying sizes from 2px to 20px, positioned across the hero section. Dots are gray at varying opacities (roughly #b0b0b0 to #d0d0d0). Some dots are connected by very thin, faint lines. The pattern evokes data connections, knowledge graphs, and content networks — core to Flywheel's brand as an intelligent content platform.",
+      "colors": ["#c0c0c0", "#b0b0b0", "#d0d0d0", "#a0a0a0"],
+      "opacity_range": "0.2 to 0.6",
+      "dot_size_range": "2px to 20px",
+      "usage": "Hero section background, positioned primarily in the right half of the viewport"
+    },
+    "flywheel_watermark": {
+      "description": "The word 'FLYWHEEL' rendered in very large (approx 150-200px), bold uppercase type across the footer, barely visible (opacity ~0.04-0.06) on the warm surface background. Creates a branded watermark effect.",
+      "color": "rgba(0, 0, 0, 0.05)",
+      "font_weight": "700",
+      "text_transform": "uppercase",
+      "usage": "Footer section, spanning full width"
+    },
+    "warm_cta_button": {
+      "description": "CTA buttons with transparent background, 1px border in rgba(215,200,175,0.5), warm sand box-shadow, no border-radius. The warm sand creates an elegant, premium feel rather than an aggressive bright accent.",
+      "border": "1px solid rgba(215, 200, 175, 0.5)",
+      "box_shadow": "rgba(215, 200, 175, 0.25) 0px 4px 20px 0px, rgba(0, 0, 0, 0.06) 0px 1px 4px 0px",
+      "usage": "Book a Call / Get in touch CTAs"
     }
   },
   "components": {
     "buttons": [
       {
         "variant": "primary-cta",
-        "description": "Main call-to-action button with warm sand border and shadow (e.g. 'Book a Call')",
+        "label": "Book a Call",
         "styles": {
           "background-color": "transparent",
           "color": "#111111",
           "border-radius": "0px",
           "border": "1px solid rgba(215, 200, 175, 0.5)",
           "padding": "16px 32px",
-          "font-size": "14px",
           "font-weight": "600",
+          "font-size": "14px",
           "box-shadow": "rgba(215, 200, 175, 0.25) 0px 4px 20px 0px, rgba(0, 0, 0, 0.06) 0px 1px 4px 0px, rgba(255, 252, 248, 0.5) 0px 1px 1px 0px inset, rgba(215, 200, 175, 0.15) 0px -1px 1px 0px inset"
         }
       },
       {
         "variant": "nav-link",
-        "description": "Navigation button/link style (e.g. 'Resources', inactive nav items)",
+        "label": "Resources / Pricing",
         "styles": {
           "background-color": "transparent",
           "color": "#6b7a7c",
           "border-radius": "6px",
           "padding": "8px 16px",
-          "font-size": "15px",
           "font-weight": "500",
+          "font-size": "15px",
           "border": "none"
         }
       },
       {
-        "variant": "nav-link-active",
-        "description": "Active navigation link (e.g. 'Home')",
+        "variant": "nav-active",
+        "label": "Home (active)",
         "styles": {
           "background-color": "transparent",
           "color": "#111111",
           "border-radius": "6px",
           "padding": "8px 16px",
-          "font-size": "15px",
           "font-weight": "500",
+          "font-size": "15px",
           "border": "none"
         }
       }
     ],
     "cards": [
       {
-        "variant": "content-card",
-        "description": "Floating content schedule card with warm translucent background",
+        "variant": "content-schedule",
         "styles": {
           "background-color": "rgba(240, 239, 233, 0.85)",
           "border-radius": "8px",
@@ -303,7 +374,6 @@
     "sections": [
       {
         "variant": "hero",
-        "description": "Main hero section on white background",
         "styles": {
           "background-color": "#ffffff",
           "padding": "48px",
@@ -312,7 +382,6 @@
       },
       {
         "variant": "surface",
-        "description": "Secondary section with warm off-white surface background (used for footer, panels)",
         "styles": {
           "background-color": "#faf9f6",
           "padding": "16px",
@@ -320,11 +389,36 @@
         }
       },
       {
-        "variant": "login-split",
-        "description": "Split layout login section with white main panel and surface sidebar",
+        "variant": "footer",
+        "styles": {
+          "background-color": "#faf9f6",
+          "padding": "0px",
+          "text-align": "left"
+        }
+      }
+    ],
+    "navigation": [
+      {
+        "variant": "header",
         "styles": {
           "background-color": "#ffffff",
-          "padding": "48px"
+          "border-bottom": "1px solid #e5e5e5",
+          "position": "sticky",
+          "top": "0",
+          "z-index": "50"
+        }
+      }
+    ],
+    "inputs": [
+      {
+        "variant": "default",
+        "styles": {
+          "background-color": "transparent",
+          "border": "1px solid #e5e5e5",
+          "padding": "16px",
+          "font-size": "14px",
+          "color": "#000000",
+          "border-radius": "0px"
         }
       }
     ]
@@ -345,9 +439,7 @@
     "--container-md": "28rem",
     "--container-lg": "32rem",
     "--container-7xl": "80rem",
-    "--spacing": "0.25rem",
-    "--color-accent": "#e6ff00",
-    "--color-yellow": "#e6ff00",
+    "--color-accent-unused": "#e6ff00",
     "--color-black": "#000",
     "--color-white": "#fff",
     "--color-surface": "#faf9f6",
@@ -355,14 +447,11 @@
     "--color-surface-hover": "#f5f5f5",
     "--color-surface-active": "#eee",
     "--color-border": "#e5e5e5",
-    "--color-shadow-warm": "#d7c8af",
-    "--color-shadow-sand": "#d7c8af",
-    "--color-nav-text": "#6b7a7c",
-    "--color-nav-link": "#6b7a7c",
     "--color-nav-dark": "#0c0d0e",
     "--color-nav-hamburger-bg": "#222828",
     "--color-nav-button-bg": "#f1f3f3",
-    "--color-overlay-dark": "#0c0d0ebf",
+    "--color-nav-text": "#6b7a7c",
+    "--color-nav-link": "#6b7a7c",
     "--color-text-primary": "#111",
     "--color-text-secondary": "#333",
     "--color-text-tertiary": "#444",
@@ -371,6 +460,9 @@
     "--color-text-faint": "#888",
     "--color-text-placeholder": "#999",
     "--color-text-disabled": "#aaa",
+    "--color-shadow-warm": "#d7c8af",
+    "--color-shadow-sand": "#d7c8af",
+    "--color-overlay-dark": "#0c0d0ebf",
     "--color-gray-50": "#f5f5f5",
     "--color-gray-100": "#eee",
     "--color-gray-200": "#e5e5e5",
@@ -383,12 +475,8 @@
     "--color-gray-800": "#444",
     "--color-gray-850": "#333",
     "--color-gray-900": "#111",
-    "--default-font-family": "\"Inter\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif",
-    "--default-mono-font-family": "\"DM Mono\",Monaco,Consolas,monospace",
-    "--font-weight-normal": "400",
-    "--font-weight-medium": "500",
-    "--font-weight-semibold": "600",
-    "--font-weight-bold": "700",
+    "--color-neutral-50": "oklch(98.5% 0 0)",
+    "--color-neutral-950": "oklch(14.5% 0 0)",
     "--text-xs": "0.75rem",
     "--text-sm": "0.875rem",
     "--text-base": "1rem",
@@ -405,10 +493,15 @@
     "--tracking-wide": "0.025em",
     "--tracking-wider": "0.05em",
     "--tracking-widest": "0.1em",
+    "--font-weight-normal": "400",
+    "--font-weight-medium": "500",
+    "--font-weight-semibold": "600",
+    "--font-weight-bold": "700",
+    "--spacing": "0.25rem",
+    "--default-font-family": "\"Inter\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif",
+    "--default-mono-font-family": "\"DM Mono\",Monaco,Consolas,monospace",
     "--default-transition-duration": "0.15s",
     "--default-transition-timing-function": "cubic-bezier(.4,0,.2,1)",
-    "--ease-in-out": "cubic-bezier(.4,0,.2,1)",
-    "--ease-out": "cubic-bezier(0,0,.2,1)",
     "--blur-sm": "8px",
     "--blur-md": "12px",
     "--blur-xl": "24px",
@@ -417,50 +510,196 @@
     "--animate-pulse": "pulse 2s cubic-bezier(.4,0,.6,1) infinite",
     "--animate-spin": "spin 1s linear infinite"
   },
+  "design_portfolio": {
+    "philosophy": "Flywheel's visual identity is rooted in editorial restraint and Swiss-design precision. Every composition should feel like a page from a premium tech publication, not a marketing deck. The brand communicates authority through what it removes, not what it adds. Negative space is the primary design element.",
+    "composition_rules": [
+      "60%+ of the canvas must be negative space (white or warm off-white). Content should breathe.",
+      "Maximum 3 focal elements per graphic: typically heading + one supporting element + brand mark.",
+      "Left-heavy content placement: primary text anchored to the left third, right side reserved for decorative or abstract elements.",
+      "Asymmetric balance: never center everything. Offset headings, stagger elements, create visual tension through intentional imbalance.",
+      "Single axis of alignment: all content elements should share one strong alignment edge (usually left).",
+      "Vertical rhythm via generous gaps: 24-48px between content blocks, never cramped.",
+      "The canvas edge is sacred: maintain 48-80px padding from all edges, content never crowds the frame."
+    ],
+    "visual_density": {
+      "description": "Extremely sparse. Flywheel compositions are defined by what is absent. A typical section on their site contains one heading, one short paragraph, and nothing else. The brand treats emptiness as a design element that conveys confidence and clarity.",
+      "constraints": [
+        "No more than 3 text blocks visible at once (heading, subtext, eyebrow/caption).",
+        "If a layout has data points or list items, limit to 4-7 items maximum, each under 12 words.",
+        "Decorative elements (dots, lines, watermarks) must be at opacity 0.03-0.20, never competing with content.",
+        "Every element must have a clear purpose. If removing an element doesn't reduce comprehension, remove it."
+      ]
+    },
+    "hierarchy_rules": {
+      "description": "Stark, dramatic size contrast between heading and body text. The heading dominates; everything else recedes. This creates an unmistakable focal point and editorial gravitas.",
+      "heading_to_body_ratio": "3:1 to 4:1 (e.g., 48-60px heading vs 16-18px body)",
+      "rules": [
+        "Headlines: 42-60px, weight 600, letter-spacing -0.03em to -0.04em. Always the dominant element.",
+        "Subtext: 16-20px, weight 400, color #555 or #666. Deliberately subdued.",
+        "Eyebrow/label text: 11-13px, uppercase, letter-spacing 0.06-0.08em, DM Mono or Inter weight 500, color #888 or #999.",
+        "Data/stat numbers: 36-48px, weight 600, DM Mono for technical feel.",
+        "Never let two elements compete for attention. One element dominates, rest support."
+      ]
+    },
+    "motifs": {
+      "particle_network": {
+        "description": "Scattered dots (circles) in varying sizes from 2-8px, positioned in the right half or periphery of the canvas. Some connected by hairline strokes. Represents intelligent content connections and knowledge graphs. Always subtle, never dominant.",
+        "usage": "Background texture, typically right-biased or corner-placed",
+        "opacity": "0.06-0.20",
+        "colors": ["#c0c0c0", "#b0b0b0", "#d0d0d0"],
+        "connecting_lines": "0.5px stroke, opacity 0.06-0.10"
+      },
+      "warm_sand_shadow": {
+        "description": "CTA elements and featured cards use rgba(215,200,175,0.25) box-shadow with 4-20px blur. Creates a warm, premium glow distinct from typical drop shadows.",
+        "css": "rgba(215, 200, 175, 0.25) 0px 4px 20px 0px"
+      },
+      "square_geometry": {
+        "description": "Border-radius 0px on buttons, badges, stat tiles, and number markers. Square edges are a signature. The only rounded elements are the particle dots themselves.",
+        "applies_to": ["CTA buttons", "badges", "stat tiles", "number markers", "input fields", "content cards"]
+      },
+      "warm_accent_bar": {
+        "description": "A thin (2-3px) horizontal bar of warm sand (#d7c8af) at the top of a card or as a divider. Fades to transparent via gradient. A subtle signature element.",
+        "css": "linear-gradient(90deg, #d7c8af 0%, transparent 40%)"
+      },
+      "flywheel_watermark": {
+        "description": "The word 'FLYWHEEL' rendered at extreme size (120-160px), weight 700, uppercase, at opacity 0.02-0.04. Positioned behind main content as a barely-visible brand imprint.",
+        "usage": "Optional, for bold_statement and centered compositions only"
+      },
+      "warm_gradient_footer": {
+        "description": "A subtle gradient from transparent to rgba(215,200,175,0.05) at the bottom 80px of the canvas. Adds warmth without visible color.",
+        "css": "linear-gradient(180deg, transparent 0%, rgba(215, 200, 175, 0.05) 100%)"
+      }
+    },
+    "prohibitions": [
+      "NO gradients on text. Text is always solid color.",
+      "NO colorful icons or emoji. Visual elements are monochrome (black, gray, warm sand only).",
+      "NO illustrations or cartoon-style graphics. Abstraction only through geometry and dots.",
+      "NO photography or photographic imagery.",
+      "NO rounded cards or pill-shaped buttons. Square geometry is the signature.",
+      "NO bright or saturated colors. The palette is black, white, gray scale, and warm sand.",
+      "NO busy or cluttered layouts. If it feels full, remove elements until it breathes.",
+      "NO dark or black backgrounds for full cards. Backgrounds are white (#fff) or warm off-white (#faf9f6).",
+      "NO decorative borders thicker than 1px.",
+      "NO drop shadows with blue or cool tones. Only warm sand shadows.",
+      "NO all-caps headings (only labels and brand marks are uppercase).",
+      "NO chartreuse, neon, or #e6ff00. This color is defined in CSS but never used visually."
+    ],
+    "tone": {
+      "description": "Editorial, premium, Swiss-design influenced, restrained, intellectual. The visual voice is that of a confident publication that doesn't need to shout. Compositions should feel considered and deliberate, as if every pixel placement was intentional.",
+      "analogies": [
+        "A premium tech journal, not a SaaS landing page",
+        "An architect's portfolio, not a marketing brochure",
+        "A museum exhibit label, not a conference slide"
+      ],
+      "emotional_register": "Quiet confidence, intellectual clarity, refined simplicity"
+    },
+    "layout_patterns": {
+      "left_anchored_hero": {
+        "description": "Heading left-aligned at 80px from left edge, occupying ~55% of width. Right side has particle dots or is empty. CTA or subtext below heading. Used for primary messaging.",
+        "content_zone": "left 55%",
+        "decorative_zone": "right 45%"
+      },
+      "centered_statement": {
+        "description": "Single bold statement centered on canvas. FLYWHEEL watermark behind at very low opacity. Warm glow behind text. Minimal: just the statement, a thin accent underline, and optional subtext.",
+        "content_zone": "center, max-width 900px",
+        "decorative_elements": ["watermark", "radial glow", "peripheral dots"]
+      },
+      "structured_data": {
+        "description": "Left heading with right-side data grid or vertical list. Clean separation between narrative (left) and evidence (right). Data uses DM Mono for numbers.",
+        "content_zone": "left 40% heading, right 55% data",
+        "separator": "thin vertical line or generous gap"
+      },
+      "stacked_list": {
+        "description": "Heading at top, followed by vertically stacked items with consistent spacing. Each item has a square number marker or bullet. Maximum 7 items. Clean left alignment throughout.",
+        "content_zone": "full width with 80px padding",
+        "item_spacing": "12-16px between items"
+      }
+    },
+    "reference_compositions": [
+      {
+        "name": "Homepage Hero",
+        "description": "Massive 4-line heading 'Intelligent Content that Drives Revenue.' left-aligned, occupying the left 45% of the viewport. Right half filled with scattered particle dots (varying sizes, connected by faint lines). Single square CTA button 'Book a Call' with warm sand shadow below the heading. 60%+ negative space. Navigation bar above is minimal: logo, 3 links, login, CTA.",
+        "elements": ["large heading", "particle network", "square CTA", "minimal nav"],
+        "whitespace_ratio": "65%"
+      },
+      {
+        "name": "Value Proposition Section",
+        "description": "Centered heading 'Your Content Needs a Flywheel.' with a single line of subdued subtext below. Below that, a 4-column grid of brief descriptions (each: bold title + 1-2 line description + 'Learn More' link). Enormous top/bottom padding. No decorative elements. Pure typography.",
+        "elements": ["centered heading", "subtext", "4-column text grid"],
+        "whitespace_ratio": "60%"
+      },
+      {
+        "name": "Feature Showcase",
+        "description": "Left side: section number in muted text, bold heading, body paragraph. Right side: subtle product screenshot or abstract UI representation. Asymmetric split (~45/55). Thin horizontal rule separating from previous section.",
+        "elements": ["section number", "heading", "body text", "product visual"],
+        "whitespace_ratio": "55%"
+      },
+      {
+        "name": "Bottom CTA Section",
+        "description": "Centered heading 'Ready to build your content flywheel?' with subtext and a single CTA button. Below: the word 'FLYWHEEL' spanning full width at barely-visible opacity (~0.05). Warm surface background (#faf9f6). Absolute minimum elements.",
+        "elements": ["heading", "subtext", "CTA button", "watermark"],
+        "whitespace_ratio": "70%"
+      }
+    ]
+  },
   "raw_tokens": {
-    "font_sizes": {
+    "color_scale": {
+      "black": "#000000",
+      "white": "#ffffff",
+      "gray": {
+        "50": "#f5f5f5",
+        "100": "#eeeeee",
+        "200": "#e5e5e5",
+        "300": "#cccccc",
+        "400": "#aaaaaa",
+        "500": "#999999",
+        "600": "#888888",
+        "700": "#666666",
+        "750": "#555555",
+        "800": "#444444",
+        "850": "#333333",
+        "900": "#111111"
+      },
+      "warm_sand": "#d7c8af",
+      "surface": "#faf9f6",
+      "nav": {
+        "dark": "#0c0d0e",
+        "text": "#6b7a7c",
+        "hamburger": "#222828",
+        "button": "#f1f3f3"
+      }
+    },
+    "font_size_scale": {
       "xs": "12px",
       "sm": "14px",
       "base": "16px",
       "lg": "18px",
       "xl": "20px",
       "2xl": "24px",
-      "3xl": "32px",
-      "4xl": "40px",
+      "4xl": "36px",
       "5xl": "48px",
-      "6xl": "56px",
+      "6xl": "60px",
       "7xl": "64px",
-      "display": "84px"
+      "8xl": "84px"
     },
-    "observed_padding_values": [
-      "4px",
-      "8px",
-      "12px",
-      "16px",
-      "24px",
-      "32px",
-      "48px"
-    ],
-    "observed_margin_values": [
-      "12px",
-      "16px",
-      "24px",
-      "32px",
-      "40px",
-      "48px"
-    ],
-    "border_radii_observed": [
-      "0px",
-      "6px",
-      "8px"
-    ],
-    "border_radii_defined": [
-      "0px",
-      "4px",
-      "6px",
-      "8px",
-      "12px",
-      "16px"
-    ]
+    "spacing_scale": {
+      "1": "4px",
+      "2": "8px",
+      "3": "12px",
+      "4": "16px",
+      "6": "24px",
+      "8": "32px",
+      "10": "40px",
+      "12": "48px",
+      "20": "80px"
+    },
+    "border_radius_scale": {
+      "none": "0px",
+      "sm": "4px",
+      "md": "6px",
+      "lg": "8px",
+      "xl": "12px",
+      "2xl": "16px"
+    }
   }
 }

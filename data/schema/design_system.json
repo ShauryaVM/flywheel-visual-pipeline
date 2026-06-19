@@ -1,10 +1,10 @@
 {
   "version": "1.0.0",
   "sourceUrl": "https://flywheelos.com",
-  "crawledAt": "2026-06-17T14:33:41.480Z",
+  "crawledAt": "2026-06-19T00:31:35.395Z",
   "colors": {
     "primary": "#000000",
-    "secondary": "#111111",
+    "secondary": "#6b7a7c",
     "accent": "#e6ff00",
     "background": "#ffffff",
     "text": "#000000",
@@ -12,107 +12,117 @@
       {
         "name": "black",
         "hex": "#000000",
-        "usage": "Primary text, foreground, button backgrounds"
+        "usage": "Primary text, foreground, --color-black, --color-nav-dark base"
       },
       {
-        "name": "text-primary",
+        "name": "gray-900",
         "hex": "#111111",
-        "usage": "High-emphasis text, active nav links, CTA button label"
-      },
-      {
-        "name": "text-secondary",
-        "hex": "#333333",
-        "usage": "Secondary text content, --color-text-secondary"
-      },
-      {
-        "name": "text-tertiary",
-        "hex": "#444444",
-        "usage": "Tertiary text, --color-text-tertiary, --color-gray-800"
-      },
-      {
-        "name": "text-subtle",
-        "hex": "#555555",
-        "usage": "Subtle body text, paragraph descriptions, --color-text-subtle"
-      },
-      {
-        "name": "text-muted",
-        "hex": "#666666",
-        "usage": "Muted supporting text like subtitles, --color-text-muted"
-      },
-      {
-        "name": "text-faint",
-        "hex": "#888888",
-        "usage": "Faint text, --color-text-faint, --color-gray-600"
-      },
-      {
-        "name": "text-placeholder",
-        "hex": "#999999",
-        "usage": "Placeholder text, disabled secondary text, --color-gray-500"
-      },
-      {
-        "name": "text-disabled",
-        "hex": "#aaaaaa",
-        "usage": "Disabled text, --color-text-disabled, --color-gray-400"
-      },
-      {
-        "name": "nav-link",
-        "hex": "#6b7a7c",
-        "usage": "Navigation link and button text in non-active state, --color-nav-link"
-      },
-      {
-        "name": "border",
-        "hex": "#e5e5e5",
-        "usage": "Default border color across elements, --color-border, --color-gray-200"
-      },
-      {
-        "name": "gray-100",
-        "hex": "#eeeeee",
-        "usage": "Surface active state, light background tint, --color-gray-100"
-      },
-      {
-        "name": "surface-hover",
-        "hex": "#f5f5f5",
-        "usage": "Hover state background for surfaces, --color-surface-hover, --color-gray-50"
-      },
-      {
-        "name": "surface",
-        "hex": "#faf9f6",
-        "usage": "Footer background, secondary section background, --color-surface, --color-sand-50"
-      },
-      {
-        "name": "white",
-        "hex": "#ffffff",
-        "usage": "Page background, header, card backgrounds, --color-white"
-      },
-      {
-        "name": "accent-yellow",
-        "hex": "#e6ff00",
-        "usage": "Brand accent color, --color-accent, --color-yellow"
-      },
-      {
-        "name": "shadow-warm",
-        "hex": "#d7c8af",
-        "usage": "Warm shadow color used in CTA button box-shadow, --color-shadow-warm, --color-shadow-sand"
-      },
-      {
-        "name": "card-bg",
-        "hex": "#f0efe9",
-        "usage": "Card background with 85% opacity, used in floating content cards"
+        "usage": "--color-gray-900, --color-text-primary, h1/h4 headings, active nav links"
       },
       {
         "name": "nav-hamburger-bg",
         "hex": "#222828",
-        "usage": "Mobile hamburger menu background, --color-nav-hamburger-bg"
+        "usage": "--color-nav-hamburger-bg, mobile hamburger menu background"
       },
       {
-        "name": "nav-dark",
-        "hex": "#0c0d0e",
-        "usage": "Dark navigation background variant, --color-nav-dark"
+        "name": "gray-850",
+        "hex": "#333333",
+        "usage": "--color-gray-850, --color-text-secondary, secondary text"
+      },
+      {
+        "name": "gray-800",
+        "hex": "#444444",
+        "usage": "--color-gray-800, --color-text-tertiary, tertiary text"
+      },
+      {
+        "name": "gray-750",
+        "hex": "#555555",
+        "usage": "--color-gray-750, --color-text-subtle, subtle paragraph text"
+      },
+      {
+        "name": "gray-700",
+        "hex": "#666666",
+        "usage": "--color-gray-700, --color-text-muted, muted paragraph text"
+      },
+      {
+        "name": "gray-600",
+        "hex": "#888888",
+        "usage": "--color-gray-600, --color-text-faint, faint text"
+      },
+      {
+        "name": "gray-500",
+        "hex": "#999999",
+        "usage": "--color-gray-500, --color-text-placeholder, --color-text-disabled placeholder and disabled text"
+      },
+      {
+        "name": "gray-400",
+        "hex": "#aaaaaa",
+        "usage": "--color-gray-400, --color-text-disabled, disabled state text"
+      },
+      {
+        "name": "gray-300",
+        "hex": "#cccccc",
+        "usage": "--color-gray-300, light decorative borders"
+      },
+      {
+        "name": "border",
+        "hex": "#e5e5e5",
+        "usage": "--color-border, --color-gray-200, default border color throughout UI"
+      },
+      {
+        "name": "gray-100",
+        "hex": "#eeeeee",
+        "usage": "--color-gray-100, --color-surface-active, active surface state, nav button bg variant"
+      },
+      {
+        "name": "gray-50",
+        "hex": "#f5f5f5",
+        "usage": "--color-gray-50, --color-surface-hover, hover surface state"
+      },
+      {
+        "name": "white",
+        "hex": "#ffffff",
+        "usage": "--color-white, backgrounds, primary-foreground text on dark surfaces"
+      },
+      {
+        "name": "surface",
+        "hex": "#faf9f6",
+        "usage": "--color-surface, --color-sand-50, footer background, login side panel, section backgrounds"
       },
       {
         "name": "nav-button-bg",
         "hex": "#f1f3f3",
-        "usage": "Navigation button background, --color-nav-button-bg"
+        "usage": "--color-nav-button-bg, navigation button background"
+      },
+      {
+        "name": "nav-text",
+        "hex": "#6b7a7c",
+        "usage": "--color-nav-text, --color-nav-link, secondary/inactive navigation links"
+      },
+      {
+        "name": "shadow-warm",
+        "hex": "#d7c8af",
+        "usage": "--color-shadow-warm, --color-shadow-sand, warm box shadow and border tints on CTA buttons"
+      },
+      {
+        "name": "accent-yellow",
+        "hex": "#e6ff00",
+        "usage": "--color-accent, --color-yellow, brand accent highlight color"
+      },
+      {
+        "name": "card-bg",
+        "hex": "#f0efe9",
+        "usage": "Card background color (rgba(240,239,233,0.85)), schedule/content cards"
+      },
+      {
+        "name": "overlay-dark",
+        "hex": "#0c0d0e",
+        "usage": "--color-nav-dark, base of overlay-dark (rgba(12,13,14,0.75)), dark overlays"
+      },
+      {
+        "name": "text-primary",
+        "hex": "#111111",
+        "usage": "rgb(17,17,17), heading text, active nav link text, CTA button text"
       }
     ]
   },
@@ -125,7 +135,7 @@
         "600",
         "700"
       ],
-      "source": "system"
+      "source": "google-fonts"
     },
     "bodyFont": {
       "family": "DM Mono",
@@ -156,22 +166,40 @@
         "lineHeight": 1.5
       },
       {
+        "level": "h4",
+        "sizePx": 16,
+        "weight": "600",
+        "lineHeight": 1.5
+      },
+      {
         "level": "body",
         "sizePx": 16,
         "weight": "400",
         "lineHeight": 1.5
       },
       {
+        "level": "body_lg",
+        "sizePx": 18,
+        "weight": "500",
+        "lineHeight": 1.5
+      },
+      {
         "level": "small",
+        "sizePx": 15,
+        "weight": "400",
+        "lineHeight": 1.625
+      },
+      {
+        "level": "caption",
         "sizePx": 14,
         "weight": "400",
         "lineHeight": 1.43
       },
       {
-        "level": "caption",
-        "sizePx": 12,
+        "level": "mono",
+        "sizePx": 14,
         "weight": "400",
-        "lineHeight": 1.33
+        "lineHeight": 1.5
       }
     ]
   },
@@ -179,21 +207,27 @@
     "unit": 4,
     "borderRadiusPx": 6
   },
+  "logo": {
+    "widthPx": 94,
+    "heightPx": 20,
+    "format": "svg",
+    "base64": "PHN2ZyBkaXNwbGF5PSJibG9jayIgcm9sZT0icHJlc2VudGF0aW9uIiB2aWV3Qm94PSIwIDAgMjMgMjMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJaQ1BXOVVVN2siIHgxPSIwLjQ5NzUiIHgyPSIwLjUwMDMiIHkxPSIwIiB5Mj0iMC41NyI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSJyZ2IoODEsIDgzLCA4NCkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9InJnYigxLDEsMSkiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48L3N2Zz4="
+  },
   "components": [
     {
       "name": "buttons-primary-cta",
-      "notes": "background-color: transparent; color: #111111; border-radius: 0px; border: 1px solid rgba(215, 200, 175, 0.5); padding: 16px 32px; font-size: 14px; font-weight: 600; box-shadow: rgba(215, 200, 175, 0.25) 0px 4px 20px 0px, rgba(0, 0, 0, 0.06) 0px 1px 4px 0px, rgba(255, 252, 248, 0.5) 0px 1px 1px 0px inset, rgba(215, 200, 175, 0.15) 0px -1px 1px 0px inset"
+      "notes": "background-color: transparent; color: #111111; border-radius: 0px; border: 1px solid rgba(215, 200, 175, 0.5); padding: 16px 32px; font-weight: 600; font-size: 14px; box-shadow: rgba(215, 200, 175, 0.25) 0px 4px 20px 0px, rgba(0, 0, 0, 0.06) 0px 1px 4px 0px, rgba(255, 252, 248, 0.5) 0px 1px 1px 0px inset, rgba(215, 200, 175, 0.15) 0px -1px 1px 0px inset"
     },
     {
       "name": "buttons-nav-link",
-      "notes": "background-color: transparent; color: #6b7a7c; border-radius: 6px; padding: 8px 16px; font-size: 15px; font-weight: 500; border: none"
+      "notes": "background-color: transparent; color: #6b7a7c; border-radius: 6px; padding: 8px 16px; font-weight: 500; font-size: 15px; border: none"
     },
     {
-      "name": "buttons-nav-link-active",
-      "notes": "background-color: transparent; color: #111111; border-radius: 6px; padding: 8px 16px; font-size: 15px; font-weight: 500; border: none"
+      "name": "buttons-nav-active",
+      "notes": "background-color: transparent; color: #111111; border-radius: 6px; padding: 8px 16px; font-weight: 500; font-size: 15px; border: none"
     },
     {
-      "name": "cards-content-card",
+      "name": "cards-content-schedule",
       "notes": "background-color: rgba(240, 239, 233, 0.85); border-radius: 8px; border: 1px solid #e5e5e5; padding: 12px; box-shadow: none"
     },
     {
@@ -205,8 +239,16 @@
       "notes": "background-color: #faf9f6; padding: 16px; text-align: left"
     },
     {
-      "name": "sections-login-split",
-      "notes": "background-color: #ffffff; padding: 48px"
+      "name": "sections-footer",
+      "notes": "background-color: #faf9f6; padding: 0px; text-align: left"
+    },
+    {
+      "name": "navigation-header",
+      "notes": "background-color: #ffffff; border-bottom: 1px solid #e5e5e5; position: sticky; top: 0; z-index: 50"
+    },
+    {
+      "name": "inputs-default",
+      "notes": "background-color: transparent; border: 1px solid #e5e5e5; padding: 16px; font-size: 14px; color: #000000; border-radius: 0px"
     }
   ],
   "rawCssVariables": [
@@ -286,11 +328,6 @@
       "selector": ":root"
     },
     {
-      "property": "--spacing",
-      "value": "0.25rem",
-      "selector": ":root"
-    },
-    {
       "property": "--color-accent",
       "value": "#e6ff00",
       "selector": ":root"
@@ -336,26 +373,6 @@
       "selector": ":root"
     },
     {
-      "property": "--color-shadow-warm",
-      "value": "#d7c8af",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-shadow-sand",
-      "value": "#d7c8af",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-nav-text",
-      "value": "#6b7a7c",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-nav-link",
-      "value": "#6b7a7c",
-      "selector": ":root"
-    },
-    {
       "property": "--color-nav-dark",
       "value": "#0c0d0e",
       "selector": ":root"
@@ -371,8 +388,13 @@
       "selector": ":root"
     },
     {
-      "property": "--color-overlay-dark",
-      "value": "#0c0d0ebf",
+      "property": "--color-nav-text",
+      "value": "#6b7a7c",
+      "selector": ":root"
+    },
+    {
+      "property": "--color-nav-link",
+      "value": "#6b7a7c",
       "selector": ":root"
     },
     {
@@ -413,6 +435,21 @@
     {
       "property": "--color-text-disabled",
       "value": "#aaa",
+      "selector": ":root"
+    },
+    {
+      "property": "--color-shadow-warm",
+      "value": "#d7c8af",
+      "selector": ":root"
+    },
+    {
+      "property": "--color-shadow-sand",
+      "value": "#d7c8af",
+      "selector": ":root"
+    },
+    {
+      "property": "--color-overlay-dark",
+      "value": "#0c0d0ebf",
       "selector": ":root"
     },
     {
@@ -476,33 +513,13 @@
       "selector": ":root"
     },
     {
-      "property": "--default-font-family",
-      "value": "\"Inter\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif",
+      "property": "--color-neutral-50",
+      "value": "oklch(98.5% 0 0)",
       "selector": ":root"
     },
     {
-      "property": "--default-mono-font-family",
-      "value": "\"DM Mono\",Monaco,Consolas,monospace",
-      "selector": ":root"
-    },
-    {
-      "property": "--font-weight-normal",
-      "value": "400",
-      "selector": ":root"
-    },
-    {
-      "property": "--font-weight-medium",
-      "value": "500",
-      "selector": ":root"
-    },
-    {
-      "property": "--font-weight-semibold",
-      "value": "600",
-      "selector": ":root"
-    },
-    {
-      "property": "--font-weight-bold",
-      "value": "700",
+      "property": "--color-neutral-950",
+      "value": "oklch(14.5% 0 0)",
       "selector": ":root"
     },
     {
@@ -586,6 +603,41 @@
       "selector": ":root"
     },
     {
+      "property": "--font-weight-normal",
+      "value": "400",
+      "selector": ":root"
+    },
+    {
+      "property": "--font-weight-medium",
+      "value": "500",
+      "selector": ":root"
+    },
+    {
+      "property": "--font-weight-semibold",
+      "value": "600",
+      "selector": ":root"
+    },
+    {
+      "property": "--font-weight-bold",
+      "value": "700",
+      "selector": ":root"
+    },
+    {
+      "property": "--spacing",
+      "value": "0.25rem",
+      "selector": ":root"
+    },
+    {
+      "property": "--default-font-family",
+      "value": "\"Inter\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif",
+      "selector": ":root"
+    },
+    {
+      "property": "--default-mono-font-family",
+      "value": "\"DM Mono\",Monaco,Consolas,monospace",
+      "selector": ":root"
+    },
+    {
       "property": "--default-transition-duration",
       "value": "0.15s",
       "selector": ":root"
@@ -593,16 +645,6 @@
     {
       "property": "--default-transition-timing-function",
       "value": "cubic-bezier(.4,0,.2,1)",
-      "selector": ":root"
-    },
-    {
-      "property": "--ease-in-out",
-      "value": "cubic-bezier(.4,0,.2,1)",
-      "selector": ":root"
-    },
-    {
-      "property": "--ease-out",
-      "value": "cubic-bezier(0,0,.2,1)",
       "selector": ":root"
     },
     {

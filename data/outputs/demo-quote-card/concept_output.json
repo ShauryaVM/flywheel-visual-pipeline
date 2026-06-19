@@ -1,0 +1,33 @@
+{
+  "concepts": [
+    {
+      "modality": "pull_quote_card",
+      "headline": "Better feedback loops, not better ideas.",
+      "subtext": "The best builders optimize for how quickly they can learn what's wrong with their current idea.",
+      "data_points": [],
+      "layout_description": "Centered statement composition on warm off-white (#faf9f6) canvas. The headline sits at large display size centered vertically and horizontally, with a FLYWHEEL watermark at 0.03 opacity behind it. A thin 2px warm sand accent bar (#d7c8af) sits above the headline, fading left to transparent. Subtext appears below in 16px muted gray (#555), centered, with generous 40px gap from headline. Brand mark bottom-center at 11px DM Mono uppercase. Particle dot network in upper-right periphery at 0.08 opacity. 60% of canvas is empty, breathing space.",
+      "color_usage": "Background #faf9f6, headline #111, subtext #555, accent bar #d7c8af, particle dots #6b7a7c at 0.08 opacity, brand mark #888",
+      "reasoning": "The post is built around a single powerful reframe. A pull quote card centered on a warm canvas lets the idea breathe with full typographic authority, matching the editorial restraint Flywheel demands. No list, no stats, just the idea itself with maximum negative space."
+    },
+    {
+      "modality": "bold_statement_card",
+      "headline": "Speed of iteration beats quality of hypothesis.",
+      "subtext": "Every time. The best founders optimize for feedback loops, not the strength of their first idea.",
+      "data_points": [],
+      "layout_description": "Left-anchored hero layout on white (#ffffff) canvas. Headline at 52px weight 600 anchored hard left at 64px padding, occupying top 40% of canvas. A single 2px warm sand horizontal rule (#d7c8af) sits 24px below the headline, spanning only 200px left-aligned, not full width, creating asymmetric tension. Subtext at 18px #333 below the rule with 28px gap. Right half of canvas holds a sparse particle dot network (8-12 dots, 0.10 opacity, connected by 0.5px hairlines) occupying the upper-right quadrant. Brand mark bottom-left in DM Mono 11px uppercase #888. 65% negative space.",
+      "color_usage": "Background #ffffff, headline #111, subtext #333, accent rule #d7c8af, particle dots #6b7a7c at 0.10 opacity, brand mark #888",
+      "reasoning": "The post's thesis is a direct, declarative reframe. A bold statement card with left-anchored typography and right-side particle texture creates the editorial tension Flywheel prizes. The short accent rule rather than a full divider adds restraint and asymmetry."
+    },
+    {
+      "modality": "headline_subtext_card",
+      "headline": "The founders with better feedback loops win.",
+      "subtext": "Not better initial ideas. The speed of iteration matters more than the quality of your first hypothesis.",
+      "data_points": [],
+      "layout_description": "Left-anchored layout on card surface (#f0efe9) canvas with 72px left padding. An eyebrow label in DM Mono 11px uppercase letter-spacing 0.07em reading 'On Building' in #888 sits at the top-left, 72px from top edge. Headline at 48px weight 600 letter-spacing -0.03em in #111 below with 20px gap. A 2px warm sand accent bar (#d7c8af) fades left-to-transparent between eyebrow and headline. Subtext at 18px #555 below headline with 32px gap, max-width 560px. Right side of canvas is pure empty space with a faint structural border at #e5e5e5 running vertically at x=820px, 1px, opacity 0.15, creating a silent grid line. Brand mark bottom-left. 62% negative space.",
+      "color_usage": "Background #f0efe9, eyebrow #888, headline #111, subtext #555, accent bar #d7c8af, structural line #e5e5e5 at 0.15, brand mark #888",
+      "reasoning": "The eyebrow label and vertical grid line add editorial structure without clutter, referencing a premium publication page. The warm card surface differentiates from white while staying within palette. The silent vertical rule in the right half creates asymmetric visual tension."
+    }
+  ],
+  "selected": 1,
+  "selection_reasoning": "Concept 1 (bold_statement_card) most purely embodies Flywheel's editorial restraint. The left-anchored headline at display size, the short asymmetric accent rule instead of a spanning divider, and the particle network confined to the right periphery all follow Flywheel's composition rules precisely. The white background maximizes contrast and negative space. The layout creates visual tension through deliberate asymmetry without any decorative excess, making it feel like a considered page from a premium publication rather than a marketing asset."
+}

@@ -96,6 +96,71 @@ There are so many great titles that I didn't include here, either because I have
 
 What book did I miss that legitimately made you a better builder or leader?`,
   },
+  {
+    id: 'demo-quote-card',
+    expectedModality: 'quote_card',
+    text: `"The best founders I know don't have better ideas. They have better feedback loops."
+
+This quote from a partner at Sequoia changed how I think about startups.
+
+Most people optimize for the quality of their initial idea. But the best builders optimize for how quickly they can learn what's wrong with their current idea.
+
+Speed of iteration > quality of initial hypothesis.
+
+Every time.`,
+  },
+  {
+    id: 'demo-pull-quote',
+    expectedModality: 'attribution_quote_card',
+    text: `Naval Ravikant once said: "Read what you love until you love to read."
+
+I hated reading until I was 27. Forced myself through business books I thought I "should" read.
+
+Then I gave myself permission to read fiction, history, weird niche stuff.
+
+Now I read 50+ books a year. The habit stuck because I stopped optimizing for "useful" and started optimizing for curiosity.
+
+The meta-lesson: the best habit is the one you actually enjoy enough to sustain.`,
+  },
+  {
+    id: 'demo-key-takeaway',
+    expectedModality: 'key_takeaway_card',
+    text: `After analyzing 10,000 LinkedIn posts, here's the single biggest takeaway:
+
+The posts that get the most engagement aren't the ones with the best insights. They're the ones with the clearest structure.
+
+People scroll fast. If your post looks like a wall of text, it's invisible.
+
+But if it has clear visual breaks, a hook in the first line, and a pattern the eye can follow? It gets read.
+
+Structure beats substance on social media. Every single time.`,
+  },
+  {
+    id: 'demo-stat-callout',
+    expectedModality: 'stat_callout',
+    text: `73% of remote workers say they're more productive at home.
+
+But here's what the data actually shows:
+
+A Stanford study tracked 16,000 workers over 9 months. Remote workers were 13% more productive. But hybrid workers were 24% more productive than fully remote ones.
+
+The sweet spot isn't "always remote" or "always office." It's intentional flexibility.
+
+Companies forcing 5 days in office are ignoring the data. Companies going fully remote are also ignoring the data.
+
+The answer is in the middle.`,
+  },
+  {
+    id: 'demo-stat-callout-2',
+    expectedModality: 'stat_callout',
+    text: `$4.2 billion in venture capital was invested in AI infrastructure companies in Q1 2025 alone.
+
+That's more than all of 2022 combined.
+
+The infrastructure layer is where the real money is flowing. Not consumer apps, not chatbots — but the picks and shovels: vector databases, inference optimization, training compute, and model evaluation tools.
+
+If you're building in AI, follow the infrastructure money. That's where the next decade of platform companies will emerge.`,
+  },
 ];
 
 async function main() {
@@ -123,6 +188,12 @@ async function main() {
         headline: result.selectedConcept.headline,
         pngPath: result.pngPath,
         pdfPath: result.pdfPath,
+        evalScore: result.evalScore
+          ? {
+              overall: result.evalScore.overall,
+              passes: result.evalScore.passesThreshold,
+            }
+          : undefined,
         success: true,
       });
 
@@ -153,6 +224,10 @@ async function main() {
       console.log(`     Modality: ${r.selectedModality}`);
       console.log(`     Headline: ${r.headline}`);
       console.log(`     PNG: ${r.pngPath}`);
+      if ('evalScore' in r && r.evalScore) {
+        const es = r.evalScore as { overall: number; passes: boolean };
+        console.log(`     Eval: ${es.overall.toFixed(1)}/10 ${es.passes ? '(PASS)' : '(BELOW THRESHOLD)'}`);
+      }
       console.log('');
     } else {
       console.log(`[FAIL] ${r.postId}`);

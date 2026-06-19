@@ -1,13 +1,16 @@
 import 'dotenv/config';
 import { runStage2 } from './stages/stage2-post-to-concept/index.js';
 import { runStage3 } from './stages/stage3-concept-to-html/index.js';
+import { runStage4 } from './stages/stage4-eval/index.js';
 import { createStageLogger } from './observability/logger.js';
 import type { PipelineInput, PipelineResult } from './types/index.js';
 
 const log = createStageLogger('pipeline');
 
+const EVAL_THRESHOLD = 7.0;
+
 /**
- * Run the visual pipeline: Post -> Concept -> HTML -> PDF + PNG.
+ * Run the visual pipeline: Post -> Concept -> HTML -> PDF + PNG -> Eval.
  */
 export async function runPipeline(input: PipelineInput): Promise<PipelineResult> {
   const { postText, postId, outputDir = 'data/outputs' } = input;
@@ -30,11 +33,54 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
   });
   log.info('Stage 3 complete: visual exported');
 
+  // Stage 4: Evaluate the rendered visual
+  const subDir = postId ? `${outputDir}/${postId}` : outputDir;
+  const designSystemSummary = [
+    'Flywheel brand: editorial restraint, Swiss-design precision.',
+    'Colors: black text, white/off-white backgrounds, warm sand #d7c8af accent.',
+    'Typography: Inter (400-700), DM Mono for data. Headlines 42-60px, body 16-20px.',
+    'Layout: 1200x630px, 60%+ negative space, left-anchored, square geometry (border-radius 0px).',
+    'Prohibitions: no gradients on text, no photography, no rounded cards, no dark backgrounds.',
+  ].join(' ');
+
+  let evalScore;
+  try {
+    evalScore = await runStage4({
+      htmlPath: stage3.htmlPath,
+      postText,
+      designSystemSummary,
+      outputDir: subDir,
+    });
+
+    log.info(
+      {
+        overall: evalScore.overall,
+        onBrand: evalScore.onBrand,
+        legible: evalScore.legible,
+        clearHierarchy: evalScore.clearHierarchy,
+        notGeneric: evalScore.notGeneric,
+        passes: evalScore.passesThreshold,
+      },
+      'Stage 4 complete: eval scored',
+    );
+
+    if (evalScore.overall < EVAL_THRESHOLD) {
+      log.warn(
+        { overall: evalScore.overall, critique: evalScore.critique },
+        `Visual scored ${evalScore.overall.toFixed(1)} (below threshold ${EVAL_THRESHOLD}). Regeneration recommended.`,
+      );
+    }
+  } catch (err) {
+    log.error({ err }, 'Stage 4 eval failed (non-blocking)');
+  }
+
   return {
     concept: conceptOutput,
     selectedConcept,
     html: stage3.html,
+    htmlPath: stage3.htmlPath,
     pdfPath: stage3.pdfPath,
     pngPath: stage3.pngPath,
+    evalScore,
   };
 }

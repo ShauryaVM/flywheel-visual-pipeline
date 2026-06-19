@@ -42,14 +42,10 @@ export async function exportVisual(options: ExportOptions): Promise<ExportResult
     browser = await chromium.launch({ headless: true });
     const page = await browser.newPage({ viewport: { width, height } });
 
-    await page.setContent(html, { waitUntil: 'networkidle', timeout: 15_000 });
+    await page.setContent(html, { waitUntil: 'load', timeout: 15_000 });
 
-    await page.evaluate(() =>
-      Promise.race([
-        document.fonts.ready,
-        new Promise((r) => setTimeout(r, 5000)),
-      ]),
-    );
+    await page.evaluate(() => document.fonts.ready);
+    await new Promise((r) => setTimeout(r, 200));
 
     await page.screenshot({
       path: pngPath,

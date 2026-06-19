@@ -229,6 +229,102 @@
           }
         },
         {
+          "selector": "h4",
+          "tagName": "h4",
+          "textPreview": "Content Team",
+          "classes": "font-semibold text-[16px] tracking-tight",
+          "styles": {
+            "font-family": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+            "font-size": "16px",
+            "font-weight": "600",
+            "line-height": "24px",
+            "letter-spacing": "-0.4px",
+            "color": "rgb(17, 17, 17)",
+            "background-color": "rgba(0, 0, 0, 0)",
+            "border-color": "rgb(229, 229, 229)",
+            "padding-top": "0px",
+            "padding-right": "0px",
+            "padding-bottom": "0px",
+            "padding-left": "0px",
+            "margin-top": "0px",
+            "margin-right": "0px",
+            "margin-bottom": "0px",
+            "margin-left": "0px",
+            "border-radius": "0px",
+            "border-top-left-radius": "0px",
+            "border-width": "0px",
+            "box-shadow": "none",
+            "text-transform": "none",
+            "text-decoration": "none",
+            "opacity": "1",
+            "gap": "normal"
+          }
+        },
+        {
+          "selector": "h4",
+          "tagName": "h4",
+          "textPreview": "Content Strategy",
+          "classes": "font-semibold text-[16px] tracking-tight",
+          "styles": {
+            "font-family": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+            "font-size": "16px",
+            "font-weight": "600",
+            "line-height": "24px",
+            "letter-spacing": "-0.4px",
+            "color": "rgb(17, 17, 17)",
+            "background-color": "rgba(0, 0, 0, 0)",
+            "border-color": "rgb(229, 229, 229)",
+            "padding-top": "0px",
+            "padding-right": "0px",
+            "padding-bottom": "0px",
+            "padding-left": "0px",
+            "margin-top": "0px",
+            "margin-right": "0px",
+            "margin-bottom": "0px",
+            "margin-left": "0px",
+            "border-radius": "0px",
+            "border-top-left-radius": "0px",
+            "border-width": "0px",
+            "box-shadow": "none",
+            "text-transform": "none",
+            "text-decoration": "none",
+            "opacity": "1",
+            "gap": "normal"
+          }
+        },
+        {
+          "selector": "h4",
+          "tagName": "h4",
+          "textPreview": "Research",
+          "classes": "font-semibold text-[16px] tracking-tight",
+          "styles": {
+            "font-family": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+            "font-size": "16px",
+            "font-weight": "600",
+            "line-height": "24px",
+            "letter-spacing": "-0.4px",
+            "color": "rgb(17, 17, 17)",
+            "background-color": "rgba(0, 0, 0, 0)",
+            "border-color": "rgb(229, 229, 229)",
+            "padding-top": "0px",
+            "padding-right": "0px",
+            "padding-bottom": "0px",
+            "padding-left": "0px",
+            "margin-top": "0px",
+            "margin-right": "0px",
+            "margin-bottom": "0px",
+            "margin-left": "0px",
+            "border-radius": "0px",
+            "border-top-left-radius": "0px",
+            "border-width": "0px",
+            "box-shadow": "none",
+            "text-transform": "none",
+            "text-decoration": "none",
+            "opacity": "1",
+            "gap": "normal"
+          }
+        },
+        {
           "selector": "p",
           "tagName": "p",
           "textPreview": "Multiply your content, maximise your reach.",
@@ -715,7 +811,7 @@
         "/login",
         "/terms"
       ],
-      "timeTakenMs": 9310
+      "timeTakenMs": 13618
     },
     {
       "url": "https://flywheelos.com/pricing",
@@ -1272,7 +1368,7 @@
         "/login",
         "/terms"
       ],
-      "timeTakenMs": 3286
+      "timeTakenMs": 3127
     },
     {
       "url": "https://flywheelos.com/login",
@@ -1568,7 +1664,7 @@
         }
       ],
       "internalLinks": [],
-      "timeTakenMs": 3287
+      "timeTakenMs": 49388
     },
     {
       "url": "https://flywheelos.com/terms",
@@ -2220,7 +2316,7 @@
         "/pricing",
         "/login"
       ],
-      "timeTakenMs": 3236
+      "timeTakenMs": 3732
     }
   ],
   "cssVariables": {
@@ -2247,8 +2343,8 @@
     "--color-text-subtle": "#555",
     "--leading-normal": "1.5",
     "--tw-inset-ring-shadow": "0 0 #0000",
-    "--color-overlay-dark": "#0c0d0ebf",
     "--text-base--line-height": "1.5",
+    "--color-overlay-dark": "#0c0d0ebf",
     "--color-blue-300": "oklch(80.9% .105 251.813)",
     "--color-text-secondary": "#333",
     "--tw-animation-direction": "normal",
@@ -2266,8 +2362,8 @@
     "--text-lg--line-height": "calc(1.75/1.125)",
     "--color-red-400": "oklch(70.4% .191 22.216)",
     "--tw-gradient-from": "rgba(0, 0, 0, 0)",
-    "--color-nav-button-bg": "#f1f3f3",
     "--color-white": "#fff",
+    "--color-nav-button-bg": "#f1f3f3",
     "--color-gray-400": "#aaa",
     "--color-accent": "#e6ff00",
     "--tw-gradient-to": "rgba(0, 0, 0, 0)",
@@ -2278,8 +2374,8 @@
     "--font-weight-bold": "700",
     "--color-gray-100": "#eee",
     "--color-surface-active": "#eee",
-    "--color-red-500": "oklch(63.7% .237 25.331)",
     "--blur-2xl": "40px",
+    "--color-red-500": "oklch(63.7% .237 25.331)",
     "--container-sm": "24rem",
     "--tw-ring-offset-width": "0px",
     "--tw-exit-translate-y": "0",
@@ -2349,8 +2445,8 @@
     "--leading-tight": "1.25",
     "--color-gray-750": "#555",
     "--color-gray-600": "#888",
-    "--color-text-disabled": "#aaa",
     "--color-surface-hover": "#f5f5f5",
+    "--color-text-disabled": "#aaa",
     "--color-green-200": "oklch(92.5% .084 155.995)",
     "--text-4xl": "2.25rem",
     "--tw-border-style": "solid",
@@ -2366,15 +2462,15 @@
     "--tw-enter-rotate": "0",
     "--text-xs": ".75rem",
     "--color-black": "#000",
-    "--tracking-widest": ".1em",
     "--color-neutral-950": "oklch(14.5% 0 0)",
+    "--tracking-widest": ".1em",
+    "--color-text-muted": "#666",
     "--font-weight-medium": "500",
     "--font-weight-normal": "400",
-    "--tw-enter-translate-y": "0",
     "--tw-scale-x": "1",
+    "--tw-enter-translate-y": "0",
     "--color-gray-850": "#333",
     "--color-green-700": "oklch(52.7% .154 150.069)",
-    "--color-text-muted": "#666",
     "--color-amber-100": "oklch(96.2% .059 95.617)",
     "--tw-enter-blur": "0",
     "--radius-xl": ".75rem",
@@ -2443,5 +2539,5 @@
     "oklab(0 none none / 0.15)",
     "rgb(215, 200, 175)"
   ],
-  "totalTimeMs": 36925
+  "totalTimeMs": 83138
 }

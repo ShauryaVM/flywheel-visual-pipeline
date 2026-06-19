@@ -3,104 +3,213 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       width: 1200px;
       height: 630px;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #111111;
-      color: #ffffff;
+      font-family: {{{ds.fontFamily}}};
+      background: {{ds.surface}};
+      color: {{ds.textPrimary}};
       overflow: hidden;
     }
 
-    .container {
+    .canvas {
       width: 1200px;
       height: 630px;
+      position: relative;
       display: flex;
+      flex-direction: column;
+    }
+
+    .warm-bar {
+      height: 3px;
+      background: linear-gradient(90deg, {{ds.accent}} 0%, transparent 40%);
+      flex-shrink: 0;
+    }
+
+    .dot-field {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+    }
+
+    .brand {
+      position: absolute;
+      top: 32px;
+      right: 56px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 1;
+    }
+
+    .brand svg { width: 18px; height: 18px; }
+
+    .brand-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: {{ds.textDisabled}};
+      text-transform: uppercase;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 64px 100px;
-      position: relative;
-    }
-
-    .statement {
-      font-size: 52px;
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      max-width: 880px;
+      padding: 60px 100px;
       position: relative;
       z-index: 1;
     }
 
-    .highlight {
-      color: #e6ff00;
-    }
-
-    .decorative-bar {
-      position: absolute;
-      bottom: 56px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 64px;
-      height: 3px;
-      background: #e6ff00;
-      border-radius: 2px;
-    }
-
-    .logo {
-      position: absolute;
-      top: 36px;
-      right: 48px;
-      font-size: 13px;
+    .statement {
+      font-size: 48px;
       font-weight: 600;
-      letter-spacing: 0.06em;
-      color: rgba(255, 255, 255, 0.3);
-      text-transform: uppercase;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+    }
+
+    .accent-underline {
+      width: 56px;
+      height: 2px;
+      background: {{ds.accent}};
+      margin: 32px auto 0;
+    }
+
+    .subtext {
+      font-size: 18px;
+      font-weight: 400;
+      color: {{ds.textMuted}};
+      margin-top: 24px;
+      max-width: 580px;
+      line-height: 1.55;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .url {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 12px;
+      color: {{ds.textFaint}};
     }
 
     .glow {
       position: absolute;
-      width: 400px;
-      height: 400px;
+      width: 600px;
+      height: 600px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(230, 255, 0, 0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(215, 200, 175, 0.08) 0%, transparent 70%);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
 
-    {{#if subtext}}
-    .subtext {
-      font-size: 18px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.5);
-      margin-top: 24px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+    .flywheel-watermark {
+      position: absolute;
+      bottom: 60px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 140px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: rgba(0, 0, 0, 0.03);
+      text-transform: uppercase;
+      pointer-events: none;
+      line-height: 1;
     }
-    {{/if}}
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="canvas">
+    <div class="warm-bar"></div>
+    <div class="dot-field">
+      <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="45" cy="40" r="4" fill="#000000" opacity="0.1"/>
+        <circle cx="100" cy="70" r="7" fill="#000000" opacity="0.08"/>
+        <circle cx="160" cy="35" r="3" fill="#000000" opacity="0.18"/>
+        <circle cx="1040" cy="38" r="12" fill="#000000" opacity="0.07"/>
+        <circle cx="1100" cy="65" r="5" fill="#000000" opacity="0.12"/>
+        <circle cx="1160" cy="42" r="8" fill="#000000" opacity="0.09"/>
+        <circle cx="930" cy="50" r="4" fill="#000000" opacity="0.15"/>
+        <circle cx="980" cy="80" r="6" fill="#000000" opacity="0.1"/>
+        <circle cx="1130" cy="120" r="15" fill="#000000" opacity="0.06"/>
+        <circle cx="1060" cy="140" r="4" fill="#000000" opacity="0.14"/>
+        <circle cx="70" cy="150" r="5" fill="#000000" opacity="0.1"/>
+        <circle cx="130" cy="180" r="3" fill="#000000" opacity="0.16"/>
+        <circle cx="1150" cy="200" r="6" fill="#000000" opacity="0.1"/>
+        <circle cx="1080" cy="230" r="3" fill="#000000" opacity="0.2"/>
+        <circle cx="50" cy="250" r="8" fill="#000000" opacity="0.07"/>
+        <circle cx="1170" cy="280" r="4" fill="#000000" opacity="0.14"/>
+        <circle cx="1100" cy="310" r="9" fill="#000000" opacity="0.08"/>
+        <circle cx="40" cy="340" r="3" fill="#000000" opacity="0.16"/>
+        <circle cx="110" cy="360" r="5" fill="#000000" opacity="0.1"/>
+        <circle cx="1140" cy="360" r="7" fill="#000000" opacity="0.1"/>
+        <circle cx="1050" cy="390" r="3" fill="#000000" opacity="0.18"/>
+        <circle cx="60" cy="420" r="6" fill="#000000" opacity="0.08"/>
+        <circle cx="1160" cy="430" r="14" fill="#000000" opacity="0.06"/>
+        <circle cx="1090" cy="460" r="5" fill="#000000" opacity="0.12"/>
+        <circle cx="80" cy="490" r="3" fill="#000000" opacity="0.14"/>
+        <circle cx="140" cy="510" r="7" fill="#000000" opacity="0.08"/>
+        <circle cx="1120" cy="500" r="4" fill="#000000" opacity="0.16"/>
+        <circle cx="1040" cy="530" r="6" fill="#000000" opacity="0.1"/>
+        <circle cx="50" cy="550" r="10" fill="#000000" opacity="0.07"/>
+        <circle cx="120" cy="580" r="4" fill="#000000" opacity="0.12"/>
+        <circle cx="1150" cy="560" r="3" fill="#000000" opacity="0.2"/>
+        <circle cx="1080" cy="590" r="8" fill="#000000" opacity="0.08"/>
+        <circle cx="970" cy="580" r="3" fill="#000000" opacity="0.15"/>
+        <circle cx="200" cy="590" r="5" fill="#000000" opacity="0.08"/>
+        <circle cx="920" cy="40" r="3" fill="#000000" opacity="0.12"/>
+        <circle cx="850" cy="590" r="4" fill="#000000" opacity="0.1"/>
+        <circle cx="300" cy="50" r="3" fill="#000000" opacity="0.12"/>
+        <circle cx="750" cy="40" r="5" fill="#000000" opacity="0.08"/>
+        <circle cx="350" cy="580" r="3" fill="#000000" opacity="0.1"/>
+        <circle cx="500" cy="595" r="4" fill="#000000" opacity="0.08"/>
+        <circle cx="650" cy="35" r="3" fill="#000000" opacity="0.12"/>
+        <circle cx="550" cy="30" r="6" fill="#000000" opacity="0.07"/>
+        <circle cx="450" cy="600" r="3" fill="#000000" opacity="0.1"/>
+        <line x1="45" y1="40" x2="100" y2="70" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="1040" y1="38" x2="1100" y2="65" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
+        <line x1="930" y1="50" x2="980" y2="80" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="1130" y1="120" x2="1060" y2="140" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
+        <line x1="1100" y1="310" x2="1140" y2="360" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="1160" y1="430" x2="1090" y2="460" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="50" y1="550" x2="120" y2="580" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
+        <line x1="1040" y1="530" x2="1120" y2="500" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
+        <line x1="70" y1="150" x2="130" y2="180" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="1150" y1="200" x2="1080" y2="230" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+      </svg>
+    </div>
     <div class="glow"></div>
-    <div class="logo">Flywheel</div>
-    <div>
+    <div class="flywheel-watermark">FLYWHEEL</div>
+    <div class="brand">
+      <svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg"><path d="M 4.448 1.186 C 9.412 -1.598 16.505 0.685 20.293 6.29 C 24.08 11.895 23.127 18.694 18.165 21.479 C 22.385 19.113 23.194 13.33 19.975 8.567 C 16.755 3.805 10.723 1.862 6.506 4.229 C 2.286 6.598 1.477 12.377 4.694 17.142 C 7.914 21.905 13.942 23.848 18.162 21.479 C 13.197 24.266 6.104 21.98 2.317 16.375 C -1.468 10.773 -0.515 3.971 4.447 1.186 Z" fill="{{ds.textDisabled}}" opacity="0.5"/></svg>
+      <span class="brand-name">Flywheel</span>
+    </div>
+    <div class="content">
       <h1 class="statement">{{headline}}</h1>
+      <div class="accent-underline"></div>
       {{#if subtext}}
       <p class="subtext">{{subtext}}</p>
       {{/if}}
     </div>
-    <div class="decorative-bar"></div>
+    <div class="footer">
+      <span class="url">flywheelos.com</span>
+    </div>
   </div>
 </body>
 </html>

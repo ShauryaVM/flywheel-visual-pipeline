@@ -3,135 +3,233 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       width: 1200px;
       height: 630px;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #faf9f6;
-      color: #111111;
+      font-family: {{{ds.fontFamily}}};
+      background: {{ds.background}};
+      color: {{ds.textPrimary}};
       overflow: hidden;
     }
 
-    .container {
+    .canvas {
       width: 1200px;
       height: 630px;
       display: flex;
-      padding: 44px 56px;
-      gap: 40px;
       position: relative;
     }
 
-    .left-panel {
-      flex: 0 0 320px;
+    .warm-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, {{ds.accent}} 0%, transparent 45%);
+    }
+
+    .left {
+      flex: 0 0 340px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 52px 48px 52px 64px;
+      border-right: 1px solid rgba(215, 200, 175, 0.3);
     }
 
-    .accent-line {
-      width: 40px;
-      height: 4px;
-      background: #e6ff00;
-      margin-bottom: 18px;
-      border-radius: 2px;
+    .accent-mark {
+      width: 32px;
+      height: 2px;
+      background: {{ds.accent}};
+      margin-bottom: 24px;
     }
 
     .headline {
-      font-size: 32px;
-      font-weight: 700;
+      font-size: 30px;
+      font-weight: 600;
       line-height: 1.12;
       letter-spacing: -0.03em;
-      color: #111111;
+      color: {{ds.primary}};
     }
 
     .subtext {
       font-size: 14px;
       font-weight: 400;
-      line-height: 1.5;
-      color: #666666;
-      margin-top: 12px;
+      line-height: 1.55;
+      color: {{ds.textMuted}};
+      margin-top: 14px;
     }
 
-    .right-panel {
+    .brand-left {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-left svg { width: 16px; height: 16px; }
+
+    .brand-name {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: {{ds.textDisabled}};
+      text-transform: uppercase;
+    }
+
+    .right {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 6px;
+      padding: 36px 56px 36px 40px;
+      gap: 2px;
       overflow: hidden;
     }
 
     .list-item {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 10px 14px;
-      border-radius: 6px;
-      background: rgba(0, 0, 0, 0.02);
-      min-height: 44px;
+      gap: 16px;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(215, 200, 175, 0.2);
     }
 
-    .list-item:nth-child(odd) {
-      background: rgba(0, 0, 0, 0.04);
+    .list-item:last-child {
+      border-bottom: none;
     }
 
-    .item-number {
+    .item-num {
       flex: 0 0 30px;
       height: 30px;
-      background: #111111;
-      color: #e6ff00;
-      border-radius: 6px;
+      background: {{ds.primary}};
+      color: {{ds.background}};
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: {{{ds.monoFamily}}};
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 500;
+      border-radius: 0;
     }
 
     .item-text {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 500;
       line-height: 1.4;
-      color: #333333;
+      color: {{ds.textSecondary}};
       flex: 1;
     }
 
-    .logo {
+    .url {
       position: absolute;
       bottom: 24px;
-      right: 40px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: #bbbbbb;
-      text-transform: uppercase;
+      right: 48px;
+      font-family: {{{ds.monoFamily}}};
+      font-size: 11px;
+      color: {{ds.textFaint}};
+    }
+
+    .dot-field {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .warm-border {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: rgba(215, 200, 175, 0.4);
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="left-panel">
-      <div class="accent-line"></div>
+  <div class="canvas">
+    <div class="dot-field">
+      <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="680" cy="30" r="6" fill="#000000" opacity="0.1"/>
+        <circle cx="750" cy="55" r="10" fill="#000000" opacity="0.07"/>
+        <circle cx="830" cy="35" r="4" fill="#000000" opacity="0.15"/>
+        <circle cx="900" cy="60" r="8" fill="#000000" opacity="0.08"/>
+        <circle cx="970" cy="38" r="3" fill="#000000" opacity="0.2"/>
+        <circle cx="1040" cy="62" r="14" fill="#000000" opacity="0.06"/>
+        <circle cx="1110" cy="40" r="5" fill="#000000" opacity="0.12"/>
+        <circle cx="1160" cy="72" r="3" fill="#000000" opacity="0.18"/>
+        <circle cx="710" cy="100" r="4" fill="#000000" opacity="0.12"/>
+        <circle cx="790" cy="120" r="7" fill="#000000" opacity="0.08"/>
+        <circle cx="870" cy="95" r="3" fill="#000000" opacity="0.16"/>
+        <circle cx="950" cy="110" r="5" fill="#000000" opacity="0.1"/>
+        <circle cx="1030" cy="130" r="12" fill="#000000" opacity="0.06"/>
+        <circle cx="1100" cy="105" r="4" fill="#000000" opacity="0.14"/>
+        <circle cx="1160" cy="140" r="3" fill="#000000" opacity="0.2"/>
+        <circle cx="700" cy="190" r="5" fill="#000000" opacity="0.1"/>
+        <circle cx="1150" cy="200" r="6" fill="#000000" opacity="0.08"/>
+        <circle cx="1080" cy="230" r="3" fill="#000000" opacity="0.16"/>
+        <circle cx="720" cy="270" r="8" fill="#000000" opacity="0.07"/>
+        <circle cx="1140" cy="280" r="4" fill="#000000" opacity="0.12"/>
+        <circle cx="1100" cy="330" r="15" fill="#000000" opacity="0.06"/>
+        <circle cx="1160" cy="350" r="3" fill="#000000" opacity="0.18"/>
+        <circle cx="700" cy="370" r="4" fill="#000000" opacity="0.12"/>
+        <circle cx="1130" cy="400" r="7" fill="#000000" opacity="0.08"/>
+        <circle cx="1060" cy="430" r="3" fill="#000000" opacity="0.16"/>
+        <circle cx="730" cy="440" r="6" fill="#000000" opacity="0.09"/>
+        <circle cx="1150" cy="460" r="5" fill="#000000" opacity="0.1"/>
+        <circle cx="1090" cy="490" r="10" fill="#000000" opacity="0.07"/>
+        <circle cx="680" cy="510" r="3" fill="#000000" opacity="0.14"/>
+        <circle cx="1140" cy="530" r="4" fill="#000000" opacity="0.12"/>
+        <circle cx="1060" cy="560" r="6" fill="#000000" opacity="0.08"/>
+        <circle cx="710" cy="570" r="3" fill="#000000" opacity="0.16"/>
+        <circle cx="1160" cy="590" r="8" fill="#000000" opacity="0.07"/>
+        <circle cx="950" cy="590" r="3" fill="#000000" opacity="0.12"/>
+        <circle cx="100" cy="40" r="4" fill="#000000" opacity="0.1"/>
+        <circle cx="170" cy="70" r="3" fill="#000000" opacity="0.14"/>
+        <circle cx="60" cy="550" r="5" fill="#000000" opacity="0.08"/>
+        <circle cx="140" cy="580" r="3" fill="#000000" opacity="0.12"/>
+        <circle cx="250" cy="35" r="3" fill="#000000" opacity="0.1"/>
+        <circle cx="80" cy="300" r="4" fill="#000000" opacity="0.08"/>
+        <circle cx="200" cy="590" r="4" fill="#000000" opacity="0.07"/>
+        <circle cx="850" cy="590" r="3" fill="#000000" opacity="0.1"/>
+        <line x1="680" y1="30" x2="750" y2="55" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
+        <line x1="830" y1="35" x2="900" y2="60" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="1040" y1="62" x2="1110" y2="40" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="790" y1="120" x2="870" y2="95" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
+        <line x1="1030" y1="130" x2="1100" y2="105" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
+        <line x1="1100" y1="330" x2="1160" y2="350" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="1130" y1="400" x2="1060" y2="430" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="1090" y1="490" x2="1140" y2="530" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
+        <line x1="1060" y1="560" x2="1160" y2="590" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+        <line x1="100" y1="40" x2="170" y2="70" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
+      </svg>
+    </div>
+    <div class="warm-bar"></div>
+    <div class="left">
+      <div class="accent-mark"></div>
       <h1 class="headline">{{headline}}</h1>
       {{#if subtext}}
       <p class="subtext">{{subtext}}</p>
       {{/if}}
+      <div class="brand-left">
+        <svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg"><path d="M 4.448 1.186 C 9.412 -1.598 16.505 0.685 20.293 6.29 C 24.08 11.895 23.127 18.694 18.165 21.479 C 22.385 19.113 23.194 13.33 19.975 8.567 C 16.755 3.805 10.723 1.862 6.506 4.229 C 2.286 6.598 1.477 12.377 4.694 17.142 C 7.914 21.905 13.942 23.848 18.162 21.479 C 13.197 24.266 6.104 21.98 2.317 16.375 C -1.468 10.773 -0.515 3.971 4.447 1.186 Z" fill="{{ds.textDisabled}}" opacity="0.5"/></svg>
+        <span class="brand-name">Flywheel</span>
+      </div>
     </div>
-    <div class="right-panel">
+    <div class="right">
       {{#each data_points}}
       <div class="list-item">
-        <div class="item-number">{{addOne @index}}</div>
+        <div class="item-num">{{addOne @index}}</div>
         <div class="item-text">{{this}}</div>
       </div>
       {{/each}}
     </div>
-    <div class="logo">Flywheel</div>
+    <span class="url">flywheelos.com</span>
+    <div class="warm-border"></div>
   </div>
 </body>
 </html>
