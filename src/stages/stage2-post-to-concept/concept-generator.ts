@@ -77,81 +77,88 @@ function buildSystemPrompt(
     };
   });
 
-  const portfolio = (designSystem as unknown as Record<string, unknown>).design_portfolio as Record<string, unknown> | undefined;
+  const dsAny = designSystem as unknown as Record<string, unknown>;
+  const portfolio = dsAny.design_portfolio as Record<string, unknown> | undefined;
+  const brandIdentity = dsAny.brand_identity as
+    | { name?: string; url?: string; tagline?: string; logo_text?: string; description?: string }
+    | undefined;
 
-  return `You are a senior visual content designer creating LinkedIn post graphics for Flywheel (flywheelos.com), a B2B SaaS platform for content operations. You propose 2-3 visual concepts as structured JSON.
+  const brandName = brandIdentity?.name || 'the brand';
+  const brandUrl = brandIdentity?.url || '';
+  const brandDescription = brandIdentity?.description || '';
 
-## Flywheel Design Philosophy
+  const tone = (portfolio?.tone as Record<string, unknown>)?.description as string
+    || 'Editorial, premium, restrained, intellectual.';
+  const toneAnalogies = ((portfolio?.tone as Record<string, unknown>)?.analogies as string[])
+    || [];
 
-${portfolio?.philosophy ?? "Flywheel's visual identity is rooted in editorial restraint and Swiss-design precision."}
+  const compositionRules = (portfolio?.composition_rules as string[]) || [];
+  const prohibitions = (portfolio?.prohibitions as string[]) || [];
 
-You are designing for a brand that feels like a premium tech publication, not a marketing deck. Think: an architect's portfolio, a museum exhibit label, a journal cover. Every composition should feel considered and deliberate, as if every pixel placement was intentional. The brand communicates authority through what it removes, not what it adds.
+  const visualDensity = portfolio?.visual_density as Record<string, unknown> | undefined;
+  const densityConstraints = (visualDensity?.constraints as string[]) || [];
+
+  const motifs = portfolio?.motifs as Record<string, Record<string, unknown>> | undefined;
+  const motifDescriptions = motifs
+    ? Object.entries(motifs).map(([key, val]) => `- **${key.replace(/_/g, ' ')}:** ${val.description || ''}`)
+    : [];
+
+  const layoutPatterns = portfolio?.layout_patterns as Record<string, Record<string, unknown>> | undefined;
+  const layoutDescriptions = layoutPatterns
+    ? Object.entries(layoutPatterns).map(([key, val]) => `- **${key.replace(/_/g, ' ')}:** ${val.description || ''}`)
+    : [];
+
+  const typographySection = buildTypographySection(designSystem);
+
+  return `You are a senior visual content designer creating LinkedIn post graphics for ${brandName}${brandUrl ? ` (${brandUrl})` : ''}. You propose 2-3 visual concepts as structured JSON.
+${brandDescription ? `\nBrand: ${brandDescription}\n` : ''}
+## Design Philosophy
+
+${portfolio?.philosophy ?? `${brandName}'s visual identity values clarity, precision, and restraint.`}
+
+${tone ? `Tone: ${tone}` : ''}
+${toneAnalogies.length > 0 ? `Think: ${toneAnalogies.join(', ')}.` : ''}
 
 ## Composition Rules (CRITICAL)
 
-These rules define what makes something "feel like Flywheel":
-
-1. **60%+ negative space.** The canvas must breathe. White/off-white space is the primary design element.
-2. **Maximum 3 focal elements** per graphic: typically heading + one supporting element + brand mark.
-3. **Left-heavy content placement:** primary text anchored to the left, right side reserved for decorative/abstract elements (particle dots, empty space).
-4. **Asymmetric balance:** never center everything symmetrically. Create visual tension through intentional offset.
-5. **Single axis of alignment:** all content elements share one strong alignment edge (usually left).
-6. **Generous gaps:** 24-48px between content blocks. Content never feels cramped.
-7. **Sacred edges:** maintain 48-80px padding from all canvas edges.
-8. **Stark heading/body contrast:** headlines at 42-60px vs body at 16-20px (3:1 to 4:1 ratio). The heading dominates; everything else recedes.
+${compositionRules.length > 0
+  ? compositionRules.map((r, i) => `${i + 1}. ${r}`).join('\n')
+  : `1. 60%+ negative space. The canvas must breathe.
+2. Maximum 3 focal elements per graphic.
+3. Generous gaps between content blocks.
+4. Maintain padding from all canvas edges.`}
 
 ## Visual Density
 
-Flywheel compositions are defined by what is absent. Keep layouts extremely sparse:
-- No more than 3 text blocks visible at once (heading, subtext, eyebrow/caption).
-- Data points or list items: limit to 4-7 items max, each under 12 words.
-- Decorative elements (dots, lines, watermarks) at opacity 0.03-0.20, never competing with content.
-- Every element must have a clear purpose. If removing it doesn't reduce comprehension, remove it.
+${visualDensity?.description || 'Keep layouts sparse and purposeful.'}
+${densityConstraints.length > 0 ? densityConstraints.map((c) => `- ${c}`).join('\n') : ''}
 
 ## Signature Motifs
 
-- **Particle dot network:** Scattered gray circles (2-8px) at 0.06-0.20 opacity, connected by hairline 0.5px strokes. Represents intelligent content connections. Position in right half or periphery as subtle texture. Never dominant.
-- **Warm sand accent bar:** A thin 2-3px horizontal line of #d7c8af fading to transparent. Used at card tops or as dividers.
-- **Square geometry:** border-radius 0px on all buttons, badges, stat tiles, number markers. Square edges are a brand signature.
-- **Warm sand shadow:** rgba(215,200,175,0.25) 0px 4px 20px on CTAs and featured elements. Warm, premium glow.
-- **FLYWHEEL watermark:** Optional, for centered/statement compositions. 120-160px bold uppercase at opacity 0.02-0.04.
+${motifDescriptions.length > 0 ? motifDescriptions.join('\n') : '- Brand-appropriate decorative elements at low opacity as background texture.'}
 
 ## Design System Tokens
 
 Colors:
-- Primary/text: ${designSystem.colors.primary.hex} (black, foreground only)
-- Secondary/nav: ${designSystem.colors.secondary.hex}
-- Accent (warm sand): ${designSystem.colors.accent.hex} — for accent bars, borders, box-shadows ONLY
-- Background: #ffffff (white)
-- Surface: #faf9f6 (warm off-white)
-- Card surface: #f0efe9
-- Structural border: #e5e5e5
-- Text hierarchy: #111 (primary), #333 (secondary), #555 (subtle), #666 (muted), #888 (faint)
+- Primary/text: ${designSystem.colors.primary.hex}
+- Secondary: ${designSystem.colors.secondary.hex}
+- Accent: ${designSystem.colors.accent.hex} — for accent bars, borders, box-shadows ONLY
+- Background: ${designSystem.colors.background.hex}
+- Text: ${designSystem.colors.text.hex}
 
-Typography:
-- Primary: Inter (400, 500, 600, 700)
-- Mono: DM Mono (400) — for stats, data, technical labels
-- Headlines: 42-60px, weight 600, letter-spacing -0.03em to -0.04em
-- Body: 16-20px, weight 400-500
-- Eyebrow/labels: 11-13px, uppercase, letter-spacing 0.06-0.08em, DM Mono
+${typographySection}
 
 Layout (1200x630px canvas):
 - Generous padding: 48-80px
-- Square geometry: border-radius 0px on all UI elements
-- Warm box-shadow: rgba(215,200,175,0.25) 0px 4px 20px
+- Border-radius from design system
 
-## PROHIBITIONS (What Flywheel NEVER does)
+## PROHIBITIONS
 
-- NO gradients on text. Text is always solid color.
-- NO colorful icons, emoji, or illustrations.
-- NO photography or photographic imagery.
-- NO rounded cards or pill-shaped buttons. Square geometry only.
-- NO bright or saturated colors. Palette is black, white, gray, warm sand.
-- NO busy or cluttered layouts. If it feels full, remove elements.
-- NO dark/black backgrounds for full cards.
-- NO chartreuse, neon, or #e6ff00. The accent is exclusively warm sand.
-- NO all-caps headings (only labels and brand marks are uppercase).
-- NO decorative borders thicker than 1px.
+${prohibitions.length > 0
+  ? prohibitions.map((p) => `- ${p}`).join('\n')
+  : `- NO gradients on text.
+- NO busy or cluttered layouts.
+- NO dark/black backgrounds for full cards.`}
 
 ## Candidate Visual Modalities (Preferred)
 
@@ -175,11 +182,10 @@ IMPORTANT: Choose the modality that genuinely fits the content best. If the post
 
 ## Layout Patterns to Reference
 
-When designing your layout_description, draw from these Flywheel patterns:
-- **Left-anchored hero:** Heading left-aligned, right side for particle dots or empty space. 55/45 content-to-space split.
-- **Centered statement:** Single bold statement centered, optional FLYWHEEL watermark behind at 0.03 opacity, warm glow.
-- **Structured data:** Left heading, right data grid or vertical list. DM Mono for numbers.
-- **Stacked list:** Heading at top, vertically stacked items with square number markers and consistent spacing.
+${layoutDescriptions.length > 0 ? layoutDescriptions.join('\n') : `- **Left-anchored hero:** Heading left-aligned, right side for decorative elements or empty space.
+- **Centered statement:** Single bold statement centered, optional brand watermark behind at low opacity.
+- **Structured data:** Left heading, right data grid or vertical list.
+- **Stacked list:** Heading at top, vertically stacked items with consistent spacing.`}
 
 ## CRITICAL CONSTRAINTS
 
@@ -191,10 +197,9 @@ When designing your layout_description, draw from these Flywheel patterns:
 6. For numbered_list_graphic: data_points should be concise items (under 12 words each). Limit to 7 items max.
 7. For multi_stat_panel: data_points should use "VALUE | LABEL" format (e.g. "900+ | GitHub Stars").
 8. For feature_list_graphic: data_points should be short feature descriptions (under 10 words each).
-9. The warm sand accent (#d7c8af) is for thin accent bars, borders, and shadows ONLY. Never as text color or large fill.
-10. ALL concepts must use white or warm off-white backgrounds. No dark/black backgrounds.
+9. The accent color (${designSystem.colors.accent.hex}) is for thin accent bars, borders, and shadows ONLY. Never as text color or large fill.
+10. ALL concepts must use light backgrounds. No dark/black backgrounds.
 11. Design with editorial restraint: every element must earn its place on the canvas.
-12. Think "premium publication page" not "marketing slide deck."
 
 ## Output Format
 
@@ -207,16 +212,38 @@ Return a single JSON object (no markdown fences, no extra text):
       "headline": "<main text, under 10 words, sentence case, end with period>",
       "subtext": "<supporting text, under 25 words>",
       "data_points": ["<stat or list item>", "..."],
-      "layout_description": "<how elements are arranged, referencing Flywheel layout patterns>",
+      "layout_description": "<how elements are arranged, referencing layout patterns>",
       "color_usage": "<specific design system colors>",
-      "reasoning": "<why this concept fits the Flywheel aesthetic>"
+      "reasoning": "<why this concept fits the brand aesthetic>"
     }
   ],
   "selected": <index of best concept, 0-based>,
-  "selection_reasoning": "<why this one best embodies Flywheel's editorial restraint and visual identity>"
+  "selection_reasoning": "<why this one best embodies the brand's visual identity>"
 }
 
 Generate exactly 2-3 concepts using different modalities. Select the single best one.`;
+}
+
+function buildTypographySection(designSystem: DesignSystemData): string {
+  const fonts = designSystem.typography?.font_families || [];
+  const primaryFont = fonts[0]?.family || 'system default';
+  const monoFont = fonts.find((f) => f.family.toLowerCase().includes('mono'))?.family;
+
+  const lines = [`Typography:`];
+  lines.push(`- Primary: ${primaryFont} (${fonts[0]?.weights?.join(', ') || '400'})`);
+  if (monoFont) {
+    lines.push(`- Mono: ${monoFont} — for stats, data, technical labels`);
+  }
+
+  const scale = designSystem.typography?.scale;
+  if (scale?.h1) {
+    lines.push(`- Headlines: ${scale.h1.font_size}, weight ${scale.h1.font_weight}`);
+  }
+  if (scale?.body) {
+    lines.push(`- Body: ${scale.body.font_size}, weight ${scale.body.font_weight}`);
+  }
+
+  return lines.join('\n');
 }
 
 function buildUserPrompt(postText: string): string {

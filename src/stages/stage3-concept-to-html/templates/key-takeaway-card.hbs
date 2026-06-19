@@ -127,61 +127,7 @@
 <body>
   <div class="canvas">
     <div class="dot-field">
-      <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="55" cy="35" r="5" opacity="0.1"/>
-        <circle cx="130" cy="58" r="9" opacity="0.07"/>
-        <circle cx="200" cy="40" r="3" opacity="0.16"/>
-        <circle cx="920" cy="30" r="12" opacity="0.06"/>
-        <circle cx="990" cy="55" r="6" opacity="0.12"/>
-        <circle cx="1060" cy="35" r="4" opacity="0.15"/>
-        <circle cx="1130" cy="60" r="15" opacity="0.06"/>
-        <circle cx="1170" cy="38" r="3" opacity="0.2"/>
-        <circle cx="75" cy="100" r="4" opacity="0.12"/>
-        <circle cx="145" cy="125" r="7" opacity="0.08"/>
-        <circle cx="1100" cy="95" r="3" opacity="0.18"/>
-        <circle cx="1160" cy="130" r="10" opacity="0.07"/>
-        <circle cx="1040" cy="115" r="4" opacity="0.14"/>
-        <circle cx="50" cy="180" r="6" opacity="0.08"/>
-        <circle cx="1150" cy="185" r="5" opacity="0.1"/>
-        <circle cx="1080" cy="215" r="3" opacity="0.16"/>
-        <circle cx="40" cy="255" r="8" opacity="0.07"/>
-        <circle cx="115" cy="280" r="3" opacity="0.14"/>
-        <circle cx="1170" cy="260" r="6" opacity="0.08"/>
-        <circle cx="1100" cy="305" r="14" opacity="0.06"/>
-        <circle cx="60" cy="345" r="4" opacity="0.12"/>
-        <circle cx="1140" cy="355" r="4" opacity="0.12"/>
-        <circle cx="1060" cy="385" r="3" opacity="0.16"/>
-        <circle cx="50" cy="420" r="5" opacity="0.08"/>
-        <circle cx="125" cy="445" r="3" opacity="0.14"/>
-        <circle cx="1160" cy="425" r="8" opacity="0.07"/>
-        <circle cx="1090" cy="455" r="3" opacity="0.18"/>
-        <circle cx="60" cy="490" r="7" opacity="0.07"/>
-        <circle cx="1130" cy="495" r="5" opacity="0.1"/>
-        <circle cx="1050" cy="525" r="4" opacity="0.12"/>
-        <circle cx="70" cy="540" r="10" opacity="0.06"/>
-        <circle cx="145" cy="565" r="3" opacity="0.14"/>
-        <circle cx="1160" cy="550" r="6" opacity="0.08"/>
-        <circle cx="1080" cy="580" r="3" opacity="0.16"/>
-        <circle cx="55" cy="590" r="4" opacity="0.1"/>
-        <circle cx="200" cy="580" r="3" opacity="0.08"/>
-        <circle cx="950" cy="580" r="5" opacity="0.07"/>
-        <circle cx="850" cy="35" r="3" opacity="0.1"/>
-        <circle cx="750" cy="590" r="4" opacity="0.08"/>
-        <circle cx="350" cy="30" r="4" opacity="0.08"/>
-        <circle cx="500" cy="595" r="3" opacity="0.07"/>
-        <circle cx="650" cy="32" r="3" opacity="0.08"/>
-        <circle cx="450" cy="598" r="4" opacity="0.06"/>
-        <line x1="55" y1="35" x2="130" y2="58" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="920" y1="30" x2="990" y2="55" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
-        <line x1="1060" y1="35" x2="1130" y2="60" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="75" y1="100" x2="145" y2="125" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
-        <line x1="1160" y1="130" x2="1100" y2="95" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
-        <line x1="1100" y1="305" x2="1140" y2="355" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="1160" y1="425" x2="1090" y2="455" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="1130" y1="495" x2="1050" y2="525" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
-        <line x1="70" y1="540" x2="145" y2="565" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="1160" y1="550" x2="1080" y2="580" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-      </svg>
+      {{{ds.decorativePatternSvg}}}
     </div>
     <div class="warm-bar"></div>
     <div class="card">
@@ -194,10 +140,10 @@
     </div>
     <div class="footer">
       <div class="brand">
-        <svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg"><path d="M 4.448 1.186 C 9.412 -1.598 16.505 0.685 20.293 6.29 C 24.08 11.895 23.127 18.694 18.165 21.479 C 22.385 19.113 23.194 13.33 19.975 8.567 C 16.755 3.805 10.723 1.862 6.506 4.229 C 2.286 6.598 1.477 12.377 4.694 17.142 C 7.914 21.905 13.942 23.848 18.162 21.479 C 13.197 24.266 6.104 21.98 2.317 16.375 C -1.468 10.773 -0.515 3.971 4.447 1.186 Z" fill="{{ds.textDisabled}}" opacity="0.5"/></svg>
-        <span class="brand-name">Flywheel</span>
+        {{#if ds.logoSvg}}{{{ds.logoSvg}}}{{/if}}
+        <span class="brand-name">{{ds.brandName}}</span>
       </div>
-      <span class="url">flywheelos.com</span>
+      <span class="url">{{ds.brandUrl}}</span>
     </div>
   </div>
 </body>

@@ -155,59 +155,7 @@
 <body>
   <div class="canvas">
     <div class="dot-field">
-      <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="550" cy="32" r="5" fill="#000000" opacity="0.1"/>
-        <circle cx="620" cy="55" r="8" fill="#000000" opacity="0.08"/>
-        <circle cx="700" cy="38" r="3" fill="#000000" opacity="0.16"/>
-        <circle cx="780" cy="60" r="12" fill="#000000" opacity="0.06"/>
-        <circle cx="860" cy="35" r="4" fill="#000000" opacity="0.14"/>
-        <circle cx="940" cy="62" r="7" fill="#000000" opacity="0.09"/>
-        <circle cx="1020" cy="40" r="14" fill="#000000" opacity="0.06"/>
-        <circle cx="1090" cy="65" r="5" fill="#000000" opacity="0.12"/>
-        <circle cx="1150" cy="38" r="3" fill="#000000" opacity="0.2"/>
-        <circle cx="580" cy="100" r="4" fill="#000000" opacity="0.12"/>
-        <circle cx="660" cy="120" r="6" fill="#000000" opacity="0.08"/>
-        <circle cx="750" cy="95" r="3" fill="#000000" opacity="0.16"/>
-        <circle cx="840" cy="115" r="10" fill="#000000" opacity="0.07"/>
-        <circle cx="930" cy="100" r="4" fill="#000000" opacity="0.14"/>
-        <circle cx="1010" cy="130" r="5" fill="#000000" opacity="0.1"/>
-        <circle cx="1100" cy="105" r="15" fill="#000000" opacity="0.06"/>
-        <circle cx="1160" cy="135" r="3" fill="#000000" opacity="0.18"/>
-        <circle cx="600" cy="180" r="5" fill="#000000" opacity="0.1"/>
-        <circle cx="1140" cy="190" r="4" fill="#000000" opacity="0.12"/>
-        <circle cx="1080" cy="220" r="7" fill="#000000" opacity="0.07"/>
-        <circle cx="700" cy="240" r="3" fill="#000000" opacity="0.14"/>
-        <circle cx="1160" cy="260" r="6" fill="#000000" opacity="0.08"/>
-        <circle cx="1100" cy="310" r="4" fill="#000000" opacity="0.12"/>
-        <circle cx="800" cy="320" r="8" fill="#000000" opacity="0.06"/>
-        <circle cx="1150" cy="350" r="3" fill="#000000" opacity="0.16"/>
-        <circle cx="1080" cy="380" r="14" fill="#000000" opacity="0.06"/>
-        <circle cx="650" cy="390" r="4" fill="#000000" opacity="0.1"/>
-        <circle cx="1140" cy="420" r="5" fill="#000000" opacity="0.1"/>
-        <circle cx="1060" cy="450" r="3" fill="#000000" opacity="0.16"/>
-        <circle cx="730" cy="460" r="6" fill="#000000" opacity="0.07"/>
-        <circle cx="1160" cy="480" r="8" fill="#000000" opacity="0.07"/>
-        <circle cx="1090" cy="510" r="4" fill="#000000" opacity="0.12"/>
-        <circle cx="600" cy="520" r="3" fill="#000000" opacity="0.14"/>
-        <circle cx="1140" cy="540" r="6" fill="#000000" opacity="0.08"/>
-        <circle cx="1060" cy="570" r="3" fill="#000000" opacity="0.16"/>
-        <circle cx="700" cy="560" r="5" fill="#000000" opacity="0.08"/>
-        <circle cx="1160" cy="590" r="10" fill="#000000" opacity="0.06"/>
-        <circle cx="850" cy="580" r="3" fill="#000000" opacity="0.1"/>
-        <circle cx="950" cy="595" r="4" fill="#000000" opacity="0.07"/>
-        <circle cx="550" cy="590" r="3" fill="#000000" opacity="0.08"/>
-        <circle cx="1000" cy="580" r="3" fill="#000000" opacity="0.1"/>
-        <line x1="550" y1="32" x2="620" y2="55" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
-        <line x1="780" y1="60" x2="860" y2="35" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="1020" y1="40" x2="1090" y2="65" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="660" y1="120" x2="750" y2="95" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
-        <line x1="930" y1="100" x2="1010" y2="130" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
-        <line x1="1100" y1="310" x2="1150" y2="350" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="1080" y1="380" x2="1140" y2="420" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="1060" y1="450" x2="1160" y2="480" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
-        <line x1="1090" y1="510" x2="1140" y2="540" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="1060" y1="570" x2="1160" y2="590" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-      </svg>
+      {{{ds.decorativePatternSvg}}}
     </div>
     <div class="warm-bar"></div>
     <div class="stat-side">
@@ -246,9 +194,10 @@
       {{/if}}
     </div>
     <div class="footer">
-      <svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg"><path d="M 4.448 1.186 C 9.412 -1.598 16.505 0.685 20.293 6.29 C 24.08 11.895 23.127 18.694 18.165 21.479 C 22.385 19.113 23.194 13.33 19.975 8.567 C 16.755 3.805 10.723 1.862 6.506 4.229 C 2.286 6.598 1.477 12.377 4.694 17.142 C 7.914 21.905 13.942 23.848 18.162 21.479 C 13.197 24.266 6.104 21.98 2.317 16.375 C -1.468 10.773 -0.515 3.971 4.447 1.186 Z" fill="{{ds.textDisabled}}" opacity="0.5"/></svg>
-      <span class="brand-name">Flywheel</span>
+      {{#if ds.logoSvg}}{{{ds.logoSvg}}}{{/if}}
+      <span class="brand-name">{{ds.brandName}}</span>
     </div>
+    <span class="url" style="position:absolute;bottom:28px;left:48px;font-family:{{{ds.monoFamily}}};font-size:11px;color:{{ds.textFaint}};">{{ds.brandUrl}}</span>
     <div class="warm-border"></div>
   </div>
 </body>

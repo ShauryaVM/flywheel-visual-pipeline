@@ -8,12 +8,22 @@ const log = createStageLogger('stage1:extractor');
 // Output type matching the target design system JSON structure
 // ---------------------------------------------------------------------------
 
+export interface BrandIdentity {
+  name: string;
+  url: string;
+  tagline: string;
+  logo_text: string;
+  description: string;
+  decorative_pattern_svg: string;
+}
+
 export interface DesignSystemOutput {
   metadata: {
     source_url: string;
     crawled_at: string;
     pages_analyzed: string[];
   };
+  brand_identity?: BrandIdentity;
   colors: {
     primary: { hex: string; usage: string };
     secondary: { hex: string; usage: string };
@@ -67,15 +77,132 @@ export async function analyzeDesignSystem(
   rawData: RawCrawlData,
   apiKey: string,
 ): Promise<DesignSystemOutput> {
+  let result: DesignSystemOutput;
   try {
-    return await analyzeWithClaude(rawData, apiKey);
+    result = await analyzeWithClaude(rawData, apiKey);
   } catch (err) {
     log.warn(
       { error: (err as Error).message },
       'Claude analysis failed, falling back to local heuristic analysis',
     );
-    return analyzeLocally(rawData);
+    result = analyzeLocally(rawData);
   }
+
+  if (!result.brand_identity) {
+    try {
+      result.brand_identity = await extractBrandIdentity(rawData, result, apiKey);
+      log.info({ brandName: result.brand_identity.name }, 'Brand identity extracted');
+    } catch (err) {
+      log.warn(
+        { error: (err as Error).message },
+        'Brand identity extraction failed, using fallback',
+      );
+      result.brand_identity = buildFallbackBrandIdentity(rawData, result);
+    }
+  }
+
+  return result;
+}
+
+// ---------------------------------------------------------------------------
+// Brand identity extraction — uses Claude to infer brand name, tagline, etc.
+// ---------------------------------------------------------------------------
+
+async function extractBrandIdentity(
+  rawData: RawCrawlData,
+  designSystem: DesignSystemOutput,
+  apiKey: string,
+): Promise<BrandIdentity> {
+  const client = new Anthropic({ apiKey });
+
+  const siteUrl = designSystem.metadata.source_url || rawData.pages[0]?.url || '';
+  const pageTitles = rawData.pages.map((p) => p.title).filter(Boolean);
+  const logoText = rawData.logoCandidates
+    .filter((l) => l.source.includes('text-logo'))
+    .map((l) => l.alt)
+    .filter(Boolean);
+  const headings = rawData.pages
+    .flatMap((p) => p.elements.filter((e) => e.selector === 'h1' || e.selector === 'h2'))
+    .map((e) => e.textPreview)
+    .filter(Boolean)
+    .slice(0, 10);
+
+  const prompt = `Analyze this website data and produce a brand identity JSON object.
+
+Website URL: ${siteUrl}
+Page titles: ${JSON.stringify(pageTitles)}
+Logo text found: ${JSON.stringify(logoText)}
+Key headings: ${JSON.stringify(headings)}
+Logo SVG available: ${!!designSystem.logo.svg_data}
+Primary color: ${designSystem.colors.primary.hex}
+Accent color: ${designSystem.colors.accent.hex}
+
+Additionally, generate a decorative SVG pattern (1200x630px) that matches this brand's visual language. The pattern should be subtle (low opacity elements) suitable as a background texture for social media graphics. Consider the site's aesthetic:
+- If the site uses circular/dot elements, generate scattered circles
+- If geometric, use geometric shapes
+- If minimal, use very sparse subtle dots
+- Always keep elements at opacity 0.04-0.20 so they never compete with content
+
+Return ONLY a JSON object with these fields:
+{
+  "name": "Company Name",
+  "url": "domain.com (no protocol)",
+  "tagline": "Their main tagline or value proposition",
+  "logo_text": "BRAND NAME (uppercase version for watermarks)",
+  "description": "1-2 sentence description of what the company does and its brand personality",
+  "decorative_pattern_svg": "<svg width=\\"1200\\" height=\\"630\\" xmlns=\\"http://www.w3.org/2000/svg\\">...pattern elements...</svg>"
+}`;
+
+  const response = await client.messages.create({
+    model: 'claude-sonnet-4-6',
+    max_tokens: 4096,
+    messages: [{ role: 'user', content: prompt }],
+    system: 'You are a brand analyst. Return only valid JSON, no markdown fences or explanation.',
+  });
+
+  const textBlock = response.content.find((b) => b.type === 'text');
+  if (!textBlock || textBlock.type !== 'text') {
+    throw new Error('No text response for brand identity');
+  }
+
+  let jsonStr = textBlock.text.trim();
+  const fenceMatch = jsonStr.match(/^```(?:json)?\s*\n([\s\S]*?)\n```$/);
+  if (fenceMatch?.[1]) jsonStr = fenceMatch[1];
+
+  return JSON.parse(jsonStr) as BrandIdentity;
+}
+
+function buildFallbackBrandIdentity(
+  rawData: RawCrawlData,
+  designSystem: DesignSystemOutput,
+): BrandIdentity {
+  const siteUrl = designSystem.metadata.source_url || rawData.pages[0]?.url || '';
+  const hostname = siteUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
+  const textLogo = rawData.logoCandidates.find((l) => l.source.includes('text-logo'));
+  const name = textLogo?.alt || hostname.split('.')[0] || 'Brand';
+  const capitalName = name.charAt(0).toUpperCase() + name.slice(1);
+
+  return {
+    name: capitalName,
+    url: hostname,
+    tagline: '',
+    logo_text: capitalName.toUpperCase(),
+    description: `${capitalName} — brand visual identity extracted from ${hostname}.`,
+    decorative_pattern_svg: generateFallbackPatternSvg(),
+  };
+}
+
+function generateFallbackPatternSvg(): string {
+  const circles: string[] = [];
+  const rng = (min: number, max: number) => Math.floor(Math.random() * (max - min)) + min;
+  for (let i = 0; i < 40; i++) {
+    const cx = rng(40, 1160);
+    const cy = rng(30, 600);
+    const r = rng(2, 12);
+    const opacity = (rng(5, 18) / 100).toFixed(2);
+    circles.push(`<circle cx="${cx}" cy="${cy}" r="${r}" fill="#000000" opacity="${opacity}"/>`);
+  }
+  return `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">${circles.join('')}</svg>`;
 }
 
 // ---------------------------------------------------------------------------

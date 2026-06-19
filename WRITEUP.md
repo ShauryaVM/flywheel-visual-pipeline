@@ -63,6 +63,28 @@ The design system extraction (Stage 1) goes beyond typical CSS token scraping. `
 
 This goes from "here are some colors and fonts" to "here is the brand's compositional DNA." The concept generator receives all of this, which is why its outputs feel like Flywheel rather than generic LinkedIn graphics.
 
+## Generic pipeline: supporting any brand
+
+The pipeline is now fully generic. When pointed at any company's website, it produces visuals that look like they're from that company. No Flywheel-specific hardcoding remains.
+
+### How it works
+
+1. **Stage 1 extracts brand identity.** When the extractor runs on a new site, it captures `brand_identity` (name, URL, tagline, description) and generates a `decorative_pattern_svg` that matches the site's visual language. These fields are stored in `data/design-system.json` as the single source of truth.
+
+2. **Templates are fully dynamic.** All 9 Handlebars templates use template variables (`{{ds.brandName}}`, `{{ds.brandUrl}}`, `{{{ds.logoSvg}}}`, `{{{ds.decorativePatternSvg}}}`, `{{ds.logoText}}`) instead of any hardcoded brand elements.
+
+3. **The concept generator prompt is data-driven.** The system prompt reads composition rules, prohibitions, motifs, tone, and brand description from the design system JSON. When you switch to a new brand, the prompt automatically reflects that brand's aesthetic.
+
+### Using with a new company
+
+1. Set `TARGET_URL=https://newcompany.com` in `.env`
+2. Run Stage 1: `npx tsx src/stages/stage1-design-system/index.ts` — this re-crawls the target site and produces a new `data/design-system.json` with the new brand's identity, colors, typography, and design portfolio.
+3. Run the full pipeline as normal — Stages 2–4 will automatically use the new brand data.
+
+### Backward compatibility
+
+The existing `data/design-system.json` for Flywheel has all new fields populated with Flywheel-specific data, so the pipeline continues to produce identical Flywheel visuals without any changes.
+
 ## What I'd build next
 
 With another week, the priorities would be:

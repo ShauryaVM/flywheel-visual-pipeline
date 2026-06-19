@@ -7,12 +7,22 @@ export type { VisualModality, PostClassification };
 // ---------------------------------------------------------------------------
 // Design system type (matches data/design-system.json shape directly)
 // ---------------------------------------------------------------------------
+export interface BrandIdentity {
+  name: string;
+  url: string;
+  tagline: string;
+  logo_text: string;
+  description: string;
+  decorative_pattern_svg: string;
+}
+
 export interface DesignSystemData {
   metadata: {
     source_url: string;
     crawled_at: string;
     pages_analyzed: string[];
   };
+  brand_identity?: BrandIdentity;
   colors: {
     primary: { hex: string; usage: string };
     secondary: { hex: string; usage: string };

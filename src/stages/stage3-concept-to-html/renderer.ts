@@ -146,8 +146,21 @@ function resolveTemplateId(modality: string): string {
 
 /**
  * Build a flat design-tokens object for template consumption.
+ * Includes brand identity fields so templates can be fully dynamic.
  */
 function buildDesignTokens(ds: DesignSystemData) {
+  const brandIdentity = ds.brand_identity;
+
+  const dsAny = ds as unknown as Record<string, unknown>;
+  const logoFull = dsAny.logo as
+    | { svg_data?: string; header?: { svg_icon?: string; wordmark?: string } }
+    | undefined;
+
+  const brandName = brandIdentity?.name || logoFull?.header?.wordmark || extractNameFromUrl(ds.metadata.source_url || '');
+  const brandUrl = brandIdentity?.url || ds.metadata.source_url?.replace(/^https?:\/\//, '').replace(/\/$/, '') || '';
+  const logoSvg = ds.logo?.svg_data || logoFull?.header?.svg_icon || '';
+  const decorativePatternSvg = brandIdentity?.decorative_pattern_svg || '';
+
   return {
     primary: ds.colors.primary.hex,
     secondary: ds.colors.secondary.hex,
@@ -173,7 +186,19 @@ function buildDesignTokens(ds: DesignSystemData) {
     radiusSm: ds.borders.radius.sm,
     radiusMd: ds.borders.radius.md,
     radiusLg: ds.borders.radius.lg,
+    brandName,
+    brandUrl,
+    logoSvg,
+    logoText: brandIdentity?.logo_text || brandName.toUpperCase(),
+    decorativePatternSvg,
   };
+}
+
+function extractNameFromUrl(url: string): string {
+  const hostname = url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+  const parts = hostname.split('.');
+  const name = parts[0] === 'www' ? (parts[1] || 'Brand') : (parts[0] || 'Brand');
+  return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
 /**
