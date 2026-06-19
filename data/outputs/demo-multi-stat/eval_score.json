@@ -1,0 +1,9 @@
+{
+  "onBrand": 5,
+  "legible": 4,
+  "clearHierarchy": 4,
+  "notGeneric": 6,
+  "overall": 4.75,
+  "critique": "The stat displayed reads '900+ GitHub stars' as a single string inside the stat-value div, making it look like a run-on label rather than a bold numeric hero. The number itself should be isolated at 100px and the descriptor placed separately in the stat-unit element below—right now the font shrinks to fit the long string and loses all visual punch. The two-column layout concept is solid and on-brand directionally, but the warm sand accent (#d7c8af) only appears as a 3px top bar and a 40px divider, which is too subtle to register the palette. The background tint on the stat side (#faf9f6) is a nice Swiss-restraint touch. The dot-field constellation SVG is a reasonable 'not generic' differentiator but the dots are so faint (opacity 0.06–0.16) they're invisible at card size. Headline at 32px competes weakly with the stat column—bump it to 42–48px per the design spec. The DM Mono eyebrow and stat-unit are correctly applied but the stat-unit string is empty, wasting the label slot. Fix: isolate '900+' as the numeric hero, move 'GitHub stars' to stat-unit, increase headline size, and raise dot opacity to 0.25–0.4 for visible texture.",
+  "passesThreshold": false
+}

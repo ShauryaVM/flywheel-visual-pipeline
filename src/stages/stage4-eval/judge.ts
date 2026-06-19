@@ -28,6 +28,7 @@ export async function judgeVisual(
 
   log.info('Evaluating visual quality');
 
+  const llmStart = Date.now();
   const response = await client.messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 2048,
@@ -45,6 +46,9 @@ export async function judgeVisual(
       },
     ],
   });
+  const llmLatency = Date.now() - llmStart;
+
+  log.info({ model: 'claude-sonnet-4-6', latencyMs: llmLatency }, 'LLM call');
 
   const textBlock = response.content.find((b) => b.type === 'text');
   if (!textBlock || textBlock.type !== 'text') {

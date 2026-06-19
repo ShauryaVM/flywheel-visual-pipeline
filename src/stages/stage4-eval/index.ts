@@ -21,10 +21,18 @@ export interface EvalInput {
 export async function runStage4(input: EvalInput): Promise<EvalScore> {
   const { htmlPath, postText, designSystemSummary, outputDir = 'data/outputs' } = input;
 
-  log.info({ htmlPath }, 'Stage 4: Eval + Feedback Loop');
+  log.info({ htmlPath }, 'Input');
 
+  const stageStart = Date.now();
   const html = await readFile(htmlPath, 'utf-8');
   const score = await judgeVisual(html, postText, designSystemSummary);
+  const latencyMs = Date.now() - stageStart;
+
+  log.info(
+    { overall: score.overall, onBrand: score.onBrand, legible: score.legible, clearHierarchy: score.clearHierarchy, notGeneric: score.notGeneric },
+    'Output',
+  );
+  log.info({ latencyMs }, 'Complete');
 
   await mkdir(outputDir, { recursive: true });
   const scorePath = join(outputDir, 'eval_score.json');

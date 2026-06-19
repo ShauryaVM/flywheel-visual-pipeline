@@ -1,0 +1,9 @@
+{
+  "onBrand": 8,
+  "legible": 9,
+  "clearHierarchy": 7,
+  "notGeneric": 6,
+  "overall": 7.5,
+  "critique": "The card largely honors the Flywheel design system: white/off-white background (#faf9f6), sand accent (#d7c8af) used for the thin bar and underline rule, Inter at correct weights, DM Mono for the URL, zero border-radius, left-anchored brand mark, and generous negative space. The warm-bar gradient top-edge is a nice editorial touch. However, several issues need fixing. First, hierarchy: the main quote and the subtext ('Every time.') are both centered, which flattens the visual flow — the system calls for left-anchored layouts, not center-aligned editorial cards, so this feels off-brand structurally. Second, the scattered dot constellation is creative but visually ambiguous and slightly noisy; it competes with the text field rather than framing it. Third, the massive faded 'FLYWHEEL' watermark behind the content is a common template move that undercuts the 'not generic' score — it reads as a stock-presentation cliché. Fourth, the 48px headline is within spec but the line 'Speed of iteration beats quality of hypothesis.' is not the original quote — it paraphrases rather than quotes, which may be intentional but risks misattribution. Actionable fixes: switch to left-anchored layout with the headline flush left at ~56px; remove or greatly reduce the oversized watermark; simplify the dot field to 4–6 carefully placed marks rather than 40+; restore the original Sequoia quote or clearly format it as a paraphrase.",
+  "passesThreshold": true
+}

@@ -1,0 +1,9 @@
+{
+  "onBrand": 8,
+  "legible": 7,
+  "clearHierarchy": 8,
+  "notGeneric": 7,
+  "overall": 7.5,
+  "critique": "Strong adherence to the Swiss-editorial design system: the black numbered squares, DM Mono usage, warm sand accent bar, and left-anchored two-column split all feel intentional and on-brand. The hierarchy works well — the headline pulls focus on the left, numbered list structures the right. However, several issues need addressing: (1) The item text at 14.5px with medium weight against #333333 on white is readable but the right column feels dense — increasing row padding from 10px to 14–16px would breathe better. (2) The dot-field SVG texture is visually interesting but the lines connecting dots look like a constellation graphic, which edges toward 'generic tech' rather than Swiss editorial — remove the connecting lines and reduce dot density by ~40%. (3) The left panel's accent mark at 32px wide feels undersized relative to the 30px headline; either extend it to 48px or remove it. (4) The brand logo at bottom-left is well-placed but the flywheel SVG renders at very low opacity (#aaaaaa at 0.5 opacity) making it nearly invisible — increase to #888888 at full opacity. (5) The right column item text truncates some course descriptions awkwardly ('research faster with Gemini and NotebookLM' is fine but 'generate images and videos' loses the 'high-quality' qualifier unnecessarily). The warm-sand gradient bar top strip is elegant and exactly on-brand.",
+  "passesThreshold": true
+}

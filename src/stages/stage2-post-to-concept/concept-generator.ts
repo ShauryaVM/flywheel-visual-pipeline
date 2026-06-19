@@ -25,12 +25,16 @@ export async function generateConcepts(
   const systemPrompt = buildSystemPrompt(designSystem, schema, candidates);
   const userPrompt = buildUserPrompt(postText);
 
+  const llmStart = Date.now();
   const response = await client.messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 4096,
     system: systemPrompt,
     messages: [{ role: 'user', content: userPrompt }],
   });
+  const llmLatency = Date.now() - llmStart;
+
+  log.info({ model: 'claude-sonnet-4-6', latencyMs: llmLatency }, 'LLM call');
 
   const textBlock = response.content.find((b) => b.type === 'text');
   if (!textBlock || textBlock.type !== 'text') {
@@ -49,6 +53,7 @@ export async function generateConcepts(
     {
       conceptCount: validated.concepts.length,
       selectedModality: validated.concepts[validated.selected]?.modality,
+      selectionReasoning: validated.selection_reasoning,
     },
     'Concepts generated and validated',
   );
@@ -178,7 +183,7 @@ When designing your layout_description, draw from these Flywheel patterns:
 
 ## CRITICAL CONSTRAINTS
 
-1. Do NOT use em dashes (--) or (\\u2014) ANYWHERE. Use commas, periods, or colons.
+1. Do NOT use em dashes in ANY form: no \u2014, no \u2013, no &mdash;, no &ndash;, no "--". Replace with commas, periods, colons, or two short sentences.
 2. Headlines MUST be under 10 words: punchy, direct, no filler.
 3. **Headline formatting (MANDATORY):** Use sentence case only. Capitalize the first word and proper nouns only, never title case. End statements with a period. Examples: "The volume gap is 1,000%." / "Seven free Google AI courses with certificates." / "900 stars in 48 hours." Never: "The Volume Gap Is 1,000%" or "7 Free Google AI Courses". Spell out numbers under 10 at the start of a headline.
 4. Subtext MUST be under 25 words, also sentence case with a period.

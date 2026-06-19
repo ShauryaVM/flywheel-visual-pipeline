@@ -164,11 +164,13 @@ If you're building in AI, follow the infrastructure money. That's where the next
 ];
 
 async function main() {
-  log.info(`Running demo with ${DEMO_POSTS.length} posts`);
+  const maxPosts = parseInt(process.env.DEMO_MAX_POSTS ?? '0', 10) || DEMO_POSTS.length;
+  const posts = DEMO_POSTS.slice(0, maxPosts);
+  log.info(`Running demo with ${posts.length} posts`);
 
   const results = [];
 
-  for (const post of DEMO_POSTS) {
+  for (const post of posts) {
     log.info(
       { id: post.id, expected: post.expectedModality },
       `Processing: ${post.id}`,
@@ -237,7 +239,7 @@ async function main() {
   }
 
   const successes = results.filter((r) => r.success).length;
-  console.log(`${successes}/${results.length} posts processed successfully.`);
+  console.log(`${successes}/${posts.length} posts processed successfully.`);
 }
 
 main().catch((err) => {

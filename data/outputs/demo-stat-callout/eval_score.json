@@ -1,0 +1,9 @@
+{
+  "onBrand": 8,
+  "legible": 7,
+  "clearHierarchy": 7,
+  "notGeneric": 8,
+  "overall": 7.5,
+  "critique": "The card largely respects the Flywheel system: off-white background, warm sand accent, DM Mono for data, Inter for body, square geometry, left-anchored layout. The dot-field constellation adds genuine personality and prevents the generic template feel. However, several issues undercut execution. The headline at ~34px falls below the specified 42–60px range, which weakens the editorial punch the brand requires. The stat tile values at 36px are close to correct but the tile borders render quite faint—the subtle sand-tinted shadow stack is on-brand but the 1px border at 0.5 opacity nearly disappears, making the tiles feel less structural. The three-row grid (header / stats / footer) is clean but the negative space distribution is uneven: the stats row sits very low with minimal breathing room below the header, violating the 60%+ negative space principle—the lower two-thirds feel dense. The '9 mo' stat is weaker than the others since it combines number and unit in a single string rather than a clean large numeral, breaking visual rhythm. The footer brand lockup using a small SVG and muted color is well-executed. Actionable fixes: increase headline to 48px, add ~24px vertical padding above the stats row, standardize stat values to pure numerals with unit labels in the label line, and raise border opacity to 0.8–1.0 on the tiles.",
+  "passesThreshold": true
+}

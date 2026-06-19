@@ -1,42 +1,42 @@
 {
   "concepts": [
     {
-      "modality": "bold_statement_card",
+      "modality": "stat_callout",
       "headline": "Being exceptional equals volume.",
-      "subtext": "The gap between average and exceptional isn't 10% more effort. It's 1,000%.",
-      "data_points": [],
-      "layout_description": "Centered statement composition on a warm off-white (#faf9f6) canvas. The headline sits dead-center at 56px, weight 600, letter-spacing -0.04em. A thin 2px warm sand accent bar (#d7c8af) at 40% opacity sits 24px above the headline, spanning 80px wide, fading to transparent on both ends. Subtext appears 32px below the headline at 18px, color #555, max-width 480px. A faint FLYWHEEL watermark at 0.03 opacity sits behind the headline at 140px bold uppercase. Particle dot network scattered in the bottom-right quadrant at 0.08 opacity. Brand mark 'FLYWHEEL' in 11px DM Mono uppercase, letter-spacing 0.08em, anchored bottom-left at 64px from edges. Composition breathes with 65%+ negative space.",
-      "color_usage": "Background #faf9f6, headline #111, subtext #555, accent bar #d7c8af, watermark #000 at 0.03 opacity, particle dots #6b7a7c at 0.08 opacity, brand mark #888",
-      "reasoning": "The core insight of this post is a single distilled truth: volume equals exceptionalism. A bold statement card centers that truth as a typographic object, stripping away the anecdote and leaving only the lesson. The FLYWHEEL watermark and particle network add editorial depth without competing."
+      "subtext": "The gap between average and exceptional is not 10% more effort. It is closer to 1,000%.",
+      "data_points": [
+        "1,000% | The volume gap",
+        "$1,500 | Coaching session cost",
+        "$1M+ | Annual business revenue"
+      ],
+      "layout_description": "Left-anchored hero layout on a #faf9f6 warm off-white canvas. The headline sits at 56px, weight 600, letter-spacing -0.03em, anchored to the left at 72px from the left edge, roughly 40% from the top. Below it, a 2px warm sand accent bar (#d7c8af) spans 120px wide, fading to transparent, at 16px gap below the headline. Subtext follows at 18px, #555, 24px gap below the bar, max-width 480px. The hero statistic '1,000%' sits large at 96px, DM Mono weight 400, color #111, positioned in the lower-left quadrant, with a tiny 11px uppercase DM Mono label 'the volume gap' in #888 directly below it. Right side of the canvas (roughly 55-100% width) is reserved for a particle dot network: scattered gray circles 3-6px at 0.08 opacity, connected by 0.5px hairline strokes, suggesting scale and connection. The FLYWHEEL wordmark sits bottom-left at 13px uppercase DM Mono, #888, 72px from the left and 56px from the bottom.",
+      "color_usage": "Background #faf9f6, headline #111, subtext #555, stat #111 DM Mono, accent bar #d7c8af, particle dots #6b7a7c at 0.08 opacity, brand mark #888.",
+      "reasoning": "The post distills to a single, powerful insight backed by one hero number: 1,000%. The stat_callout modality lets that number dominate the canvas with editorial authority, while the subtext delivers the philosophical core. This respects Flywheel's principle of communicating through removal: no list, no grid, just one truth made impossible to ignore."
     },
     {
       "modality": "multi_stat_panel",
       "headline": "The volume gap is 1,000%.",
-      "subtext": "What separates average from exceptional isn't effort. It's output at scale.",
+      "subtext": "A $1,500 coaching session, a spreadsheet of 500 posts, and the lesson that changed everything.",
       "data_points": [
-        "500 | Posts tracked",
-        "$1,500 | Coaching session",
-        "1,000% | The effort gap",
-        "$1M+ | Annual revenue"
+        "1,000% | The volume gap",
+        "500 | Posts tracked in one spreadsheet",
+        "$1,500 | Cost of the coaching session",
+        "$1M+ | Annual revenue after applying it"
       ],
-      "layout_description": "Left-anchored hero layout on white (#ffffff) canvas. Headline anchors top-left at 52px, weight 600, letter-spacing -0.04em, max-width 560px. A 2px warm sand accent bar (#d7c8af) sits flush above the headline, spanning 200px. Subtext appears 20px below the headline at 17px, color #555. Below at 48px gap, a 2x2 CSS grid of stat tiles each with square geometry (border-radius 0), background #f0efe9, border 1px #e5e5e5. Each tile: large DM Mono value at 36px #111 on top, label in 11px DM Mono uppercase #888 below, 20px internal padding. Particle dot network drifts into right half of canvas at 0.10 opacity. Brand mark bottom-left at 64px padding, 11px DM Mono uppercase #888. Sacred 64px edge padding maintained throughout.",
-      "color_usage": "Background #ffffff, headline #111, subtext #555, stat tile surface #f0efe9, stat tile border #e5e5e5, stat values #111, stat labels #888, accent bar #d7c8af, particle dots #6b7a7c at 0.10 opacity",
-      "reasoning": "The post is built on concrete numbers: 500 tracked posts, a $1,500 coaching session, a 1,000% effort gap, $1M+ revenue. A multi-stat panel gives each proof point its own visual weight while the left-anchored headline carries the editorial argument. DM Mono on the numbers reinforces the spreadsheet-and-data origin of the lesson."
+      "layout_description": "Structured data layout on a #ffffff white canvas. Full-width heading at 52px, weight 600, letter-spacing -0.04em, color #111, left-anchored at 72px from left edge, 64px from top. A 2px warm sand accent bar (#d7c8af) runs 80px wide beneath it, fading to transparent. Subtext at 17px, #555, 20px below the bar, max-width 560px. Below, a 2-column CSS grid of 4 stat tiles, each with a 1px #e5e5e5 border, background #f0efe9, border-radius 0px, 24px internal padding. Each tile shows the VALUE in 38px DM Mono weight 400 #111 at top, LABEL in 12px uppercase DM Mono #888 below at 10px gap. Grid sits at 280px from the top, tile rows spaced 16px apart. Right portion of canvas beyond the grid (approximately 700-1128px x-range) left as intentional negative space with a faint particle dot cluster at 0.06 opacity. FLYWHEEL wordmark bottom-left, 13px uppercase DM Mono #888.",
+      "color_usage": "Background #ffffff, headline #111, subtext #555, stat values #111 DM Mono, stat labels #888 DM Mono, tile background #f0efe9, tile border #e5e5e5, accent bar #d7c8af, particle dots #6b7a7c at 0.06 opacity.",
+      "reasoning": "The post contains four distinct, real proof points that together build the volume argument: the gap percentage, the number of tracked posts, the cost paid, and the revenue outcome. A multi-stat panel lets these speak in parallel without hierarchy fighting. The DM Mono treatment keeps it analytical and editorial rather than promotional."
     },
     {
-      "modality": "key_takeaway_card",
-      "headline": "Ship bad ideas to learn from them.",
-      "subtext": "Average people wait for one good idea. Exceptional people improve through 300 failures.",
-      "data_points": [
-        "1 bad idea shipped beats 1 good idea hoarded.",
-        "300 failures compound. Three do not.",
-        "Volume is the only real feedback loop."
-      ],
-      "layout_description": "Left-anchored layout on warm off-white (#faf9f6) canvas. A narrow 3px left border in #d7c8af runs the full height of a content column anchored at 80px from left edge. An eyebrow label 'KEY TAKEAWAY' in 11px DM Mono uppercase, letter-spacing 0.08em, color #888, sits at top of content column with 64px top padding. Headline appears 16px below at 50px, weight 600, letter-spacing -0.03em, color #111, max-width 520px. Subtext 24px below at 18px, color #555. A thin 1px #e5e5e5 horizontal divider sits 32px below the subtext. The three data points stack below the divider as plain text rows at 16px, color #666, each separated by 16px. Particle dot network in far right margin at 0.07 opacity. Brand mark bottom-left in 11px DM Mono uppercase #888.",
-      "color_usage": "Background #faf9f6, left border #d7c8af, eyebrow #888, headline #111, subtext #555, divider #e5e5e5, data point rows #666, particle dots #6b7a7c at 0.07 opacity, brand mark #888",
-      "reasoning": "The post's sharpest insight is behavioral, not numerical: the asymmetry between how average and exceptional people treat failure. A key takeaway card isolates that behavioral contrast. The left accent border is a Flywheel signature motif and the stacked contrast lines land with the same rhythm as the original post's parallel structure."
+      "modality": "bold_statement_card",
+      "headline": "Average waits. Exceptional ships.",
+      "subtext": "The gap between average and exceptional is not effort. It is volume. Always volume.",
+      "data_points": [],
+      "layout_description": "Centered statement layout on a #faf9f6 canvas with a faint FLYWHEEL watermark behind the headline at 140px bold uppercase, #000000 at 0.03 opacity, centered. Headline at 54px, weight 600, letter-spacing -0.04em, color #111, centered horizontally, placed at approximately 44% from the top. A 2px warm sand accent bar (#d7c8af) 96px wide centered below the headline, fading to transparent at both ends, 14px gap. Subtext at 18px, #555, weight 400, centered, max-width 500px, 22px below the accent bar. Warm sand box-shadow rgba(215,200,175,0.25) 0px 4px 20px on the headline text block container. FLYWHEEL wordmark bottom-center, 13px uppercase DM Mono #888, 56px from bottom. Particle dots very faint at 0.05 opacity scattered symmetrically in outer corners only, 4-6px circles with hairline connectors, not competing with the centered text.",
+      "color_usage": "Background #faf9f6, headline #111, subtext #555, FLYWHEEL watermark #000000 at 0.03 opacity, accent bar #d7c8af, particle dots #6b7a7c at 0.05 opacity, brand mark #888.",
+      "reasoning": "The post's most resonant distillation is the contrast between average and exceptional behavior. A bold statement card lets that tension live in a single punchy line, centered with the gravitas of a museum label. The FLYWHEEL watermark adds depth without clutter. This is the most stripped-back, editorially confident of the three concepts."
     }
   ],
-  "selected": 1,
-  "selection_reasoning": "The multi-stat panel best embodies Flywheel's editorial authority because this post is fundamentally a data story. The numbers are real, traceable, and meaningful: 500 tracked posts, a $1,500 investment, a 1,000% effort gap, $1M+ in revenue. Rendering them as a structured stat grid echoes the spreadsheet moment at the post's heart and grounds the abstract lesson in concrete proof. The left-anchored headline carries the argument while the stat tiles provide the evidence, creating the heading-plus-supporting-data hierarchy that defines Flywheel's premium publication aesthetic."
+  "selected": 0,
+  "selection_reasoning": "Concept 0 best embodies Flywheel's editorial restraint by centering the single most powerful data point from the post: 1,000%. The stat_callout modality creates maximum visual tension through the contrast of a massive number against generous negative space, with the particle network adding texture without competing. It communicates authority through removal, letting one number carry the full weight of the post's argument. The left-anchored layout and particle-filled right side create the asymmetric balance that defines Flywheel's visual identity."
 }

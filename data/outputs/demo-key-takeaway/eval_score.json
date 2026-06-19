@@ -1,0 +1,9 @@
+{
+  "onBrand": 7,
+  "legible": 8,
+  "clearHierarchy": 7,
+  "notGeneric": 6,
+  "overall": 7,
+  "critique": "The card is competently executed and hits most brand marks — off-white background, sand accent bar, DM Mono URL, correct weight range — but several issues dilute the result. First, the center-aligned layout contradicts the 'left-anchored' directive in the design system; everything floats symmetrically rather than having a strong left anchor. Second, the radial glow is effectively a gradient overlay on content, which the system explicitly prohibits ('no gradients on text'); while it's behind the text, it does wash the center zone. Third, the 'FLYWHEEL' watermark at 140px is so faint (opacity 0.03) that it reads as an unintentional artifact rather than a confident design choice — either commit to it or remove it. Fourth, the dot/constellation pattern in the corners is directionally right (Swiss editorial restraint) but feels borrowed from generic 'dark tech' templates; the dots are too numerous and the connecting lines too conventional. Fifth, the headline at 48px is within spec but 'Structure beats substance. Every time.' is a fairly generic aphorism framing — the visual doesn't amplify the content's data story (10,000 posts, quantified insight) at all. The accent underline under the headline is a nice touch and on-brand. To improve: left-anchor the headline, remove the glow, reduce dot density to 6–8 maximum, and surface one data point (e.g., '10,000 posts analyzed') as a typographic element in DM Mono to make the card feel custom to this specific post.",
+  "passesThreshold": true
+}

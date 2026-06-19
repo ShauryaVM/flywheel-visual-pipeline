@@ -1,0 +1,9 @@
+{
+  "onBrand": 8,
+  "legible": 7,
+  "clearHierarchy": 8,
+  "notGeneric": 7,
+  "overall": 7.5,
+  "critique": "Strong alignment with the Flywheel design system: warm sand accents, DM Mono data typography, square geometry, and the restrained off-white left panel all feel intentional. The split-panel layout with '$4.2B' as the hero stat creates clear hierarchy—eye lands on the number first, then migrates right to the headline and subtext. A few issues to address: (1) The stat label 'Q1 2025 AI Infrastructure VC' is small and cramped below the large figure—bump it to 13–14px and give it more breathing room. (2) The dot/constellation decoration is tasteful but the SVG lines connecting dots in the stat panel feel slightly at odds with the 'Swiss-design precision' promise—they read more editorial-generative than editorial-austere; remove the connecting lines and keep only the scattered dots. (3) The footer logo at bottom-right is extremely faint (#aaaaaa, 50% opacity) and the wordmark is barely perceptible at small sizes—use full #aaaaaa without the opacity halving. (4) The headline at 32px sits comfortably but 'Q1 2025 alone.' could be bolded or highlighted differently to create a secondary anchor within the text column. (5) The warm gradient top bar is subtle and appropriate but could be a solid 3px line in #d7c8af for crisper brand precision rather than a fade-to-transparent. Overall a competent, mostly on-brand execution that avoids generic template vibes through the data-forward layout choice.",
+  "passesThreshold": true
+}

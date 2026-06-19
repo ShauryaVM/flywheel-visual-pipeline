@@ -2,44 +2,40 @@
   "concepts": [
     {
       "modality": "stat_callout",
-      "headline": "Nine hundred stars in 48 hours.",
+      "headline": "900 stars in 48 hours.",
       "subtext": "Mike, the open source legal AI, launched and the community responded immediately.",
       "data_points": [
         "900+ GitHub stars",
         "200+ forks",
         "48 hours since launch"
       ],
-      "layout_description": "Left-anchored hero layout. The hero stat '900+' rendered in DM Mono at 96px weight 700, left-aligned at 80px padding. Below it, the headline in Inter 48px weight 600 at -0.03em letter-spacing. Subtext in Inter 17px weight 400 color #555, 28px below headline. A thin 2px warm sand accent bar (#d7c8af) sits above the eyebrow label 'MIKE / OPEN SOURCE LEGAL AI' in DM Mono 12px uppercase. Right side of canvas holds a particle dot network: scattered gray circles 2-6px at 0.10 opacity connected by 0.5px hairline strokes, occupying the right 40% of canvas. FLYWHEEL wordmark watermark at bottom-right, 140px, opacity 0.03. 65% negative space preserved.",
-      "color_usage": "Background #ffffff. Hero stat #111. Headline #111. Subtext #555. Eyebrow label #888. Accent bar #d7c8af. Particle dots #6b7a7c at 0.10 opacity. Warm sand box-shadow rgba(215,200,175,0.25) on the stat block.",
-      "reasoning": "The 900+ stars figure is the single most striking data point and warrants a hero stat treatment. Left-anchored hero with DM Mono numerics communicates the momentum without clutter. The particle dot network on the right evokes the growing community connections and extensions being built on Mike, aligning with Flywheel's signature motif."
+      "layout_description": "Left-anchored hero layout. The headline '900 stars in 48 hours.' sits bold and dominant at 56px in the upper-left quadrant, anchored to a strong left alignment edge at 64px padding. Below it, a thin 2px warm sand accent bar (#d7c8af) spans 120px, fading to transparent rightward. Subtext sits beneath at 18px in #555, under 25 words. In the lower-left, three stat tiles in DM Mono display '900+ stars', '200+ forks', and '48 hrs' as square-edged chips with #f0efe9 surface and 1px #e5e5e5 borders. The right 45% of the canvas is reserved for a particle dot network: scattered gray circles 3-6px at 0.08 opacity connected by 0.5px hairline strokes, suggesting organic community growth. Flywheel wordmark bottom-left at 12px DM Mono uppercase, #888. Canvas breathes with 60%+ negative space.",
+      "color_usage": "Background #ffffff. Headline #111. Subtext #555. Stat chip surfaces #f0efe9, borders #e5e5e5, values in #111 DM Mono, labels in #888. Accent bar #d7c8af. Particle dots #6b7a7c at 0.08 opacity. Brand mark #888.",
+      "reasoning": "A single hero statistic anchors this post. '900 stars in 48 hours' is the undeniable signal of momentum and deserves the stat_callout treatment. The left-anchored layout with particle dots on the right embodies Flywheel's editorial restraint while the DM Mono stat chips ground the claim in data precision."
     },
     {
       "modality": "headline_subtext_card",
-      "headline": "An open source legal AI, starred 900 times.",
-      "subtext": "Mike launched 48 hours ago. Already forked 200 times, extended with CourtListener, and running locally for secure legal workflows.",
+      "headline": "Nine hundred stars in 48 hours.",
+      "subtext": "Mike, the open source legal AI, is already being extended with courtlistener API integrations and local deployments.",
       "data_points": [
         "900+ stars",
         "200+ forks",
-        "CourtListener API integration"
+        "Community-built extensions live"
       ],
-      "layout_description": "Left-anchored layout on a warm off-white #faf9f6 surface. Top-left eyebrow in DM Mono 11px uppercase letter-spacing 0.07em: 'MIKEOSS.COM / OPEN SOURCE'. A 2px warm sand accent bar (#d7c8af) 120px wide fades to transparent below the eyebrow. Headline in Inter 52px weight 600 letter-spacing -0.03em, left-aligned, spanning 58% of canvas width. Subtext in Inter 17px weight 400 color #555 below headline with 32px gap, max-width 520px. Three small square stat tiles in DM Mono 14px weight 500 arranged horizontally below subtext: '900+ STARS', '200+ FORKS', '48 HRS'. Each tile has a 1px #e5e5e5 border and 0px border-radius. Right 38% of canvas is pure negative space with faint particle dot scatter at 0.08 opacity. Flywheel brand mark bottom-left in #888 at 11px uppercase.",
-      "color_usage": "Background #faf9f6. Headline #111. Subtext #555. Eyebrow #888. Accent bar #d7c8af. Stat tile background #f0efe9, border #e5e5e5, text #333. Particle dots #6b7a7c at 0.08 opacity.",
-      "reasoning": "The headline and subtext modality allows the narrative arc (launched, starred, extended) to read naturally. The three stat tiles give quantitative anchoring without resorting to a busy multi-stat panel. The warm off-white surface and left-anchored composition maintain Flywheel's editorial restraint while conveying genuine momentum."
+      "layout_description": "Left-anchored editorial layout on a warm #faf9f6 surface. A thin 2px warm sand bar (#d7c8af) runs across the top of the card at full width, fading to transparent at the right edge. An eyebrow label in DM Mono uppercase at 11px reads 'OPEN SOURCE / LEGAL AI' in #888 with 0.07em letter-spacing, 16px below the top bar. The headline follows at 52px, weight 600, letter-spacing -0.03em, color #111, spanning roughly 60% of canvas width. A 1px #e5e5e5 horizontal rule sits 28px below the headline. Subtext at 18px in #555 sits beneath the rule, max 420px wide. Three square-edged stat labels in DM Mono sit in a horizontal row at the lower-left: '900+', '200+', 'Extensions live', each with a small muted label below in #888. Right 40% of canvas holds only the particle dot network at 0.07 opacity. Flywheel wordmark bottom-left at 12px uppercase DM Mono.",
+      "color_usage": "Surface #faf9f6. Top accent bar #d7c8af. Eyebrow #888. Headline #111. Rule #e5e5e5. Subtext #555. Stat values #111 DM Mono, stat labels #888. Particle dots #6b7a7c at 0.07 opacity.",
+      "reasoning": "The headline plus subtext card creates an editorial narrative that contextualizes the raw numbers. The eyebrow label establishes category, the headline punches the key metric, and the subtext adds the community activity detail. Feels like a premium tech publication news brief."
     },
     {
       "modality": "bold_statement_card",
-      "headline": "Open source moves fast.",
-      "subtext": "Mike, the open source legal AI, hit 900 stars and 200 forks in 48 hours. Extensions are already live.",
-      "data_points": [
-        "900+ stars in 48 hours",
-        "200+ forks",
-        "CourtListener API extension"
-      ],
-      "layout_description": "Centered statement layout on #ffffff background. FLYWHEEL watermark centered behind all content at 150px bold uppercase, opacity 0.03. Primary statement 'Open source moves fast.' in Inter 58px weight 600 letter-spacing -0.04em, centered, color #111. Below it a 2px warm sand bar (#d7c8af) 64px wide centered, with 20px top and bottom margin. Subtext in Inter 17px weight 400 color #555, centered, max-width 480px. Bottom center: eyebrow label in DM Mono 11px 'MIKEOSS.COM' at #888. Canvas edges maintain 64px sacred padding. No decorative elements compete with the statement. Right and left margins are pure white, accounting for 60% total negative space.",
-      "color_usage": "Background #ffffff. Headline #111. Accent divider bar #d7c8af. Subtext #555. Eyebrow #888. Watermark #000000 at 0.03 opacity.",
-      "reasoning": "A bold statement card distills the emotional core of the post: open source community velocity. The centered layout with FLYWHEEL watermark gives gravitas and editorial calm while the warm sand divider adds a signature brand detail without decoration excess."
+      "headline": "Open source legal AI is moving fast.",
+      "subtext": "Mike launched 48 hours ago. 900 stars, 200 forks, and community-built extensions already exist.",
+      "data_points": [],
+      "layout_description": "Centered statement composition on a pure #ffffff background. A faint FLYWHEEL watermark at 140px bold uppercase sits centered at 0.03 opacity behind all content. The headline centers on the canvas at 54px, weight 600, letter-spacing -0.04em, color #111, max 520px wide, allowing natural line break after 'AI'. A 64px vertical gap separates the headline from a 2px warm sand accent bar (#d7c8af) that spans 80px centered below it. Subtext follows at 17px in #555, centered, max 480px wide. The entire composition floats in 65% negative space. A thin 1px #e5e5e5 border frames the card 40px inset from canvas edges, giving a gallery-label quality. Flywheel wordmark bottom-center at 11px DM Mono uppercase in #888, 64px from bottom edge. No particle dots in this composition, letting the typographic tension carry the visual weight.",
+      "color_usage": "Background #ffffff. FLYWHEEL watermark #000 at 0.03 opacity. Headline #111. Accent bar #d7c8af. Subtext #555. Structural border #e5e5e5 at 1px. Brand mark #888.",
+      "reasoning": "The post's core energy is the surprise and momentum of an open source project exploding overnight. A centered bold statement lets that feeling land without data diluting the emotional punch. The FLYWHEEL watermark and inset border give it the museum-label quality that defines Flywheel's editorial restraint."
     }
   ],
   "selected": 0,
-  "selection_reasoning": "The stat_callout concept best embodies Flywheel's principle of communicating through a single dominant focal point. The '900+' hero number in DM Mono at scale creates an immediate, visceral impression of momentum. The left-anchored hero pattern with particle dot network on the right is the most distinctive Flywheel signature composition, and the 65% negative space preserves the editorial restraint that defines the brand. The other concepts are strong but the stat callout is the most arresting and truest to Flywheel's premium publication aesthetic."
+  "selection_reasoning": "The stat_callout concept best embodies Flywheel's visual identity because it leads with the single most compelling data point, '900 stars in 48 hours,' and lets that number carry the entire composition. The left-anchored hero layout with particle dot network on the right achieves the required asymmetric balance and 60%+ negative space. The DM Mono stat chips ground the post's claims in precise data without cluttering the canvas. It reads like a premium tech publication data brief, not a marketing announcement."
 }

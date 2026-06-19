@@ -34,7 +34,10 @@ export async function runStage2(
     outputDir = 'data/outputs',
   } = opts;
 
-  log.info({ postId, postLength: postText.length }, 'Stage 2: Post to Concept');
+  log.info(
+    { postText: postText.substring(0, 100), postId },
+    'Input',
+  );
 
   const [dsRaw, schemaRaw, rulesRaw] = await Promise.all([
     readFile(designSystemPath, 'utf-8'),
@@ -57,11 +60,21 @@ export async function runStage2(
 
   const result = await generateConcepts(postText, designSystem, schema, candidates);
 
+  const selectedConcept = result.concepts[result.selected];
+  log.info(
+    {
+      concepts: result.concepts.length,
+      selected: selectedConcept?.modality,
+      headline: selectedConcept?.headline,
+    },
+    'Output',
+  );
+
   const subDir = postId ? join(outputDir, postId) : outputDir;
   await mkdir(subDir, { recursive: true });
   const outPath = join(subDir, 'concept_output.json');
   await writeFile(outPath, JSON.stringify(result, null, 2), 'utf-8');
-  log.info({ outPath, selectedModality: result.concepts[result.selected]?.modality }, 'Concept output written');
+  log.info({ outPath, selectedModality: selectedConcept?.modality }, 'Concept output written');
 
   return result;
 }

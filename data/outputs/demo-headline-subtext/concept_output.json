@@ -2,38 +2,36 @@
   "concepts": [
     {
       "modality": "headline_subtext_card",
-      "headline": "Anthropic opens its first Milan office.",
+      "headline": "Anthropic opens in Milan.",
       "subtext": "Europe is Anthropic's fastest growing region, with revenue up 9x year over year.",
       "data_points": [],
-      "layout_description": "Left-anchored hero layout on a 1200x630px warm off-white (#faf9f6) canvas. Headline sits at 52px, weight 600, letter-spacing -0.03em, anchored left with 72px left padding, positioned in the upper-center third of the canvas vertically. A 2px warm sand (#d7c8af) horizontal accent bar sits 20px above the headline, 120px wide, fading to transparent. Subtext sits 32px below the headline at 18px, weight 400, color #555, max-width 560px. A subtle DM Mono eyebrow label reads 'BREAKING NEWS' in 11px uppercase, letter-spacing 0.08em, color #888, positioned 18px above the accent bar. Flywheel wordmark sits bottom-left in 13px DM Mono uppercase, color #888. Right half of the canvas is reserved for a sparse particle dot network: 12 to 16 gray circles at 3-5px, opacity 0.08-0.12, connected by 0.5px hairline strokes, clustered loosely in the right 40% and slightly below center. 60%+ of the canvas is negative space.",
-      "color_usage": "Background #faf9f6, headline #111, subtext #555, eyebrow #888, accent bar #d7c8af, particle dots #6b7a7c at 0.08-0.12 opacity, brand mark #888.",
-      "reasoning": "The headline_subtext_card is the right fit because the post is a focused announcement with a single key fact and one supporting proof point. The 9x revenue figure is the editorial anchor. Left-anchored hero layout with particle dots on the right embodies Flywheel's editorial restraint."
+      "layout_description": "Left-anchored hero layout on a 1200x630px warm off-white (#faf9f6) canvas. Headline sits at 52px, weight 600, letter-spacing -0.04em, anchored to the left with 72px left padding, positioned in the upper-center vertical zone. A thin 2px warm sand (#d7c8af) accent bar sits 24px above the headline, spanning 48px wide, fading to transparent right. Subtext at 18px, weight 400, color #555, placed 28px below the headline with max-width 520px. A small DM Mono eyebrow label reading 'ANTHROPIC / EUROPE' in 11px, letter-spacing 0.08em, color #888 sits 20px above the accent bar. The FLYWHEEL wordmark anchors bottom-left at 13px DM Mono uppercase, color #888. Right half of the canvas (600-1152px) holds a sparse particle dot network: 14-18 gray circles at 3-6px diameter, 0.08-0.14 opacity, connected by 0.5px hairline strokes, suggesting a European city network map. Bottom-right carries a faint geographic node cluster. 60%+ of canvas is negative space.",
+      "color_usage": "Background #faf9f6, headline #111, subtext #555, eyebrow #888, accent bar #d7c8af, particle dots rgba(107,122,124,0.10), structural hairlines rgba(107,122,124,0.12), FLYWHEEL mark #888.",
+      "reasoning": "A single headline plus one supporting stat is all this announcement needs. The 9x revenue figure is the real proof point; the subtext delivers it crisply. The particle dot network on the right half evokes the expanding European hub map without any illustration."
     },
     {
       "modality": "multi_stat_panel",
-      "headline": "Anthropic's European expansion, by the numbers.",
-      "subtext": "Revenue up 9x year over year as Anthropic deepens its European presence.",
+      "headline": "Anthropic doubles down on Europe.",
+      "subtext": "New Milan office adds to a growing network of European hubs.",
       "data_points": [
         "9x | Revenue growth YoY",
-        "6 | European hubs",
-        "1 | New Milan office"
+        "6 | European city hubs",
+        "#1 | Fastest growing region"
       ],
-      "layout_description": "Left-anchored layout on a 1200x630px white (#ffffff) canvas with 64px padding on all sides. A 2px warm sand accent bar at the very top of the content area, 80px wide, flush left, fading right. Headline at 46px, weight 600, letter-spacing -0.04em, color #111, anchored left, max-width 640px. Subtext at 17px, weight 400, color #555 sits 24px below the headline. Three stat tiles arranged in a horizontal row 40px below the subtext, each 200px wide with 24px gap between tiles. Each tile has a surface background (#f0efe9), 0px border-radius, 1px border #e5e5e5, and warm sand box-shadow. Inside each tile: the VALUE in DM Mono at 40px, weight 600, color #111; the LABEL in DM Mono at 12px uppercase, letter-spacing 0.07em, color #666, 8px below the value. Flywheel brand mark bottom-left at 12px DM Mono uppercase, #888. Right side of canvas above the stat row is largely empty, with a faint particle dot cluster at 0.07 opacity.",
-      "color_usage": "Background #ffffff, headline #111, subtext #555, stat values #111, stat labels #666, tile surface #f0efe9, tile border #e5e5e5, accent bar #d7c8af, particle dots #6b7a7c at 0.07 opacity, shadow rgba(215,200,175,0.25).",
-      "reasoning": "The multi_stat_panel works because the post contains three distinct, clean quantitative facts that together tell a story of scale. The DM Mono stat treatment adds editorial data-forward credibility aligned with Flywheel's design language."
+      "layout_description": "Left-anchored layout on a 1200x630px white (#ffffff) canvas with 72px perimeter padding. Eyebrow label 'ANTHROPIC / EXPANSION' in DM Mono 11px, uppercase, #888, letter-spacing 0.08em, top-left. Headline at 48px, weight 600, letter-spacing -0.03em, color #111, below eyebrow with 16px gap, max-width 560px. A 2px warm sand accent bar (80px wide, fading right) sits beneath the headline with 20px gap. Subtext at 17px, #555, 20px below accent bar, max-width 480px. Three stat tiles arranged in a horizontal row starting at left, 36px below subtext. Each tile is a square-cornered (#f0efe9 background, 1px #e5e5e5 border) box 240px wide, 110px tall with 24px internal padding. Stat value in DM Mono 38px, weight 400, color #111. Stat label in DM Mono 11px, uppercase, letter-spacing 0.07em, color #666. Tiles spaced 16px apart. FLYWHEEL mark bottom-left in DM Mono 12px, #888. Right of the tile row, sparse particle dots fill peripheral space at 0.08 opacity.",
+      "color_usage": "Background #ffffff, surface #faf9f6, card surface #f0efe9, structural border #e5e5e5, headline #111, subtext #555, stat values #111, stat labels #666, eyebrow #888, accent bar #d7c8af, warm shadow rgba(215,200,175,0.25) on stat tiles.",
+      "reasoning": "Three clean data points (9x growth, 6 hubs, fastest region) make a compelling proof-of-scale story. Square stat tiles with DM Mono numerals align with Flywheel's data-driven editorial voice while the sparse layout maintains the required negative space."
     },
     {
-      "modality": "stat_callout",
-      "headline": "Europe: Anthropic's fastest growing region.",
-      "subtext": "Revenue up 9x year over year. Offices now span London, Dublin, Zurich, Paris, Munich, and Milan.",
-      "data_points": [
-        "9x"
-      ],
-      "layout_description": "Left-anchored hero on a 1200x630px warm off-white (#faf9f6) canvas. A DM Mono eyebrow label 'ANTHROPIC / EUROPE' in 11px uppercase, letter-spacing 0.08em, color #888, sits at 72px from top, 72px from left. The hero stat '9x' renders at 120px, weight 700, DM Mono, color #111, letter-spacing -0.04em, 28px below the eyebrow. A descriptor line 'revenue growth year over year' in DM Mono 14px, color #555, sits 12px below the stat with a 2px warm sand left border accent 24px tall centered on the descriptor. The headline renders at 22px, weight 500, color #333, 36px below the descriptor, max-width 480px. Subtext at 16px, weight 400, color #666, 20px below headline, max-width 520px. Flywheel mark bottom-left, DM Mono 12px uppercase, #888. Right 40% of canvas: sparse particle dot network at 0.08-0.14 opacity, 14 dots, hairline connections.",
-      "color_usage": "Background #faf9f6, hero stat #111, eyebrow and descriptor #555-#888 range, accent border #d7c8af, subtext #666, particle dots #6b7a7c at 0.08-0.14 opacity.",
-      "reasoning": "The 9x revenue figure is the most powerful single data point in the post, making stat_callout the most editorial choice. It lets one number do all the work, which aligns perfectly with Flywheel's philosophy of communicating authority through removal rather than addition."
+      "modality": "bold_statement_card",
+      "headline": "Europe is Anthropic's fastest growing region.",
+      "subtext": "Revenue up 9x year over year. Milan joins London, Dublin, Zurich, Paris, and Munich.",
+      "data_points": [],
+      "layout_description": "Centered statement layout on a 1200x630px warm off-white (#faf9f6) canvas. FLYWHEEL watermark centered behind all content at 140px bold uppercase, opacity 0.03, color #000. All content centered on a single vertical axis. Eyebrow label 'BREAKING' in DM Mono 11px, uppercase, letter-spacing 0.09em, color #888, centered near top third. Headline at 54px, weight 600, letter-spacing -0.04em, color #111, centered, max-width 640px, allowing natural line breaks at a logical point. A 2px warm sand (#d7c8af) horizontal rule 56px wide centered sits 22px below the headline. Subtext at 17px, weight 400, color #555, centered, max-width 500px, 20px below the rule. FLYWHEEL wordmark centered at the bottom in DM Mono 12px, uppercase, #888. Particle dot network floats at the far left and right canvas edges only, at 0.07 opacity, never overlapping the centered text block. Warm sand box shadow on the subtext zone: rgba(215,200,175,0.25) 0px 4px 20px.",
+      "color_usage": "Background #faf9f6, watermark rgba(0,0,0,0.03), headline #111, rule #d7c8af, subtext #555, eyebrow #888, FLYWHEEL mark #888, peripheral dots rgba(107,122,124,0.07).",
+      "reasoning": "The headline itself is the entire story. Centering it as a stark declaration with generous negative space on all sides gives it the gravitas of a publication cover. The warm watermark and minimal subtext maintain Flywheel's editorial restraint."
     }
   ],
-  "selected": 2,
-  "selection_reasoning": "The stat_callout best embodies Flywheel's editorial restraint. A single hero number, '9x', carries the entire composition. No competing elements. The layout lets negative space and one bold figure speak for themselves, which is precisely how a premium tech publication would treat this story. The multi_stat_panel risks feeling too data-dense for a post that is fundamentally about one standout proof point."
+  "selected": 0,
+  "selection_reasoning": "Concept 0 (headline_subtext_card) best embodies Flywheel's editorial restraint. It communicates the core news (Milan opening) and the single most compelling proof point (9x YoY growth) without over-engineering the layout. The left-anchored hero with particle dot network on the right delivers the required asymmetric tension and 60%+ negative space. The multi-stat panel in concept 1 risks feeling like a marketing tile deck; the bold statement in concept 2 works but the headline exceeds the ideal punchy length. Concept 0 is the most considered and deliberate of the three."
 }

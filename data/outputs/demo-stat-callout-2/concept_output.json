@@ -2,43 +2,40 @@
   "concepts": [
     {
       "modality": "stat_callout",
-      "headline": "$4.2 billion in AI infrastructure, Q1 2025.",
-      "subtext": "More than all of 2022 combined. The picks and shovels are where the next decade of platform companies will emerge.",
+      "headline": "$4.2 billion in AI infrastructure, Q1 2025 alone.",
+      "subtext": "More than all of 2022 combined. The picks and shovels are where the next decade of platforms will emerge.",
       "data_points": [
         "$4.2B | Q1 2025 AI Infrastructure VC",
         "Exceeds all 2022 investment combined"
       ],
-      "layout_description": "Left-anchored hero layout on a #faf9f6 warm off-white canvas. The hero stat '$4.2B' rendered in DM Mono at 72px weight 400, color #111, anchored hard left at 72px from edge. Below it, a thin 2px warm sand accent bar (#d7c8af) 120px wide fading right to transparent. Headline in Inter 600 at 48px below the bar, letter-spacing -0.03em. Subtext in Inter 400 at 18px, color #555, max-width 520px, 32px gap below headline. Right 40% of canvas holds a sparse particle dot network: 14-18 gray circles 3-6px at 0.08-0.14 opacity, connected by 0.5px hairline strokes at 0.06 opacity, clustered loosely in the upper-right quadrant. FLYWHEEL wordmark bottom-left at 11px DM Mono uppercase, color #888, letter-spacing 0.08em. 72px sacred edge padding on all sides.",
-      "color_usage": "Background #faf9f6, hero stat #111, headline #111, subtext #555, accent bar #d7c8af, particle dots #6b7a7c at low opacity, brand mark #888",
-      "reasoning": "A single hero statistic with that magnitude demands stat_callout treatment. The number itself is the argument. Left-anchored layout lets the stat breathe against particle texture, maintaining Flywheel's editorial restraint while the DM Mono rendering gives it technical authority."
+      "layout_description": "Left-anchored hero layout on a #faf9f6 warm off-white canvas (1200x630px). The hero stat '$4.2B' rendered in DM Mono at 88px weight 700, color #111, anchored left at 72px from left edge, vertically centered slightly above midline. Below it, a 2px warm sand accent bar (#d7c8af) at 48px wide fading right to transparent. Headline label 'Q1 2025 AI infrastructure investment.' in Inter 22px weight 600 at #111 sits below the accent bar with 28px gap. Subtext in Inter 17px weight 400 at #555 sits 24px below headline, max-width 480px. A DM Mono eyebrow label 'VENTURE CAPITAL' in 11px uppercase letter-spacing 0.08em at #888 sits 16px above the stat. Right half of canvas (600px to 1128px) holds a particle dot network: scattered circles 2-6px at 0.08 opacity #6b7a7c, connected by 0.5px hairline strokes, concentrated toward right edge, fading toward center. Flywheel wordmark bottom-left in Inter 11px uppercase #888. 72px padding all edges.",
+      "color_usage": "Background #faf9f6, hero stat #111, subtext #555, eyebrow #888, accent bar #d7c8af, particle dots #6b7a7c at 0.08 opacity, brand mark #888",
+      "reasoning": "A single hero statistic is the dominant signal in this post. The $4.2B figure is striking and self-contained, making stat_callout the natural choice. The particle network on the right evokes infrastructure connectivity without being illustrative."
     },
     {
       "modality": "headline_subtext_card",
       "headline": "The infrastructure layer is where money flows.",
-      "subtext": "$4.2 billion in Q1 2025 alone. More than all of 2022. Vector databases, inference compute, model evaluation.",
-      "data_points": [
-        "$4.2B invested in AI infrastructure, Q1 2025",
-        "Surpasses total 2022 venture investment"
-      ],
-      "layout_description": "Full 1200x630px canvas on #ffffff white background. Content anchored left with 80px padding. Thin 2px horizontal warm sand bar (#d7c8af) at the very top of the content column, 160px wide, fading right. Eyebrow label 'AI INFRASTRUCTURE' in DM Mono 11px uppercase, color #888, letter-spacing 0.08em, 24px below the accent bar. Headline in Inter 600 at 52px, color #111, letter-spacing -0.04em, max-width 580px, 3-line max. A 1px #e5e5e5 structural rule 32px below the headline. Subtext in Inter 400 at 17px, color #555, max-width 500px, 24px below the rule. The stat '$4.2B' is embedded inline in subtext but also echoed as a ghosted DM Mono watermark at 120px, color #111 at 0.03 opacity, positioned center-right. Flywheel brand mark bottom-left, 11px DM Mono, #888. Right 35% of canvas is pure negative space with a faint dot cluster at 0.06 opacity.",
-      "color_usage": "Background #ffffff, headline #111, eyebrow #888, subtext #555, accent bar #d7c8af, structural rule #e5e5e5, ghost watermark #111 at 0.03 opacity",
-      "reasoning": "The post's core argument is a directional claim supported by one landmark stat. Headline-subtext modality lets the bold editorial statement lead, with the stat reinforcing it as context rather than spectacle. Cleaner and more publication-like than a stat callout alone."
-    },
-    {
-      "modality": "feature_list_graphic",
-      "headline": "Where the infrastructure money is going.",
-      "subtext": "$4.2 billion invested in Q1 2025. The picks and shovels of the AI decade.",
+      "subtext": "$4.2 billion invested in AI infrastructure in Q1 2025 alone. More than all of 2022 combined.",
       "data_points": [
         "Vector databases",
         "Inference optimization",
         "Training compute",
         "Model evaluation tools"
       ],
-      "layout_description": "1200x630px canvas, background #faf9f6. Left 58% holds all content. 72px top padding. Eyebrow 'Q1 2025 | AI INFRASTRUCTURE' in DM Mono 11px, #888, letter-spacing 0.07em. Headline in Inter 600 at 46px, color #111, letter-spacing -0.03em, max-width 520px, 32px below eyebrow. Thin warm sand accent bar 2px, 100px wide below headline, fading right. Subtext in Inter 400 at 17px, color #555, max-width 480px, 24px gap. Four feature rows stacked vertically, each with a 2px left border in #d7c8af and a square 20x20px marker in #f0efe9 containing a minimalist dash glyph in #6b7a7c. Row text in Inter 500 at 17px, color #333, 8px internal left padding, 12px vertical gap between rows. Right 42% of canvas is pure negative space except for a loose particle dot network at 0.10 opacity in the far right quadrant. Flywheel wordmark bottom-left at 11px DM Mono, #888. All border-radius 0px.",
-      "color_usage": "Background #faf9f6, headline #111, subtext #555, eyebrow #888, row borders #d7c8af, row markers #f0efe9, row text #333, particle dots #6b7a7c at low opacity",
-      "reasoning": "The post explicitly names four infrastructure categories as the investment thesis. A feature list surfaces these as scannable, credible signals rather than burying them in prose. Square geometry and warm sand left borders give the list Flywheel's precise, editorial character."
+      "layout_description": "Left-anchored layout on #ffffff canvas. Top-left eyebrow label 'AI INFRASTRUCTURE · Q1 2025' in DM Mono 11px uppercase #888, 72px from left and top edges. 32px below, the headline in Inter 52px weight 600 letter-spacing -0.03em color #111, max-width 620px, two lines, left-aligned. A 2px horizontal accent bar in #d7c8af, 56px wide, sits 28px below the headline, flush left. Subtext in Inter 18px weight 400 #555 appears 24px below the bar, max-width 520px. Below subtext at 36px gap, four items arranged in a 2x2 tight grid: each item is a square tile 180px wide with a 1px #e5e5e5 border, 16px internal padding, item label in DM Mono 13px #333. Right side of canvas from 700px onward is entirely empty warm off-white with a faint FLYWHEEL watermark at 0.03 opacity, 140px bold uppercase. Flywheel brand mark bottom-left 11px uppercase #888. 72px edge padding.",
+      "color_usage": "Background #ffffff, headline #111, subtext #555, eyebrow #888, accent bar #d7c8af, tile borders #e5e5e5, tile text #333, watermark #111 at 0.03 opacity",
+      "reasoning": "The post argues a directional thesis supported by a concrete stat. Headline plus subtext with a small supporting grid of named infrastructure categories mirrors the post structure without over-engineering the visual."
+    },
+    {
+      "modality": "bold_statement_card",
+      "headline": "Follow the infrastructure money.",
+      "subtext": "$4.2 billion flowed into AI infrastructure in Q1 2025 alone. The next decade of platform companies is being built here.",
+      "data_points": [],
+      "layout_description": "Centered statement layout on #faf9f6 canvas. Canvas is 1200x630px. The headline 'Follow the infrastructure money.' is set in Inter 58px weight 600 letter-spacing -0.04em color #111, centered horizontally, positioned at vertical midpoint minus 40px. A 2px warm sand accent bar (#d7c8af) 64px wide is centered 20px above the headline, fading to transparent on both ends. Subtext in Inter 18px weight 400 #555 is centered 28px below the headline, max-width 560px. A faint FLYWHEEL watermark at 0.03 opacity sits behind the headline, 150px bold uppercase centered. Particle dot clusters appear in both lower corners: 8-12 dots each, 3-6px, at 0.07 opacity #6b7a7c, with 0.5px hairline connectors. Flywheel brand mark bottom-left corner in DM Mono 11px uppercase #888. 72px edge padding on all sides.",
+      "color_usage": "Background #faf9f6, headline #111, subtext #555, accent bar #d7c8af, watermark #111 at 0.03 opacity, particle dots #6b7a7c at 0.07 opacity, brand mark #888",
+      "reasoning": "The post ends with a clear call to action and investment thesis. Distilling it to a single bold directive creates maximum editorial impact and embodies Flywheel's philosophy of communicating through reduction."
     }
   ],
   "selected": 0,
-  "selection_reasoning": "The stat_callout concept best embodies Flywheel's editorial restraint because the number '$4.2B' is so singular and striking that it earns full typographic hero treatment. Rendering it in DM Mono at display scale communicates technical authority without decoration. The particle network provides texture without clutter, and the left-anchored composition with 60%+ negative space exemplifies the brand's Swiss-design precision. The other concepts dilute the impact by distributing attention across more elements."
+  "selection_reasoning": "The stat_callout concept most faithfully honors the post's core signal: a single extraordinary number ($4.2B) that reframes the entire AI investment narrative. Flywheel's aesthetic thrives on singular, dominant focal elements with generous negative space. The DM Mono hero stat paired with the particle network creates authoritative editorial tension without resorting to lists or declarations. It communicates the thesis instantly and at a glance, which is the primary job of a LinkedIn graphic."
 }

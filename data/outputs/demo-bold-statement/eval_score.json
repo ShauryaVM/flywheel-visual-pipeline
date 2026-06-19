@@ -1,0 +1,9 @@
+{
+  "onBrand": 7,
+  "legible": 8,
+  "clearHierarchy": 8,
+  "notGeneric": 6,
+  "overall": 7.25,
+  "critique": "The two-column split with a large stat on the left and text on the right creates decent hierarchy and the DM Mono stat treatment aligns with the brand's data-forward aesthetic. However, the design leans on a fairly common 'big number + headline' LinkedIn card template that reduces its distinctiveness. Specific issues: (1) The 'dot constellation' background pattern feels decorative and generic — it doesn't serve the Swiss-design precision mandate and adds visual noise without editorial purpose; remove it entirely. (2) The warm-bar gradient at top is a nice brand touch but competes with the warm-border at bottom — pick one. (3) '1,000%' as the hero stat is effective, but the stat-side background (#faf9f6) with its box-shadow is subtly rounded/soft in feel, slightly at odds with the 'square geometry, border-radius 0px' prohibition — audit the shadow values. (4) The eyebrow 'Data Point' is redundant given the stat is self-evident; replace with something more specific to the post's insight (e.g. 'Coaching Session Takeaway'). (5) The subtext font size (17px) and line-length feel slightly cramped in the right column at this weight — consider bumping to Inter 400 at 18px with tighter line-height. Overall a competent execution that needs the decorative elements stripped back to feel truly on-brand.",
+  "passesThreshold": true
+}

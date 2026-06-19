@@ -3,47 +3,47 @@
     {
       "modality": "numbered_list_graphic",
       "headline": "Seven free Google AI courses with certificates.",
-      "subtext": "Google's free AI curriculum covers fundamentals through app building, each with a certificate.",
+      "subtext": "Google is offering free AI courses across writing, research, data, and app building.",
       "data_points": [
-        "AI Fundamentals: core concepts and professional foundation",
-        "AI for Brainstorming: evaluate and prioritize ideas creatively",
-        "AI for Research: Gemini and NotebookLM for faster sourcing",
+        "AI Fundamentals: core concepts for professional AI use",
+        "AI for Brainstorming: evaluate and prioritize ideas",
+        "AI for Research: research faster with Gemini and NotebookLM",
         "AI for Writing: turn meeting notes into clear summaries",
-        "AI for Content Creation: generate images and videos with Gemini",
-        "AI for Data Analysis: track metrics and clean messy data",
+        "AI for Content Creation: generate images and videos",
+        "AI for Data Analysis: track metrics and clean data",
         "AI for App Building: build a web app, no code needed"
       ],
-      "layout_description": "Left-anchored layout on a #faf9f6 warm off-white canvas (1200x630px). 64px padding on all edges. Top-left: a 12px DM Mono uppercase label 'FREE COURSES' in #888, letter-spacing 0.07em. Below it, the headline in Inter 600 48px #111, letter-spacing -0.03em, max-width 580px. A 2px horizontal accent bar in #d7c8af, 80px wide, sits below the headline with 20px gap. Vertically stacked list of 7 rows below, each row: a square number badge (28x28px, background #f0efe9, border 1px #e5e5e5, border-radius 0px) with DM Mono 13px #555 number, followed by bold 15px Inter 600 #111 course name and 13px Inter 400 #666 descriptor. Rows spaced 14px apart. Right half (from 660px onward) holds a sparse particle dot network: 14 gray circles 3-6px at opacity 0.08, connected by 0.5px hairline strokes at opacity 0.06. FLYWHEEL wordmark bottom-left in Inter 700 13px uppercase #000, letter-spacing 0.06em.",
-      "color_usage": "Background #faf9f6, headline #111, body text #333 and #666, number badges #f0efe9 with #e5e5e5 border, accent bar #d7c8af, particle dots #6b7a7c at 0.08 opacity, label #888, brand mark #000.",
-      "reasoning": "Seven sequentially listed courses map perfectly to the numbered_list_graphic modality. The left-anchored stacked layout with square number markers and generous negative space on the right embodies Flywheel's editorial restraint. The particle dot network fills the right canvas without competing with content."
+      "layout_description": "Left-anchored hero pattern on a 1200x630px canvas with 64px edge padding. Header block at top-left: eyebrow label 'GOOGLE AI' in 11px DM Mono uppercase at #888, letter-spacing 0.08em. Headline below in 48px Inter 600, color #111, letter-spacing -0.03em, max-width 520px. Below headline, a 2px horizontal warm sand accent bar (#d7c8af) 80px wide, fading to transparent. Seven numbered rows stacked vertically in a 560px-wide left column, each row containing a square number badge (24x24px, background #f0efe9, #555 text, border-radius 0) on the left, a bold 15px item title in #111, and a 13px descriptor in #666 on the same line separated by a colon. 20px gap between rows. Right side of canvas (from x=680 to x=1150) holds a particle dot network: scattered circles 2-6px at 0.08-0.14 opacity in #6b7a7c, connected by 0.5px hairline strokes at 0.06 opacity. Flywheel wordmark bottom-right in 13px DM Mono uppercase at #888. Background #faf9f6.",
+      "color_usage": "Background #faf9f6 warm off-white. Number badges surface #f0efe9. Headline #111. Item titles #333. Descriptors #666. Eyebrow label #888. Accent bar #d7c8af. Particle dots #6b7a7c at low opacity. Wordmark #888. Structural borders #e5e5e5 as subtle row dividers.",
+      "reasoning": "The content is a clean sequential list of seven discrete courses, making numbered_list_graphic the most natural fit. The left-anchored stacked layout preserves Flywheel's editorial restraint, the particle dot network fills the right half without adding noise, and the sparse row design keeps visual density low despite seven items."
     },
     {
       "modality": "feature_list_graphic",
-      "headline": "Google's free AI curriculum, start to finish.",
-      "subtext": "Seven courses covering writing, research, data, and app building with certificates included.",
+      "headline": "Seven free Google AI courses with certificates.",
+      "subtext": "Build practical AI skills across writing, research, data analysis, and app development.",
       "data_points": [
-        "Fundamentals: build your AI foundation",
-        "Brainstorming: evaluate ideas with AI",
-        "Research: summarize sources with NotebookLM",
-        "Writing: clean up meeting notes with Gemini",
-        "Content Creation: generate images and video",
-        "Data Analysis: track metrics and clean data",
-        "App Building: ship a web app, no code"
+        "Fundamentals: core AI concepts for professional use",
+        "Brainstorming: evaluate and prioritize ideas with AI",
+        "Research: faster synthesis with Gemini and NotebookLM",
+        "Writing: turn meeting notes into clean summaries",
+        "Content Creation: generate images and videos",
+        "Data Analysis: clean data and track performance",
+        "App Building: ship a web app without code"
       ],
-      "layout_description": "1200x630px canvas, background #ffffff with a subtle #faf9f6 left panel strip (0 to 560px wide) acting as a soft content zone. 72px top/left padding. Top-left: DM Mono 11px uppercase label 'GOOGLE AI — 2025' in #888, letter-spacing 0.08em. Headline in Inter 600 44px #111 below, two lines max, letter-spacing -0.04em. A thin 1px horizontal rule in #e5e5e5 at 200px from top spanning 480px. Feature rows below the rule: each row is a horizontal flex with a 10px square dot in #d7c8af on the far left, bold Inter 600 15px #111 feature category, followed by a colon and Inter 400 14px #555 descriptor. Rows separated by 1px #e5e5e5 hairlines, 18px vertical padding each. Right side (620px to 1130px): empty breathing space with a faint FLYWHEEL watermark at opacity 0.03 in Inter 700 120px rotated 0deg, centered vertically at 320px. Bottom-left: flywheelos.com in DM Mono 11px #888.",
-      "color_usage": "Background #ffffff, left zone #faf9f6, headline #111, feature names #111, descriptors #555, dot accents #d7c8af, rules #e5e5e5, label and URL #888, watermark #000 at 0.03 opacity.",
-      "reasoning": "Feature list modality suits the course-by-course breakdown where each entry has a named category and short descriptor. The two-zone canvas with a warm off-white left panel and open right space reflects Flywheel's asymmetric balance principle, while the #d7c8af dot markers use the warm sand accent correctly as a structural accent rather than fill."
+      "layout_description": "1200x630px canvas, background #ffffff, 72px edge padding. Eyebrow label top-left in 11px DM Mono uppercase #888. Headline 44px Inter 600 #111 below, max-width 500px. Warm sand 2px accent bar 60px wide beneath headline. Seven feature rows in 560px left column: each row has a thin 1px left border #e5e5e5, category name 14px 600 #333 followed by descriptor 14px 400 #666, 18px row gap. Right half reserved for a faint FLYWHEEL watermark at 0.03 opacity and sparse particle dots. Wordmark bottom-right.",
+      "color_usage": "Background #ffffff. Headline #111. Category labels #333. Descriptors #666. Row borders #e5e5e5. Accent bar #d7c8af. Watermark #000 at 0.03 opacity. Wordmark #888.",
+      "reasoning": "Feature list modality works well when items share a parallel structure but are not strictly sequential steps. This layout treats each course as a feature capability, using the left border rows to create rhythm without heavy visual weight, maintaining Flywheel's premium publication feel."
     },
     {
-      "modality": "bold_statement_card",
-      "headline": "Google just made AI education free.",
-      "subtext": "Seven certificate courses covering research, writing, data, content creation, and app building with no code required.",
+      "modality": "headline_subtext_card",
+      "headline": "Google is giving away seven free AI courses.",
+      "subtext": "Certificates included. Covers writing, research, data analysis, brainstorming, content creation, and app building.",
       "data_points": [],
-      "layout_description": "1200x630px canvas, background #ffffff. FLYWHEEL watermark centered at 315px vertical, 120px Inter 700 uppercase, opacity 0.03, letter-spacing 0.02em. Content centered in a 680px wide column starting at 260px from left. Top: DM Mono 12px uppercase label 'FREE CERTIFICATE COURSES' in #888, letter-spacing 0.07em, centered. 32px gap. Headline in Inter 600 56px #111, letter-spacing -0.04em, centered, two lines. A 48px gap. A 2px x 64px horizontal accent bar in #d7c8af centered below headline. 32px gap. Subtext in Inter 400 18px #555, centered, max-width 540px, line-height 1.6. Bottom center: FLYWHEEL logotype in Inter 700 12px uppercase #000, letter-spacing 0.08em, positioned 56px from bottom edge. Left and right sides are entirely empty, enforcing the 60%+ negative space rule. Sparse particle dots in top-right and bottom-left corners only, 6-8 circles at 3-5px, opacity 0.07.",
-      "color_usage": "Background #ffffff, watermark #000 at 0.03 opacity, label #888, headline #111, accent bar #d7c8af, subtext #555, brand mark #000, particle dots #6b7a7c at 0.07 opacity.",
-      "reasoning": "A bold statement card works when the core message is a single declarative insight. The centered layout with the FLYWHEEL watermark and extreme negative space on either side creates a museum-label stillness appropriate for Flywheel's aesthetic, though it sacrifices the detailed course enumeration of the other concepts."
+      "layout_description": "Centered statement pattern on 1200x630px canvas, background #faf9f6, 80px edge padding. Vertically centered content block, left-aligned, positioned in the left 55% of the canvas. Eyebrow label 'FREE · CERTIFIED · GOOGLE AI' in 11px DM Mono uppercase #888, letter-spacing 0.08em at top of content block. Headline in 56px Inter 600 #111, letter-spacing -0.04em, max-width 560px, two lines, ending with a period. A 2px warm sand bar (#d7c8af) 80px wide, fading right to transparent, sits 24px below the headline. Subtext in 18px Inter 400 #555, max-width 480px, 28px below the accent bar, sentence case with a period. Right 45% of canvas: particle dot network of 18-22 scattered dots, 2-7px, #6b7a7c at 0.08-0.18 opacity, connected by 0.5px hairlines at 0.06 opacity. FLYWHEEL wordmark bottom-left 13px DM Mono uppercase #888. Composition breathes with 60%+ negative space.",
+      "color_usage": "Background #faf9f6. Headline #111. Eyebrow #888. Subtext #555. Accent bar #d7c8af fading to transparent. Particle dots #6b7a7c at low opacity. Wordmark #888.",
+      "reasoning": "A simpler editorial treatment when the headline alone carries the message. The particle dot field on the right creates visual tension against the left-anchored text, exemplifying Flywheel's asymmetric balance principle. This modality suits announcement-style posts where a single clear statement is the primary takeaway."
     }
   ],
   "selected": 0,
-  "selection_reasoning": "Concept 0 best serves the post's content: seven named courses demand a numbered list treatment where viewers can scan each entry individually. The left-anchored stacked layout with square number badges, DM Mono labels, and a particle dot network filling the right half is the most canonically Flywheel composition. It delivers all seven data points with editorial restraint, generous spacing, and zero decorative excess, exactly matching the premium-publication standard."
+  "selection_reasoning": "The numbered_list_graphic best serves this content because the post is structurally a sequential list of seven named courses, each with a distinct domain. It delivers maximum information value while honoring Flywheel's editorial restraint through sparse row spacing, square number badges, and a particle dot field that fills negative space without competing for attention. The headline_subtext_card (concept 2) sacrifices too much specific course detail, and the feature_list_graphic is nearly identical to concept 0 but less visually distinct. Concept 0 is the clearest, most purpose-built treatment."
 }

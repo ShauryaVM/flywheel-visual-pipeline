@@ -15,23 +15,28 @@ const EVAL_THRESHOLD = 7.0;
 export async function runPipeline(input: PipelineInput): Promise<PipelineResult> {
   const { postText, postId, outputDir = 'data/outputs' } = input;
 
+  const pipelineStart = Date.now();
   log.info({ postId, outputDir }, 'Starting pipeline');
 
   // Stage 2: Generate visual concepts from post
+  const stage2Start = Date.now();
   const conceptOutput = await runStage2(postText, { postId, outputDir });
+  const stage2Latency = Date.now() - stage2Start;
   const selectedConcept = conceptOutput.concepts[conceptOutput.selected]!;
   log.info(
-    { modality: selectedConcept.modality, headline: selectedConcept.headline },
+    { modality: selectedConcept.modality, headline: selectedConcept.headline, latencyMs: stage2Latency },
     'Stage 2 complete: concept selected',
   );
 
   // Stage 3: Render concept to HTML, export PDF + PNG
+  const stage3Start = Date.now();
   const stage3 = await runStage3({
     concept: selectedConcept,
     postId,
     outputDir,
   });
-  log.info('Stage 3 complete: visual exported');
+  const stage3Latency = Date.now() - stage3Start;
+  log.info({ latencyMs: stage3Latency }, 'Stage 3 complete: visual exported');
 
   // Stage 4: Evaluate the rendered visual
   const subDir = postId ? `${outputDir}/${postId}` : outputDir;
@@ -44,6 +49,7 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
   ].join(' ');
 
   let evalScore;
+  const stage4Start = Date.now();
   try {
     evalScore = await runStage4({
       htmlPath: stage3.htmlPath,
@@ -51,6 +57,7 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
       designSystemSummary,
       outputDir: subDir,
     });
+    const stage4Latency = Date.now() - stage4Start;
 
     log.info(
       {
@@ -60,6 +67,7 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
         clearHierarchy: evalScore.clearHierarchy,
         notGeneric: evalScore.notGeneric,
         passes: evalScore.passesThreshold,
+        latencyMs: stage4Latency,
       },
       'Stage 4 complete: eval scored',
     );
@@ -73,6 +81,12 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
   } catch (err) {
     log.error({ err }, 'Stage 4 eval failed (non-blocking)');
   }
+
+  const totalLatencyMs = Date.now() - pipelineStart;
+  log.info(
+    { totalLatencyMs, postId, evalScore: evalScore?.overall },
+    'Pipeline complete',
+  );
 
   return {
     concept: conceptOutput,

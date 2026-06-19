@@ -22,7 +22,9 @@ export async function runStage3(input: Stage3Input): Promise<Stage3Result> {
     outputDir = 'data/outputs',
   } = input;
 
-  log.info({ modality: concept.modality, postId }, 'Stage 3: Concept to HTML');
+  log.info({ modality: concept.modality, headline: concept.headline }, 'Input');
+
+  const stageStart = Date.now();
 
   const html = await renderConceptToHtml(concept);
 
@@ -34,10 +36,13 @@ export async function runStage3(input: Stage3Input): Promise<Stage3Result> {
     fileBaseName: `visual-${concept.modality}`,
   });
 
+  const latencyMs = Date.now() - stageStart;
+
   log.info(
-    { modality: concept.modality, ...exportResult },
-    'Stage 3 complete',
+    { htmlPath: exportResult.htmlPath, pdfPath: exportResult.pdfPath, pngPath: exportResult.pngPath },
+    'Output',
   );
+  log.info({ latencyMs }, 'Complete');
 
   return {
     html,

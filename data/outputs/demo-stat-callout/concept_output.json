@@ -2,41 +2,40 @@
   "concepts": [
     {
       "modality": "multi_stat_panel",
-      "headline": "The productivity data tells a different story.",
-      "subtext": "Stanford tracked 16,000 workers for nine months. The numbers challenge both extremes.",
+      "headline": "The productivity data tells a more complex story.",
+      "subtext": "Stanford tracked 16,000 workers over 9 months. The results challenge both extremes.",
       "data_points": [
-        "73% | Remote workers who feel more productive",
-        "13% | Actual remote productivity gain (Stanford)",
-        "24% | Hybrid advantage over fully remote",
-        "9 mo | Duration of Stanford study"
+        "13% | Remote productivity gain",
+        "24% | Hybrid over fully remote",
+        "73% | Workers who feel more productive at home",
+        "9 mo | Stanford study duration"
       ],
-      "layout_description": "Left-anchored hero layout on 1200x630px canvas. Headline at 52px weight 600 letter-spacing -0.03em anchored left at 72px from edge, occupying top-left quadrant. Subtext at 17px weight 400 color #555 directly below with 28px gap. Four stat tiles arranged in a 2x2 grid in the lower two-thirds, left-aligned. Each tile: white background with 1px #e5e5e5 border, square corners, value in DM Mono 38px #111, label in DM Mono 11px uppercase letter-spacing 0.07em #888, 32px internal padding. A 2px warm sand accent bar #d7c8af at top of grid spanning left-tile edges fading to transparent. Particle dot network scattered in right 30% of canvas at 0.08 opacity, 3-6px dots with 0.5px hairline connectors. FLYWHEEL wordmark bottom-left in Inter 11px uppercase #888. 72px canvas padding throughout. Right third is predominantly empty, creating breathing room.",
-      "color_usage": "Background #ffffff, card surface #f0efe9, headline #111, subtext #555, stat values #111 DM Mono, stat labels #888 DM Mono, accent bar #d7c8af, borders #e5e5e5, particle dots #6b7a7c at 0.08 opacity",
-      "reasoning": "Four distinct quantitative proof points from the post (73%, 13%, 24%, 9 months) map naturally to a multi-stat panel. The contrast between the 73% perception and 13% reality is the editorial tension Flywheel compositions thrive on."
+      "layout_description": "Left-anchored hero pattern. Headline at 48px bold sits in upper-left quadrant with 72px left padding. A 2px warm sand accent bar runs above the headline. Below the headline, subtext at 16px in #555 with 32px gap. Stat tiles arranged in a 2x2 grid on the lower half: each tile is a square card on #f0efe9 surface with a 1px #e5e5e5 border, large DM Mono number at 40px in #111 and label below at 12px uppercase #888. Right side of canvas above the grid is reserved for a sparse particle dot network at 0.08 opacity. FLYWHEEL wordmark bottom-left at 12px uppercase DM Mono in #888. 72px padding on all edges.",
+      "color_usage": "Background #ffffff. Headline #111. Subtext #555. Stat tiles on #f0efe9 with #e5e5e5 borders. Stat values in #111 DM Mono. Stat labels in #888. Accent bar #d7c8af. Particle dots #6b7a7c at 0.08 opacity.",
+      "reasoning": "Four distinct quantitative proof points from the post make multi_stat_panel the natural fit. The data grid communicates scale and nuance simultaneously, and the left-anchored layout with a sparse right-side particle field preserves Flywheel's signature negative space."
     },
     {
       "modality": "bold_statement_card",
       "headline": "Intentional flexibility outperforms both extremes.",
-      "subtext": "Stanford's nine-month study of 16,000 workers found hybrid beats fully remote by 24%. The data favors the middle.",
+      "subtext": "Stanford data: hybrid workers are 24% more productive than fully remote. The answer is in the middle.",
       "data_points": [],
-      "layout_description": "Centered statement layout on 1200x630px warm off-white #faf9f6 canvas. FLYWHEEL watermark centered behind all content at 0.03 opacity, 140px bold uppercase Inter, creating textural depth. Primary headline centered at 54px weight 600 letter-spacing -0.04em #111, constrained to 800px max-width centered column, line-broken at natural rhythm across two lines. A 2px warm sand bar #d7c8af 120px wide centered above the headline with 32px margin below it. Subtext at 17px weight 400 #555 centered below headline with 36px gap, max-width 560px. Two small DM Mono stat callouts arranged symmetrically below subtext: '13% remote' and '24% hybrid' in 13px uppercase spaced 80px apart, color #888, separated by a centered hairline 0.5px vertical rule 20px tall in #e5e5e5. FLYWHEEL logotype bottom-center 11px uppercase #888 with 64px bottom padding. Generous negative space in upper and lower thirds.",
-      "color_usage": "Background #faf9f6, headline #111, subtext #555, accent bar #d7c8af, watermark #000 at 0.03 opacity, stat labels #888 DM Mono, divider rule #e5e5e5",
-      "reasoning": "The post's core argument is a declarative truth about intentional flexibility. A centered bold statement lets that singular insight breathe with maximum editorial authority, while the flanking stat callouts preserve the data without cluttering the composition."
+      "layout_description": "Centered statement pattern. Canvas is #faf9f6 warm off-white. A faint FLYWHEEL watermark at 160px bold uppercase sits centered at 0.03 opacity behind all content. Single text block centered vertically and horizontally: eyebrow label 'STANFORD STUDY, 16,000 WORKERS' in 11px DM Mono uppercase #888 with 0.07em letter-spacing sits above the headline. Headline at 56px weight 600 #111 with letter-spacing -0.04em, max-width 680px, centered. Subtext at 17px #555 centered below with 36px gap. A 2px warm sand horizontal accent bar 120px wide is centered directly below the subtext. FLYWHEEL wordmark bottom-center at 11px DM Mono uppercase #888. 72px padding all edges. Particle dots scattered in upper-right and lower-left corners at 0.07 opacity.",
+      "color_usage": "Background #faf9f6. Headline #111. Eyebrow #888. Subtext #555. Accent bar #d7c8af. FLYWHEEL watermark #000 at 0.03 opacity. Particle dots #6b7a7c at 0.07 opacity.",
+      "reasoning": "The post's core argument is a single declarative insight: neither extreme works, flexibility wins. A centered bold statement card distills that to its essence. The FLYWHEEL watermark and minimal particle texture preserve editorial gravity without adding noise."
     },
     {
-      "modality": "key_takeaway_card",
-      "headline": "The sweet spot is intentional flexibility.",
-      "subtext": "Remote workers gain 13% productivity. Hybrid workers gain 24% over fully remote. Neither extreme wins. Stanford, 16,000 workers, nine months.",
+      "modality": "stat_callout",
+      "headline": "Hybrid workers are 24% more productive than remote.",
+      "subtext": "Stanford tracked 16,000 workers for 9 months. The sweet spot is intentional flexibility, not a mandate.",
       "data_points": [
-        "13% productivity lift: fully remote vs. office",
-        "24% productivity lift: hybrid vs. fully remote",
-        "16,000 workers tracked over nine months"
+        "24%",
+        "Hybrid productivity advantage over fully remote workers, Stanford University"
       ],
-      "layout_description": "Left-anchored hero layout on 1200x630px #ffffff canvas. A 2px warm sand bar #d7c8af spans the full left edge of the content column as a vertical left-border accent on the insight block, 6px wide fading bottom. 'KEY FINDING' eyebrow label in DM Mono 11px uppercase letter-spacing 0.08em #888 at top-left, 72px from edges. Headline at 50px weight 600 letter-spacing -0.03em #111 below eyebrow with 20px gap, max-width 680px left-anchored, breaking naturally across two lines. Subtext at 17px #555 below headline with 28px gap, max-width 580px. Three data rows stacked below with 20px gaps: each row is a left-aligned line with a 2px #d7c8af square dot marker, DM Mono 13px value in #111 and label in #888, no borders. Particle dot network occupying right 35% of canvas at 0.07 opacity, 2-5px dots with 0.5px hairline connectors. FLYWHEEL wordmark bottom-left 11px uppercase #888. Right third of canvas is open negative space.",
-      "color_usage": "Background #ffffff, eyebrow #888 DM Mono, headline #111, subtext #555, data values #111 DM Mono, data labels #888, accent markers #d7c8af, particle network #6b7a7c at 0.07 opacity",
-      "reasoning": "The post has a single clear thesis supported by three data points, making the key takeaway card ideal. The left-border accent treatment frames the insight block with editorial precision while the sparse data rows deliver proof without visual noise."
+      "layout_description": "Left-anchored hero pattern. Upper-left: eyebrow label 'STANFORD UNIVERSITY, 9-MONTH STUDY' in 11px DM Mono uppercase #888. Below eyebrow with 24px gap: headline at 52px weight 600 #111 letter-spacing -0.04em, max-width 600px. Below headline with 28px gap: subtext at 17px #555, max-width 520px. Hero stat block sits mid-canvas left: '24%' in 96px DM Mono weight 400 #111 with a 2px warm sand left border and 20px left padding. A short 1px #e5e5e5 horizontal rule separates the stat from a secondary note '13% remote gain vs. office' in 13px DM Mono #888 below it. Right half of canvas: particle dot network at 0.10 opacity. FLYWHEEL wordmark bottom-left 11px DM Mono uppercase #888. 72px edge padding throughout.",
+      "color_usage": "Background #ffffff. Headline #111. Subtext #555. Eyebrow #888. Hero stat #111 DM Mono. Stat left border #d7c8af. Secondary stat label #888. Rule #e5e5e5. Particle dots #6b7a7c at 0.10 opacity.",
+      "reasoning": "The 24% hybrid productivity advantage is the sharpest, most counterintuitive data point in the post. A stat callout isolates it as the hero number, giving the reader an immediate anchor before the supporting context elaborates."
     }
   ],
   "selected": 0,
-  "selection_reasoning": "The multi-stat panel best serves this post because the editorial tension between the 73% perception stat and the 13% and 24% reality stats is the entire argument. Presenting all four numbers together in a structured grid lets the contradiction speak for itself, which is quintessential Flywheel restraint: data arranged so the insight is self-evident, with no rhetorical decoration needed. The left-anchored layout, particle dot texture, and warm sand accent bar keep it within the brand's premium publication aesthetic."
+  "selection_reasoning": "The multi_stat_panel is the strongest choice because the post is fundamentally data-driven, presenting four distinct numbers that together build an argument. Showing all four stats in a structured grid lets the viewer grasp the full evidential picture at a glance, which is more intellectually honest and visually compelling than isolating one number or reducing everything to a declaration. The 2x2 tile grid with DM Mono numerals against warm off-white surfaces exemplifies Flywheel's structured data layout pattern, and the left-anchored headline above the grid preserves the required asymmetric balance and negative space."
 }

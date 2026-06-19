@@ -1,0 +1,9 @@
+{
+  "onBrand": 7,
+  "legible": 8,
+  "clearHierarchy": 8,
+  "notGeneric": 6,
+  "overall": 7.25,
+  "critique": "The card is generally well-executed and adheres to most brand rules: black-on-white type, Inter font, DM Mono eyebrow/URL, warm sand accent bar, left-anchored content, and the correct footer structure. The 52px headline is bold and readable. However, several issues need addressing: (1) The dot-field/constellation decoration in the right two-thirds reads as a generic tech template flourish — it conflicts with the 'no gradients on text' and 'square geometry' Swiss-design restraint directive; remove it or reduce to a single subtle geometric element. (2) The 'FLYWHEEL' watermark centered behind the content adds noise without purpose and undermines the editorial restraint mandate. (3) The warm bar gradient at the top stretches only 40% of the width — this is partially correct but the gradient fade itself could be read as prohibited; a flat sand stripe would be more on-brand. (4) The bottom footer gradient (rgba fade to off-white) is soft but slightly violates the no-gradients prohibition. (5) The Flywheel logo SVG path resolves to a very low-opacity grey that reads as near-invisible — the brand mark should be at least 40% opacity. (6) The subtext at 20px/680px max-width is well-sized. (7) The divider line is correctly sized and colored. Actionable fixes: remove dot constellation and watermark, replace gradient footer with a flat base line, boost logo opacity, and test with a flat 3px horizontal sand bar instead of the gradient top strip.",
+  "passesThreshold": true
+}
