@@ -1,9 +1,21 @@
 {
-  "onBrand": 8,
-  "legible": 7,
-  "clearHierarchy": 8,
-  "notGeneric": 7,
-  "overall": 7.5,
-  "critique": "Strong alignment with the Flywheel design system: warm sand accents, DM Mono data typography, square geometry, and the restrained off-white left panel all feel intentional. The split-panel layout with '$4.2B' as the hero stat creates clear hierarchy—eye lands on the number first, then migrates right to the headline and subtext. A few issues to address: (1) The stat label 'Q1 2025 AI Infrastructure VC' is small and cramped below the large figure—bump it to 13–14px and give it more breathing room. (2) The dot/constellation decoration is tasteful but the SVG lines connecting dots in the stat panel feel slightly at odds with the 'Swiss-design precision' promise—they read more editorial-generative than editorial-austere; remove the connecting lines and keep only the scattered dots. (3) The footer logo at bottom-right is extremely faint (#aaaaaa, 50% opacity) and the wordmark is barely perceptible at small sizes—use full #aaaaaa without the opacity halving. (4) The headline at 32px sits comfortably but 'Q1 2025 alone.' could be bolded or highlighted differently to create a secondary anchor within the text column. (5) The warm gradient top bar is subtle and appropriate but could be a solid 3px line in #d7c8af for crisper brand precision rather than a fade-to-transparent. Overall a competent, mostly on-brand execution that avoids generic template vibes through the data-forward layout choice.",
-  "passesThreshold": true
+  "onBrand": 7,
+  "legible": 6,
+  "clearHierarchy": 7,
+  "notGeneric": 6,
+  "overall": 6.5,
+  "critique": "The card hits most brand marks — white background, DM Mono for data labels, Inter for body, black/sand accent palette, and left-anchored layout — but several issues dilute the execution. The warm bar top accent (3px) is so thin it barely registers as a design decision. More critically, bar values are rendered in white text inside filled bars, but the 'Q1 2025 alone' and 'Full year 2022' bars at 40-45% width are too short to contain legible white text — the values will be clipped or barely visible against dark fill. The dot-field SVG background adds visual noise that conflicts with the brand's stated 'Swiss-design precision' and '60%+ negative space' principle; those scattered circles and connecting lines read as decorative clutter rather than editorial restraint. The headline at 30px falls well below the specified 42-60px range, making the most important element feel undersized. The bar chart itself is competent but generic — horizontal bars with no axis labels or gridlines feel unfinished. The 'outside' CSS class is defined but never applied, so bar values for short bars risk being unreadable. Fix the headline size to 48-52px, remove the dot field entirely, ensure bar values fall outside short bars, and reduce the subtext size slightly to reinforce hierarchy over the headline.",
+  "passesThreshold": true,
+  "visionAbsolute": {
+    "layout": 7,
+    "legibility": 8,
+    "polish": 7
+  },
+  "visionComparative": {
+    "colorMatch": 8,
+    "typographyMatch": 8,
+    "aestheticMatch": 9
+  },
+  "visionCritique": "The card does a solid job mirroring Flywheel's brand: the floating dot/bubble background texture is a direct lift from the website and immediately signals brand consistency. The off-white/cream background, bold black headline with a period, and restrained color palette all align well. However, a few issues reduce polish: (1) The bar chart uses both black and a muted tan/khaki for bars — the tan bar (Full year 2022) looks unintentional or like a disabled state rather than a deliberate design choice; consider using a branded accent color or a lighter tint of black instead. (2) The subtitle text in muted gold/brown is slightly small and low-contrast against the off-white background — boost weight or size slightly. (3) There is a thin colored bar artifact visible at the very top edge of the card, suggesting a cropping or padding issue that should be cleaned up. (4) The chart label 'Full year 2024' bar value (9.4) runs outside the chart boundary area, which could be tightened. (5) The 'COMPARISON' eyebrow label uses a warm brown that works but could be bolder to better anchor the hierarchy. Overall the card feels native to the brand but needs minor refinements in data visualization choices and edge cleanup.",
+  "compositeScore": 7.43
 }

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      font-family: {{{ds.fontFamily}}};
+      background: {{ds.background}};
+      color: {{ds.textPrimary}};
+      overflow: hidden;
+    }
+
+    .canvas {
+      width: 1200px;
+      height: 630px;
+      display: flex;
+      position: relative;
+    }
+
+    .dot-field {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .warm-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, {{ds.accent}} 0%, transparent 35%);
+      z-index: 1;
+    }
+
+    .text-side {
+      flex: 0 0 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px 56px;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: {{ds.textMuted}};
+      margin-bottom: 14px;
+    }
+
+    .headline {
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: {{ds.textPrimary}};
+      margin-bottom: 16px;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: {{ds.accent}};
+      margin-bottom: 16px;
+    }
+
+    .subtext {
+      font-size: 15px;
+      font-weight: 400;
+      color: {{ds.textSubtle}};
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .legend {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .legend-swatch {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+
+    .legend-label {
+      font-size: 13px;
+      color: {{ds.textSecondary}};
+    }
+
+    .legend-value {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 13px;
+      font-weight: 500;
+      color: {{ds.textPrimary}};
+      margin-left: auto;
+    }
+
+    .chart-side {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .donut-svg {
+      width: 340px;
+      height: 340px;
+    }
+
+    .donut-center-label {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 14px;
+      fill: {{ds.textMuted}};
+      text-anchor: middle;
+    }
+
+    .donut-center-value {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 36px;
+      font-weight: 500;
+      fill: {{ds.textPrimary}};
+      text-anchor: middle;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 24px;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      z-index: 1;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand svg { width: 16px; height: 16px; }
+
+    .brand-name {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: {{ds.textDisabled}};
+      text-transform: uppercase;
+    }
+
+    .url {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 11px;
+      color: {{ds.textFaint}};
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="dot-field">
+      {{{ds.decorativePatternSvg}}}
+    </div>
+    <div class="warm-bar"></div>
+    <div class="text-side">
+      <div class="eyebrow">Distribution</div>
+      <h1 class="headline">{{headline}}</h1>
+      <div class="divider"></div>
+      {{#if subtext}}
+      <p class="subtext">{{subtext}}</p>
+      {{/if}}
+      <div class="legend">
+        {{#each donut_segments}}
+        <div class="legend-item">
+          <div class="legend-swatch" style="background: {{this.color}};"></div>
+          <span class="legend-label">{{this.label}}</span>
+          <span class="legend-value">{{this.displayValue}}</span>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class="chart-side">
+      <svg class="donut-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        {{#each donut_segments}}
+        <circle
+          cx="100" cy="100" r="70"
+          fill="none"
+          stroke="{{this.color}}"
+          stroke-width="28"
+          stroke-dasharray="{{this.dashArray}}"
+          stroke-dashoffset="{{this.dashOffset}}"
+          transform="rotate(-90 100 100)"
+        />
+        {{/each}}
+        <circle cx="100" cy="100" r="56" fill="{{../ds.background}}" />
+        <text class="donut-center-value" x="100" y="104">{{donut_total}}</text>
+        <text class="donut-center-label" x="100" y="122">total</text>
+      </svg>
+    </div>
+    <div class="footer">
+      <div class="brand">
+        {{#if ds.logoSvg}}{{{ds.logoSvg}}}{{/if}}
+        <span class="brand-name">{{ds.brandName}}</span>
+      </div>
+      <span class="url">{{ds.brandUrl}}</span>
+    </div>
+  </div>
+</body>
+</html>

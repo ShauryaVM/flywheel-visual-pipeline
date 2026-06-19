@@ -1,9 +1,21 @@
 {
   "onBrand": 7,
-  "legible": 8,
-  "clearHierarchy": 7,
+  "legible": 6,
+  "clearHierarchy": 6,
   "notGeneric": 6,
-  "overall": 7,
-  "critique": "The design shows solid restraint with the white background, black numbered squares, and DM Mono usage, but several brand violations weaken it. The warm bar uses a gradient (explicitly prohibited) and the decorative dot-field/constellation graphic feels like a generic template flourish rather than Swiss-design precision. The left panel headline at 30px falls below the 42px minimum specified in the design system. The dividing line between left and right panels is effective, but the 'dots and lines' SVG background is visually noisy and contradicts the '60%+ negative space' requirement—it fills the right panel with clutter that competes with the list. The numbered squares are the strongest on-brand element. To improve: remove the dot-field entirely, increase headline size to 42px+, replace the gradient bar with a solid #d7c8af 3px bar, and let the negative space breathe. The list items could also use slightly more vertical padding to feel more editorial and less like a dashboard widget.",
-  "passesThreshold": true
+  "overall": 6.25,
+  "critique": "The card follows many Flywheel principles well — black/sand palette, DM Mono for data, square geometry, left-anchored layout — but several issues undermine execution. The donut chart center fill is empty (no background color specified), making the center text float awkwardly over chart rings. The CSS override block (.content, .text-side { flex-direction: row }) conflicts with existing declarations and is redundant noise. The headline 'Most great books are already old' is decent but the chart data (78/22 split showing '100 total') feels fabricated from the post — the post never provides these numbers, making the visual misleading. The dot field background is too busy and detracts from the Swiss-design restraint the system demands. The warm-bar gradient conflicts with the 'no gradients' prohibition in spirit, though it's subtle. Legibility suffers because the text-side and chart-side compete at similar visual weight — the 30px headline is too small for a 520px column. The legend values (78, 22) lack percent signs, making them ambiguous. Recommended fixes: add a white fill to the donut center circle, increase headline size to 42px minimum, remove the dot-field or reduce it drastically to honor the 60%+ negative space rule, and either cite data sources or reframe the visual around the qualitative theme rather than fabricated percentages.",
+  "passesThreshold": false,
+  "visionAbsolute": {
+    "layout": 6,
+    "legibility": 7,
+    "polish": 6
+  },
+  "visionComparative": {
+    "colorMatch": 7,
+    "typographyMatch": 7,
+    "aestheticMatch": 8
+  },
+  "visionCritique": "The card successfully borrows Flywheel's signature floating-dot particle background and clean white/off-white canvas, which aligns well with the brand reference. However, several issues reduce quality: (1) The donut chart is uncomfortably large and positioned too far right, creating heavy imbalance — the left half of the card feels sparse and underutilized. (2) The legend area (black/tan squares with labels) is cramped and awkwardly formatted with line breaks mid-phrase ('10+ years old (classics)'). (3) The body copy column is too narrow and produces ragged, uneven line breaks. (4) The tan/gold warm background tint diverges slightly from the brand's pure white — Flywheel uses a cooler, cleaner white. (5) The 'DISTRIBUTION' label in gold/amber is a nice editorial touch but the color isn't present in the brand palette. (6) The '100 total' center label inside the donut has very low contrast (dark gray on near-black). Fix: tighten the chart size to ~40% of card width, widen the text column, use pure white background, improve legend spacing, and boost contrast on the donut center text.",
+  "compositeScore": 6.66
 }

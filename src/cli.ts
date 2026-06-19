@@ -10,7 +10,7 @@ const { values } = parseArgs({
     run: { type: 'boolean', default: false },
     stage: { type: 'string' },
     post: { type: 'string' },
-    url: { type: 'string', default: 'https://flywheelos.com' },
+    url: { type: 'string' },
     output: { type: 'string', default: 'data/outputs' },
     help: { type: 'boolean', default: false },
   },

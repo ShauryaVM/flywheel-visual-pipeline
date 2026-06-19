@@ -26,6 +26,10 @@ function evaluateCondition(condition: string, signals: PostSignals): boolean {
     mentions_person: signals.mentions_person,
     mentions_metric_or_stat: signals.mentions_metric_or_stat,
     exclamation_density: signals.exclamation_density,
+    has_comparison_data: signals.has_comparison_data,
+    has_trend_data: signals.has_trend_data,
+    has_proportion_data: signals.has_proportion_data,
+    numeric_count: signals.numeric_count,
   };
 
   try {
@@ -95,6 +99,31 @@ export function evaluateRules(
         break;
       }
     }
+  }
+
+  // ChartGalaxy-inspired: inject chart modality candidates for data-heavy posts
+  if (signals.has_comparison_data && signals.has_numbers && signals.numeric_count >= 2) {
+    candidates.push({
+      modality: 'bar_chart',
+      confidence: 65,
+      source_content_type: 'data_research_insight',
+    });
+  }
+
+  if (signals.has_trend_data && signals.has_numbers) {
+    candidates.push({
+      modality: 'line_sparkline',
+      confidence: 60,
+      source_content_type: 'data_research_insight',
+    });
+  }
+
+  if (signals.has_proportion_data && signals.has_numbers) {
+    candidates.push({
+      modality: 'pie_donut_chart',
+      confidence: 58,
+      source_content_type: 'data_research_insight',
+    });
   }
 
   const deduped = new Map<string, CandidateModality>();

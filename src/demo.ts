@@ -1,6 +1,7 @@
 import 'dotenv/config';
-import { runPipeline } from './index.js';
+import { runPipelineWithFeedback } from './index.js';
 import { createStageLogger } from './observability/logger.js';
+import type { FeedbackLog } from './types/index.js';
 
 const log = createStageLogger('demo');
 
@@ -177,10 +178,11 @@ async function main() {
     );
 
     try {
-      const result = await runPipeline({
+      const result = await runPipelineWithFeedback({
         postText: post.text,
         postId: post.id,
         outputDir: 'data/outputs',
+        maxRetries: 1,
       });
 
       results.push({
@@ -193,9 +195,12 @@ async function main() {
         evalScore: result.evalScore
           ? {
               overall: result.evalScore.overall,
+              compositeScore: result.evalScore.compositeScore,
               passes: result.evalScore.passesThreshold,
             }
           : undefined,
+        regenerated: result.regenerated ?? false,
+        feedbackLog: result.feedbackLog,
         success: true,
       });
 
@@ -205,6 +210,7 @@ async function main() {
           modality: result.selectedConcept.modality,
           headline: result.selectedConcept.headline,
           png: result.pngPath,
+          regenerated: result.regenerated ?? false,
         },
         'Post processed successfully',
       );
@@ -220,15 +226,27 @@ async function main() {
   }
 
   console.log('\n========== DEMO RESULTS ==========\n');
+  const regeneratedPosts: Array<{ postId: string; feedbackLog: FeedbackLog }> = [];
+
   for (const r of results) {
     if (r.success) {
-      console.log(`[OK] ${r.postId}`);
+      const regeneratedTag = r.regenerated ? ' [REGENERATED]' : '';
+      console.log(`[OK] ${r.postId}${regeneratedTag}`);
       console.log(`     Modality: ${r.selectedModality}`);
       console.log(`     Headline: ${r.headline}`);
       console.log(`     PNG: ${r.pngPath}`);
       if ('evalScore' in r && r.evalScore) {
-        const es = r.evalScore as { overall: number; passes: boolean };
-        console.log(`     Eval: ${es.overall.toFixed(1)}/10 ${es.passes ? '(PASS)' : '(BELOW THRESHOLD)'}`);
+        const es = r.evalScore as { overall: number; passes: boolean; compositeScore?: number };
+        const displayScore = es.compositeScore ?? es.overall;
+        console.log(`     Eval: ${displayScore.toFixed(1)}/10 ${es.passes ? '(PASS)' : '(BELOW THRESHOLD)'}${es.compositeScore != null ? ' (composite)' : ' (text-only)'}`);
+      }
+      if (r.regenerated && r.feedbackLog) {
+        const fl = r.feedbackLog as FeedbackLog;
+        console.log(`     Feedback: ${fl.improvement.originalComposite.toFixed(1)} → ${fl.improvement.finalComposite.toFixed(1)} (Δ${fl.improvement.delta >= 0 ? '+' : ''}${fl.improvement.delta.toFixed(2)})`);
+        if (fl.improvement.axesImproved.length > 0) {
+          console.log(`     Improved: ${fl.improvement.axesImproved.join(', ')}`);
+        }
+        regeneratedPosts.push({ postId: r.postId as string, feedbackLog: fl });
       }
       console.log('');
     } else {
@@ -239,7 +257,26 @@ async function main() {
   }
 
   const successes = results.filter((r) => r.success).length;
+  const regenerated = results.filter((r) => r.success && r.regenerated).length;
   console.log(`${successes}/${posts.length} posts processed successfully.`);
+  if (regenerated > 0) {
+    console.log(`${regenerated} post(s) were regenerated via feedback loop.`);
+    console.log('\n========== FEEDBACK LOOP DETAILS ==========\n');
+    for (const { postId, feedbackLog } of regeneratedPosts) {
+      console.log(`--- ${postId} ---`);
+      console.log(`  Result: ${feedbackLog.finalResult}`);
+      console.log(`  Attempts: ${feedbackLog.attempts.length}`);
+      for (const attempt of feedbackLog.attempts) {
+        const score = attempt.scores.compositeScore ?? attempt.scores.overall;
+        console.log(`    #${attempt.attempt}: ${score.toFixed(1)}/10 ${attempt.scores.passesThreshold ? '(PASS)' : '(FAIL)'}`);
+        if (attempt.conceptChanges) {
+          console.log(`      Changes: ${attempt.conceptChanges}`);
+        }
+      }
+      console.log(`  Score improvement: ${feedbackLog.improvement.originalComposite.toFixed(1)} → ${feedbackLog.improvement.finalComposite.toFixed(1)} (Δ${feedbackLog.improvement.delta >= 0 ? '+' : ''}${feedbackLog.improvement.delta.toFixed(2)})`);
+      console.log('');
+    }
+  }
 }
 
 main().catch((err) => {

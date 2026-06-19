@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      font-family: {{{ds.fontFamily}}};
+      background: {{ds.background}};
+      color: {{ds.textPrimary}};
+      overflow: hidden;
+    }
+
+    .canvas {
+      width: 1200px;
+      height: 630px;
+      display: grid;
+      grid-template-rows: 3px auto 1fr auto;
+      position: relative;
+    }
+
+    .dot-field {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .warm-bar {
+      background: linear-gradient(90deg, {{ds.accent}} 0%, transparent 35%);
+      z-index: 1;
+    }
+
+    .header {
+      padding: 36px 64px 0;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: {{ds.textMuted}};
+      margin-bottom: 10px;
+    }
+
+    .headline {
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: {{ds.textPrimary}};
+      max-width: 800px;
+    }
+
+    .subtext {
+      font-size: 14px;
+      font-weight: 400;
+      color: {{ds.textSubtle}};
+      margin-top: 6px;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .chart-area {
+      padding: 24px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      z-index: 1;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .bar-label {
+      flex: 0 0 140px;
+      font-size: 13px;
+      font-weight: 500;
+      color: {{ds.textSecondary}};
+      text-align: right;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 32px;
+      background: {{ds.surface}};
+      border: 1px solid rgba(215, 200, 175, 0.3);
+      position: relative;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: {{ds.primary}};
+      transition: width 0.3s ease;
+      position: relative;
+    }
+
+    .bar-fill.accent {
+      background: {{ds.accent}};
+    }
+
+    .bar-value {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: {{{ds.monoFamily}}};
+      font-size: 13px;
+      font-weight: 500;
+      color: {{ds.background}};
+    }
+
+    .bar-value.outside {
+      right: auto;
+      left: calc(100% + 10px);
+      color: {{ds.textSubtle}};
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 64px 24px;
+      z-index: 1;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand svg { width: 16px; height: 16px; }
+
+    .brand-name {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: {{ds.textDisabled}};
+      text-transform: uppercase;
+    }
+
+    .url {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 11px;
+      color: {{ds.textFaint}};
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="dot-field">
+      {{{ds.decorativePatternSvg}}}
+    </div>
+    <div class="warm-bar"></div>
+    <div class="header">
+      <div class="eyebrow">Comparison</div>
+      <h1 class="headline">{{headline}}</h1>
+      {{#if subtext}}
+      <p class="subtext">{{subtext}}</p>
+      {{/if}}
+    </div>
+    <div class="chart-area">
+      {{#each chart_data}}
+      <div class="bar-row">
+        <span class="bar-label">{{this.label}}</span>
+        <div class="bar-track">
+          <div class="bar-fill{{#if (eq @index 0)}} accent{{/if}}" style="width: {{this.percent}}%;">
+            {{#if (gt this.percent 25)}}
+            <span class="bar-value">{{this.displayValue}}</span>
+            {{/if}}
+          </div>
+          {{#unless (gt this.percent 25)}}
+          <span class="bar-value outside" style="left: calc({{this.percent}}% + 10px);">{{this.displayValue}}</span>
+          {{/unless}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <div class="footer">
+      <div class="brand">
+        {{#if ds.logoSvg}}{{{ds.logoSvg}}}{{/if}}
+        <span class="brand-name">{{ds.brandName}}</span>
+      </div>
+      <span class="url">{{ds.brandUrl}}</span>
+    </div>
+  </div>
+</body>
+</html>

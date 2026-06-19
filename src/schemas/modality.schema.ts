@@ -43,6 +43,9 @@ export const VisualModality = z.enum([
   'ranked_list_graphic',
   'checklist_graphic',
   'two_column_process_diagram',
+  'bar_chart',
+  'line_sparkline',
+  'pie_donut_chart',
 ]);
 export type VisualModality = z.infer<typeof VisualModality>;
 

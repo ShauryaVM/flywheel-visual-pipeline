@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      font-family: {{{ds.fontFamily}}};
+      background: {{ds.background}};
+      color: {{ds.textPrimary}};
+      overflow: hidden;
+    }
+
+    .canvas {
+      width: 1200px;
+      height: 630px;
+      display: grid;
+      grid-template-rows: 3px auto 1fr auto;
+      position: relative;
+    }
+
+    .dot-field {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .warm-bar {
+      background: linear-gradient(90deg, {{ds.accent}} 0%, transparent 35%);
+      z-index: 1;
+    }
+
+    .header {
+      padding: 36px 64px 0;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: {{ds.textMuted}};
+      margin-bottom: 10px;
+    }
+
+    .headline {
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: {{ds.textPrimary}};
+      max-width: 800px;
+    }
+
+    .subtext {
+      font-size: 14px;
+      font-weight: 400;
+      color: {{ds.textSubtle}};
+      margin-top: 6px;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .chart-area {
+      padding: 20px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .sparkline-container {
+      background: {{ds.surface}};
+      border: 1px solid rgba(215, 200, 175, 0.3);
+      box-shadow: rgba(215, 200, 175, 0.25) 0px 4px 20px 0px, rgba(0, 0, 0, 0.06) 0px 1px 4px 0px;
+      padding: 24px 32px;
+    }
+
+    .sparkline-svg {
+      width: 100%;
+      height: 200px;
+    }
+
+    .sparkline-labels {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0 0;
+    }
+
+    .sparkline-label {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 11px;
+      color: {{ds.textMuted}};
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 64px 24px;
+      z-index: 1;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand svg { width: 16px; height: 16px; }
+
+    .brand-name {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: {{ds.textDisabled}};
+      text-transform: uppercase;
+    }
+
+    .url {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 11px;
+      color: {{ds.textFaint}};
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="dot-field">
+      {{{ds.decorativePatternSvg}}}
+    </div>
+    <div class="warm-bar"></div>
+    <div class="header">
+      <div class="eyebrow">Trend</div>
+      <h1 class="headline">{{headline}}</h1>
+      {{#if subtext}}
+      <p class="subtext">{{subtext}}</p>
+      {{/if}}
+    </div>
+    <div class="chart-area">
+      <div class="sparkline-container">
+        <svg class="sparkline-svg" viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="{{ds.primary}}" stop-opacity="0.12" />
+              <stop offset="100%" stop-color="{{ds.primary}}" stop-opacity="0.02" />
+            </linearGradient>
+          </defs>
+          {{#if sparkline_path}}
+          <path d="{{{sparkline_fill_path}}}" fill="url(#fillGrad)" />
+          <path d="{{{sparkline_path}}}" fill="none" stroke="{{ds.primary}}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          {{#each sparkline_points}}
+          <circle cx="{{this.x}}" cy="{{this.y}}" r="4" fill="{{../ds.background}}" stroke="{{../ds.primary}}" stroke-width="2" />
+          {{/each}}
+          {{/if}}
+        </svg>
+        <div class="sparkline-labels">
+          {{#each chart_data}}
+          <span class="sparkline-label">{{this.label}}</span>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="brand">
+        {{#if ds.logoSvg}}{{{ds.logoSvg}}}{{/if}}
+        <span class="brand-name">{{ds.brandName}}</span>
+      </div>
+      <span class="url">{{ds.brandUrl}}</span>
+    </div>
+  </div>
+</body>
+</html>

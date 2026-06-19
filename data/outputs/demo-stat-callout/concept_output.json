@@ -1,41 +1,116 @@
 {
   "concepts": [
     {
-      "modality": "multi_stat_panel",
-      "headline": "The productivity data tells a more complex story.",
-      "subtext": "Stanford tracked 16,000 workers over 9 months. The results challenge both extremes.",
-      "data_points": [
-        "13% | Remote productivity gain",
-        "24% | Hybrid over fully remote",
-        "73% | Workers who feel more productive at home",
-        "9 mo | Stanford study duration"
+      "modality": "bar_chart",
+      "headline": "The productivity sweet spot is hybrid.",
+      "subtext": "Stanford tracked 16,000 workers over 9 months. The data points to one clear winner.",
+      "data_points": [],
+      "chart_data": [
+        {
+          "label": "Fully in-office",
+          "value": 0
+        },
+        {
+          "label": "Fully remote",
+          "value": 13
+        },
+        {
+          "label": "Hybrid",
+          "value": 24
+        }
       ],
-      "layout_description": "Left-anchored hero pattern. Headline at 48px bold sits in upper-left quadrant with 72px left padding. A 2px warm sand accent bar runs above the headline. Below the headline, subtext at 16px in #555 with 32px gap. Stat tiles arranged in a 2x2 grid on the lower half: each tile is a square card on #f0efe9 surface with a 1px #e5e5e5 border, large DM Mono number at 40px in #111 and label below at 12px uppercase #888. Right side of canvas above the grid is reserved for a sparse particle dot network at 0.08 opacity. FLYWHEEL wordmark bottom-left at 12px uppercase DM Mono in #888. 72px padding on all edges.",
-      "color_usage": "Background #ffffff. Headline #111. Subtext #555. Stat tiles on #f0efe9 with #e5e5e5 borders. Stat values in #111 DM Mono. Stat labels in #888. Accent bar #d7c8af. Particle dots #6b7a7c at 0.08 opacity.",
-      "reasoning": "Four distinct quantitative proof points from the post make multi_stat_panel the natural fit. The data grid communicates scale and nuance simultaneously, and the left-anchored layout with a sparse right-side particle field preserves Flywheel's signature negative space."
+      "layout_description": "Left-anchored hero layout. Headline and subtext occupy the left 50% of canvas, anchored at 72px from left edge. Bar chart occupies right 45%, vertically centered. FLYWHEEL watermark behind at opacity 0.03. Particle network in upper-right corner at low opacity. Warm accent bar at top of chart area.",
+      "layout_spec": {
+        "headline_position": "top-left at 18% from top",
+        "stat_position": "center-right at 52% from left",
+        "accent_placement": "thin 2px horizontal warm sand bar above chart",
+        "whitespace_distribution": "55% left narrative, 45% right data, generous top and bottom padding",
+        "emphasis_area": "hybrid bar as tallest, visually dominant in right panel",
+        "flex_direction": "row",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "72px",
+          "right": "72px",
+          "bottom": "72px",
+          "left": "80px"
+        }
+      },
+      "color_usage": "Bars in #000000 with varying opacity: fully in-office at 0.15, fully remote at 0.45, hybrid at 1.0 for emphasis. Bar labels in #6b7a7c at 13px DM Mono. Value labels on bars in #000000 bold. Background #ffffff. Accent bar in #d7c8af.",
+      "reasoning": "The post's central argument is a productivity comparison across three work modes. A bar chart makes that hierarchy immediately legible. Setting in-office as the zero baseline and showing remote at +13% and hybrid at +24% creates an undeniable visual argument for the middle path, which is the post's thesis. The sparse three-bar structure preserves editorial restraint.",
+      "visualization_goals": [
+        "Compare the 73% self-reported productivity perception of remote workers against the actual 13% measured productivity gain from the Stanford study to highlight the gap between perception and reality",
+        "Visualize the productivity spectrum across work arrangements: fully in-office as baseline, fully remote at 13% gain, and hybrid at 24% gain to show the clear performance peak at hybrid",
+        "Illustrate the scale and credibility of the Stanford study by showcasing its scope of 16,000 workers tracked over 9 months as the evidence foundation for the findings",
+        "Map the 'intentional flexibility' sweet spot on a spectrum between fully remote and fully in-office extremes, showing companies at both ends as outliers ignoring the data"
+      ]
+    },
+    {
+      "modality": "multi_stat_panel",
+      "headline": "Self-reported vs. measured productivity.",
+      "subtext": "A Stanford study of 16,000 workers reveals the gap between what we believe and what the data shows.",
+      "data_points": [
+        "73% | Remote workers who feel more productive",
+        "13% | Actual remote productivity gain (Stanford)",
+        "24% | Hybrid productivity gain over fully remote",
+        "16,000 | Workers tracked in the study",
+        "9 months | Study duration"
+      ],
+      "layout_description": "Structured data layout. Section heading and subtext in upper-left. Four stat tiles arranged in a 2x2 grid occupying the lower two-thirds of the canvas, left-aligned. Fifth stat (9 months) sits as a standalone caption-level note beneath the grid. Particle network in upper-right at opacity 0.08. FLYWHEEL watermark centered behind grid at opacity 0.03.",
+      "layout_spec": {
+        "headline_position": "top-left at 12% from top",
+        "stat_position": "lower two-thirds, left-aligned 2x2 grid",
+        "accent_placement": "warm sand accent bar above headline, 2px, fading right",
+        "whitespace_distribution": "40% upper heading area, 55% lower stat grid, 5% footer gradient",
+        "emphasis_area": "24% hybrid stat tile, visually heavier via larger number size",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "60px",
+          "right": "80px",
+          "bottom": "60px",
+          "left": "80px"
+        }
+      },
+      "color_usage": "Stat numbers in #000000 at 42px DM Mono weight 700. Stat labels in #6b7a7c at 13px. Tile borders 1px solid rgba(215,200,175,0.4). Background #ffffff. Tile warm sand shadow rgba(215,200,175,0.25) 8px blur. Accent bar #d7c8af.",
+      "reasoning": "The post contains five distinct data proof points with genuine numerical weight. A multi-stat panel lets the numbers speak with equal authority, letting the reader discover the contrast between 73% perceived and 13% actual, and then the 24% hybrid figure as the climactic data point. DM Mono enforces the editorial, data-journal aesthetic.",
+      "visualization_goals": [
+        "Compare the 73% self-reported productivity perception of remote workers against the actual 13% measured productivity gain from the Stanford study to highlight the gap between perception and reality",
+        "Visualize the productivity spectrum across work arrangements: fully in-office as baseline, fully remote at 13% gain, and hybrid at 24% gain to show the clear performance peak at hybrid",
+        "Illustrate the scale and credibility of the Stanford study by showcasing its scope of 16,000 workers tracked over 9 months as the evidence foundation for the findings",
+        "Map the 'intentional flexibility' sweet spot on a spectrum between fully remote and fully in-office extremes, showing companies at both ends as outliers ignoring the data"
+      ]
     },
     {
       "modality": "bold_statement_card",
-      "headline": "Intentional flexibility outperforms both extremes.",
-      "subtext": "Stanford data: hybrid workers are 24% more productive than fully remote. The answer is in the middle.",
+      "headline": "The answer is in the middle.",
+      "subtext": "Stanford studied 16,000 workers. Hybrid outperformed fully remote by 24%. Intentional flexibility wins.",
       "data_points": [],
-      "layout_description": "Centered statement pattern. Canvas is #faf9f6 warm off-white. A faint FLYWHEEL watermark at 160px bold uppercase sits centered at 0.03 opacity behind all content. Single text block centered vertically and horizontally: eyebrow label 'STANFORD STUDY, 16,000 WORKERS' in 11px DM Mono uppercase #888 with 0.07em letter-spacing sits above the headline. Headline at 56px weight 600 #111 with letter-spacing -0.04em, max-width 680px, centered. Subtext at 17px #555 centered below with 36px gap. A 2px warm sand horizontal accent bar 120px wide is centered directly below the subtext. FLYWHEEL wordmark bottom-center at 11px DM Mono uppercase #888. 72px padding all edges. Particle dots scattered in upper-right and lower-left corners at 0.07 opacity.",
-      "color_usage": "Background #faf9f6. Headline #111. Eyebrow #888. Subtext #555. Accent bar #d7c8af. FLYWHEEL watermark #000 at 0.03 opacity. Particle dots #6b7a7c at 0.07 opacity.",
-      "reasoning": "The post's core argument is a single declarative insight: neither extreme works, flexibility wins. A centered bold statement card distills that to its essence. The FLYWHEEL watermark and minimal particle texture preserve editorial gravity without adding noise."
-    },
-    {
-      "modality": "stat_callout",
-      "headline": "Hybrid workers are 24% more productive than remote.",
-      "subtext": "Stanford tracked 16,000 workers for 9 months. The sweet spot is intentional flexibility, not a mandate.",
-      "data_points": [
-        "24%",
-        "Hybrid productivity advantage over fully remote workers, Stanford University"
-      ],
-      "layout_description": "Left-anchored hero pattern. Upper-left: eyebrow label 'STANFORD UNIVERSITY, 9-MONTH STUDY' in 11px DM Mono uppercase #888. Below eyebrow with 24px gap: headline at 52px weight 600 #111 letter-spacing -0.04em, max-width 600px. Below headline with 28px gap: subtext at 17px #555, max-width 520px. Hero stat block sits mid-canvas left: '24%' in 96px DM Mono weight 400 #111 with a 2px warm sand left border and 20px left padding. A short 1px #e5e5e5 horizontal rule separates the stat from a secondary note '13% remote gain vs. office' in 13px DM Mono #888 below it. Right half of canvas: particle dot network at 0.10 opacity. FLYWHEEL wordmark bottom-left 11px DM Mono uppercase #888. 72px edge padding throughout.",
-      "color_usage": "Background #ffffff. Headline #111. Subtext #555. Eyebrow #888. Hero stat #111 DM Mono. Stat left border #d7c8af. Secondary stat label #888. Rule #e5e5e5. Particle dots #6b7a7c at 0.10 opacity.",
-      "reasoning": "The 24% hybrid productivity advantage is the sharpest, most counterintuitive data point in the post. A stat callout isolates it as the hero number, giving the reader an immediate anchor before the supporting context elaborates."
+      "layout_description": "Centered statement layout. Headline rendered at 84px weight 600, centered on canvas with generous vertical breathing room. Subtext at 16px centered below with 48px gap. Thin warm sand horizontal rule between headline and subtext at 30% opacity. FLYWHEEL watermark at extreme size behind headline at opacity 0.025. Particle network scattered in lower-right periphery at opacity 0.10.",
+      "layout_spec": {
+        "headline_position": "vertical center at 42% from top, horizontally centered",
+        "stat_position": "subtext 32px below horizontal rule",
+        "accent_placement": "2px horizontal warm sand rule centered, 120px wide, between headline and subtext",
+        "whitespace_distribution": "30% top, 30% bottom, generous horizontal margins",
+        "emphasis_area": "headline as sole dominant element",
+        "flex_direction": "column",
+        "alignment": "center",
+        "padding_distribution": {
+          "top": "80px",
+          "right": "120px",
+          "bottom": "80px",
+          "left": "120px"
+        }
+      },
+      "color_usage": "Headline #000000 weight 600. Subtext #6b7a7c weight 400. Horizontal rule #d7c8af at 0.30 opacity. FLYWHEEL watermark #000000 at 0.025 opacity. Background #ffffff. Particle dots #000000 at 0.08 opacity.",
+      "reasoning": "The post closes with a declarative thesis: the answer is in the middle. That line earns the centered statement treatment. It is short, confident, and conclusive. The subtext carries the data credibility. This format mirrors the editorial restraint of a premium publication's section divider, letting the argument land with maximum conviction and minimum visual noise.",
+      "visualization_goals": [
+        "Compare the 73% self-reported productivity perception of remote workers against the actual 13% measured productivity gain from the Stanford study to highlight the gap between perception and reality",
+        "Visualize the productivity spectrum across work arrangements: fully in-office as baseline, fully remote at 13% gain, and hybrid at 24% gain to show the clear performance peak at hybrid",
+        "Illustrate the scale and credibility of the Stanford study by showcasing its scope of 16,000 workers tracked over 9 months as the evidence foundation for the findings",
+        "Map the 'intentional flexibility' sweet spot on a spectrum between fully remote and fully in-office extremes, showing companies at both ends as outliers ignoring the data"
+      ]
     }
   ],
   "selected": 0,
-  "selection_reasoning": "The multi_stat_panel is the strongest choice because the post is fundamentally data-driven, presenting four distinct numbers that together build an argument. Showing all four stats in a structured grid lets the viewer grasp the full evidential picture at a glance, which is more intellectually honest and visually compelling than isolating one number or reducing everything to a declaration. The 2x2 tile grid with DM Mono numerals against warm off-white surfaces exemplifies Flywheel's structured data layout pattern, and the left-anchored headline above the grid preserves the required asymmetric balance and negative space."
+  "selection_reasoning": "The bar chart concept most directly visualizes the post's core argument: a measurable productivity hierarchy across three work modes. It converts the abstract claim into an undeniable spatial hierarchy where the hybrid bar is visibly tallest, doing the argumentative work without words. The three-bar structure is sparse enough to honor Flywheel's editorial restraint while being data-rich enough to justify a visual format. The left-anchored narrative plus right-side chart follows the brand's structured data layout pattern and creates the asymmetric balance that defines the design system."
 }

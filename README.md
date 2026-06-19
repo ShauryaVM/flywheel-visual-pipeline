@@ -1,49 +1,58 @@
 # flywheel-visual-pipeline
 
-A standalone service that takes a finished LinkedIn-style post + a brand's design context (from crawling flywheelos.com) and produces polished, on-brand visuals as HTML/CSS, exported to PDF and PNG.
+A standalone service that takes a finished LinkedIn-style post + a brand's design context (from crawling any website) and produces polished, on-brand visuals as HTML/CSS, exported to PDF and PNG. Fully generic — repoint at any company's site to produce visuals in their brand.
 
 ## Architecture
 
 ```
-+------------------+     +-------------------+     +-------------------+     +----------------+
-|  Stage 1         |     |  Stage 2          |     |  Stage 3          |     |  Stage 4       |
-|  Website -->     |---->|  Post -->         |---->|  Concept -->      |---->|  Eval +        |
-|  Design System   |     |  Concept          |     |  HTML/PDF/PNG     |     |  Feedback Loop |
-+------------------+     +-------------------+     +-------------------+     +----------------+
-        |                        ^
-        |                        |
-        |               +-------------------+
-        |               |  Workstream B     |
-        +-------------->|  Schema Induction |
-                        +-------------------+
++------------------------------- Workstream A --------------------------------+
+|                                                                             |
+|  +-------------+     +--------------+     +--------------+     +----------+ |
+|  |  Stage 1    |     |  Stage 2     |     |  Stage 3     |     | Stage 4  | |
+|  |  Website -> |---->|  Post ->     |---->|  Concept ->  |---->| Eval +   | |
+|  |  Design Sys |     |  Concept     |     |  HTML/PNG    |     | Feedback | |
+|  +-------------+     +--------------+     +--------------+     +----------+ |
+|        |                    ^                                        |       |
+|        |                    |                              (critique fed     |
+|        |                    +-------------------------------back if < 7.0)  |
++---------|-------------------------------------------------------------------+
+          |
+          v
++------------------------------- Workstream B --------------------------------+
+|  Schema Induction (DACTI): ~300 posts → two-axis content/modality schema    |
++-----------------------------------------------------------------------------+
 ```
 
-### Stage 1: Website to Design System
-- Crawls the target website with Playwright
-- Extracts design tokens: colors (hex), fonts, weights, logos, spacing, border radius, component patterns
-- Outputs `design_system.json` with structured tokens and raw CSS variables
+## Workstream A: Post Idea → Visual Pipeline
 
-### Stage 2: Post to Concept
-- Takes post text + design system + modality schema as input
-- LLM proposes 2-3 visual concepts as Zod-validated structured output
-- Selects the strongest concept with an explained selection rule
-- Outputs concept JSON with full layout specification
+- Crawls the target website with Playwright, extracting design tokens (colors, fonts, logos, spacing, components) and using Claude to identify brand identity, compositional rules, motifs, prohibitions, and tone
+- LLM enumerates 3-4 key narratives/data points from the post before selecting a visual modality (goal enumeration)
+- Proposes 2-3 visual concepts as Zod-validated structured output, selecting the strongest with an explained rule
+- Detects data-heavy posts and maps them to chart modalities (bar, sparkline, pie/donut)
+- Supports two rendering paths: fixed Handlebars templates (12+ modalities) and a JSON layout protocol for custom absolute-positioned compositions
+- Applies all design tokens dynamically — colors, fonts, spacing, logos, decorative patterns — with fonts embedded as base64 woff2
+- Exports to PDF and PNG via Playwright
+- Evaluates each visual with a three-signal composite score: text-structural analysis (30%) + vision-based absolute quality (35%) + vision-based brand comparison (35%)
+- Feedback loop: if composite score < 7.0, critique is fed back to regenerate the concept → re-render → re-evaluate
+- Writes `eval_score.json` and `eval_feedback_log.json` per visual (scores per axis, what got regenerated, improvement delta)
 
-### Stage 3: Concept to HTML
-- Renders the chosen concept as on-brand HTML/CSS using Handlebars templates
-- Applies extracted design tokens (colors, fonts, spacing)
-- Exports to PDF (Playwright print-to-PDF) and PNG (Playwright screenshot)
-- Includes templates: `quote-card`, `stat-callout`
+## Workstream B: Schema Induction (DACTI Method)
 
-### Stage 4: Eval + Feedback Loop (stretch)
-- LLM judge scores the visual on: on-brand, legible, clear hierarchy, not generic
-- If below threshold, triggers one regeneration pass with critique feedback
-- Logs every evaluation score
+- Custom 6-phase methodology: Signal Enrichment → Exploration → Synthesis → Refinement → Classification → Distribution
+- Analyzes ~300 real posts to derive a two-axis schema: content type × visual modality
+- Validated with Cohen's Kappa inter-rater reliability and held-out set
+- Engagement correlation analysis
+- Outputs Zod schema, JSON distribution, and `METHOD.md`
 
-### Workstream B: Schema Induction
-- Analyzes ~300 real posts to derive a data-grounded schema
-- Two axes: content type (rhetorical shape) x visual modality (form of visual)
-- Outputs Zod schema, JSON distribution, and summary
+## Template Modalities (12+)
+
+| Category | Templates |
+|----------|-----------|
+| **Text-focused** | `headline-subtext-card`, `bold-statement-card`, `key-takeaway-card`, `pull-quote-card` |
+| **Data-focused** | `stat-callout`, `multi-stat-panel`, `bar-chart`, `line-sparkline`, `pie-donut-chart` |
+| **List-focused** | `numbered-list-graphic`, `feature-list-graphic` |
+| **Quote** | `quote-card`, `attribution-quote-card` |
+| **Dynamic** | Layout protocol renderer (any composition via JSON) |
 
 ## Interface Contract
 
@@ -59,24 +68,31 @@ interface PipelineInput {
 ### Pipeline Output
 ```typescript
 interface PipelineResult {
-  designSystem: DesignSystem;            // Extracted design tokens
-  conceptOutput: ConceptGenerationOutput; // Selected visual concept
-  renderedHtml: string;                   // Final HTML
-  pdfPath: string;                        // Path to exported PDF
-  pngPath: string;                        // Path to exported PNG
-  evalScore?: EvalScore;                  // Quality evaluation (optional)
+  designSystem: DesignSystem;
+  conceptOutput: ConceptGenerationOutput;
+  renderedHtml: string;
+  pdfPath: string;
+  pngPath: string;
+  evalScore?: EvalScore;
+  feedbackLog?: FeedbackLog;
+  regenerated?: boolean;
 }
 ```
 
-### Design System Shape
+### EvalScore Shape
 ```typescript
-interface DesignSystem {
-  colors: { primary, secondary?, accent?, background, surface?, text, ... }
-  typography: { headingFont, bodyFont, baseSizePx, lineHeight, scale? }
-  spacing: { unit, borderRadiusPx, containerMaxWidthPx? }
-  logo?: { url?, base64?, format }
-  components: Array<{ name, cssClasses?, shadow?, notes? }>
-  rawCssVariables: Array<{ property, value, selector }>
+interface EvalScore {
+  onBrand: number;           // 1-10
+  legible: number;           // 1-10
+  clearHierarchy: number;    // 1-10
+  notGeneric: number;        // 1-10
+  overall: number;           // average of above
+  critique: string;
+  passesThreshold: boolean;
+  visionAbsolute?: { layout: number; legibility: number; polish: number };
+  visionComparative?: { colorMatch: number; typographyMatch: number; aestheticMatch: number };
+  visionCritique?: string;
+  compositeScore?: number;   // weighted: text 30% + absolute 35% + comparative 35%
 }
 ```
 
@@ -89,30 +105,23 @@ interface DesignSystem {
 ### Installation
 
 ```bash
-# Clone the repository
-git clone <repo-url>
+git clone https://github.com/ShauryaMantrala/flywheel-visual-pipeline.git
 cd flywheel-visual-pipeline
 
-# Install dependencies
 npm install
 
-# Install Playwright browsers
 npx playwright install chromium
-
-# Copy environment template
-cp .env.example .env
-# Then fill in your API keys in .env
 ```
 
-## Environment Variables
+### Configuration
 
 | Variable | Required | Description |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | Yes | API key for Claude LLM calls |
+| `TARGET_URL` | Yes | Website to crawl for design context (e.g. `https://example.com`) |
 | `LANGFUSE_SECRET_KEY` | No | Langfuse secret key for tracing |
 | `LANGFUSE_PUBLIC_KEY` | No | Langfuse public key for tracing |
 | `LANGFUSE_HOST` | No | Langfuse host (defaults to cloud) |
-| `TARGET_URL` | No | Website to crawl (defaults to flywheelos.com) |
 
 ## Usage
 
@@ -147,66 +156,55 @@ Options:
   --run       Run the full pipeline
   --stage     Run a specific stage (1, 2, 3, 4, workstream-b)
   --post      Post text to process
-  --url       Target website URL (default: https://flywheelos.com)
+  --url       Target website URL
   --output    Output directory (default: data/outputs)
   --help      Show help
-```
-
-### Development
-
-```bash
-# Run in dev mode
-npm run dev
-
-# Run tests
-npm test
-
-# Lint
-npm run lint
-
-# Format
-npm run format
-
-# Build
-npm run build
 ```
 
 ## Project Structure
 
 ```
 src/
-  index.ts                          Pipeline orchestrator
+  index.ts                          Pipeline orchestrator + feedback loop
+  demo.ts                           Demo runner (10 posts, full pipeline)
+  export-outputs.ts                 Standalone HTML → PNG/PDF exporter
   cli.ts                            CLI entry point
   config.ts                         Environment + config loading
   types/index.ts                    Shared TypeScript types
   schemas/
     design-system.schema.ts         Zod schema for design tokens
-    concept.schema.ts               Zod schema for visual concepts
-    modality.schema.ts              Zod schema for post modalities
+    concept.schema.ts               Zod schema for visual concepts + layout protocol
+    modality.schema.ts              Zod schema for post modalities (12+ types)
   stages/
-    stage1-design-system/           Website crawling + token extraction
-    stage2-post-to-concept/         LLM concept generation
-    stage3-concept-to-html/         Handlebars rendering + PDF/PNG export
-    stage4-eval/                    LLM quality evaluation (stretch)
-  workstream-b/                     Post classification + schema induction
+    stage1-design-system/           Website crawling + token extraction + brand identity
+    stage2-post-to-concept/         Goal enumeration + LLM concept generation + rule engine
+    stage3-concept-to-html/         Template rendering + layout protocol + PDF/PNG export
+      templates/                    12+ Handlebars templates (text, data, chart, quote)
+      fonts/                        Embedded Inter + DM Mono woff2
+    stage4-eval/                    Vision + text eval, feedback loop, regeneration
+  workstream-b/                     DACTI 6-phase schema induction
   observability/
-    logger.ts                       pino structured logging
+    logger.ts                       Pino structured logging
     tracer.ts                       Langfuse tracing wrapper
 data/
-  posts/                            Input posts for Workstream B
-  schema/                           Generated schema outputs
-  outputs/                          Generated visuals (PDF, PNG, HTML)
-tests/                              Vitest test files
+  posts/                            ~300 input posts for Workstream B
+  schema/                           Generated schema + METHOD.md + distribution
+  design-system.json                Extracted design system (cached)
+  reference-brand-screenshot.png    Brand homepage screenshot (for vision eval)
+  outputs/                          Generated visuals (HTML, PNG, PDF, eval logs)
+tests/                              Vitest test files (13 tests)
+WRITEUP.md                          Architecture decisions + methodology writeup
 ```
 
 ## Tech Stack
 
 - **Runtime**: Node.js 20+, TypeScript (strict, ESM)
-- **LLM**: Anthropic Claude via @anthropic-ai/sdk
-- **Browser automation**: Playwright (crawling + PDF/PNG export)
+- **LLM**: Anthropic Claude (`claude-sonnet-4-6`) via @anthropic-ai/sdk
+- **Browser automation**: Playwright (crawling, screenshots, PDF/PNG export)
 - **HTML parsing**: cheerio
-- **Templating**: Handlebars
+- **Templating**: Handlebars (12+ templates)
 - **Validation**: Zod + zod-validation-error
-- **Observability**: pino (logging) + Langfuse (tracing)
-- **Testing**: Vitest
+- **Observability**: Pino (structured logging) + Langfuse (tracing)
+- **Testing**: Vitest (13 tests)
 - **Code quality**: ESLint + Prettier
+

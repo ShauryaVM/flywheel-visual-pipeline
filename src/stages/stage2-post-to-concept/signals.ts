@@ -12,6 +12,10 @@ export interface PostSignals {
   mentions_person: boolean;
   mentions_metric_or_stat: boolean;
   exclamation_density: number;
+  has_comparison_data: boolean;
+  has_trend_data: boolean;
+  has_proportion_data: boolean;
+  numeric_count: number;
 }
 
 export function computeSignals(postText: string): PostSignals {
@@ -52,6 +56,36 @@ export function computeSignals(postText: string): PostSignals {
   );
   const exclamation_density = exclamationCount / sentenceCount;
 
+  const comparisonPatterns = [
+    /\bvs\.?\b/i,
+    /\bversus\b/i,
+    /\bcompared to\b/i,
+    /\bmore than\b/i,
+    /\bless than\b/i,
+    /\bhigher\b.*\blower\b/i,
+    /\b\d+.*\bvs\b.*\d+/i,
+  ];
+  const has_comparison_data = comparisonPatterns.some((p) => p.test(postText));
+
+  const trendPatterns = [
+    /\b(?:grew|growth|increased|rose|climbed|surged|jumped)\b/i,
+    /\b(?:declined|dropped|fell|decreased|shrank)\b/i,
+    /\b(?:year[- ]over[- ]year|YoY|QoQ|MoM|quarter[- ]over[- ]quarter)\b/i,
+    /\b(?:trend|trajectory|over time)\b/i,
+    /\d+[%x×].*\b(?:YoY|QoQ|growth|increase)\b/i,
+  ];
+  const has_trend_data = trendPatterns.some((p) => p.test(postText));
+
+  const proportionPatterns = [
+    /\d+%\s*(?:of|say|report|are|were|think|believe)/i,
+    /\b(?:share|portion|proportion|distribution|breakdown)\b/i,
+    /\b(?:majority|minority)\b/i,
+  ];
+  const has_proportion_data = proportionPatterns.some((p) => p.test(postText));
+
+  const numericMatches = postText.match(/\d+(?:\.\d+)?[%x×]?/g) || [];
+  const numeric_count = numericMatches.length;
+
   return {
     word_count,
     has_numbers,
@@ -61,5 +95,9 @@ export function computeSignals(postText: string): PostSignals {
     mentions_person,
     mentions_metric_or_stat,
     exclamation_density,
+    has_comparison_data,
+    has_trend_data,
+    has_proportion_data,
+    numeric_count,
   };
 }

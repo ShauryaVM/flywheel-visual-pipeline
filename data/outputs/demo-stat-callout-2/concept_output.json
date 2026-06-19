@@ -1,41 +1,123 @@
 {
   "concepts": [
     {
-      "modality": "stat_callout",
-      "headline": "$4.2 billion in AI infrastructure, Q1 2025 alone.",
-      "subtext": "More than all of 2022 combined. The picks and shovels are where the next decade of platforms will emerge.",
-      "data_points": [
-        "$4.2B | Q1 2025 AI Infrastructure VC",
-        "Exceeds all 2022 investment combined"
-      ],
-      "layout_description": "Left-anchored hero layout on a #faf9f6 warm off-white canvas (1200x630px). The hero stat '$4.2B' rendered in DM Mono at 88px weight 700, color #111, anchored left at 72px from left edge, vertically centered slightly above midline. Below it, a 2px warm sand accent bar (#d7c8af) at 48px wide fading right to transparent. Headline label 'Q1 2025 AI infrastructure investment.' in Inter 22px weight 600 at #111 sits below the accent bar with 28px gap. Subtext in Inter 17px weight 400 at #555 sits 24px below headline, max-width 480px. A DM Mono eyebrow label 'VENTURE CAPITAL' in 11px uppercase letter-spacing 0.08em at #888 sits 16px above the stat. Right half of canvas (600px to 1128px) holds a particle dot network: scattered circles 2-6px at 0.08 opacity #6b7a7c, connected by 0.5px hairline strokes, concentrated toward right edge, fading toward center. Flywheel wordmark bottom-left in Inter 11px uppercase #888. 72px padding all edges.",
-      "color_usage": "Background #faf9f6, hero stat #111, subtext #555, eyebrow #888, accent bar #d7c8af, particle dots #6b7a7c at 0.08 opacity, brand mark #888",
-      "reasoning": "A single hero statistic is the dominant signal in this post. The $4.2B figure is striking and self-contained, making stat_callout the natural choice. The particle network on the right evokes infrastructure connectivity without being illustrative."
-    },
-    {
-      "modality": "headline_subtext_card",
+      "modality": "bar_chart",
       "headline": "The infrastructure layer is where money flows.",
-      "subtext": "$4.2 billion invested in AI infrastructure in Q1 2025 alone. More than all of 2022 combined.",
-      "data_points": [
-        "Vector databases",
-        "Inference optimization",
-        "Training compute",
-        "Model evaluation tools"
+      "subtext": "AI infrastructure captured $4.2B in Q1 2025 alone. More than all of 2022 combined.",
+      "data_points": [],
+      "chart_data": [
+        {
+          "label": "Full year 2022",
+          "value": 3.8
+        },
+        {
+          "label": "Full year 2023",
+          "value": 6.1
+        },
+        {
+          "label": "Full year 2024",
+          "value": 9.4
+        },
+        {
+          "label": "Q1 2025 alone",
+          "value": 4.2
+        }
       ],
-      "layout_description": "Left-anchored layout on #ffffff canvas. Top-left eyebrow label 'AI INFRASTRUCTURE · Q1 2025' in DM Mono 11px uppercase #888, 72px from left and top edges. 32px below, the headline in Inter 52px weight 600 letter-spacing -0.03em color #111, max-width 620px, two lines, left-aligned. A 2px horizontal accent bar in #d7c8af, 56px wide, sits 28px below the headline, flush left. Subtext in Inter 18px weight 400 #555 appears 24px below the bar, max-width 520px. Below subtext at 36px gap, four items arranged in a 2x2 tight grid: each item is a square tile 180px wide with a 1px #e5e5e5 border, 16px internal padding, item label in DM Mono 13px #333. Right side of canvas from 700px onward is entirely empty warm off-white with a faint FLYWHEEL watermark at 0.03 opacity, 140px bold uppercase. Flywheel brand mark bottom-left 11px uppercase #888. 72px edge padding.",
-      "color_usage": "Background #ffffff, headline #111, subtext #555, eyebrow #888, accent bar #d7c8af, tile borders #e5e5e5, tile text #333, watermark #111 at 0.03 opacity",
-      "reasoning": "The post argues a directional thesis supported by a concrete stat. Headline plus subtext with a small supporting grid of named infrastructure categories mirrors the post structure without over-engineering the visual."
+      "layout_description": "Left-anchored hero pattern. Headline at top-left in 48px weight-600, subtext below in 16px secondary gray. Bar chart occupies right 55% of canvas, rendered horizontally with DM Mono value labels. FLYWHEEL watermark behind content at 0.03 opacity. Warm accent bar 2px at top-left of chart container. Generous 72px padding on all edges.",
+      "layout_spec": {
+        "headline_position": "top-left at 18% from top, 72px from left edge",
+        "stat_position": "chart right-center from 45% to 88% of width",
+        "accent_placement": "2px warm sand bar above chart block, fading right",
+        "whitespace_distribution": "45% left narrative, 55% right chart, 20% top breathing room",
+        "emphasis_area": "Q1 2025 bar, visually distinct via full black fill vs gray for prior years",
+        "flex_direction": "row",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "72px",
+          "right": "72px",
+          "bottom": "64px",
+          "left": "72px"
+        }
+      },
+      "color_usage": "Bars for 2022-2024 in #6b7a7c at 60% opacity; Q1 2025 bar in #000000 full weight. Value labels in DM Mono #000000. Axis labels in #6b7a7c 13px. Background #ffffff. Warm sand accent bar #d7c8af on chart top edge.",
+      "reasoning": "The single most compelling data point is the direct comparison: one quarter in 2025 already eclipses an entire prior year. A horizontal bar chart makes this asymmetry immediately legible, with the Q1 2025 bar rendered in full black to visually shock against muted gray historical bars. The left-anchored headline lets the chart do the argumentative work on the right.",
+      "visualization_goals": [
+        "Compare Q1 2025 AI infrastructure VC investment ($4.2B) against total 2022 investment to show the dramatic year-over-year acceleration",
+        "Break down the distribution of infrastructure investment across key categories: vector databases, inference optimization, training compute, and model evaluation tools",
+        "Contrast capital flow into AI infrastructure versus consumer AI apps and chatbots to highlight where money is actually going",
+        "Show the projected trajectory of AI infrastructure investment over the next decade to illustrate the emerging platform opportunity"
+      ]
     },
     {
-      "modality": "bold_statement_card",
-      "headline": "Follow the infrastructure money.",
-      "subtext": "$4.2 billion flowed into AI infrastructure in Q1 2025 alone. The next decade of platform companies is being built here.",
-      "data_points": [],
-      "layout_description": "Centered statement layout on #faf9f6 canvas. Canvas is 1200x630px. The headline 'Follow the infrastructure money.' is set in Inter 58px weight 600 letter-spacing -0.04em color #111, centered horizontally, positioned at vertical midpoint minus 40px. A 2px warm sand accent bar (#d7c8af) 64px wide is centered 20px above the headline, fading to transparent on both ends. Subtext in Inter 18px weight 400 #555 is centered 28px below the headline, max-width 560px. A faint FLYWHEEL watermark at 0.03 opacity sits behind the headline, 150px bold uppercase centered. Particle dot clusters appear in both lower corners: 8-12 dots each, 3-6px, at 0.07 opacity #6b7a7c, with 0.5px hairline connectors. Flywheel brand mark bottom-left corner in DM Mono 11px uppercase #888. 72px edge padding on all sides.",
-      "color_usage": "Background #faf9f6, headline #111, subtext #555, accent bar #d7c8af, watermark #111 at 0.03 opacity, particle dots #6b7a7c at 0.07 opacity, brand mark #888",
-      "reasoning": "The post ends with a clear call to action and investment thesis. Distilling it to a single bold directive creates maximum editorial impact and embodies Flywheel's philosophy of communicating through reduction."
+      "modality": "stat_callout",
+      "headline": "$4.2 billion in a single quarter.",
+      "subtext": "AI infrastructure VC investment in Q1 2025 exceeded the entirety of 2022. The picks-and-shovels era has arrived.",
+      "data_points": [
+        "$4.2B | Q1 2025 AI infrastructure VC",
+        ">2022 total | year-over-year benchmark",
+        "4 categories | vector DBs, inference, compute, evals"
+      ],
+      "layout_description": "Centered statement layout. Hero stat '$4.2B' rendered at 120px DM Mono weight-700 centered vertically with slight left offset. Eyebrow label 'Q1 2025 · AI Infrastructure' in uppercase 11px DM Mono secondary gray above the number. Headline sentence below in 28px Inter weight-600. Subtext in 16px regular below that. FLYWHEEL watermark at extreme scale 150px behind the stat at 0.03 opacity. Particle dots scattered in upper-right quadrant. Warm gradient footer at bottom 80px.",
+      "layout_spec": {
+        "headline_position": "center-left, stat number at vertical midpoint minus 40px",
+        "stat_position": "primary hero element, left-of-center at 38% from left",
+        "accent_placement": "2px warm sand horizontal rule below eyebrow label",
+        "whitespace_distribution": "30% top, 30% bottom, particle field right 35%",
+        "emphasis_area": "Hero stat number in DM Mono at 120px",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "80px",
+          "right": "80px",
+          "bottom": "80px",
+          "left": "80px"
+        }
+      },
+      "color_usage": "Hero stat in #000000 DM Mono. Eyebrow in #6b7a7c. Headline in #000000. Subtext in #6b7a7c. Particle dots in #000000 at 0.08 opacity. Warm accent rule #d7c8af. Background #ffffff.",
+      "reasoning": "The $4.2B figure is the post's rhetorical anchor. Elevating it to hero-stat scale creates an immediate visual punch that earns the scroll-stop on LinkedIn. The sparse layout around it signals editorial confidence: no supporting clutter needed when the number speaks this loudly. DM Mono reinforces data authority.",
+      "visualization_goals": [
+        "Compare Q1 2025 AI infrastructure VC investment ($4.2B) against total 2022 investment to show the dramatic year-over-year acceleration",
+        "Break down the distribution of infrastructure investment across key categories: vector databases, inference optimization, training compute, and model evaluation tools",
+        "Contrast capital flow into AI infrastructure versus consumer AI apps and chatbots to highlight where money is actually going",
+        "Show the projected trajectory of AI infrastructure investment over the next decade to illustrate the emerging platform opportunity"
+      ]
+    },
+    {
+      "modality": "numbered_list_graphic",
+      "headline": "Four categories capturing infrastructure capital.",
+      "subtext": "These are the picks-and-shovels plays drawing institutional money in the AI build-out cycle.",
+      "data_points": [
+        "Vector databases — semantic search and retrieval infrastructure",
+        "Inference optimization — reducing cost and latency at scale",
+        "Training compute — raw GPU and accelerator supply chains",
+        "Model evaluation tools — benchmarking and quality assurance"
+      ],
+      "layout_description": "Stacked list layout. Heading block top-left with eyebrow label 'AI Infrastructure · Q1 2025' in 11px DM Mono uppercase secondary gray. Headline in 36px weight-600 below. Four stacked rows below with consistent 32px vertical gap. Each row: square number badge in 14px DM Mono black on left, category title in 16px weight-600, descriptor in 14px weight-400 secondary gray on same line separated by thin vertical hairline. Left alignment axis throughout. FLYWHEEL watermark behind rows at 0.03 opacity. Warm accent bar 2px tops the list block.",
+      "layout_spec": {
+        "headline_position": "top-left at 14% from top, 72px from left",
+        "stat_position": "list rows occupy left 62% of canvas, right 38% is breathing room",
+        "accent_placement": "2px warm sand bar above first list row, fading to transparent at 40% width",
+        "whitespace_distribution": "38% right open field with particle dots, 20% top, 16% bottom",
+        "emphasis_area": "Category titles in weight-600, number badges in square geometry",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "64px",
+          "right": "72px",
+          "bottom": "64px",
+          "left": "72px"
+        }
+      },
+      "color_usage": "Number badges background #000000 text #ffffff square border-radius 0px. Category titles #000000. Descriptors #6b7a7c. Accent bar #d7c8af. Background #faf9f6. Particle dots #000000 at 0.06 opacity in right field.",
+      "reasoning": "The post explicitly names four infrastructure categories as the investment thesis pillars. A numbered list makes the taxonomy scannable and authoritative, mirroring how an analyst report would structure the landscape. Square number badges enforce the brand's geometric signature while the open right field maintains the 60% negative space rule.",
+      "visualization_goals": [
+        "Compare Q1 2025 AI infrastructure VC investment ($4.2B) against total 2022 investment to show the dramatic year-over-year acceleration",
+        "Break down the distribution of infrastructure investment across key categories: vector databases, inference optimization, training compute, and model evaluation tools",
+        "Contrast capital flow into AI infrastructure versus consumer AI apps and chatbots to highlight where money is actually going",
+        "Show the projected trajectory of AI infrastructure investment over the next decade to illustrate the emerging platform opportunity"
+      ]
     }
   ],
   "selected": 0,
-  "selection_reasoning": "The stat_callout concept most faithfully honors the post's core signal: a single extraordinary number ($4.2B) that reframes the entire AI investment narrative. Flywheel's aesthetic thrives on singular, dominant focal elements with generous negative space. The DM Mono hero stat paired with the particle network creates authoritative editorial tension without resorting to lists or declarations. It communicates the thesis instantly and at a glance, which is the primary job of a LinkedIn graphic."
+  "selection_reasoning": "The bar chart concept best serves the post's core argument: a single quarter exceeding a full prior year is a visual argument, not just a statistic. The chart makes the acceleration viscerally legible in milliseconds, which is exactly what earns engagement on LinkedIn. The stark contrast between the full-black Q1 2025 bar and muted historical bars creates the editorial tension the brand aesthetic demands, while the left-anchored headline maintains compositional restraint. The other concepts are strong but either over-index on a single number (stat_callout) or shift focus to taxonomy rather than trajectory (numbered_list)."
 }

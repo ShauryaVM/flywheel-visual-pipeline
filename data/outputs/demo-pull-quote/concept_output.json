@@ -1,33 +1,97 @@
 {
   "concepts": [
     {
-      "modality": "attribution_quote_card",
+      "modality": "pull_quote_card",
       "headline": "Read what you love until you love to read.",
-      "subtext": "Naval Ravikant",
+      "subtext": "The best habit is the one you actually enjoy enough to sustain.",
       "data_points": [],
-      "layout_description": "Left-anchored hero layout on a warm off-white #faf9f6 canvas. The quote occupies the left 60% of the canvas, set in Inter 600 at 48px with tight letter-spacing of -0.04em, anchored 72px from the left edge and vertically centered with a slight upward offset. Below the quote, a 2px warm sand accent bar (#d7c8af) at 120px wide fades to transparent, followed by the attribution 'Naval Ravikant' in DM Mono 13px uppercase letter-spacing 0.07em at #888. The right 40% is reserved as negative space populated with a sparse particle dot network of scattered gray circles at 0.08 opacity connected by 0.5px hairline strokes. The Flywheel wordmark sits bottom-left at 12px DM Mono uppercase #888. 72px padding on all edges.",
-      "color_usage": "Background #faf9f6, headline text #111, attribution #888, accent bar #d7c8af fading to transparent, particle dots rgba(107,122,124,0.08), structural hairlines #e5e5e5",
-      "reasoning": "The post is anchored by a single powerful quote from a named source, making attribution_quote_card the precise modality match. The sparse left-anchored layout with the quote as sole hero element embodies Flywheel's editorial restraint. The warm off-white background, minimal typographic hierarchy, and particle dot texture in the negative space all honor the premium publication aesthetic without any marketing noise."
+      "layout_description": "Centered statement layout. The Naval quote occupies the upper-center zone as the hero element in large display type. A thin warm sand accent bar sits above the quote as a divider. The meta-lesson appears as restrained subtext below. FLYWHEEL watermark behind at opacity 0.03. Particle dots scattered in the lower-right periphery at very low opacity. Generous vertical padding creates breathing room.",
+      "layout_spec": {
+        "headline_position": "center at 38% from top",
+        "accent_placement": "thin 2px horizontal warm sand bar above headline, fading right",
+        "whitespace_distribution": "55% top and bottom combined, 20% left, 20% right",
+        "emphasis_area": "quote text center-canvas",
+        "flex_direction": "column",
+        "alignment": "center",
+        "padding_distribution": {
+          "top": "80px",
+          "right": "120px",
+          "bottom": "80px",
+          "left": "120px"
+        }
+      },
+      "color_usage": "Background #ffffff. Headline #000000. Subtext #6b7a7c. Accent bar #d7c8af. Watermark #000000 at opacity 0.03.",
+      "reasoning": "The Naval quote is the emotional anchor of the post. A pull quote card isolates it with typographic authority, letting the words carry the full weight. Swiss restraint through centering and negative space mirrors the simplicity of the insight itself.",
+      "visualization_goals": [
+        "Show the transformation from hating reading at age 27 to reading 50+ books per year after switching to enjoyment-driven selection",
+        "Contrast the two reading approaches: optimizing for 'useful' (forced, unsustainable) vs. optimizing for curiosity (enjoyable, habit-forming)",
+        "Visualize the tipping point moment — giving permission to read fiction and niche content — as the catalyst for sustained habit formation",
+        "Illustrate the meta-lesson that habit sustainability is driven by enjoyment, not perceived utility or productivity value"
+      ]
     },
     {
       "modality": "bold_statement_card",
-      "headline": "The best habit is the one you actually enjoy.",
-      "subtext": "Optimizing for curiosity beats optimizing for usefulness. Every time.",
+      "headline": "Stop optimizing for useful. Start optimizing for curiosity.",
+      "subtext": "From hating reading at 27 to 50+ books a year. The method: only read what you love.",
       "data_points": [],
-      "layout_description": "Centered statement layout on a white #ffffff canvas with a faint FLYWHEEL watermark behind the statement text at 0.03 opacity in 140px bold uppercase. The headline sits at vertical center, Inter 600 at 52px letter-spacing -0.04em, color #111, max-width 700px, centered horizontally. A 2px warm sand accent bar 80px wide is placed above the headline, centered, fading to transparent on both ends. Subtext in Inter 400 18px #555 sits 36px below the headline, centered, max-width 480px. The Flywheel logo mark anchors bottom-center at 13px DM Mono #888. 64px padding all edges. No other decorative elements.",
-      "color_usage": "Background #ffffff, headline #111, subtext #555, FLYWHEEL watermark rgba(0,0,0,0.03), accent bar #d7c8af, brand mark #888",
-      "reasoning": "The meta-lesson at the post's close is the sharpest, most quotable distillation of the entire narrative. A centered bold statement card isolates that single insight with maximum typographic weight. The FLYWHEEL watermark adds depth without clutter, and the near-empty canvas communicates authority through absence, perfectly matching Flywheel's editorial philosophy."
+      "layout_description": "Left-anchored hero layout. The headline sits anchored to the left third, broken into two stacked lines with deliberate line break to create visual tension between the contrasting phrases. Subtext below in secondary gray. A single 2px warm sand vertical accent bar runs along the far left edge of the content block. Particle network dots drift rightward into the right 40% of the canvas. FLYWHEEL watermark sits behind at extreme opacity. Strong left alignment axis throughout.",
+      "layout_spec": {
+        "headline_position": "left at 72px from left edge, 30% from top",
+        "accent_placement": "2px vertical warm sand bar at left content edge, 80px tall",
+        "whitespace_distribution": "45% right side empty, 25% top, 20% bottom",
+        "emphasis_area": "left-center canvas",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "72px",
+          "right": "80px",
+          "bottom": "72px",
+          "left": "80px"
+        }
+      },
+      "color_usage": "Background #faf9f6. Headline #000000. Subtext #6b7a7c. Accent bar #d7c8af. Watermark at opacity 0.03. Particle dots #000000 at opacity 0.08.",
+      "reasoning": "The two-phrase contrast is the post's rhetorical engine. Splitting it into two left-anchored lines of bold type creates visual and intellectual tension, letting the reader feel the pivot. Warm off-white background and particle motif reinforce Flywheel's editorial identity.",
+      "visualization_goals": [
+        "Show the transformation from hating reading at age 27 to reading 50+ books per year after switching to enjoyment-driven selection",
+        "Contrast the two reading approaches: optimizing for 'useful' (forced, unsustainable) vs. optimizing for curiosity (enjoyable, habit-forming)",
+        "Visualize the tipping point moment — giving permission to read fiction and niche content — as the catalyst for sustained habit formation",
+        "Illustrate the meta-lesson that habit sustainability is driven by enjoyment, not perceived utility or productivity value"
+      ]
     },
     {
-      "modality": "headline_subtext_card",
-      "headline": "Curiosity is a better habit system than discipline.",
-      "subtext": "Fifty books a year started the day optimizing for 'useful' stopped and optimizing for love began.",
-      "data_points": [],
-      "layout_description": "Left-anchored hero layout on #faf9f6 canvas. A small DM Mono eyebrow label 'On reading' in 11px uppercase letter-spacing 0.07em at #888 sits 72px from top and left edge. The headline follows 20px below in Inter 600 48px letter-spacing -0.04em color #111, max-width 560px. A 2px warm sand accent bar 96px wide sits 28px below the headline, flush left, fading right to transparent. The subtext in Inter 400 18px #555 sits 32px below the accent bar, max-width 520px. The right half of the canvas holds only a sparse particle dot network at 0.07 opacity. The Flywheel wordmark anchors bottom-left at 12px DM Mono #888. 72px padding on all edges.",
-      "color_usage": "Background #faf9f6, headline #111, eyebrow #888, subtext #555, accent bar #d7c8af, particle dots rgba(107,122,124,0.07)",
-      "reasoning": "The headline synthesizes the post's core argument into a punchy editorial statement while the subtext grounds it in the concrete detail of 50 books. The left-anchored layout with generous negative space on the right feels like a journal opener, matching Flywheel's premium publication tone. The eyebrow label adds structure without adding noise."
+      "modality": "stat_callout",
+      "headline": "Curiosity made the habit stick.",
+      "subtext": "Hated reading until 27. Switched from 'useful' to enjoyable. Now reads 50+ books a year.",
+      "data_points": [
+        "50+ | Books per year after switching to curiosity-driven reading",
+        "27 | Age when the permission to read freely was granted"
+      ],
+      "layout_description": "Structured data layout. Hero stat '50+' rendered in DM Mono at large scale in the right-center zone. Headline left-anchored in the upper-left quadrant. Subtext below headline as narrative context. A warm sand accent bar sits beneath the headline as a thin divider. The stat floats in the right half with a warm sand shadow glow beneath it as a card-within-card treatment. FLYWHEEL watermark at opacity 0.02 behind everything. Clean single left alignment axis for all text content.",
+      "layout_spec": {
+        "headline_position": "top-left at 72px from left, 25% from top",
+        "stat_position": "center-right at 62% from left, vertically centered",
+        "accent_placement": "2px horizontal warm sand bar beneath headline, 120px wide, fading right",
+        "whitespace_distribution": "50% right reserved for stat, 20% top, 20% bottom",
+        "emphasis_area": "right-center hero stat",
+        "flex_direction": "row",
+        "alignment": "space-between",
+        "padding_distribution": {
+          "top": "72px",
+          "right": "80px",
+          "bottom": "72px",
+          "left": "80px"
+        }
+      },
+      "color_usage": "Background #ffffff. Headline #000000. Stat #000000 in DM Mono. Subtext #6b7a7c. Accent bar and stat shadow #d7c8af. Watermark at opacity 0.02.",
+      "reasoning": "The '50+ books a year' figure is the tangible proof point of the transformation. Elevating it as a hero stat gives the post's narrative arc a concrete anchor, while the left-text-right-stat structure references Flywheel's structured data layout pattern with editorial precision.",
+      "visualization_goals": [
+        "Show the transformation from hating reading at age 27 to reading 50+ books per year after switching to enjoyment-driven selection",
+        "Contrast the two reading approaches: optimizing for 'useful' (forced, unsustainable) vs. optimizing for curiosity (enjoyable, habit-forming)",
+        "Visualize the tipping point moment — giving permission to read fiction and niche content — as the catalyst for sustained habit formation",
+        "Illustrate the meta-lesson that habit sustainability is driven by enjoyment, not perceived utility or productivity value"
+      ]
     }
   ],
   "selected": 1,
-  "selection_reasoning": "The bold statement card best captures Flywheel's editorial identity because it distills the entire post to its irreducible insight and lets white space do the heavy lifting. The FLYWHEEL watermark at near-zero opacity adds a layer of depth that rewards close viewing, the centered composition creates quiet authority, and the near-empty canvas communicates confidence. It avoids any temptation toward list formats or data display that would misrepresent content that is fundamentally a single philosophical point."
+  "selection_reasoning": "Concept 1 (bold_statement_card) best embodies Flywheel's editorial restraint and visual authority. The contrasting two-line headline structure is genuinely typographic rather than decorative, creating intellectual tension through composition alone. The left-anchor layout, warm off-white background, particle motif, and vertical accent bar deploy the full Flywheel signature vocabulary without any single element competing for attention. It communicates the post's core pivot cleanly, with confidence, and without over-explaining."
 }

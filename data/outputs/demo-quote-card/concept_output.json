@@ -1,33 +1,98 @@
 {
   "concepts": [
     {
-      "modality": "pull_quote_card",
-      "headline": "Better feedback loops, not better ideas.",
-      "subtext": "The best founders optimize for how quickly they can learn what is wrong with their current idea.",
-      "data_points": [],
-      "layout_description": "Centered statement composition with FLYWHEEL watermark behind at 0.03 opacity. The headline sits at 52px bold, sentence case, centered with generous vertical padding. A 2px warm sand accent bar (#d7c8af) sits above the headline, fading left to right, spanning 80px. Below the headline, the subtext appears in 18px regular weight at #555, centered, max-width 520px. Particle dot network scattered across the right half at 0.08 opacity adds subtle texture. 72px padding on all edges. Logo mark anchored bottom-center in #888 at 13px DM Mono uppercase. 60% of the canvas is pure white negative space.",
-      "color_usage": "Background #ffffff. Headline #111. Subtext #555. Accent bar #d7c8af. Particle dots #6b7a7c at 0.08 opacity. Logo #888.",
-      "reasoning": "A single powerful insight deserves the pull quote treatment. The centered composition with FLYWHEEL watermark and warm sand accent bar creates editorial gravity without decoration. The quote's authority comes from restraint, not ornamentation."
-    },
-    {
       "modality": "bold_statement_card",
-      "headline": "Speed of iteration beats quality of hypothesis.",
-      "subtext": "Every time.",
-      "data_points": [],
-      "layout_description": "Left-anchored hero layout on a warm off-white #faf9f6 surface. The headline sits at 54px, weight 600, letter-spacing -0.04em, anchored to a strong left alignment edge at 72px from the left edge. The headline breaks across two lines naturally. Below, a 2px warm sand accent bar (#d7c8af) spans 120px, left-aligned, separating the headline from the subtext. The subtext 'Every time.' sits at 20px, #333, left-aligned, functioning as a deliberate emphatic coda. The right 40% of the canvas is reserved for a particle dot network at 0.10 opacity, creating asymmetric balance. FLYWHEEL wordmark anchored bottom-left in DM Mono 11px uppercase at #888. 72px edge padding throughout. 65% negative space.",
-      "color_usage": "Background #faf9f6. Headline #111. Accent bar #d7c8af. Subtext #333. Particle dots #6b7a7c at 0.10 opacity. Wordmark #888.",
-      "reasoning": "The post's core argument is a declarative principle, not a quote or list. A bold statement card with left-anchored typography and the emphatic 'Every time.' as subtext mirrors the post's rhetorical rhythm. The warm off-white surface adds premium texture while the left-heavy asymmetric layout is quintessentially Flywheel."
+      "headline": "Better feedback loops beat better ideas.",
+      "subtext": "The best founders optimize for speed of learning, not quality of initial hypothesis.",
+      "layout_description": "Centered statement composition with FLYWHEEL watermark behind at opacity 0.03. The headline sits at vertical center-left, large and authoritative. A 2px warm sand accent bar runs above the headline fading right. Particle dots scattered in the upper-right quadrant at low opacity. Subtext sits 36px below headline in secondary gray.",
+      "layout_spec": {
+        "headline_position": "left-anchored at 48% from top, 80px from left",
+        "accent_placement": "2px horizontal warm sand bar above headline, fading right",
+        "whitespace_distribution": "55% right side open, 20% top, 25% bottom",
+        "emphasis_area": "headline text block, left half of canvas",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "80px",
+          "right": "80px",
+          "bottom": "80px",
+          "left": "80px"
+        }
+      },
+      "color_usage": "Background #ffffff. Headline #000000. Subtext #6b7a7c. Accent bar #d7c8af. Watermark #000000 at opacity 0.03.",
+      "reasoning": "The post is built around a single transformative idea from a Sequoia partner. A bold statement card captures that declarative energy without diluting it. Swiss editorial restraint keeps the message as the only focal point, which mirrors the post's own argument: clarity over complexity.",
+      "visualization_goals": [
+        "Contrast the two founder mindsets: optimizing for initial idea quality vs. optimizing for speed of learning and iteration",
+        "Illustrate the feedback loop cycle that top founders use to rapidly identify and fix flaws in their current idea",
+        "Show how iteration speed compounds over time to outperform a single high-quality initial hypothesis",
+        "Visualize the shift in priority from 'idea perfection before launch' to 'learn what is wrong as fast as possible'"
+      ]
     },
     {
-      "modality": "headline_subtext_card",
-      "headline": "The best builders learn faster, not smarter.",
-      "subtext": "Speed of iteration over quality of initial hypothesis. Sequoia partners see this pattern in every breakout founder.",
-      "data_points": [],
-      "layout_description": "Left-anchored hero on white #ffffff background. A small DM Mono eyebrow label reads 'FOUNDER MINDSET' in 11px uppercase, letter-spacing 0.08em, at #888, positioned at top-left. Below, a 2px warm sand accent bar (#d7c8af) at 40px width separates the eyebrow from the headline. Headline at 48px, weight 600, letter-spacing -0.03em, #111, left-aligned, breaking across two lines. Subtext at 17px, #555, left-aligned, max-width 480px, sits 32px below the headline. The right 45% of the canvas is pure negative space anchored by a subtle particle dot network at 0.07 opacity. FLYWHEEL wordmark at bottom-left in DM Mono 11px uppercase, #888. 80px edge padding. 65% negative space.",
-      "color_usage": "Background #ffffff. Eyebrow label #888. Accent bar #d7c8af. Headline #111. Subtext #555. Particle dots #6b7a7c at 0.07 opacity. Wordmark #888.",
-      "reasoning": "The headline subtext card contextualizes the insight with an editorial eyebrow label, grounding the abstract principle in a publication-style frame. The Sequoia attribution becomes subtext rather than decoration, preserving visual hierarchy while honoring the post's sourcing."
+      "modality": "numbered_list_graphic",
+      "headline": "Two ways to build a startup.",
+      "subtext": "Most founders optimize for the wrong thing. The best ones build faster feedback loops.",
+      "data_points": [
+        "Optimize for quality of initial idea",
+        "Protect the hypothesis, avoid disconfirmation",
+        "Launch when the idea feels ready",
+        "Optimize for speed of learning",
+        "Assume the idea is wrong, find out fast",
+        "Launch to discover, not to confirm"
+      ],
+      "layout_description": "Stacked list layout with heading anchored top-left. Items 1-3 represent the common founder mindset, items 4-6 the elite mindset. A thin warm sand divider separates the two groups at the midpoint. Square number markers on left. FLYWHEEL watermark behind at opacity 0.03. Particle dots in upper-right corner. Generous vertical rhythm between rows.",
+      "layout_spec": {
+        "headline_position": "top-left, 80px from top and left edges",
+        "accent_placement": "warm sand divider between item 3 and item 4",
+        "whitespace_distribution": "40% right side open beyond list, 20% top, 20% bottom",
+        "emphasis_area": "list column, left two-thirds of canvas",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "64px",
+          "right": "120px",
+          "bottom": "64px",
+          "left": "80px"
+        }
+      },
+      "color_usage": "Background #faf9f6. Headline #000000. List titles #000000. Number badges border #d7c8af, text #000000. Divider #d7c8af at opacity 0.5. Subtext #6b7a7c. Watermark #000000 at opacity 0.03.",
+      "reasoning": "The post draws an explicit contrast between two founder mindsets. A numbered list lets both philosophies sit in visual tension on the same canvas, separated by a warm divider. The structure mirrors the post's own argument that the choice between these two paths is concrete and consequential.",
+      "visualization_goals": [
+        "Contrast the two founder mindsets: optimizing for initial idea quality vs. optimizing for speed of learning and iteration",
+        "Illustrate the feedback loop cycle that top founders use to rapidly identify and fix flaws in their current idea",
+        "Show how iteration speed compounds over time to outperform a single high-quality initial hypothesis",
+        "Visualize the shift in priority from 'idea perfection before launch' to 'learn what is wrong as fast as possible'"
+      ]
+    },
+    {
+      "modality": "pull_quote_card",
+      "headline": "Speed of iteration beats initial hypothesis quality.",
+      "subtext": "Every time. The best founders build faster feedback loops, not better first ideas.",
+      "layout_description": "Left-anchored hero layout. The headline occupies the left 55% of the canvas in large weight. A decorative large quotation mark sits behind the first word at opacity 0.05 in black. Below the headline, a short subtext block in secondary gray. FLYWHEEL watermark fills the right half at opacity 0.02, creating a soft brand presence. Particle network of 8-12 dots with hairline connectors positioned in lower-right quadrant. A 2px warm sand accent bar sits above the headline block.",
+      "layout_spec": {
+        "headline_position": "left-anchored at 38% from top, 80px from left, width 560px",
+        "accent_placement": "2px warm sand bar 16px above headline, width 48px",
+        "whitespace_distribution": "45% right side reserved for watermark and particles, 30% top",
+        "emphasis_area": "headline block, upper-left quadrant",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "80px",
+          "right": "80px",
+          "bottom": "80px",
+          "left": "80px"
+        }
+      },
+      "color_usage": "Background #ffffff. Headline #000000. Subtext #6b7a7c. Quote mark #000000 at opacity 0.05. Accent bar #d7c8af. Watermark #000000 at opacity 0.02. Particle dots #6b7a7c at opacity 0.15.",
+      "reasoning": "The post's most quotable and actionable line is the speed-versus-quality declaration. A pull quote card elevates that single claim to full visual authority. The particle network on the right evokes the feedback loop concept without literal illustration, keeping the composition within Flywheel's abstract, geometric visual language.",
+      "visualization_goals": [
+        "Contrast the two founder mindsets: optimizing for initial idea quality vs. optimizing for speed of learning and iteration",
+        "Illustrate the feedback loop cycle that top founders use to rapidly identify and fix flaws in their current idea",
+        "Show how iteration speed compounds over time to outperform a single high-quality initial hypothesis",
+        "Visualize the shift in priority from 'idea perfection before launch' to 'learn what is wrong as fast as possible'"
+      ]
     }
   ],
-  "selected": 1,
-  "selection_reasoning": "Concept 1 (bold_statement_card) best embodies Flywheel's editorial restraint. The core post argument is a declared principle with a one-line coda, exactly the structure the bold statement modality is designed for. The left-anchored layout with asymmetric particle dot field, warm off-white surface, and 'Every time.' as a stark emphatic subtext mirrors the post's rhetorical punch. It communicates authority through reduction, which is the Flywheel brand signature."
+  "selected": 0,
+  "selection_reasoning": "The bold statement card is the purest distillation of the post's core argument. The original post is built around a single Sequoia partner quote that reframes how founders think. A one-line declarative headline with a single subtext block matches that rhetorical structure exactly. It practices what it preaches: eliminating noise, keeping only what matters. The Swiss editorial restraint of concept 0 gives the statement maximum authority, and the warm accent bar plus particle dots satisfy the signature motif requirements without crowding the message."
 }

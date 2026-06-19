@@ -125,6 +125,25 @@ export interface PipelineInput {
   outputDir?: string;
 }
 
+export interface FeedbackAttempt {
+  attempt: number;
+  scores: EvalScore;
+  critique: string;
+  conceptChanges?: string;
+}
+
+export interface FeedbackLog {
+  postId: string;
+  attempts: FeedbackAttempt[];
+  finalResult: 'pass' | 'fail_after_retries';
+  improvement: {
+    originalComposite: number;
+    finalComposite: number;
+    delta: number;
+    axesImproved: string[];
+  };
+}
+
 export interface PipelineResult {
   concept: ConceptGenerationOutput;
   selectedConcept: VisualConcept;
@@ -133,6 +152,8 @@ export interface PipelineResult {
   pdfPath: string;
   pngPath: string;
   evalScore?: EvalScore;
+  feedbackLog?: FeedbackLog;
+  regenerated?: boolean;
 }
 
 export interface Stage1Result {
@@ -159,7 +180,20 @@ export interface RawPost {
   };
 }
 
+export interface VisionAbsoluteScore {
+  layout: number;
+  legibility: number;
+  polish: number;
+}
+
+export interface VisionComparativeScore {
+  colorMatch: number;
+  typographyMatch: number;
+  aestheticMatch: number;
+}
+
 export interface EvalScore {
+  // Text-structural scores (from HTML source analysis)
   onBrand: number;
   legible: number;
   clearHierarchy: number;
@@ -167,4 +201,12 @@ export interface EvalScore {
   overall: number;
   critique: string;
   passesThreshold: boolean;
+
+  // Vision-based scores (from rendered PNG analysis)
+  visionAbsolute?: VisionAbsoluteScore;
+  visionComparative?: VisionComparativeScore;
+  visionCritique?: string;
+
+  // Weighted composite of text (30%) + absolute vision (35%) + comparative vision (35%)
+  compositeScore?: number;
 }

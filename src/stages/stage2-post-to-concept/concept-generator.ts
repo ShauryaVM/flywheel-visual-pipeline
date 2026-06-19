@@ -3,16 +3,87 @@ import { ConceptGenerationOutput } from '../../schemas/concept.schema.js';
 import type { VisualConcept } from '../../schemas/concept.schema.js';
 import type { DesignSystemData, SchemaV1 } from '../../types/index.js';
 import type { CandidateModality } from './rule-engine.js';
+import type { PostSignals } from './signals.js';
 import { loadConfig } from '../../config.js';
 import { createStageLogger } from '../../observability/logger.js';
 
 const log = createStageLogger('stage2:concept-generator');
+
+// ---------------------------------------------------------------------------
+// LIDA-inspired: enumerate visualization goals before concept generation
+// ---------------------------------------------------------------------------
+export async function enumerateVisualizationGoals(
+  postText: string,
+  signals: PostSignals,
+): Promise<string[]> {
+  const config = loadConfig();
+  const client = new Anthropic({ apiKey: config.anthropicApiKey });
+
+  const signalSummary = [
+    `Word count: ${signals.word_count}`,
+    signals.has_numbers ? 'Contains numbers/data' : 'No numeric data',
+    signals.has_list_structure ? 'Has list structure' : 'No list structure',
+    signals.mentions_metric_or_stat ? 'Mentions metrics/stats' : 'No metrics',
+    signals.mentions_person ? 'Mentions people' : 'No people mentioned',
+  ].join(', ');
+
+  const goalStart = Date.now();
+  const response = await client.messages.create({
+    model: 'claude-sonnet-4-6',
+    max_tokens: 1024,
+    system: `You are an analytical assistant that extracts visualization goals from social media posts. Given a post, identify the 3-4 most impactful data points, narratives, or key messages that could be visually represented. Each goal should be a concise statement of WHAT to show visually. Return only a JSON array of strings.`,
+    messages: [{
+      role: 'user',
+      content: `Analyze this LinkedIn post and extract 3-4 visualization goals (key narratives or data points worth highlighting visually).
+
+Post signals: ${signalSummary}
+
+Post:
+---
+${postText}
+---
+
+Return a JSON array of 3-4 strings, each describing one visualization goal. No markdown fences.`,
+    }],
+  });
+  const goalLatency = Date.now() - goalStart;
+
+  const textBlock = response.content.find((b) => b.type === 'text');
+  if (!textBlock || textBlock.type !== 'text') {
+    log.warn('No text in goal enumeration response, skipping');
+    return [];
+  }
+
+  try {
+    const arrMatch = textBlock.text.match(/\[[\s\S]*\]/);
+    if (!arrMatch) {
+      log.warn('No JSON array found in goal response');
+      return [];
+    }
+    const goals = JSON.parse(arrMatch[0]) as string[];
+    log.info({ goalCount: goals.length, latencyMs: goalLatency }, 'Visualization goals enumerated');
+    return goals;
+  } catch {
+    log.warn('Failed to parse goal enumeration response');
+    return [];
+  }
+}
+
+export interface ConceptGeneratorOptions {
+  visualizationGoals?: string[];
+  feedback?: {
+    previousScores: Record<string, number>;
+    critique: string;
+    previousConcept?: string;
+  };
+}
 
 export async function generateConcepts(
   postText: string,
   designSystem: DesignSystemData,
   schema: SchemaV1,
   candidates: CandidateModality[],
+  options?: ConceptGeneratorOptions,
 ): Promise<{ concepts: VisualConcept[]; selected: number; selection_reasoning: string }> {
   const config = loadConfig();
   const client = new Anthropic({ apiKey: config.anthropicApiKey });
@@ -23,7 +94,7 @@ export async function generateConcepts(
   );
 
   const systemPrompt = buildSystemPrompt(designSystem, schema, candidates);
-  const userPrompt = buildUserPrompt(postText);
+  const userPrompt = buildUserPrompt(postText, options?.visualizationGoals, options?.feedback);
 
   const llmStart = Date.now();
   const response = await client.messages.create({
@@ -48,6 +119,12 @@ export async function generateConcepts(
 
   const parsed = JSON.parse(jsonMatch[0]) as Record<string, unknown>;
   const validated = ConceptGenerationOutput.parse(parsed);
+
+  if (options?.visualizationGoals?.length) {
+    for (const concept of validated.concepts) {
+      concept.visualization_goals = options.visualizationGoals;
+    }
+  }
 
   log.info(
     {
@@ -177,6 +254,9 @@ You may also use these modalities if they are a better fit for the content:
 - feature_list_graphic: Bullet-point feature/benefit list
 - stat_callout: Single hero statistic with supporting context
 - attribution_quote_card: Quote with speaker attribution
+- bar_chart: Horizontal/vertical bar chart for comparing values (use when post compares 2-5 quantities)
+- line_sparkline: Trend line chart for data over time (use when post describes growth, trends, changes)
+- pie_donut_chart: Pie/donut chart for proportional data (use when post describes shares, percentages, distributions)
 
 IMPORTANT: Choose the modality that genuinely fits the content best. If the post contains a quote, use quote_card or attribution_quote_card. If it highlights a single hero statistic, use stat_callout. If it makes a bold declaration, use bold_statement_card. Do NOT default to multi_stat_panel or numbered_list_graphic unless the content truly warrants multiple stats or an ordered list.
 
@@ -201,6 +281,31 @@ ${layoutDescriptions.length > 0 ? layoutDescriptions.join('\n') : `- **Left-anch
 10. ALL concepts must use light backgrounds. No dark/black backgrounds.
 11. Design with editorial restraint: every element must earn its place on the canvas.
 
+## Chart Modalities (for data-heavy posts)
+
+When a post contains quantitative comparisons, trends, or distributions, prefer chart modalities (bar_chart, line_sparkline, pie_donut_chart). For these, include a "chart_data" array with {label, value} objects.
+
+## Layout Specification (optional, encouraged for varied compositions)
+
+For any concept, you may include a "layout_spec" object to guide spatial arrangement:
+- headline_position: where the headline sits (e.g. "top-left at 15% from top")
+- stat_position: where key stats appear (e.g. "center-right at 60% from left")
+- accent_placement: decorative accent placement (e.g. "left edge vertical bar")
+- whitespace_distribution: how space is allocated (e.g. "60% right, 20% top, 20% bottom")
+- emphasis_area: where visual weight concentrates
+- flex_direction: "row" | "column" | "row-reverse" | "column-reverse"
+- alignment: "start" | "center" | "end" | "space-between"
+- padding_distribution: {top, right, bottom, left} as CSS values
+
+## Layout Protocol (optional, for custom compositions)
+
+For highly custom layouts that don't fit standard templates, include "layout_protocol" with:
+- canvas: {width: 1200, height: 630, background: "<color>"}
+- elements: array of {type, content, position: {x, y}, size: {width, height}, style?: {...}, zIndex?}
+  Element types: headline, subtext, stat, chart, accent, logo, watermark, decorative
+
+When layout_protocol is present, the renderer uses absolute CSS positioning instead of templates.
+
 ## Output Format
 
 Return a single JSON object (no markdown fences, no extra text):
@@ -212,7 +317,9 @@ Return a single JSON object (no markdown fences, no extra text):
       "headline": "<main text, under 10 words, sentence case, end with period>",
       "subtext": "<supporting text, under 25 words>",
       "data_points": ["<stat or list item>", "..."],
+      "chart_data": [{"label": "<category>", "value": <number>}],
       "layout_description": "<how elements are arranged, referencing layout patterns>",
+      "layout_spec": { ... },
       "color_usage": "<specific design system colors>",
       "reasoning": "<why this concept fits the brand aesthetic>"
     }
@@ -221,7 +328,11 @@ Return a single JSON object (no markdown fences, no extra text):
   "selection_reasoning": "<why this one best embodies the brand's visual identity>"
 }
 
-Generate exactly 2-3 concepts using different modalities. Select the single best one.`;
+Notes:
+- "chart_data" is required for bar_chart, line_sparkline, and pie_donut_chart modalities only.
+- "layout_spec" is optional but encouraged for varied compositions.
+- "layout_protocol" is optional, only for truly custom layouts.
+- Generate exactly 2-3 concepts using different modalities. Select the single best one.`;
 }
 
 function buildTypographySection(designSystem: DesignSystemData): string {
@@ -246,12 +357,43 @@ function buildTypographySection(designSystem: DesignSystemData): string {
   return lines.join('\n');
 }
 
-function buildUserPrompt(postText: string): string {
-  return `Generate visual concepts for this LinkedIn post:
+function buildUserPrompt(postText: string, visualizationGoals?: string[], feedback?: ConceptGeneratorOptions['feedback']): string {
+  let prompt = `Generate visual concepts for this LinkedIn post:
 
 ---
 ${postText}
----
+---`;
+
+  if (feedback) {
+    const scoreStr = Object.entries(feedback.previousScores)
+      .map(([k, v]) => `${k}: ${v}`)
+      .join(', ');
+    prompt += `
+
+## REGENERATION CONTEXT (CRITICAL — address these issues)
+
+The previous visual scored poorly and needs improvement.
+Previous scores: ${scoreStr}
+Critique: ${feedback.critique}
+${feedback.previousConcept ? `Previous concept headline: "${feedback.previousConcept}"` : ''}
+
+Generate an IMPROVED concept that specifically addresses the critique above. Focus on fixing the weakest scoring dimensions while maintaining the strongest ones.`;
+  }
+
+  if (visualizationGoals?.length) {
+    prompt += `
+
+## Pre-analyzed Visualization Goals
+
+The following key narratives/data points have been identified as most impactful for visual representation:
+${visualizationGoals.map((g, i) => `${i + 1}. ${g}`).join('\n')}
+
+Use these goals to inform your concept generation. Ensure your data_points and chart_data align with these identified narratives.`;
+  }
+
+  prompt += `
 
 Return only the JSON object. No markdown code fences. No additional commentary.`;
+
+  return prompt;
 }

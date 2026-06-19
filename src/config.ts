@@ -5,7 +5,7 @@ const ConfigSchema = z.object({
   langfuseSecretKey: z.string().default(''),
   langfusePublicKey: z.string().default(''),
   langfuseHost: z.string().url().default('https://cloud.langfuse.com'),
-  targetUrl: z.string().url().default('https://flywheelos.com'),
+  targetUrl: z.string().url({ message: 'TARGET_URL is required (e.g. https://example.com)' }),
 });
 
 export type Config = z.infer<typeof ConfigSchema>;

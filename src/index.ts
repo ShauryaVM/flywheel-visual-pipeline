@@ -2,8 +2,13 @@ import 'dotenv/config';
 import { runStage2 } from './stages/stage2-post-to-concept/index.js';
 import { runStage3 } from './stages/stage3-concept-to-html/index.js';
 import { runStage4 } from './stages/stage4-eval/index.js';
+import { runWithFeedback } from './stages/stage4-eval/feedback-loop.js';
 import { createStageLogger } from './observability/logger.js';
+import { loadDesignSystemSummary } from './utils/design-system-summary.js';
 import type { PipelineInput, PipelineResult } from './types/index.js';
+
+export { runWithFeedback } from './stages/stage4-eval/feedback-loop.js';
+export type { FeedbackLoopInput, FeedbackLoopResult } from './stages/stage4-eval/feedback-loop.js';
 
 const log = createStageLogger('pipeline');
 
@@ -40,13 +45,7 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
 
   // Stage 4: Evaluate the rendered visual
   const subDir = postId ? `${outputDir}/${postId}` : outputDir;
-  const designSystemSummary = [
-    'Flywheel brand: editorial restraint, Swiss-design precision.',
-    'Colors: black text, white/off-white backgrounds, warm sand #d7c8af accent.',
-    'Typography: Inter (400-700), DM Mono for data. Headlines 42-60px, body 16-20px.',
-    'Layout: 1200x630px, 60%+ negative space, left-anchored, square geometry (border-radius 0px).',
-    'Prohibitions: no gradients on text, no photography, no rounded cards, no dark backgrounds.',
-  ].join(' ');
+  const designSystemSummary = await loadDesignSystemSummary();
 
   let evalScore;
   const stage4Start = Date.now();
@@ -55,27 +54,33 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
       htmlPath: stage3.htmlPath,
       postText,
       designSystemSummary,
+      pngPath: stage3.pngPath,
       outputDir: subDir,
     });
     const stage4Latency = Date.now() - stage4Start;
 
+    const effectiveScore = evalScore.compositeScore ?? evalScore.overall;
+
     log.info(
       {
         overall: evalScore.overall,
+        compositeScore: evalScore.compositeScore,
         onBrand: evalScore.onBrand,
         legible: evalScore.legible,
         clearHierarchy: evalScore.clearHierarchy,
         notGeneric: evalScore.notGeneric,
+        visionAbsolute: evalScore.visionAbsolute,
+        visionComparative: evalScore.visionComparative,
         passes: evalScore.passesThreshold,
         latencyMs: stage4Latency,
       },
       'Stage 4 complete: eval scored',
     );
 
-    if (evalScore.overall < EVAL_THRESHOLD) {
+    if (effectiveScore < EVAL_THRESHOLD) {
       log.warn(
-        { overall: evalScore.overall, critique: evalScore.critique },
-        `Visual scored ${evalScore.overall.toFixed(1)} (below threshold ${EVAL_THRESHOLD}). Regeneration recommended.`,
+        { score: effectiveScore, critique: evalScore.critique, visionCritique: evalScore.visionCritique },
+        `Visual scored ${effectiveScore.toFixed(1)} (below threshold ${EVAL_THRESHOLD}). Regeneration recommended.`,
       );
     }
   } catch (err) {
@@ -97,4 +102,15 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
     pngPath: stage3.pngPath,
     evalScore,
   };
+}
+
+/**
+ * Run the pipeline with an automatic feedback loop: if the visual fails
+ * evaluation, regenerate using the critique and pick the best result.
+ */
+export async function runPipelineWithFeedback(
+  input: PipelineInput & { maxRetries?: number },
+): Promise<PipelineResult> {
+  const { postText, postId, outputDir = 'data/outputs', maxRetries = 1 } = input;
+  return runWithFeedback({ postText, postId, outputDir, maxRetries });
 }

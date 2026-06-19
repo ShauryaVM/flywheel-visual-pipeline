@@ -1,37 +1,104 @@
 {
   "concepts": [
     {
-      "modality": "headline_subtext_card",
-      "headline": "Anthropic opens in Milan.",
-      "subtext": "Europe is Anthropic's fastest growing region, with revenue up 9x year over year.",
-      "data_points": [],
-      "layout_description": "Left-anchored hero layout on a 1200x630px warm off-white (#faf9f6) canvas. Headline sits at 52px, weight 600, letter-spacing -0.04em, anchored to the left with 72px left padding, positioned in the upper-center vertical zone. A thin 2px warm sand (#d7c8af) accent bar sits 24px above the headline, spanning 48px wide, fading to transparent right. Subtext at 18px, weight 400, color #555, placed 28px below the headline with max-width 520px. A small DM Mono eyebrow label reading 'ANTHROPIC / EUROPE' in 11px, letter-spacing 0.08em, color #888 sits 20px above the accent bar. The FLYWHEEL wordmark anchors bottom-left at 13px DM Mono uppercase, color #888. Right half of the canvas (600-1152px) holds a sparse particle dot network: 14-18 gray circles at 3-6px diameter, 0.08-0.14 opacity, connected by 0.5px hairline strokes, suggesting a European city network map. Bottom-right carries a faint geographic node cluster. 60%+ of canvas is negative space.",
-      "color_usage": "Background #faf9f6, headline #111, subtext #555, eyebrow #888, accent bar #d7c8af, particle dots rgba(107,122,124,0.10), structural hairlines rgba(107,122,124,0.12), FLYWHEEL mark #888.",
-      "reasoning": "A single headline plus one supporting stat is all this announcement needs. The 9x revenue figure is the real proof point; the subtext delivers it crisply. The particle dot network on the right half evokes the expanding European hub map without any illustration."
-    },
-    {
-      "modality": "multi_stat_panel",
-      "headline": "Anthropic doubles down on Europe.",
-      "subtext": "New Milan office adds to a growing network of European hubs.",
+      "modality": "stat_callout",
+      "headline": "Anthropic's European revenue grew 9x YoY.",
+      "subtext": "Europe is now Anthropic's fastest growing region, with a new hub opening in Milan.",
       "data_points": [
-        "9x | Revenue growth YoY",
-        "6 | European city hubs",
-        "#1 | Fastest growing region"
+        "9x | Europe YoY Revenue Growth",
+        "6 | European Office Hubs"
       ],
-      "layout_description": "Left-anchored layout on a 1200x630px white (#ffffff) canvas with 72px perimeter padding. Eyebrow label 'ANTHROPIC / EXPANSION' in DM Mono 11px, uppercase, #888, letter-spacing 0.08em, top-left. Headline at 48px, weight 600, letter-spacing -0.03em, color #111, below eyebrow with 16px gap, max-width 560px. A 2px warm sand accent bar (80px wide, fading right) sits beneath the headline with 20px gap. Subtext at 17px, #555, 20px below accent bar, max-width 480px. Three stat tiles arranged in a horizontal row starting at left, 36px below subtext. Each tile is a square-cornered (#f0efe9 background, 1px #e5e5e5 border) box 240px wide, 110px tall with 24px internal padding. Stat value in DM Mono 38px, weight 400, color #111. Stat label in DM Mono 11px, uppercase, letter-spacing 0.07em, color #666. Tiles spaced 16px apart. FLYWHEEL mark bottom-left in DM Mono 12px, #888. Right of the tile row, sparse particle dots fill peripheral space at 0.08 opacity.",
-      "color_usage": "Background #ffffff, surface #faf9f6, card surface #f0efe9, structural border #e5e5e5, headline #111, subtext #555, stat values #111, stat labels #666, eyebrow #888, accent bar #d7c8af, warm shadow rgba(215,200,175,0.25) on stat tiles.",
-      "reasoning": "Three clean data points (9x growth, 6 hubs, fastest region) make a compelling proof-of-scale story. Square stat tiles with DM Mono numerals align with Flywheel's data-driven editorial voice while the sparse layout maintains the required negative space."
+      "layout_description": "Left anchored hero pattern. The '9x' stat dominates the left two-thirds at large display size in DM Mono. Subtext below in secondary color. Particle network in upper right quadrant at low opacity. FLYWHEEL watermark behind content. Warm accent bar at top of canvas fades right.",
+      "layout_spec": {
+        "headline_position": "left at 72px from left, 40% from top",
+        "stat_position": "left at 72px, vertically centered",
+        "accent_placement": "top edge horizontal bar, 2px, fades right",
+        "whitespace_distribution": "55% right canvas empty with particle motif, 20% top, 15% bottom",
+        "emphasis_area": "stat numeral left-center",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "72px",
+          "right": "80px",
+          "bottom": "64px",
+          "left": "72px"
+        }
+      },
+      "color_usage": "Background #ffffff, stat numeral #000000, subtext #6b7a7c, accent bar #d7c8af, particle dots #000000 at 0.06 opacity, FLYWHEEL watermark #000000 at 0.03 opacity",
+      "reasoning": "The 9x figure is the single most compelling fact in the post. A stat callout isolates it with maximum typographic weight, letting the number do the work. Editorial restraint is preserved by keeping supporting text minimal and pushing decorative elements to the periphery.",
+      "visualization_goals": [
+        "Show Anthropic's 9x year-over-year revenue growth in Europe compared to other regions",
+        "Map Anthropic's expanding European office network across London, Dublin, Zurich, Paris, Munich, and Milan",
+        "Illustrate Europe's position as Anthropic's fastest-growing region relative to global operations",
+        "Highlight the timeline of Anthropic's European expansion leading up to the Milan office opening"
+      ]
     },
     {
-      "modality": "bold_statement_card",
-      "headline": "Europe is Anthropic's fastest growing region.",
-      "subtext": "Revenue up 9x year over year. Milan joins London, Dublin, Zurich, Paris, and Munich.",
+      "modality": "feature_list_graphic",
+      "headline": "Anthropic now has six European hubs.",
+      "subtext": "From London to Milan, Anthropic's European footprint is accelerating fast.",
+      "data_points": [
+        "London",
+        "Dublin",
+        "Zurich",
+        "Paris",
+        "Munich",
+        "Milan — newest hub"
+      ],
+      "layout_description": "Stacked list pattern. Heading anchored top-left with generous top padding. Six city items listed vertically below with square number markers in DM Mono. Right half of canvas holds a subtle particle network. FLYWHEEL watermark centered behind content at near-zero opacity. Warm gradient footer at bottom 80px.",
+      "layout_spec": {
+        "headline_position": "top-left at 72px from left, 72px from top",
+        "accent_placement": "left edge vertical bar 2px tall, warm sand color",
+        "whitespace_distribution": "50% right side empty with particle dots, 15% top, 15% bottom",
+        "emphasis_area": "list column left-center",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "72px",
+          "right": "80px",
+          "bottom": "64px",
+          "left": "72px"
+        }
+      },
+      "color_usage": "Background #faf9f6, headline #000000, list items #000000, number markers #6b7a7c in DM Mono, accent bar #d7c8af, particle dots #000000 at 0.07 opacity, watermark #000000 at 0.025 opacity",
+      "reasoning": "The six-city list is concrete, scannable, and tells a geographic expansion story in one glance. The stacked list modality with square number markers aligns with Flywheel's Swiss-design precision, and the warm off-white background adds editorial warmth.",
+      "visualization_goals": [
+        "Show Anthropic's 9x year-over-year revenue growth in Europe compared to other regions",
+        "Map Anthropic's expanding European office network across London, Dublin, Zurich, Paris, Munich, and Milan",
+        "Illustrate Europe's position as Anthropic's fastest-growing region relative to global operations",
+        "Highlight the timeline of Anthropic's European expansion leading up to the Milan office opening"
+      ]
+    },
+    {
+      "modality": "headline_subtext_card",
+      "headline": "Anthropic is doubling down on Europe.",
+      "subtext": "Revenue up 9x year over year. New offices in Milan join London, Dublin, Zurich, Paris, and Munich.",
       "data_points": [],
-      "layout_description": "Centered statement layout on a 1200x630px warm off-white (#faf9f6) canvas. FLYWHEEL watermark centered behind all content at 140px bold uppercase, opacity 0.03, color #000. All content centered on a single vertical axis. Eyebrow label 'BREAKING' in DM Mono 11px, uppercase, letter-spacing 0.09em, color #888, centered near top third. Headline at 54px, weight 600, letter-spacing -0.04em, color #111, centered, max-width 640px, allowing natural line breaks at a logical point. A 2px warm sand (#d7c8af) horizontal rule 56px wide centered sits 22px below the headline. Subtext at 17px, weight 400, color #555, centered, max-width 500px, 20px below the rule. FLYWHEEL wordmark centered at the bottom in DM Mono 12px, uppercase, #888. Particle dot network floats at the far left and right canvas edges only, at 0.07 opacity, never overlapping the centered text block. Warm sand box shadow on the subtext zone: rgba(215,200,175,0.25) 0px 4px 20px.",
-      "color_usage": "Background #faf9f6, watermark rgba(0,0,0,0.03), headline #111, rule #d7c8af, subtext #555, eyebrow #888, FLYWHEEL mark #888, peripheral dots rgba(107,122,124,0.07).",
-      "reasoning": "The headline itself is the entire story. Centering it as a stark declaration with generous negative space on all sides gives it the gravitas of a publication cover. The warm watermark and minimal subtext maintain Flywheel's editorial restraint."
+      "layout_description": "Centered statement variant with left-weighted text. Headline at large display size anchored left. Thin warm accent bar separates headline from subtext. Particle network drifts through upper right. FLYWHEEL watermark sits behind at extreme size and low opacity. Clean, confident, minimal.",
+      "layout_spec": {
+        "headline_position": "left at 72px, vertically centered slightly above midpoint",
+        "accent_placement": "horizontal divider bar below headline, 2px, 120px wide, warm sand",
+        "whitespace_distribution": "60% canvas is negative space, particle cluster upper-right",
+        "emphasis_area": "headline text block",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "80px",
+          "right": "80px",
+          "bottom": "80px",
+          "left": "72px"
+        }
+      },
+      "color_usage": "Background #ffffff, headline #000000 weight 600, subtext #6b7a7c weight 400, accent bar #d7c8af, FLYWHEEL watermark #000000 at 0.03 opacity, particle dots #000000 at 0.06 opacity",
+      "reasoning": "When the story is both qualitative and quantitative, a headline plus subtext card synthesizes both in a single confident statement. The restrained layout communicates authority through simplicity, which is core to Flywheel's editorial identity.",
+      "visualization_goals": [
+        "Show Anthropic's 9x year-over-year revenue growth in Europe compared to other regions",
+        "Map Anthropic's expanding European office network across London, Dublin, Zurich, Paris, Munich, and Milan",
+        "Illustrate Europe's position as Anthropic's fastest-growing region relative to global operations",
+        "Highlight the timeline of Anthropic's European expansion leading up to the Milan office opening"
+      ]
     }
   ],
   "selected": 0,
-  "selection_reasoning": "Concept 0 (headline_subtext_card) best embodies Flywheel's editorial restraint. It communicates the core news (Milan opening) and the single most compelling proof point (9x YoY growth) without over-engineering the layout. The left-anchored hero with particle dot network on the right delivers the required asymmetric tension and 60%+ negative space. The multi-stat panel in concept 1 risks feeling like a marketing tile deck; the bold statement in concept 2 works but the headline exceeds the ideal punchy length. Concept 0 is the most considered and deliberate of the three."
+  "selection_reasoning": "The stat callout best embodies Flywheel's editorial identity: one number, maximum typographic weight, everything else subordinate. The 9x figure is the undisputed hook of the post and deserves to be the entire visual message. It communicates scale and momentum in a single glance, with negative space and the particle motif doing the atmospheric work around it. The other concepts are strong but more verbose; the stat callout is the most confident and visually decisive choice."
 }

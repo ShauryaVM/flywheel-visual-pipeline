@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { VisualConcept } from '../../schemas/concept.schema.js';
+import type { LayoutProtocol, ChartDataItem } from '../../schemas/concept.schema.js';
 import { MODALITY_TEMPLATE_MAP } from '../../schemas/concept.schema.js';
 import { createStageLogger } from '../../observability/logger.js';
 import type { DesignSystemData } from '../../types/index.js';
@@ -201,22 +202,226 @@ function extractNameFromUrl(url: string): string {
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
+// ---------------------------------------------------------------------------
+// Chart data processing helpers
+// ---------------------------------------------------------------------------
+const CHART_COLORS = [
+  '#111111', '#d7c8af', '#555555', '#888888', '#333333', '#aaaaaa',
+];
+
+function processBarChartData(chartData: ChartDataItem[]) {
+  const maxVal = Math.max(...chartData.map((d) => d.value), 1);
+  return chartData.map((d) => ({
+    label: d.label,
+    value: d.value,
+    percent: Math.round((d.value / maxVal) * 100),
+    displayValue: formatChartValue(d.value),
+  }));
+}
+
+function processSparklineData(chartData: ChartDataItem[]) {
+  if (chartData.length === 0) return { path: '', fillPath: '', points: [] };
+
+  const maxVal = Math.max(...chartData.map((d) => d.value), 1);
+  const minVal = Math.min(...chartData.map((d) => d.value), 0);
+  const range = maxVal - minVal || 1;
+  const padding = 40;
+  const width = 1000;
+  const height = 200;
+  const usableWidth = width - padding * 2;
+  const usableHeight = height - padding * 2;
+
+  const points = chartData.map((d, i) => ({
+    x: padding + (chartData.length > 1 ? (i / (chartData.length - 1)) * usableWidth : usableWidth / 2),
+    y: padding + usableHeight - ((d.value - minVal) / range) * usableHeight,
+  }));
+
+  const pathSegments = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`);
+  const path = pathSegments.join(' ');
+
+  const fillPath = path +
+    ` L ${points[points.length - 1]!.x.toFixed(1)} ${height} L ${points[0]!.x.toFixed(1)} ${height} Z`;
+
+  return { path, fillPath, points };
+}
+
+function processDonutData(chartData: ChartDataItem[], ds: ReturnType<typeof buildDesignTokens>) {
+  const total = chartData.reduce((sum, d) => sum + d.value, 0) || 1;
+  const circumference = 2 * Math.PI * 70;
+  let accumulatedOffset = 0;
+
+  const segments = chartData.map((d, i) => {
+    const fraction = d.value / total;
+    const dashLength = fraction * circumference;
+    const gapLength = circumference - dashLength;
+    const dashOffset = -accumulatedOffset;
+    accumulatedOffset += dashLength;
+
+    return {
+      label: d.label,
+      value: d.value,
+      displayValue: formatChartValue(d.value),
+      color: i === 0 ? ds.primary : (CHART_COLORS[i % CHART_COLORS.length] ?? ds.textMuted),
+      dashArray: `${dashLength.toFixed(2)} ${gapLength.toFixed(2)}`,
+      dashOffset: dashOffset.toFixed(2),
+    };
+  });
+
+  return { segments, total: formatChartValue(total) };
+}
+
+function formatChartValue(val: number): string {
+  if (val >= 1_000_000_000) return `${(val / 1_000_000_000).toFixed(1)}B`;
+  if (val >= 1_000_000) return `${(val / 1_000_000).toFixed(1)}M`;
+  if (val >= 1_000) return `${(val / 1_000).toFixed(1)}K`;
+  return val.toString();
+}
+
+// ---------------------------------------------------------------------------
+// Layout spec CSS application
+// ---------------------------------------------------------------------------
+function buildLayoutSpecCss(spec: NonNullable<VisualConcept['layout_spec']>): string {
+  const rules: string[] = [];
+
+  if (spec.flex_direction) {
+    rules.push(`.content, .text-side { flex-direction: ${spec.flex_direction}; }`);
+  }
+  if (spec.alignment) {
+    const cssAlign = spec.alignment === 'space-between' ? 'space-between' :
+      spec.alignment === 'start' ? 'flex-start' :
+      spec.alignment === 'end' ? 'flex-end' : 'center';
+    rules.push(`.content, .text-side { justify-content: ${cssAlign}; }`);
+  }
+  if (spec.padding_distribution) {
+    const pd = spec.padding_distribution;
+    const padStr = [pd.top ?? '48px', pd.right ?? '64px', pd.bottom ?? '48px', pd.left ?? '64px'].join(' ');
+    rules.push(`.content, .text-side { padding: ${padStr}; }`);
+  }
+
+  return rules.length > 0 ? `\n/* layout_spec overrides */\n${rules.join('\n')}` : '';
+}
+
+// ---------------------------------------------------------------------------
+// Graphist-inspired: Layout Protocol renderer
+// ---------------------------------------------------------------------------
+function renderLayoutProtocol(
+  protocol: LayoutProtocol,
+  ds: ReturnType<typeof buildDesignTokens>,
+  fontCss: string,
+): string {
+  const { canvas, elements } = protocol;
+
+  const elementHtml = elements.map((el) => {
+    const style: string[] = [
+      'position: absolute',
+      `left: ${el.position.x}`,
+      `top: ${el.position.y}`,
+      `width: ${el.size.width}`,
+      `height: ${el.size.height}`,
+    ];
+
+    if (el.zIndex !== undefined) style.push(`z-index: ${el.zIndex}`);
+
+    if (el.style) {
+      if (el.style.fontSize) style.push(`font-size: ${el.style.fontSize}`);
+      if (el.style.fontWeight) style.push(`font-weight: ${el.style.fontWeight}`);
+      if (el.style.color) style.push(`color: ${el.style.color}`);
+      if (el.style.opacity !== undefined) style.push(`opacity: ${el.style.opacity}`);
+      if (el.style.fontFamily) style.push(`font-family: ${el.style.fontFamily}`);
+      if (el.style.textTransform) style.push(`text-transform: ${el.style.textTransform}`);
+      if (el.style.letterSpacing) style.push(`letter-spacing: ${el.style.letterSpacing}`);
+      if (el.style.lineHeight) style.push(`line-height: ${el.style.lineHeight}`);
+      if (el.style.textAlign) style.push(`text-align: ${el.style.textAlign}`);
+      if (el.style.background) style.push(`background: ${el.style.background}`);
+    }
+
+    const tag = el.type === 'headline' ? 'h1' :
+      el.type === 'decorative' || el.type === 'accent' ? 'div' : 'div';
+
+    const escapedContent = el.type === 'decorative' || el.type === 'accent' || el.type === 'logo'
+      ? el.content
+      : escapeHtml(el.content);
+
+    return `    <${tag} style="${style.join('; ')};">${escapedContent}</${tag}>`;
+  }).join('\n');
+
+  const bgColor = resolveColor(canvas.background, ds);
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    ${fontCss}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: ${canvas.width}px;
+      height: ${canvas.height}px;
+      font-family: ${ds.fontFamily};
+      overflow: hidden;
+    }
+    .canvas {
+      width: ${canvas.width}px;
+      height: ${canvas.height}px;
+      position: relative;
+      background: ${bgColor};
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+${elementHtml}
+  </div>
+</body>
+</html>`;
+}
+
+function resolveColor(color: string, ds: ReturnType<typeof buildDesignTokens>): string {
+  const tokenMap: Record<string, string> = {
+    primary: ds.primary,
+    secondary: ds.secondary,
+    accent: ds.accent,
+    background: ds.background,
+    text: ds.text,
+    surface: ds.surface,
+  };
+  return tokenMap[color] ?? color;
+}
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 /**
  * Render a visual concept to a self-contained HTML string.
- * Injects design system tokens as `ds` in template context.
+ * Supports three rendering paths:
+ * 1. Layout Protocol (Graphist): absolute-positioned elements from JSON
+ * 2. Chart templates (ChartGalaxy): bar, sparkline, donut with processed data
+ * 3. Standard Handlebars templates with optional layout_spec overrides
  */
 export async function renderConceptToHtml(
   concept: VisualConcept,
   designSystemPath?: string,
 ): Promise<string> {
-  const templateId = resolveTemplateId(concept.modality);
-  log.info({ modality: concept.modality, templateId }, 'Rendering concept to HTML');
-
   const [designSystem, fontCss] = await Promise.all([
     loadDesignSystem(designSystemPath),
     loadFontCss(),
   ]);
   const ds = buildDesignTokens(designSystem);
+
+  // Path 1: Graphist layout protocol
+  if (concept.layout_protocol) {
+    log.info({ modality: concept.modality }, 'Rendering via layout protocol');
+    return renderLayoutProtocol(concept.layout_protocol, ds, fontCss);
+  }
+
+  const templateId = resolveTemplateId(concept.modality);
+  log.info({ modality: concept.modality, templateId }, 'Rendering concept to HTML');
 
   let template: HandlebarsTemplateDelegate;
   try {
@@ -229,16 +434,49 @@ export async function renderConceptToHtml(
     template = await loadTemplate('headline-subtext-card');
   }
 
+  // Path 2 & 3: build template data with chart processing and layout_spec
+  const chartData = concept.chart_data ?? [];
+  const isChartModality = ['bar_chart', 'line_sparkline', 'pie_donut_chart'].includes(concept.modality);
+
+  let processedChartData: ReturnType<typeof processBarChartData> = [];
+  let sparklineData = { path: '', fillPath: '', points: [] as { x: number; y: number }[] };
+  let donutData = { segments: [] as ReturnType<typeof processDonutData>['segments'], total: '0' };
+
+  if (isChartModality && chartData.length > 0) {
+    if (concept.modality === 'bar_chart') {
+      processedChartData = processBarChartData(chartData);
+    } else if (concept.modality === 'line_sparkline') {
+      sparklineData = processSparklineData(chartData);
+    } else if (concept.modality === 'pie_donut_chart') {
+      donutData = processDonutData(chartData, ds);
+    }
+  }
+
   const data = {
     headline: concept.headline,
     subtext: concept.subtext ?? '',
     data_points: concept.data_points ?? [],
+    chart_data: isChartModality ? processedChartData.length > 0 ? processedChartData : chartData : [],
+    sparkline_path: sparklineData.path,
+    sparkline_fill_path: sparklineData.fillPath,
+    sparkline_points: sparklineData.points,
+    donut_segments: donutData.segments,
+    donut_total: donutData.total,
     modality: concept.modality,
     layout_description: concept.layout_description,
     color_usage: concept.color_usage,
     ds,
   };
 
-  const rawHtml = template(data);
+  let rawHtml = template(data);
+
+  // Apply layout_spec CSS overrides if present
+  if (concept.layout_spec) {
+    const specCss = buildLayoutSpecCss(concept.layout_spec);
+    if (specCss) {
+      rawHtml = rawHtml.replace('</style>', `${specCss}\n  </style>`);
+    }
+  }
+
   return injectFontsIntoHtml(rawHtml, fontCss);
 }

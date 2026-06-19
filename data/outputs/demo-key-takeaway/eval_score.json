@@ -1,9 +1,21 @@
 {
-  "onBrand": 7,
-  "legible": 8,
-  "clearHierarchy": 7,
-  "notGeneric": 6,
-  "overall": 7,
-  "critique": "The card is competently executed and hits most brand marks — off-white background, sand accent bar, DM Mono URL, correct weight range — but several issues dilute the result. First, the center-aligned layout contradicts the 'left-anchored' directive in the design system; everything floats symmetrically rather than having a strong left anchor. Second, the radial glow is effectively a gradient overlay on content, which the system explicitly prohibits ('no gradients on text'); while it's behind the text, it does wash the center zone. Third, the 'FLYWHEEL' watermark at 140px is so faint (opacity 0.03) that it reads as an unintentional artifact rather than a confident design choice — either commit to it or remove it. Fourth, the dot/constellation pattern in the corners is directionally right (Swiss editorial restraint) but feels borrowed from generic 'dark tech' templates; the dots are too numerous and the connecting lines too conventional. Fifth, the headline at 48px is within spec but 'Structure beats substance. Every time.' is a fairly generic aphorism framing — the visual doesn't amplify the content's data story (10,000 posts, quantified insight) at all. The accent underline under the headline is a nice touch and on-brand. To improve: left-anchor the headline, remove the glow, reduce dot density to 6–8 maximum, and surface one data point (e.g., '10,000 posts analyzed') as a typographic element in DM Mono to make the card feel custom to this specific post.",
-  "passesThreshold": true
+  "onBrand": 8,
+  "legible": 7,
+  "clearHierarchy": 8,
+  "notGeneric": 7,
+  "overall": 7.5,
+  "critique": "Strong brand alignment overall — black/white/sand palette is well-executed, square geometry is consistent, and the DM Mono eyebrow + data labels feel appropriately editorial. The warm gradient bar at top is a nice systematic touch. Key issues: (1) The 'Wall of text' bar is too narrow (14%) to contain its value label, so the 'outside' label logic is triggered but the positioning uses a CSS calc that may render awkwardly — the value '12' could collide with or float oddly against the bar track border. (2) The headline at 30px feels undersized relative to the brand system spec of 42–60px headlines; this makes the card feel cramped rather than commanding. (3) The dot/constellation SVG background is decorative but the lines connecting dots feel slightly tech-startup generic rather than Swiss editorial — consider removing the lines and keeping only the scattered circles. (4) The 'accent' sand bar for 'Clear structure' is the right hero choice, but the contrast of '#d7c8af' fill with white '#ffffff' text is likely below 4.5:1 WCAG — swap to black text on the accent bar. (5) The footer brand-name at 12px with color #aaaaaa is very low contrast against white and risks being unreadable at compressed sizes. Consider #777777 minimum.",
+  "passesThreshold": true,
+  "visionAbsolute": {
+    "layout": 7,
+    "legibility": 7,
+    "polish": 7
+  },
+  "visionComparative": {
+    "colorMatch": 8,
+    "typographyMatch": 7,
+    "aestheticMatch": 8
+  },
+  "visionCritique": "The card captures Flywheel's brand aesthetic well — the floating dot/bubble background pattern is directly lifted from the website and feels cohesive. The warm tan/beige accent bar for 'Clear structure' echoes the brand's neutral palette. However, there are a few issues to address: (1) The black bars for the remaining chart items feel visually heavy and disconnected from the light, airy brand feel — consider using a medium gray or dark navy instead of pure black. (2) The bar labels (numbers) on the black bars have low contrast where the white text meets the bar edge. (3) The 'Wall of text' label value '12' sits outside the bar in a hard-to-read position. (4) There's too much empty vertical space between the headline section and the chart — tighten the spacing. (5) The 'COMPARISON' eyebrow label color is muted but readable; consider using a slightly warmer or brand-specific accent. (6) Typography in the card is close to the brand's sans-serif but the weight/size ratio of the headline vs. body could be bolder to match the website's strong typographic contrast.",
+  "compositeScore": 7.38
 }

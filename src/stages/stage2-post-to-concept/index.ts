@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { computeSignals } from './signals.js';
 import { evaluateRules } from './rule-engine.js';
-import { generateConcepts } from './concept-generator.js';
+import { generateConcepts, enumerateVisualizationGoals, type ConceptGeneratorOptions } from './concept-generator.js';
 import { createStageLogger } from '../../observability/logger.js';
 import type {
   DesignSystemData,
@@ -20,6 +20,7 @@ export interface Stage2Input {
   schemaPath?: string;
   decisionRulesPath?: string;
   outputDir?: string;
+  feedback?: ConceptGeneratorOptions['feedback'];
 }
 
 export async function runStage2(
@@ -32,6 +33,7 @@ export async function runStage2(
     schemaPath = 'data/schema/schema-v1.json',
     decisionRulesPath = 'data/schema/decision-rules.json',
     outputDir = 'data/outputs',
+    feedback,
   } = opts;
 
   log.info(
@@ -58,7 +60,14 @@ export async function runStage2(
     'Candidate modalities from rules',
   );
 
-  const result = await generateConcepts(postText, designSystem, schema, candidates);
+  // LIDA-inspired: enumerate visualization goals before concept generation
+  const visualizationGoals = await enumerateVisualizationGoals(postText, signals);
+  log.info({ goals: visualizationGoals }, 'Visualization goals enumerated');
+
+  const result = await generateConcepts(postText, designSystem, schema, candidates, {
+    visualizationGoals,
+    feedback,
+  });
 
   const selectedConcept = result.concepts[result.selected];
   log.info(

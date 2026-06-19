@@ -1,42 +1,118 @@
 {
   "concepts": [
     {
-      "modality": "stat_callout",
+      "modality": "multi_stat_panel",
       "headline": "Being exceptional equals volume.",
-      "subtext": "The gap between average and exceptional is not 10% more effort. It is closer to 1,000%.",
+      "subtext": "The gap between average and exceptional is not 10% more effort. It is 1,000% more volume.",
       "data_points": [
-        "1,000% | The volume gap",
-        "$1,500 | Coaching session cost",
-        "$1M+ | Annual business revenue"
+        "1,000% | The real effort gap",
+        "500 | Posts tracked in a spreadsheet",
+        "$1,500 | Coaching session investment",
+        "$1M+ | Annual business revenue today"
       ],
-      "layout_description": "Left-anchored hero layout on a #faf9f6 warm off-white canvas. The headline sits at 56px, weight 600, letter-spacing -0.03em, anchored to the left at 72px from the left edge, roughly 40% from the top. Below it, a 2px warm sand accent bar (#d7c8af) spans 120px wide, fading to transparent, at 16px gap below the headline. Subtext follows at 18px, #555, 24px gap below the bar, max-width 480px. The hero statistic '1,000%' sits large at 96px, DM Mono weight 400, color #111, positioned in the lower-left quadrant, with a tiny 11px uppercase DM Mono label 'the volume gap' in #888 directly below it. Right side of the canvas (roughly 55-100% width) is reserved for a particle dot network: scattered gray circles 3-6px at 0.08 opacity, connected by 0.5px hairline strokes, suggesting scale and connection. The FLYWHEEL wordmark sits bottom-left at 13px uppercase DM Mono, #888, 72px from the left and 56px from the bottom.",
-      "color_usage": "Background #faf9f6, headline #111, subtext #555, stat #111 DM Mono, accent bar #d7c8af, particle dots #6b7a7c at 0.08 opacity, brand mark #888.",
-      "reasoning": "The post distills to a single, powerful insight backed by one hero number: 1,000%. The stat_callout modality lets that number dominate the canvas with editorial authority, while the subtext delivers the philosophical core. This respects Flywheel's principle of communicating through removal: no list, no grid, just one truth made impossible to ignore."
+      "layout_description": "Left-anchored hero layout. Headline in bold 48px at top-left, subtext below in 16px secondary gray. Four stat tiles arranged in a 2x2 grid anchored to the left two-thirds of the canvas. Right third holds a particle network at low opacity. FLYWHEEL watermark behind content at 0.03 opacity. Warm accent bar at top of the card block. Generous 64px padding throughout.",
+      "layout_spec": {
+        "headline_position": "top-left at 12% from top",
+        "stat_position": "left-center grid, 2x2 tiles starting at 38% from top",
+        "accent_placement": "2px warm sand bar above headline block",
+        "whitespace_distribution": "55% left content, 45% right negative space with particle dots",
+        "emphasis_area": "stat grid center-left",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "64px",
+          "right": "80px",
+          "bottom": "64px",
+          "left": "72px"
+        }
+      },
+      "color_usage": "Background #ffffff. Headline #000000. Subtext #6b7a7c. Stat values #000000 in DM Mono. Stat labels #6b7a7c. Accent bar #d7c8af. Particle dots #000000 at 0.06 opacity. FLYWHEEL watermark #000000 at 0.03 opacity.",
+      "reasoning": "The post contains four strong, distinct quantitative proof points that together tell a complete story of scale and return. A multi-stat panel lets each number breathe at meaningful size while the pairing of investment ($1,500) against outcome ($1M+) creates a natural narrative tension visible at a glance.",
+      "visualization_goals": [
+        "Show the effort gap between average and exceptional performers as a 10x vs 1000% comparison to illustrate the true scale of difference",
+        "Contrast the behavior patterns of average vs exceptional people across key dimensions: ideas shipped, failures tolerated, and volume of output",
+        "Visualize the journey from a $1,500 coaching investment to $1M+ annual business revenue as a return-on-investment timeline",
+        "Represent the concept of volume as a success driver by showing how 500 tracked posts with metrics and color-coded topics enabled audience growth"
+      ]
     },
     {
-      "modality": "multi_stat_panel",
+      "modality": "bar_chart",
       "headline": "The volume gap is 1,000%.",
-      "subtext": "A $1,500 coaching session, a spreadsheet of 500 posts, and the lesson that changed everything.",
-      "data_points": [
-        "1,000% | The volume gap",
-        "500 | Posts tracked in one spreadsheet",
-        "$1,500 | Cost of the coaching session",
-        "$1M+ | Annual revenue after applying it"
+      "subtext": "Average performers wait for one good idea. Exceptional performers ship, fail, and iterate at a completely different scale.",
+      "chart_data": [
+        {
+          "label": "Ideas shipped (average)",
+          "value": 1
+        },
+        {
+          "label": "Ideas shipped (exceptional)",
+          "value": 100
+        },
+        {
+          "label": "Failures tolerated (average)",
+          "value": 3
+        },
+        {
+          "label": "Failures tolerated (exceptional)",
+          "value": 300
+        }
       ],
-      "layout_description": "Structured data layout on a #ffffff white canvas. Full-width heading at 52px, weight 600, letter-spacing -0.04em, color #111, left-anchored at 72px from left edge, 64px from top. A 2px warm sand accent bar (#d7c8af) runs 80px wide beneath it, fading to transparent. Subtext at 17px, #555, 20px below the bar, max-width 560px. Below, a 2-column CSS grid of 4 stat tiles, each with a 1px #e5e5e5 border, background #f0efe9, border-radius 0px, 24px internal padding. Each tile shows the VALUE in 38px DM Mono weight 400 #111 at top, LABEL in 12px uppercase DM Mono #888 below at 10px gap. Grid sits at 280px from the top, tile rows spaced 16px apart. Right portion of canvas beyond the grid (approximately 700-1128px x-range) left as intentional negative space with a faint particle dot cluster at 0.06 opacity. FLYWHEEL wordmark bottom-left, 13px uppercase DM Mono #888.",
-      "color_usage": "Background #ffffff, headline #111, subtext #555, stat values #111 DM Mono, stat labels #888 DM Mono, tile background #f0efe9, tile border #e5e5e5, accent bar #d7c8af, particle dots #6b7a7c at 0.06 opacity.",
-      "reasoning": "The post contains four distinct, real proof points that together build the volume argument: the gap percentage, the number of tracked posts, the cost paid, and the revenue outcome. A multi-stat panel lets these speak in parallel without hierarchy fighting. The DM Mono treatment keeps it analytical and editorial rather than promotional."
+      "layout_description": "Left-anchored layout. Headline at top-left in 52px weight 600. Subtext below in 16px #6b7a7c. Horizontal bar chart occupying the lower two-thirds of the canvas, left-aligned with bars extending rightward. Average bars rendered in #6b7a7c at low weight, exceptional bars in #000000 bold. DM Mono labels on bar ends. Particle dots scattered in the upper-right quadrant at 0.07 opacity. 72px canvas padding.",
+      "layout_spec": {
+        "headline_position": "top-left at 10% from top",
+        "stat_position": "lower two-thirds, chart bars starting at 40% from top",
+        "accent_placement": "2px warm sand horizontal bar beneath headline",
+        "whitespace_distribution": "40% top narrative, 60% chart area with generous row spacing",
+        "emphasis_area": "exceptional bars on the right side of chart",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "56px",
+          "right": "80px",
+          "bottom": "64px",
+          "left": "72px"
+        }
+      },
+      "color_usage": "Background #ffffff. Headline #000000. Subtext #6b7a7c. Average bars #6b7a7c at 0.5 opacity. Exceptional bars #000000. Bar value labels DM Mono #000000. Accent bar #d7c8af. Particle dots #000000 at 0.06 opacity.",
+      "reasoning": "The post's core argument is a direct behavioral contrast between average and exceptional performers. A horizontal bar chart makes that gap viscerally visible without words. The extreme disparity in bar lengths (1 vs 100, 3 vs 300) does the persuasive work visually, embodying the 1,000% claim in pure geometry.",
+      "visualization_goals": [
+        "Show the effort gap between average and exceptional performers as a 10x vs 1000% comparison to illustrate the true scale of difference",
+        "Contrast the behavior patterns of average vs exceptional people across key dimensions: ideas shipped, failures tolerated, and volume of output",
+        "Visualize the journey from a $1,500 coaching investment to $1M+ annual business revenue as a return-on-investment timeline",
+        "Represent the concept of volume as a success driver by showing how 500 tracked posts with metrics and color-coded topics enabled audience growth"
+      ]
     },
     {
       "modality": "bold_statement_card",
-      "headline": "Average waits. Exceptional ships.",
-      "subtext": "The gap between average and exceptional is not effort. It is volume. Always volume.",
+      "headline": "Volume is the strategy.",
+      "subtext": "Five hundred posts tracked. Every metric. Every failure. That is how a $1,500 lesson became a $1M+ business.",
       "data_points": [],
-      "layout_description": "Centered statement layout on a #faf9f6 canvas with a faint FLYWHEEL watermark behind the headline at 140px bold uppercase, #000000 at 0.03 opacity, centered. Headline at 54px, weight 600, letter-spacing -0.04em, color #111, centered horizontally, placed at approximately 44% from the top. A 2px warm sand accent bar (#d7c8af) 96px wide centered below the headline, fading to transparent at both ends, 14px gap. Subtext at 18px, #555, weight 400, centered, max-width 500px, 22px below the accent bar. Warm sand box-shadow rgba(215,200,175,0.25) 0px 4px 20px on the headline text block container. FLYWHEEL wordmark bottom-center, 13px uppercase DM Mono #888, 56px from bottom. Particle dots very faint at 0.05 opacity scattered symmetrically in outer corners only, 4-6px circles with hairline connectors, not competing with the centered text.",
-      "color_usage": "Background #faf9f6, headline #111, subtext #555, FLYWHEEL watermark #000000 at 0.03 opacity, accent bar #d7c8af, particle dots #6b7a7c at 0.05 opacity, brand mark #888.",
-      "reasoning": "The post's most resonant distillation is the contrast between average and exceptional behavior. A bold statement card lets that tension live in a single punchy line, centered with the gravitas of a museum label. The FLYWHEEL watermark adds depth without clutter. This is the most stripped-back, editorially confident of the three concepts."
+      "layout_description": "Centered statement layout with strong left offset. The headline renders at 84px weight 600 anchored to the left third, breaking across two lines for rhythm. Subtext in 18px #6b7a7c below. FLYWHEEL watermark at extreme scale (150px) behind at 0.03 opacity, slightly right of center. A single warm sand accent bar (2px, 120px wide) sits beneath the headline as a typographic underline. Particle network of 12-15 scattered dots in the upper-right quadrant. Right 40% of canvas is pure negative space.",
+      "layout_spec": {
+        "headline_position": "left-anchored at 28% from top, 72px from left",
+        "stat_position": "none",
+        "accent_placement": "2px x 120px warm sand bar directly beneath headline last line",
+        "whitespace_distribution": "60% right negative space, 20% top, 20% bottom",
+        "emphasis_area": "headline block left-center",
+        "flex_direction": "column",
+        "alignment": "start",
+        "padding_distribution": {
+          "top": "72px",
+          "right": "80px",
+          "bottom": "72px",
+          "left": "72px"
+        }
+      },
+      "color_usage": "Background #ffffff. Headline #000000. Subtext #6b7a7c. Accent bar #d7c8af. FLYWHEEL watermark #000000 at 0.03 opacity. Particle dots #000000 at 0.05-0.08 opacity.",
+      "reasoning": "The post's true thesis is a philosophical declaration, not a data argument. A bold statement card distills it to its sharpest form and lets the editorial restraint of the layout communicate confidence. The extreme negative space on the right mirrors the post's message: doing less but more deliberately is not the point. Volume and emptiness coexist as the same truth.",
+      "visualization_goals": [
+        "Show the effort gap between average and exceptional performers as a 10x vs 1000% comparison to illustrate the true scale of difference",
+        "Contrast the behavior patterns of average vs exceptional people across key dimensions: ideas shipped, failures tolerated, and volume of output",
+        "Visualize the journey from a $1,500 coaching investment to $1M+ annual business revenue as a return-on-investment timeline",
+        "Represent the concept of volume as a success driver by showing how 500 tracked posts with metrics and color-coded topics enabled audience growth"
+      ]
     }
   ],
-  "selected": 0,
-  "selection_reasoning": "Concept 0 best embodies Flywheel's editorial restraint by centering the single most powerful data point from the post: 1,000%. The stat_callout modality creates maximum visual tension through the contrast of a massive number against generous negative space, with the particle network adding texture without competing. It communicates authority through removal, letting one number carry the full weight of the post's argument. The left-anchored layout and particle-filled right side create the asymmetric balance that defines Flywheel's visual identity."
+  "selected": 1,
+  "selection_reasoning": "The bar chart concept most honestly serves the post's core argument. The numbers 1 vs 100 and 3 vs 300 are stated explicitly in the original text, making the chart data grounded in real content rather than abstraction. The visual disparity between average and exceptional bars does in one glance what the entire post does in 300 words. It is the most intellectually honest translation of this content into a graphic, and the horizontal bar format reads cleanly at LinkedIn dimensions without requiring the viewer to decode anything."
 }

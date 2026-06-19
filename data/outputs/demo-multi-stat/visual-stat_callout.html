@@ -186,64 +186,17 @@
       height: 1px;
       background: rgba(215, 200, 175, 0.4);
     }
+  
+/* layout_spec overrides */
+.content, .text-side { flex-direction: column; }
+.content, .text-side { justify-content: flex-start; }
+.content, .text-side { padding: 72px 80px 72px 80px; }
   </style>
 </head>
 <body>
   <div class="canvas">
     <div class="dot-field">
-      <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="550" cy="32" r="5" fill="#000000" opacity="0.1"/>
-        <circle cx="620" cy="55" r="8" fill="#000000" opacity="0.08"/>
-        <circle cx="700" cy="38" r="3" fill="#000000" opacity="0.16"/>
-        <circle cx="780" cy="60" r="12" fill="#000000" opacity="0.06"/>
-        <circle cx="860" cy="35" r="4" fill="#000000" opacity="0.14"/>
-        <circle cx="940" cy="62" r="7" fill="#000000" opacity="0.09"/>
-        <circle cx="1020" cy="40" r="14" fill="#000000" opacity="0.06"/>
-        <circle cx="1090" cy="65" r="5" fill="#000000" opacity="0.12"/>
-        <circle cx="1150" cy="38" r="3" fill="#000000" opacity="0.2"/>
-        <circle cx="580" cy="100" r="4" fill="#000000" opacity="0.12"/>
-        <circle cx="660" cy="120" r="6" fill="#000000" opacity="0.08"/>
-        <circle cx="750" cy="95" r="3" fill="#000000" opacity="0.16"/>
-        <circle cx="840" cy="115" r="10" fill="#000000" opacity="0.07"/>
-        <circle cx="930" cy="100" r="4" fill="#000000" opacity="0.14"/>
-        <circle cx="1010" cy="130" r="5" fill="#000000" opacity="0.1"/>
-        <circle cx="1100" cy="105" r="15" fill="#000000" opacity="0.06"/>
-        <circle cx="1160" cy="135" r="3" fill="#000000" opacity="0.18"/>
-        <circle cx="600" cy="180" r="5" fill="#000000" opacity="0.1"/>
-        <circle cx="1140" cy="190" r="4" fill="#000000" opacity="0.12"/>
-        <circle cx="1080" cy="220" r="7" fill="#000000" opacity="0.07"/>
-        <circle cx="700" cy="240" r="3" fill="#000000" opacity="0.14"/>
-        <circle cx="1160" cy="260" r="6" fill="#000000" opacity="0.08"/>
-        <circle cx="1100" cy="310" r="4" fill="#000000" opacity="0.12"/>
-        <circle cx="800" cy="320" r="8" fill="#000000" opacity="0.06"/>
-        <circle cx="1150" cy="350" r="3" fill="#000000" opacity="0.16"/>
-        <circle cx="1080" cy="380" r="14" fill="#000000" opacity="0.06"/>
-        <circle cx="650" cy="390" r="4" fill="#000000" opacity="0.1"/>
-        <circle cx="1140" cy="420" r="5" fill="#000000" opacity="0.1"/>
-        <circle cx="1060" cy="450" r="3" fill="#000000" opacity="0.16"/>
-        <circle cx="730" cy="460" r="6" fill="#000000" opacity="0.07"/>
-        <circle cx="1160" cy="480" r="8" fill="#000000" opacity="0.07"/>
-        <circle cx="1090" cy="510" r="4" fill="#000000" opacity="0.12"/>
-        <circle cx="600" cy="520" r="3" fill="#000000" opacity="0.14"/>
-        <circle cx="1140" cy="540" r="6" fill="#000000" opacity="0.08"/>
-        <circle cx="1060" cy="570" r="3" fill="#000000" opacity="0.16"/>
-        <circle cx="700" cy="560" r="5" fill="#000000" opacity="0.08"/>
-        <circle cx="1160" cy="590" r="10" fill="#000000" opacity="0.06"/>
-        <circle cx="850" cy="580" r="3" fill="#000000" opacity="0.1"/>
-        <circle cx="950" cy="595" r="4" fill="#000000" opacity="0.07"/>
-        <circle cx="550" cy="590" r="3" fill="#000000" opacity="0.08"/>
-        <circle cx="1000" cy="580" r="3" fill="#000000" opacity="0.1"/>
-        <line x1="550" y1="32" x2="620" y2="55" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
-        <line x1="780" y1="60" x2="860" y2="35" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="1020" y1="40" x2="1090" y2="65" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="660" y1="120" x2="750" y2="95" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
-        <line x1="930" y1="100" x2="1010" y2="130" stroke="#000000" stroke-width="0.5" opacity="0.06"/>
-        <line x1="1100" y1="310" x2="1150" y2="350" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="1080" y1="380" x2="1140" y2="420" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="1060" y1="450" x2="1160" y2="480" stroke="#000000" stroke-width="0.5" opacity="0.04"/>
-        <line x1="1090" y1="510" x2="1140" y2="540" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-        <line x1="1060" y1="570" x2="1160" y2="590" stroke="#000000" stroke-width="0.5" opacity="0.05"/>
-      </svg>
+      <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg"><circle cx="620" cy="28" r="3" fill="#000000" opacity="0.08"/><circle cx="690" cy="55" r="7" fill="#000000" opacity="0.12"/><circle cx="750" cy="90" r="4" fill="#000000" opacity="0.18"/><circle cx="820" cy="42" r="10" fill="#000000" opacity="0.08"/><circle cx="880" cy="75" r="5" fill="#000000" opacity="0.14"/><circle cx="940" cy="35" r="15" fill="#000000" opacity="0.06"/><circle cx="1000" cy="60" r="6" fill="#000000" opacity="0.12"/><circle cx="1060" cy="95" r="3" fill="#000000" opacity="0.2"/><circle cx="1120" cy="45" r="9" fill="#000000" opacity="0.1"/><circle cx="1170" cy="80" r="4" fill="#000000" opacity="0.16"/><circle cx="650" cy="130" r="5" fill="#000000" opacity="0.1"/><circle cx="730" cy="160" r="12" fill="#000000" opacity="0.07"/><circle cx="800" cy="140" r="3" fill="#000000" opacity="0.2"/><circle cx="870" cy="170" r="6" fill="#000000" opacity="0.12"/><circle cx="950" cy="130" r="8" fill="#000000" opacity="0.09"/><circle cx="1030" cy="155" r="4" fill="#000000" opacity="0.16"/><circle cx="1100" cy="180" r="18" fill="#000000" opacity="0.06"/><circle cx="1160" cy="150" r="3" fill="#000000" opacity="0.2"/><circle cx="680" cy="230" r="4" fill="#000000" opacity="0.14"/><circle cx="760" cy="250" r="9" fill="#000000" opacity="0.08"/><circle cx="850" cy="220" r="3" fill="#000000" opacity="0.18"/><circle cx="930" cy="260" r="6" fill="#000000" opacity="0.1"/><circle cx="1020" cy="240" r="14" fill="#000000" opacity="0.06"/><circle cx="1090" cy="270" r="5" fill="#000000" opacity="0.12"/><circle cx="1150" cy="230" r="3" fill="#000000" opacity="0.2"/><circle cx="700" cy="320" r="7" fill="#000000" opacity="0.1"/><circle cx="780" cy="350" r="4" fill="#000000" opacity="0.16"/><circle cx="860" cy="310" r="10" fill="#000000" opacity="0.08"/><circle cx="950" cy="340" r="3" fill="#000000" opacity="0.2"/><circle cx="1040" cy="360" r="6" fill="#000000" opacity="0.12"/><circle cx="1110" cy="330" r="16" fill="#000000" opacity="0.06"/><circle cx="1170" cy="370" r="4" fill="#000000" opacity="0.14"/><circle cx="670" cy="420" r="5" fill="#000000" opacity="0.12"/><circle cx="750" cy="440" r="8" fill="#000000" opacity="0.08"/><circle cx="840" cy="410" r="3" fill="#000000" opacity="0.18"/><circle cx="920" cy="450" r="11" fill="#000000" opacity="0.07"/><circle cx="1000" cy="430" r="4" fill="#000000" opacity="0.16"/><circle cx="1080" cy="460" r="6" fill="#000000" opacity="0.1"/><circle cx="1150" cy="420" r="3" fill="#000000" opacity="0.2"/><circle cx="690" cy="510" r="6" fill="#000000" opacity="0.1"/><circle cx="770" cy="530" r="13" fill="#000000" opacity="0.06"/><circle cx="860" cy="500" r="4" fill="#000000" opacity="0.14"/><circle cx="940" cy="540" r="7" fill="#000000" opacity="0.1"/><circle cx="1020" cy="520" r="3" fill="#000000" opacity="0.2"/><circle cx="1100" cy="550" r="9" fill="#000000" opacity="0.08"/><circle cx="1160" cy="510" r="5" fill="#000000" opacity="0.12"/><circle cx="720" cy="590" r="3" fill="#000000" opacity="0.16"/><circle cx="810" cy="580" r="5" fill="#000000" opacity="0.1"/><circle cx="900" cy="600" r="8" fill="#000000" opacity="0.08"/><circle cx="1000" cy="590" r="4" fill="#000000" opacity="0.14"/><circle cx="1080" cy="610" r="3" fill="#000000" opacity="0.2"/><circle cx="1150" cy="580" r="6" fill="#000000" opacity="0.1"/><circle cx="180" cy="60" r="4" fill="#000000" opacity="0.1"/><circle cx="120" cy="150" r="3" fill="#000000" opacity="0.12"/><circle cx="200" cy="520" r="5" fill="#000000" opacity="0.08"/><circle cx="80" cy="580" r="3" fill="#000000" opacity="0.14"/><line x1="690" y1="55" x2="750" y2="90" stroke="#000000" stroke-width="0.5" opacity="0.06"/><line x1="820" y1="42" x2="880" y2="75" stroke="#000000" stroke-width="0.5" opacity="0.05"/><line x1="1000" y1="60" x2="1060" y2="95" stroke="#000000" stroke-width="0.5" opacity="0.06"/><line x1="1120" y1="45" x2="1170" y2="80" stroke="#000000" stroke-width="0.5" opacity="0.04"/><line x1="730" y1="160" x2="800" y2="140" stroke="#000000" stroke-width="0.5" opacity="0.06"/><line x1="950" y1="130" x2="1030" y2="155" stroke="#000000" stroke-width="0.5" opacity="0.05"/><line x1="860" y1="310" x2="950" y2="340" stroke="#000000" stroke-width="0.5" opacity="0.05"/><line x1="1040" y1="360" x2="1110" y2="330" stroke="#000000" stroke-width="0.5" opacity="0.04"/><line x1="750" y1="440" x2="840" y2="410" stroke="#000000" stroke-width="0.5" opacity="0.06"/><line x1="1000" y1="430" x2="1080" y2="460" stroke="#000000" stroke-width="0.5" opacity="0.05"/><line x1="860" y1="500" x2="940" y2="540" stroke="#000000" stroke-width="0.5" opacity="0.05"/><line x1="1100" y1="550" x2="1160" y2="510" stroke="#000000" stroke-width="0.5" opacity="0.04"/></svg>
     </div>
     <div class="warm-bar"></div>
     <div class="stat-side">
@@ -273,14 +226,15 @@
     </div>
     <div class="text-side">
       <div class="eyebrow">Data Point</div>
-      <h1 class="headline">900 stars in 48 hours.</h1>
+      <h1 class="headline">Nine hundred stars in 48 hours.</h1>
       <div class="divider"></div>
-      <p class="subtext">Mike, the open source legal AI, launched and the community responded immediately.</p>
+      <p class="subtext">Mike, the open-source legal AI, forked 200+ times and already has community-built extensions live.</p>
     </div>
     <div class="footer">
-      <svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg"><path d="M 4.448 1.186 C 9.412 -1.598 16.505 0.685 20.293 6.29 C 24.08 11.895 23.127 18.694 18.165 21.479 C 22.385 19.113 23.194 13.33 19.975 8.567 C 16.755 3.805 10.723 1.862 6.506 4.229 C 2.286 6.598 1.477 12.377 4.694 17.142 C 7.914 21.905 13.942 23.848 18.162 21.479 C 13.197 24.266 6.104 21.98 2.317 16.375 C -1.468 10.773 -0.515 3.971 4.447 1.186 Z" fill="#aaaaaa" opacity="0.5"/></svg>
+      <svg viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg"><path d="M 4.448 1.186 C 9.412 -1.598 16.505 0.685 20.293 6.29 C 24.08 11.895 23.127 18.694 18.165 21.479 C 22.385 19.113 23.194 13.33 19.975 8.567 C 16.755 3.805 10.723 1.862 6.506 4.229 C 2.286 6.598 1.477 12.377 4.694 17.142 C 7.914 21.905 13.942 23.848 18.162 21.479 C 13.197 24.266 6.104 21.98 2.317 16.375 C -1.468 10.773 -0.515 3.971 4.447 1.186 Z" fill="currentColor"/></svg>
       <span class="brand-name">Flywheel</span>
     </div>
+    <span class="url" style="position:absolute;bottom:28px;left:48px;font-family:"DM Mono",Monaco,Consolas,monospace;font-size:11px;color:#888888;">flywheelos.com</span>
     <div class="warm-border"></div>
   </div>
 </body>
