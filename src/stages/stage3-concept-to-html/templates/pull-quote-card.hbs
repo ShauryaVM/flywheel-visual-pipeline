@@ -10,7 +10,7 @@
       width: 1200px;
       height: 630px;
       font-family: {{{ds.fontFamily}}};
-      background: {{ds.surface}};
+      background: {{{ds.backgroundStyle}}};
       color: {{ds.textPrimary}};
       overflow: hidden;
     }
@@ -36,8 +36,8 @@
 
     .quote-container {
       background: {{ds.background}};
-      border: 1px solid rgba(215, 200, 175, 0.5);
-      box-shadow: rgba(215, 200, 175, 0.25) 0px 4px 20px 0px, rgba(0, 0, 0, 0.06) 0px 1px 4px 0px, rgba(255, 252, 248, 0.5) 0px 1px 1px 0px inset, rgba(215, 200, 175, 0.15) 0px -1px 1px 0px inset;
+      border: 1px solid rgba({{ds.accentRgb}}, 0.5);
+      box-shadow: rgba({{ds.accentRgb}}, 0.25) 0px 4px 20px 0px, rgba(0, 0, 0, 0.06) 0px 1px 4px 0px, rgba(255, 255, 255, 0.5) 0px 1px 1px 0px inset, rgba({{ds.accentRgb}}, 0.15) 0px -1px 1px 0px inset;
       padding: 56px 72px;
       max-width: 920px;
       width: 100%;
@@ -110,29 +110,23 @@
       color: {{ds.textFaint}};
     }
 
-    .dot-field {
+    .decorative-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
       z-index: 0;
+      opacity: 1.0;
     }
 
-    .gradient-footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      background: linear-gradient(180deg, transparent 0%, rgba(215, 200, 175, 0.06) 100%);
-      pointer-events: none;
-    }
+    {{{ds.animationsCss}}}
   </style>
 </head>
 <body>
   <div class="canvas">
-    <div class="dot-field">
+    <div class="decorative-bg">
       {{{ds.decorativePatternSvg}}}
     </div>
+    {{{ds.animationHintsSvg}}}
     <div class="warm-bar"></div>
     <div class="quote-container">
       <div class="accent-corner"></div>
@@ -149,7 +143,6 @@
       </div>
       <span class="url">{{ds.brandUrl}}</span>
     </div>
-    <div class="gradient-footer"></div>
   </div>
 </body>
 </html>

@@ -10,7 +10,7 @@
       width: 1200px;
       height: 630px;
       font-family: {{{ds.fontFamily}}};
-      background: {{ds.surface}};
+      background: {{{ds.backgroundStyle}}};
       color: {{ds.textPrimary}};
       overflow: hidden;
     }
@@ -25,10 +25,12 @@
       position: relative;
     }
 
-    .dot-field {
+    .decorative-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
+      z-index: 0;
+      opacity: 1.0;
     }
 
     .brand {
@@ -95,25 +97,15 @@
       z-index: 1;
     }
 
-    .glow {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(215, 200, 175, 0.08) 0%, transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
+    {{{ds.animationsCss}}}
   </style>
 </head>
 <body>
   <div class="canvas">
-    <div class="dot-field">
+    <div class="decorative-bg">
       {{{ds.decorativePatternSvg}}}
     </div>
-    <div class="glow"></div>
+    {{{ds.animationHintsSvg}}}
     <div class="brand">
       {{#if ds.logoSvg}}{{{ds.logoSvg}}}{{/if}}
       <span class="brand-name">{{ds.brandName}}</span>

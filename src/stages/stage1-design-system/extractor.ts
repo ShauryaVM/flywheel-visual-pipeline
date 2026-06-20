@@ -1,6 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { createStageLogger } from '../../observability/logger.js';
-import type { RawCrawlData, ElementStyleData } from './crawler.js';
+import type { RawCrawlData, ElementStyleData, PageScreenshot } from './crawler.js';
+import type { DesignPortfolio, BrandAssets } from '../../types/index.js';
 
 const log = createStageLogger('stage1:extractor');
 
@@ -76,6 +77,7 @@ export interface DesignSystemOutput {
 export async function analyzeDesignSystem(
   rawData: RawCrawlData,
   apiKey: string,
+  portfolio?: DesignPortfolio,
 ): Promise<DesignSystemOutput> {
   let result: DesignSystemOutput;
   try {
@@ -88,9 +90,17 @@ export async function analyzeDesignSystem(
     result = analyzeLocally(rawData);
   }
 
+  validateAccentWithVision(result, portfolio, rawData);
+
+  // Apply real brand assets from DOM extraction
+  const brandAssets = rawData.brandAssets;
+  if (brandAssets) {
+    applyBrandAssets(result, brandAssets);
+  }
+
   if (!result.brand_identity) {
     try {
-      result.brand_identity = await extractBrandIdentity(rawData, result, apiKey);
+      result.brand_identity = await extractBrandIdentity(rawData, result, apiKey, portfolio);
       log.info({ brandName: result.brand_identity.name }, 'Brand identity extracted');
     } catch (err) {
       log.warn(
@@ -101,7 +111,254 @@ export async function analyzeDesignSystem(
     }
   }
 
+  // Override the Claude-generated decorative SVG if a real decorative SVG was found
+  if (brandAssets && result.brand_identity) {
+    overrideDecorativeSvg(result.brand_identity, brandAssets);
+  }
+
   return result;
+}
+
+// ---------------------------------------------------------------------------
+// Apply real brand assets extracted from the DOM
+// ---------------------------------------------------------------------------
+
+function applyBrandAssets(result: DesignSystemOutput, assets: BrandAssets): void {
+  // Replace logo with real extracted logo
+  if (assets.logo) {
+    if (assets.logo.svg) {
+      result.logo = {
+        url: assets.logo.imgUrl || '',
+        svg_data: assets.logo.svg,
+        dimensions: result.logo?.dimensions,
+      };
+      log.info({ source: assets.logo.source }, 'Logo replaced with real SVG from DOM');
+    } else if (assets.logo.imgUrl) {
+      result.logo = {
+        url: assets.logo.imgUrl,
+        svg_data: assets.logo.imgBase64
+          ? `<!-- base64 image: ${assets.logo.imgUrl} -->`
+          : result.logo?.svg_data,
+        dimensions: result.logo?.dimensions,
+      };
+      log.info({ source: assets.logo.source, url: assets.logo.imgUrl }, 'Logo URL set from DOM');
+    }
+  }
+
+  // Use real gradients for hero/background styling
+  if (assets.gradients.length > 0) {
+    const heroGradient = assets.gradients.find(
+      (g) => g.context.toLowerCase().includes('hero') || g.context.toLowerCase().includes('section'),
+    ) ?? assets.gradients[0]!;
+    log.info(
+      { gradient: heroGradient.css.slice(0, 80), context: heroGradient.context },
+      'Real gradient found from DOM',
+    );
+  }
+
+  // Log animation/motion data
+  const realAnimations = assets.animations.filter((a) => a.keyframes);
+  if (realAnimations.length > 0) {
+    log.info(
+      { count: realAnimations.length, names: realAnimations.map((a) => a.name).slice(0, 5) },
+      'CSS animations extracted from DOM',
+    );
+  }
+}
+
+function overrideDecorativeSvg(brandIdentity: BrandIdentity, assets: BrandAssets): void {
+  if (assets.decorativeSvgs.length > 0) {
+    const candidates = assets.decorativeSvgs.filter((s) => {
+      const hasShapeElements = /<(circle|ellipse|rect|path|polygon|line|polyline)\b/.test(s.svg);
+      if (!hasShapeElements) {
+        log.debug(
+          { context: s.context },
+          'Skipping DOM SVG with no visible shape elements (filter/defs only)',
+        );
+        return false;
+      }
+
+      // Reject SVGs with suspicious elements (video player controls, iframes)
+      if (/<(video|iframe)\b/i.test(s.svg)) {
+        log.debug({ context: s.context }, 'Skipping DOM SVG containing video/iframe elements');
+        return false;
+      }
+      if (/<image\b[^>]*href\s*=\s*["']https?:\/\//i.test(s.svg)) {
+        log.debug({ context: s.context }, 'Skipping DOM SVG with external image reference');
+        return false;
+      }
+
+      // Reject SVGs that have oversized opaque elements
+      if (hasOversizedOpaqueElements(s.svg, s.dimensions.width, s.dimensions.height)) {
+        log.debug({ context: s.context }, 'Skipping DOM SVG with oversized opaque element (>20% coverage)');
+        return false;
+      }
+
+      // Reject SVGs that contain play-button-like triangles
+      if (hasPlayButtonTriangle(s.svg, s.dimensions.width, s.dimensions.height)) {
+        log.debug({ context: s.context }, 'Skipping DOM SVG with play-button-like triangle');
+        return false;
+      }
+
+      return true;
+    });
+
+    if (candidates.length === 0) return;
+
+    const best = candidates.reduce((a, b) =>
+      (a.dimensions.width * a.dimensions.height) >= (b.dimensions.width * b.dimensions.height) ? a : b,
+    );
+
+    if (best.dimensions.width >= 200 || best.dimensions.height >= 200) {
+      brandIdentity.decorative_pattern_svg = best.svg;
+      log.info(
+        { context: best.context, w: best.dimensions.width, h: best.dimensions.height },
+        'Decorative SVG replaced with real DOM asset',
+      );
+    }
+  }
+}
+
+/**
+ * Check if an SVG contains any rect or path covering > 20% of the viewbox
+ * with opacity > 0.5 (a solid-looking large shape that would obscure content).
+ */
+function hasOversizedOpaqueElements(svg: string, vbWidth: number, vbHeight: number): boolean {
+  const viewboxArea = (vbWidth || 1200) * (vbHeight || 630);
+
+  // Check <rect> elements
+  const rectPattern = /<rect\b([^>]*)\/?>(\s*<\/rect>)?/gi;
+  let match;
+  while ((match = rectPattern.exec(svg)) !== null) {
+    const attrs = match[1] || '';
+    const wMatch = attrs.match(/width\s*=\s*["']([\d.]+)/);
+    const hMatch = attrs.match(/height\s*=\s*["']([\d.]+)/);
+    if (!wMatch || !hMatch) continue;
+
+    const w = parseFloat(wMatch[1]!);
+    const h = parseFloat(hMatch[1]!);
+    const rectArea = w * h;
+
+    if (rectArea / viewboxArea > 0.20) {
+      const opacityMatch = attrs.match(/opacity\s*=\s*["']([\d.]+)["']/);
+      const opacity = opacityMatch ? parseFloat(opacityMatch[1]!) : 1;
+      const fillMatch = attrs.match(/fill\s*=\s*["']([^"']+)["']/);
+      const fill = fillMatch?.[1] || '';
+      const isTransparent = fill === 'none' || fill === 'transparent';
+
+      if (!isTransparent && opacity > 0.5) {
+        return true;
+      }
+    }
+  }
+
+  // Check <path> elements for large bounding boxes by parsing simple path data
+  const pathPattern = /<path\b([^>]*)\/?>(\s*<\/path>)?/gi;
+  while ((match = pathPattern.exec(svg)) !== null) {
+    const attrs = match[1] || '';
+    const dMatch = attrs.match(/d\s*=\s*["']([^"']+)["']/);
+    if (!dMatch) continue;
+
+    const pathBounds = estimatePathBounds(dMatch[1]!);
+    if (!pathBounds) continue;
+
+    const pathArea = pathBounds.width * pathBounds.height;
+    if (pathArea / viewboxArea > 0.20) {
+      const opacityMatch = attrs.match(/opacity\s*=\s*["']([\d.]+)["']/);
+      const opacity = opacityMatch ? parseFloat(opacityMatch[1]!) : 1;
+      const fillMatch = attrs.match(/fill\s*=\s*["']([^"']+)["']/);
+      const fill = fillMatch?.[1] || '';
+      const isTransparent = fill === 'none' || fill === 'transparent';
+
+      if (!isTransparent && opacity > 0.5) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Check if an SVG contains a triangle (polygon with 3 points) that looks like a play button.
+ */
+function hasPlayButtonTriangle(svg: string, vbWidth: number, vbHeight: number): boolean {
+  const viewboxArea = (vbWidth || 1200) * (vbHeight || 630);
+
+  const polygonPattern = /<polygon\b([^>]*)\/?>(\s*<\/polygon>)?/gi;
+  let match;
+  while ((match = polygonPattern.exec(svg)) !== null) {
+    const attrs = match[1] || '';
+    const pointsMatch = attrs.match(/points\s*=\s*["']([^"']+)["']/);
+    if (!pointsMatch) continue;
+
+    const coords = pointsMatch[1]!.trim().split(/[\s,]+/).map(Number).filter(n => !isNaN(n));
+    if (coords.length === 6) {
+      const xs = [coords[0]!, coords[2]!, coords[4]!];
+      const ys = [coords[1]!, coords[3]!, coords[5]!];
+      const triWidth = Math.max(...xs) - Math.min(...xs);
+      const triHeight = Math.max(...ys) - Math.min(...ys);
+      const triArea = (triWidth * triHeight) / 2;
+
+      if (triArea / viewboxArea > 0.01) {
+        return true;
+      }
+    }
+  }
+
+  // Also check <path> elements that are simple triangles (M..L..L..Z with 3 points)
+  const pathPattern = /<path\b([^>]*)\/?>(\s*<\/path>)?/gi;
+  while ((match = pathPattern.exec(svg)) !== null) {
+    const attrs = match[1] || '';
+    const dMatch = attrs.match(/d\s*=\s*["']([^"']+)["']/);
+    if (!dMatch) continue;
+
+    const d = dMatch[1]!.trim();
+    // Simple triangle: M x y L x y L x y Z
+    const triMatch = d.match(/^M\s*[\d.]+[\s,]+[\d.]+\s*L\s*[\d.]+[\s,]+[\d.]+\s*L\s*[\d.]+[\s,]+[\d.]+\s*Z?$/i);
+    if (triMatch) {
+      const nums = d.match(/[\d.]+/g)?.map(Number) || [];
+      if (nums.length >= 6) {
+        const xs = [nums[0]!, nums[2]!, nums[4]!];
+        const ys = [nums[1]!, nums[3]!, nums[5]!];
+        const triWidth = Math.max(...xs) - Math.min(...xs);
+        const triHeight = Math.max(...ys) - Math.min(...ys);
+        const triArea = (triWidth * triHeight) / 2;
+
+        if (triArea / viewboxArea > 0.01) {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
+}
+
+/**
+ * Estimate the bounding box of an SVG path from its d attribute (approximate).
+ */
+function estimatePathBounds(d: string): { width: number; height: number } | null {
+  const nums = d.match(/-?[\d.]+/g);
+  if (!nums || nums.length < 4) return null;
+
+  const values = nums.map(Number).filter(n => !isNaN(n) && Math.abs(n) < 10000);
+  if (values.length < 4) return null;
+
+  // Take alternating values as x and y coordinates
+  const xs: number[] = [];
+  const ys: number[] = [];
+  for (let i = 0; i < values.length; i++) {
+    if (i % 2 === 0) xs.push(values[i]!);
+    else ys.push(values[i]!);
+  }
+
+  if (xs.length < 2 || ys.length < 2) return null;
+
+  const width = Math.max(...xs) - Math.min(...xs);
+  const height = Math.max(...ys) - Math.min(...ys);
+
+  return { width, height };
 }
 
 // ---------------------------------------------------------------------------
@@ -112,6 +369,7 @@ async function extractBrandIdentity(
   rawData: RawCrawlData,
   designSystem: DesignSystemOutput,
   apiKey: string,
+  portfolio?: DesignPortfolio,
 ): Promise<BrandIdentity> {
   const client = new Anthropic({ apiKey });
 
@@ -127,6 +385,19 @@ async function extractBrandIdentity(
     .filter(Boolean)
     .slice(0, 10);
 
+  const portfolioContext = portfolio
+    ? `\nVisual Portfolio Analysis (from screenshot analysis):
+- Illustration style: ${portfolio.illustration_style}
+- Visual motifs: ${portfolio.visual_motifs.join(', ')}
+- Signature elements: ${portfolio.signature_elements.join(', ')}
+- Background style: ${portfolio.background_style}
+- Accent treatment: ${portfolio.accent_treatment}`
+    : '';
+
+  const svgTechniqueGuide = portfolio
+    ? buildSvgTechniqueGuide(portfolio, designSystem)
+    : '';
+
   const prompt = `Analyze this website data and produce a brand identity JSON object.
 
 Website URL: ${siteUrl}
@@ -136,12 +407,52 @@ Key headings: ${JSON.stringify(headings)}
 Logo SVG available: ${!!designSystem.logo.svg_data}
 Primary color: ${designSystem.colors.primary.hex}
 Accent color: ${designSystem.colors.accent.hex}
+Background color: ${designSystem.colors.background.hex}
+${portfolioContext}
 
-Additionally, generate a decorative SVG pattern (1200x630px) that matches this brand's visual language. The pattern should be subtle (low opacity elements) suitable as a background texture for social media graphics. Consider the site's aesthetic:
-- If the site uses circular/dot elements, generate scattered circles
-- If geometric, use geometric shapes
-- If minimal, use very sparse subtle dots
-- Always keep elements at opacity 0.04-0.20 so they never compete with content
+## CRITICAL: Decorative Pattern SVG Generation
+
+Generate a decorative SVG (1200x630px) that is a HIGH-FIDELITY reproduction of this brand's ACTUAL visual motifs. The SVG must be immediately recognizable as belonging to this specific brand.
+
+${portfolio ? `### Brand Visual Identity (from screenshot analysis):
+- Visual motifs: ${portfolio.visual_motifs.join(', ')}
+- Illustration style: ${portfolio.illustration_style}
+- Signature elements: ${portfolio.signature_elements.join(', ')}
+
+### SVG Technical Requirements:
+${svgTechniqueGuide}
+
+### Density & Composition (CRITICAL — READ CAREFULLY):
+The decorative pattern must be RICH and PRESENT — a professional designer would call this a "textured background", NOT an empty canvas with a few scattered dots. Generate MANY elements. The pattern should be dense enough that zooming into ANY 200x200px section of the canvas reveals multiple elements. Think of it like a subtle wallpaper pattern — consistently dense, never sparse.
+
+- Follow the EXACT element counts specified in the technique guide above — these are MINIMUM requirements
+- Distribute elements across the FULL 1200x630 canvas — no large empty zones
+- Natural clustering: denser at corners/edges (60%), sparser in center where text goes (40%)
+- Opacity keeps it readable: most elements at 0.04-0.12, a few anchors at 0.12-0.20
+- The result should feel TEXTURED and PROFESSIONAL, not minimal or anemic
+
+### Color Palette for SVG:
+- Primary: ${designSystem.colors.primary.hex}
+- Accent: ${designSystem.colors.accent.hex}
+- Background: ${designSystem.colors.background.hex}
+- Use the brand's ACTUAL colors, not black/white placeholders
+- Mix primary and accent colors at varying low opacities
+- ONLY use colors explicitly listed above (primary, accent, background) — do NOT pull colors from CSS variables or other sources` : `Consider the site's aesthetic and generate a DENSE decorative pattern using the brand colors.
+- Primary: ${designSystem.colors.primary.hex}
+- Accent: ${designSystem.colors.accent.hex}
+- Generate at LEAST 60-80 SVG elements (circles, lines, or shapes depending on the brand aesthetic)
+- The pattern should be dense enough that any 200x200px section has multiple elements
+- Distribute across the full 1200x630 canvas with natural clustering (denser at edges, sparser in center)
+- Keep element opacities in range 0.03-0.15 so text remains readable when overlaid
+- ONLY use colors explicitly listed above — do NOT pull colors from CSS variables or other sources`}
+
+### SVG Constraints:
+- Viewbox: width="1200" height="630"
+- Must be valid SVG that can be injected as innerHTML of a positioned div
+- No external references (no xlink:href to external files)
+- No <script> tags
+- Can use <defs> for gradients, filters, patterns
+- NO xmlns:xlink attribute needed (just xmlns="http://www.w3.org/2000/svg")
 
 Return ONLY a JSON object with these fields:
 {
@@ -150,14 +461,14 @@ Return ONLY a JSON object with these fields:
   "tagline": "Their main tagline or value proposition",
   "logo_text": "BRAND NAME (uppercase version for watermarks)",
   "description": "1-2 sentence description of what the company does and its brand personality",
-  "decorative_pattern_svg": "<svg width=\\"1200\\" height=\\"630\\" xmlns=\\"http://www.w3.org/2000/svg\\">...pattern elements...</svg>"
+  "decorative_pattern_svg": "<svg width=\\"1200\\" height=\\"630\\" xmlns=\\"http://www.w3.org/2000/svg\\">...brand-specific pattern using ONLY the technique described above...</svg>"
 }`;
 
   const response = await client.messages.create({
     model: 'claude-sonnet-4-6',
-    max_tokens: 4096,
+    max_tokens: 16000,
     messages: [{ role: 'user', content: prompt }],
-    system: 'You are a brand analyst. Return only valid JSON, no markdown fences or explanation.',
+    system: `You are an expert brand designer and SVG artist. You generate decorative SVG patterns that are high-fidelity reproductions of a brand's actual visual language. Your SVGs are DENSE, DETAILED, and DISTINCTIVE — never generic or sparse. Return only valid JSON, no markdown fences or explanation.`,
   });
 
   const textBlock = response.content.find((b) => b.type === 'text');
@@ -170,6 +481,158 @@ Return ONLY a JSON object with these fields:
   if (fenceMatch?.[1]) jsonStr = fenceMatch[1];
 
   return JSON.parse(jsonStr) as BrandIdentity;
+}
+
+function buildSvgTechniqueGuide(
+  portfolio: DesignPortfolio,
+  designSystem: DesignSystemOutput,
+): string {
+  const motifs = portfolio.visual_motifs.join(' ').toLowerCase();
+  const style = portfolio.illustration_style.toLowerCase();
+  const signatures = portfolio.signature_elements.join(' ').toLowerCase();
+  const all = `${motifs} ${style} ${signatures}`;
+
+  // Score each technique and pick the BEST match (exclusive)
+  const candidates: Array<{ score: number; name: string; guide: string }> = [];
+
+  // Particle/Dot technique
+  let score = 0;
+  if (all.includes('particle')) score += 3;
+  if (all.includes('dot')) score += 2;
+  if (all.includes('constellation')) score += 3;
+  if (all.includes('scatter')) score += 2;
+  if (all.includes('dot-grid')) score += 2;
+  if (all.includes('floating')) score += 1;
+  if (score > 0) {
+    candidates.push({ score, name: 'particle_dot', guide: `**USE THIS TECHNIQUE — Particle/Dot Field:**
+- Generate 80-120 <circle> elements of varying sizes:
+  - ~70% small particles (r="2" to r="6"): opacity 0.08-0.15 — clearly visible as texture
+  - ~25% medium particles (r="7" to r="12"): opacity 0.10-0.20 — noticeable mid-range dots
+  - ~5% large "anchor" circles (r="13" to r="25"): opacity 0.06-0.12 — subtle depth anchors
+- Add 20-40 <line> elements connecting nearby particles:
+  - stroke-width: 0.8-1.5px
+  - Only connect circles within ~80-150px of each other
+  - Connection opacity: 0.08-0.15 — visible constellation/network lines
+- Distribute across full 1200x630 canvas with NATURAL CLUSTERING:
+  - Denser clusters in corners and edges (60% of elements)
+  - Sparser in center area (where text overlay goes)
+  - Create 3-5 distinct cluster zones with 15-25 circles each
+- The overall effect should be a VISIBLE constellation network — a clearly textured background, NOT invisible whispers of dots
+- DO NOT include geometric shapes, rectangles, polygons, or gradient blobs
+- ONLY circles and connecting lines
+- Colors: ${designSystem.colors.primary.hex} for dots, ${designSystem.colors.accent.hex} for some connecting lines
+- TOTAL ELEMENT COUNT: aim for 100-160 SVG elements (circles + lines combined)` });
+  }
+
+  // Node-Graph/Network technique
+  score = 0;
+  if (all.includes('node')) score += 3;
+  if (all.includes('graph')) score += 3;
+  if (all.includes('network')) score += 3;
+  if (all.includes('wireframe')) score += 3;
+  if (all.includes('sphere')) score += 2;
+  if (all.includes('3d')) score += 2;
+  if (all.includes('connected')) score += 1;
+  if (all.includes('data point')) score += 2;
+  if (score > 0) {
+    candidates.push({ score, name: 'node_graph', guide: `**USE THIS TECHNIQUE — Node-Graph/Network:**
+- Generate 30-50 <circle> node elements with hierarchical sizing:
+  - 5-8 "hub" nodes: r="8" to r="12" (major connection points)
+  - 15-25 "branch" nodes: r="4" to r="7" (secondary nodes)
+  - 10-17 "leaf" nodes: r="2" to r="4" (terminal/detail nodes)
+- Connect nodes with 40-60 <line> or curved <path> edges:
+  - stroke-width: 0.5-1.5px
+  - Include 5-10 dashed lines (stroke-dasharray="4 4") for visual variety
+  - Hub-to-hub connections: slightly thicker (1-1.5px)
+  - Leaf connections: thinner (0.5-0.8px)
+- Create a structured network layout spanning the full 1200x630 canvas:
+  - 2-3 major network clusters connected by long-distance edges
+  - Avoid empty zones — every 200x200px area should have at least 2-3 nodes
+- Opacity: connections at 0.04-0.10, nodes at 0.08-0.20
+- DO NOT include gradient blobs, rectangles, or blur filters
+- ONLY circles (nodes) and lines/paths (edges)
+- Colors: ${designSystem.colors.primary.hex} for nodes, ${designSystem.colors.accent.hex} for edges
+- TOTAL ELEMENT COUNT: aim for 80-110 SVG elements (circles + lines/paths combined)` });
+  }
+
+  // Gradient Blob/Atmospheric technique
+  score = 0;
+  if (all.includes('gradient') && (all.includes('radial') || all.includes('blob') || all.includes('soft'))) score += 4;
+  if (all.includes('blob')) score += 3;
+  if (all.includes('atmospheric')) score += 3;
+  if (all.includes('glow')) score += 2;
+  if (all.includes('radial') && all.includes('soft')) score += 3;
+  if (all.includes('lavender') || all.includes('lilac') || all.includes('rose') || all.includes('mauve')) score += 2;
+  if (all.includes('bloom')) score += 2;
+  if (score > 0) {
+    candidates.push({ score, name: 'gradient_blob', guide: `**USE THIS TECHNIQUE — Soft Gradient Blobs (ONLY):**
+- Use <defs> to define 5-8 <radialGradient> elements with multiple color stops each (3-4 stops per gradient)
+- Generate 5-8 large <ellipse> elements (rx=200-500, ry=150-350):
+  - Position at corners, edges, AND 1-2 near center for full coverage
+  - Overlap blobs — at least 3-4 should partially overlap for color mixing
+  - Vary ellipse rotation with transform="rotate(...)" for organic feel
+- Apply <filter><feGaussianBlur stdDeviation="40-80"/></filter> for very soft edges
+- Opacity guidance — choose based on brand context:
+  - If the brand's background IS gradient blobs (i.e. the blobs are the defining visual, not subtle accents), use HIGHER opacities so they're clearly visible:
+    - Corner/edge blobs: 0.30-0.50 (prominent, clearly visible)
+    - Center blobs: 0.20-0.35 (slightly subtler near text but still present)
+  - If the blobs are subtle background accents only:
+    - Corner blobs: 0.20-0.35
+    - Center blobs: 0.10-0.20
+- Add 8-15 tiny <circle> elements (r="2" to r="6", opacity 0.05-0.12) scattered as "dust" for texture
+- NO hard edges, NO lines, NO geometric shapes, NO nodes
+- PURELY atmospheric — soft overlapping color clouds with dust particles
+- Colors: ${designSystem.colors.primary.hex} and ${designSystem.colors.accent.hex} tones
+- The result should look like a gentle out-of-focus light photograph with subtle texture
+- TOTAL ELEMENT COUNT: 15-25 SVG elements (ellipses + dust circles)` });
+  }
+
+  // Geometric Pattern technique
+  score = 0;
+  if (all.includes('geometric')) score += 3;
+  if (all.includes('angular')) score += 2;
+  if (all.includes('polygon')) score += 2;
+  if (all.includes('grid') && !all.includes('dot-grid')) score += 2;
+  if (all.includes('precise')) score += 1;
+  if (score > 0) {
+    candidates.push({ score, name: 'geometric', guide: `**USE THIS TECHNIQUE — Geometric Pattern:**
+- Generate 20-40 geometric shapes using <rect>, <polygon>, <path>:
+  - 8-15 rectangles with varying sizes (20-120px) and rotations (transform="rotate(15-75)")
+  - 6-12 triangles/polygons at different scales
+  - 5-10 <path> elements for decorative lines, arcs, or angular swoops
+- Add 10-20 thin grid/alignment lines spanning partial canvas width/height:
+  - stroke-width: 0.3-1px, opacity 0.03-0.08
+  - Some horizontal, some vertical, some diagonal
+- Distribute across full 1200x630 canvas:
+  - Denser arrangement at corners and edges
+  - Sparser in center (text area)
+  - Use varying rotations (0°, 15°, 30°, 45°, 60°, 90°) for dynamic feel
+- Use thin strokes (0.5-1.5px) with no fill or very low-opacity fills (0.03-0.12)
+- DO NOT include blobs, gradients, or blurred elements
+- Colors: ${designSystem.colors.primary.hex} and ${designSystem.colors.accent.hex}
+- TOTAL ELEMENT COUNT: aim for 40-70 SVG elements (shapes + grid lines combined)` });
+  }
+
+  // Sort by score and pick the best match
+  candidates.sort((a, b) => b.score - a.score);
+
+  if (candidates.length === 0) {
+    return `**Decorative Technique (match the brand's actual visual style):**
+- Analyze the motifs: "${portfolio.visual_motifs.join(', ')}"
+- Generate SVG elements that reproduce ONLY those specific motifs
+- Use brand colors: ${designSystem.colors.primary.hex}, ${designSystem.colors.accent.hex}
+- Keep opacities in range 0.03-0.15
+- Generate AT LEAST 60-100 elements distributed across the full 1200x630 canvas
+- Ensure EVERY 200x200px region of the canvas contains multiple elements — no empty zones
+- Include size variation (small detail elements + a few larger anchor elements for depth)`;
+  }
+
+  const best = candidates[0]!;
+  const excluded = candidates.slice(1).map(c => c.name).join(', ');
+
+  return `${best.guide}
+
+**IMPORTANT: Use ONLY the technique above. DO NOT mix in elements from other styles${excluded ? ` (no ${excluded} elements)` : ''}. The SVG should be purely one visual language.**`;
 }
 
 function buildFallbackBrandIdentity(
@@ -193,16 +656,382 @@ function buildFallbackBrandIdentity(
 }
 
 function generateFallbackPatternSvg(): string {
-  const circles: string[] = [];
+  const elements: string[] = [];
   const rng = (min: number, max: number) => Math.floor(Math.random() * (max - min)) + min;
-  for (let i = 0; i < 40; i++) {
-    const cx = rng(40, 1160);
-    const cy = rng(30, 600);
-    const r = rng(2, 12);
-    const opacity = (rng(5, 18) / 100).toFixed(2);
-    circles.push(`<circle cx="${cx}" cy="${cy}" r="${r}" fill="#000000" opacity="${opacity}"/>`);
+
+  for (let i = 0; i < 100; i++) {
+    const cx = rng(20, 1180);
+    const cy = rng(15, 615);
+    const r = i < 5 ? rng(15, 25) : i < 25 ? rng(6, 12) : rng(2, 5);
+    const opacity = i < 5
+      ? (rng(3, 6) / 100).toFixed(2)
+      : i < 25
+        ? (rng(6, 12) / 100).toFixed(2)
+        : (rng(4, 10) / 100).toFixed(2);
+    elements.push(`<circle cx="${cx}" cy="${cy}" r="${r}" fill="#000000" opacity="${opacity}"/>`);
   }
-  return `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">${circles.join('')}</svg>`;
+
+  for (let i = 0; i < 30; i++) {
+    const x1 = rng(40, 1160);
+    const y1 = rng(30, 600);
+    const x2 = x1 + rng(-120, 120);
+    const y2 = y1 + rng(-80, 80);
+    const opacity = (rng(3, 8) / 100).toFixed(2);
+    elements.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#000000" stroke-width="${(rng(3, 12) / 10).toFixed(1)}" opacity="${opacity}"/>`);
+  }
+
+  return `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">${elements.join('')}</svg>`;
+}
+
+// ---------------------------------------------------------------------------
+// Vision-based design portfolio analysis — uses Claude Vision on screenshots
+// ---------------------------------------------------------------------------
+
+export async function analyzeDesignPortfolio(
+  screenshots: PageScreenshot[],
+  rawData: RawCrawlData,
+  apiKey: string,
+): Promise<DesignPortfolio> {
+  const validScreenshots = screenshots.filter((s) => s.screenshotBase64.length > 0);
+  if (validScreenshots.length === 0) {
+    log.warn('No valid screenshots for vision analysis, returning defaults');
+    return buildFallbackPortfolio();
+  }
+
+  log.info({ screenshotCount: validScreenshots.length }, 'Starting vision-based design portfolio analysis');
+  const client = new Anthropic({ apiKey });
+
+  // Send up to 4 screenshots to stay within token limits
+  const screenshotsToAnalyze = validScreenshots.slice(0, 4);
+
+  const imageBlocks: Anthropic.Messages.ContentBlockParam[] = [];
+  for (const screenshot of screenshotsToAnalyze) {
+    imageBlocks.push({
+      type: 'image',
+      source: {
+        type: 'base64',
+        media_type: 'image/jpeg',
+        data: screenshot.screenshotBase64,
+      },
+    });
+    imageBlocks.push({
+      type: 'text',
+      text: `[Page: ${screenshot.title} — ${screenshot.url}]`,
+    });
+  }
+
+  const cssContext = buildVisionCssContext(rawData.cssVariables);
+
+  imageBlocks.push({
+    type: 'text',
+    text: VISION_ANALYSIS_PROMPT + (cssContext ? `\n\nRelevant CSS variables for reference:\n${cssContext}` : ''),
+  });
+
+  const response = await client.messages.create({
+    model: 'claude-sonnet-4-6',
+    max_tokens: 4096,
+    messages: [{ role: 'user', content: imageBlocks }],
+    system: 'You are an expert visual designer analyzing website screenshots to extract a comprehensive design portfolio. Return ONLY valid JSON, no markdown fences or explanation text.',
+  });
+
+  const textBlock = response.content.find((b) => b.type === 'text');
+  if (!textBlock || textBlock.type !== 'text') {
+    log.warn('No text response from vision analysis');
+    return buildFallbackPortfolio();
+  }
+
+  let jsonStr = textBlock.text.trim();
+  const fenceMatch = jsonStr.match(/^```(?:json)?\s*\n([\s\S]*?)\n```$/);
+  if (fenceMatch?.[1]) jsonStr = fenceMatch[1];
+
+  try {
+    const parsed = JSON.parse(jsonStr) as DesignPortfolio;
+    log.info(
+      { motifs: parsed.visual_motifs?.length, density: parsed.spacing_density },
+      'Vision-based design portfolio extracted',
+    );
+    return parsed;
+  } catch (err) {
+    log.error({ error: (err as Error).message, preview: jsonStr.slice(0, 300) }, 'Failed to parse vision portfolio response');
+    return buildFallbackPortfolio();
+  }
+}
+
+const VISION_ANALYSIS_PROMPT = `Analyze these website screenshots and extract a comprehensive design portfolio. Look at the ACTUAL visual design — not just what colors exist, but HOW they are used.
+
+For each screenshot, identify:
+- Background treatments: gradients (direction, colors, opacity), textures, patterns, overlays
+- Decorative elements: shapes, lines, illustrations, icons, abstract graphics
+- Hero section style: how the main message is presented visually
+- Card/component styles: shadows, borders, border-radius, hover effects
+- Spacing philosophy: dense/airy, grid structure, whitespace usage
+- Color usage patterns: HOW colors are used (gradient backgrounds? solid blocks? subtle tints?)
+- Typography hierarchy: visual weight relationships, letter-spacing, text-transform
+- Illustration/imagery style: abstract? photographic? isometric? line art? node graphs?
+- Layout patterns: asymmetric? centered? grid-based? overlap? layered?
+- Motion/animation hints: parallax? floating elements? transitions?
+- Distinctive signature elements: what makes this brand instantly recognizable?
+
+Return a JSON object with EXACTLY these fields:
+{
+  "background_style": "A full CSS background property that reproduces their main background treatment. E.g. 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)' or 'radial-gradient(ellipse at top, #2d1b69 0%, #11001c 100%)'",
+  "hero_treatment": "CSS properties for hero-style sections as a single string. E.g. 'background: linear-gradient(180deg, rgba(99,102,241,0.08) 0%, transparent 60%); border-bottom: 1px solid rgba(99,102,241,0.1)'",
+  "card_style": "CSS for card components. E.g. 'background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.12)'",
+  "accent_treatment": "How accents are applied as CSS. E.g. 'background: linear-gradient(90deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent' or 'border-left: 3px solid #f59e0b; padding-left: 16px'",
+  "spacing_density": "compact" or "balanced" or "airy",
+  "visual_motifs": ["Array of 3-6 distinctive visual elements described concisely, e.g. 'scattered particle dots at low opacity', 'gradient mesh overlays', 'thin ruled lines as section dividers', 'node-graph connector lines'"],
+  "illustration_style": "A detailed description of the illustration/decorative style for SVG generation. E.g. 'Technical node-graph aesthetic with connected dots and thin lines, using brand purple (#6366f1) at 5-15% opacity, scattered across a dark background with varying node sizes (2-8px radius)'",
+  "composition_rules": ["Array of 3-5 layout principles observed, e.g. 'Left-aligned text with generous right margin', 'Asymmetric hero with 60/40 split', 'Cards in 3-column grid with 24px gap'"],
+  "signature_elements": ["Array of 2-4 elements that make this brand instantly recognizable, e.g. 'Purple-to-blue gradient curtain on dark backgrounds', 'Monospace numerals for data points', 'Warm amber accent on cool dark palette'"]
+}
+
+IMPORTANT: Be SPECIFIC to THIS brand. Don't return generic descriptions. Look at what actually makes these pages unique and distinctive. The CSS values should be directly usable in stylesheets.`;
+
+function buildFallbackPortfolio(): DesignPortfolio {
+  return {
+    background_style: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+    hero_treatment: 'background: linear-gradient(180deg, rgba(99,102,241,0.05) 0%, transparent 60%)',
+    card_style: 'background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px',
+    accent_treatment: 'border-left: 3px solid #6366f1; padding-left: 12px',
+    spacing_density: 'balanced',
+    visual_motifs: ['subtle dot pattern', 'gradient overlays'],
+    illustration_style: 'Minimal geometric dots and lines at low opacity',
+    composition_rules: ['Centered layout with max-width constraint', 'Generous vertical spacing between sections'],
+    signature_elements: ['Brand color accent bar', 'Clean typography hierarchy'],
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Render-validated accent selection — cross-reference CSS accent with colors
+// actually observed on the rendered page (crawl ground truth)
+// ---------------------------------------------------------------------------
+
+const ACCENT_VISION_CSS_FIELDS: Array<keyof DesignPortfolio> = [
+  'background_style',
+  'hero_treatment',
+  'card_style',
+  'accent_treatment',
+];
+
+export function isAccentCssVariableKey(key: string): boolean {
+  return key.toLowerCase().includes('accent');
+}
+
+export function buildVisionCssContext(cssVariables: Record<string, string>): string {
+  return Object.entries(cssVariables)
+    .filter(
+      ([k]) =>
+        !isAccentCssVariableKey(k) &&
+        (k.includes('color') || k.includes('gradient') || k.includes('bg') || k.includes('font')),
+    )
+    .slice(0, 50)
+    .map(([k, v]) => `${k}: ${v}`)
+    .join('\n');
+}
+
+export function buildRenderedColorSet(allColors: string[]): Set<string> {
+  const rendered = new Set<string>();
+  for (const rgb of allColors) {
+    const hex = rgbToHex(rgb);
+    if (!hex) continue;
+    const normalized = normalizeHex(hex).toLowerCase();
+    if (normalized.length === 7) {
+      rendered.add(normalized);
+    }
+  }
+  return rendered;
+}
+
+export function validateAccentWithVision(
+  result: DesignSystemOutput,
+  portfolio: DesignPortfolio | undefined,
+  rawData: RawCrawlData,
+): void {
+  const currentAccent = normalizeHex(result.colors.accent.hex).toLowerCase();
+  const renderedColors = buildRenderedColorSet(rawData.allColors);
+
+  if (isColorVisuallyConfirmed(currentAccent, renderedColors)) {
+    log.debug({ accent: currentAccent }, 'Accent color confirmed by rendered page colors');
+    return;
+  }
+
+  log.warn(
+    { cssAccent: currentAccent, renderedColorCount: renderedColors.size },
+    'CSS-defined accent color not found in rendered page colors — selecting render-validated alternative',
+  );
+
+  const excluded = new Set([
+    normalizeHex(result.colors.primary.hex).toLowerCase(),
+    normalizeHex(result.colors.background.hex).toLowerCase(),
+    normalizeHex(result.colors.text.hex).toLowerCase(),
+    normalizeHex(result.colors.secondary.hex).toLowerCase(),
+    currentAccent,
+  ]);
+
+  const newAccent = pickAccentFallback(result, renderedColors, excluded, rawData.allColors);
+
+  if (!newAccent) {
+    log.warn('No suitable accent replacement found, keeping CSS-defined accent');
+    return;
+  }
+
+  log.info(
+    { replaced: currentAccent, newAccent },
+    'Accent color replaced with render-validated color',
+  );
+
+  result.colors.accent = {
+    hex: newAccent,
+    usage: `Render-validated accent (CSS accent ${currentAccent} was defined but not present in rendered page colors)`,
+  };
+
+  propagateAccentReplacement(result, portfolio, currentAccent, newAccent);
+}
+
+function pickAccentFallback(
+  result: DesignSystemOutput,
+  renderedColors: Set<string>,
+  excluded: Set<string>,
+  allColors: string[],
+): string | undefined {
+  const isChromaticCandidate = (hex: string) =>
+    !excluded.has(hex) && !isNearWhite(hex) && !isNearBlack(hex) && !isGrayish(hex);
+
+  const paletteCandidates = (result.colors.palette ?? []).map((c) =>
+    normalizeHex(c.hex).toLowerCase(),
+  );
+
+  const renderValidPalette = paletteCandidates.find(
+    (hex) => isChromaticCandidate(hex) && isColorVisuallyConfirmed(hex, renderedColors),
+  );
+  if (renderValidPalette) return renderValidPalette;
+
+  const primary = normalizeHex(result.colors.primary.hex).toLowerCase();
+  if (isChromaticCandidate(primary) && isColorVisuallyConfirmed(primary, renderedColors)) {
+    return primary;
+  }
+
+  const counts = new Map<string, number>();
+  for (const rgb of allColors) {
+    const hex = rgbToHex(rgb);
+    if (!hex) continue;
+    const norm = normalizeHex(hex).toLowerCase();
+    if (!isChromaticCandidate(norm)) continue;
+    counts.set(norm, (counts.get(norm) ?? 0) + 1);
+  }
+
+  const [mostProminent] = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  return mostProminent?.[0];
+}
+
+export function propagateAccentReplacement(
+  result: DesignSystemOutput,
+  portfolio: DesignPortfolio | undefined,
+  oldHex: string,
+  newHex: string,
+): void {
+  const oldNorm = normalizeHex(oldHex).toLowerCase();
+  const newNorm = normalizeHex(newHex);
+
+  for (const entry of result.colors.palette ?? []) {
+    const entryHex = normalizeHex(entry.hex).toLowerCase();
+    const roleText = `${entry.name ?? ''} ${entry.usage_context ?? ''}`.toLowerCase();
+    if (entryHex === oldNorm || (roleText.includes('accent') && colorsMatch(entryHex, oldNorm))) {
+      entry.hex = newNorm;
+    }
+  }
+
+  if (result.css_variables) {
+    for (const [key, value] of Object.entries(result.css_variables)) {
+      if (hexValueMatches(value, oldNorm)) {
+        result.css_variables[key] = replaceHexInText(value, oldNorm, newNorm);
+      }
+    }
+  }
+
+  if (result.raw_tokens) {
+    result.raw_tokens = replaceHexInUnknown(result.raw_tokens, oldNorm, newNorm) as Record<string, unknown>;
+  }
+
+  if (portfolio) {
+    scrubPortfolioHexReferences(portfolio, oldNorm, newNorm);
+  }
+}
+
+function scrubPortfolioHexReferences(
+  portfolio: DesignPortfolio,
+  oldHex: string,
+  newHex: string,
+): void {
+  for (const field of ACCENT_VISION_CSS_FIELDS) {
+    portfolio[field] = replaceHexInText(portfolio[field], oldHex, newHex);
+  }
+  portfolio.illustration_style = replaceHexInText(portfolio.illustration_style, oldHex, newHex);
+  portfolio.visual_motifs = portfolio.visual_motifs.map((s) => replaceHexInText(s, oldHex, newHex));
+  portfolio.composition_rules = portfolio.composition_rules.map((s) =>
+    replaceHexInText(s, oldHex, newHex),
+  );
+  portfolio.signature_elements = portfolio.signature_elements.map((s) =>
+    replaceHexInText(s, oldHex, newHex),
+  );
+}
+
+function replaceHexInText(text: string, oldHex: string, newHex: string): string {
+  return text.replace(/#[0-9a-fA-F]{3,8}/g, (match) => {
+    const normalized = normalizeHex(match).toLowerCase();
+    return colorsMatch(normalized, oldHex) ? newHex : match;
+  });
+}
+
+function replaceHexInUnknown(value: unknown, oldHex: string, newHex: string): unknown {
+  if (typeof value === 'string') {
+    return replaceHexInText(value, oldHex, newHex);
+  }
+  if (Array.isArray(value)) {
+    return value.map((item) => replaceHexInUnknown(item, oldHex, newHex));
+  }
+  if (value && typeof value === 'object') {
+    const out: Record<string, unknown> = {};
+    for (const [key, child] of Object.entries(value)) {
+      out[key] = replaceHexInUnknown(child, oldHex, newHex);
+    }
+    return out;
+  }
+  return value;
+}
+
+function hexValueMatches(value: string, targetHex: string): boolean {
+  if (value.match(/^#[0-9a-fA-F]{3,8}$/i) && colorsMatch(normalizeHex(value).toLowerCase(), targetHex)) {
+    return true;
+  }
+  for (const match of value.matchAll(/#[0-9a-fA-F]{3,8}/g)) {
+    if (colorsMatch(normalizeHex(match[0]).toLowerCase(), targetHex)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function colorsMatch(a: string, b: string): boolean {
+  return a === b || hexDistance(a, b) < 45;
+}
+
+function isColorVisuallyConfirmed(hex: string, visibleHexes: Set<string>): boolean {
+  if (visibleHexes.has(hex)) return true;
+  for (const visible of visibleHexes) {
+    if (hexDistance(hex, visible) < 45) return true;
+  }
+  return false;
+}
+
+function hexDistance(a: string, b: string): number {
+  const ra = parseInt(a.slice(1, 3), 16);
+  const ga = parseInt(a.slice(3, 5), 16);
+  const ba = parseInt(a.slice(5, 7), 16);
+  const rb = parseInt(b.slice(1, 3), 16);
+  const gb = parseInt(b.slice(3, 5), 16);
+  const bb = parseInt(b.slice(5, 7), 16);
+  return Math.sqrt((ra - rb) ** 2 + (ga - gb) ** 2 + (ba - bb) ** 2);
 }
 
 // ---------------------------------------------------------------------------
@@ -414,16 +1243,16 @@ function extractSemanticColorsFromVars(
     const hex = val.match(/^#[0-9a-fA-F]{3,8}$/) ? normalizeHex(val) : null;
     if (!hex) continue;
 
-    if (lower === '--color-text-primary' || lower === '--foreground') {
-      result.textPrimary = hex;
-    } else if (lower === '--color-text-secondary') {
-      result.textSecondary = hex;
-    } else if (lower === '--color-accent' || lower === '--color-yellow') {
-      result.accent = hex;
-    } else if (lower === '--color-surface' || lower === '--color-sand-50') {
-      result.surface = hex;
-    } else if (lower === '--color-border') {
-      result.border = hex;
+    if (lower.includes('text-primary') || lower === '--foreground') {
+      result.textPrimary ??= hex;
+    } else if (lower.includes('text-secondary')) {
+      result.textSecondary ??= hex;
+    } else if (lower.includes('accent')) {
+      result.accent ??= hex;
+    } else if (lower.includes('surface')) {
+      result.surface ??= hex;
+    } else if (lower.includes('border') && !lower.includes('radius')) {
+      result.border ??= hex;
     }
   }
 

@@ -105,7 +105,7 @@ export function evaluateRules(
   if (signals.has_comparison_data && signals.has_numbers && signals.numeric_count >= 2) {
     candidates.push({
       modality: 'bar_chart',
-      confidence: 65,
+      confidence: 82,
       source_content_type: 'data_research_insight',
     });
   }
@@ -113,7 +113,7 @@ export function evaluateRules(
   if (signals.has_trend_data && signals.has_numbers) {
     candidates.push({
       modality: 'line_sparkline',
-      confidence: 60,
+      confidence: 75,
       source_content_type: 'data_research_insight',
     });
   }
@@ -121,7 +121,25 @@ export function evaluateRules(
   if (signals.has_proportion_data && signals.has_numbers) {
     candidates.push({
       modality: 'pie_donut_chart',
-      confidence: 58,
+      confidence: 72,
+      source_content_type: 'data_research_insight',
+    });
+  }
+
+  // Boost stat_callout when strong numeric signals present but no list/comparison
+  if (signals.mentions_metric_or_stat && signals.has_numbers && !signals.has_list_structure && !signals.has_comparison_data && signals.numeric_count >= 2) {
+    candidates.push({
+      modality: 'stat_callout',
+      confidence: 70,
+      source_content_type: 'data_research_insight',
+    });
+  }
+
+  // Boost multi_stat_panel for posts with multiple distinct metrics
+  if (signals.mentions_metric_or_stat && signals.numeric_count >= 3 && !signals.has_list_structure) {
+    candidates.push({
+      modality: 'multi_stat_panel',
+      confidence: 78,
       source_content_type: 'data_research_insight',
     });
   }

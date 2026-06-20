@@ -4,12 +4,13 @@ import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { crawlSite } from './crawler.js';
-import { analyzeDesignSystem } from './extractor.js';
+import { analyzeDesignSystem, analyzeDesignPortfolio } from './extractor.js';
 import type { DesignSystemOutput } from './extractor.js';
+import { runVisionTokenAudit } from './audit-tokens-vision.js';
 import { DesignSystem } from '../../schemas/design-system.schema.js';
 import { createStageLogger } from '../../observability/logger.js';
 import { loadConfig } from '../../config.js';
-import type { Stage1Result } from '../../types/index.js';
+import type { Stage1Result, DesignPortfolio, BrandAssets } from '../../types/index.js';
 
 const log = createStageLogger('stage1');
 
@@ -62,10 +63,57 @@ export async function runStage1(targetUrl?: string): Promise<Stage1Result> {
   log.info({ rawPath, sizeKB: Math.round(JSON.stringify(rawCrawlData).length / 1024) }, 'Raw crawl data saved');
 
   // ------------------------------------------------------------------
+  // Phase 1b — Vision-based design portfolio analysis
+  // ------------------------------------------------------------------
+  let portfolio: DesignPortfolio | undefined;
+  if (rawCrawlData.screenshots.length > 0) {
+    log.info({ screenshotCount: rawCrawlData.screenshots.length }, 'Phase 1b: Analyzing screenshots with Claude Vision…');
+    try {
+      portfolio = await analyzeDesignPortfolio(rawCrawlData.screenshots, rawCrawlData, config.anthropicApiKey);
+      log.info(
+        { motifs: portfolio.visual_motifs, density: portfolio.spacing_density },
+        'Design portfolio extracted from vision analysis',
+      );
+    } catch (err) {
+      log.warn({ error: (err as Error).message }, 'Vision portfolio analysis failed, continuing without');
+    }
+  }
+
+  // ------------------------------------------------------------------
   // Phase 2 — Analyze with Claude
   // ------------------------------------------------------------------
   log.info('Phase 2: Analyzing crawl data…');
-  const designSystem = await analyzeDesignSystem(rawCrawlData, config.anthropicApiKey);
+  const designSystem = await analyzeDesignSystem(rawCrawlData, config.anthropicApiKey, portfolio);
+
+  // ------------------------------------------------------------------
+  // Phase 2b — Vision token audit on crawled screenshots
+  // ------------------------------------------------------------------
+  if (rawCrawlData.screenshots.length > 0) {
+    log.info('Phase 2b: Auditing extracted tokens against crawled screenshots…');
+    try {
+      const audit = await runVisionTokenAudit(
+        designSystem,
+        rawCrawlData.screenshots,
+        portfolio,
+        config.anthropicApiKey,
+      );
+      if (audit) {
+        const auditPath = join('data', 'token-audit.json');
+        await writeFile(auditPath, JSON.stringify(audit, null, 2), 'utf-8');
+        log.info({ auditPath, ghostCount: audit.ghostTokens.length }, 'Vision token audit complete');
+      }
+    } catch (err) {
+      log.warn({ error: (err as Error).message }, 'Vision token audit failed, continuing with unfiltered tokens');
+    }
+  }
+
+  // Attach portfolio and brand assets to the design system output for downstream use
+  if (portfolio) {
+    (designSystem as unknown as Record<string, unknown>).design_portfolio = portfolio;
+  }
+  if (rawCrawlData.brandAssets) {
+    (designSystem as unknown as Record<string, unknown>).brand_assets = rawCrawlData.brandAssets;
+  }
 
   const richPath = join('data', 'design-system.json');
   await writeFile(richPath, JSON.stringify(designSystem, null, 2), 'utf-8');
@@ -75,7 +123,7 @@ export async function runStage1(targetUrl?: string): Promise<Stage1Result> {
   // Phase 3 — Produce Zod-compatible version for downstream stages
   // ------------------------------------------------------------------
   log.info('Phase 3: Producing Zod-compatible schema for downstream stages…');
-  const zodCompatible = toZodCompatible(designSystem, url);
+  const zodCompatible = toZodCompatible(designSystem, url, portfolio, rawCrawlData.brandAssets);
 
   let validated: DesignSystem;
   try {
@@ -117,7 +165,7 @@ export async function runStage1(targetUrl?: string): Promise<Stage1Result> {
 // Convert rich Claude output → existing Zod schema shape
 // ---------------------------------------------------------------------------
 
-function toZodCompatible(ds: DesignSystemOutput, sourceUrl: string): Record<string, unknown> {
+function toZodCompatible(ds: DesignSystemOutput, sourceUrl: string, portfolio?: DesignPortfolio, brandAssets?: BrandAssets): Record<string, unknown> {
   const colors = ds.colors ?? ({} as DesignSystemOutput['colors']);
   const typo = ds.typography ?? ({} as DesignSystemOutput['typography']);
   const fonts = typo.font_families ?? [];
@@ -193,6 +241,8 @@ function toZodCompatible(ds: DesignSystemOutput, sourceUrl: string): Record<stri
     logo,
     components,
     rawCssVariables,
+    ...(portfolio ? { design_portfolio: portfolio } : {}),
+    ...(brandAssets ? { brand_assets: brandAssets } : {}),
   };
 }
 

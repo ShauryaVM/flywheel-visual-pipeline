@@ -147,6 +147,14 @@ npm run stage3
 npm run workstream-b
 ```
 
+### Visual Harness (Browser UI)
+
+```bash
+npm run harness
+```
+
+Opens a local web UI at `http://localhost:3737` where you can paste post text, enter a brand URL, generate visuals interactively, view eval scores, and trigger regeneration with feedback.
+
 ### CLI Options
 
 ```bash

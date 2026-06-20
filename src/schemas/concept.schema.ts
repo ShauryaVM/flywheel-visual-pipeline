@@ -58,20 +58,22 @@ export type LayoutSpec = z.infer<typeof LayoutSpec>;
 // ---------------------------------------------------------------------------
 // Layout protocol element (Graphist-inspired JSON layout)
 // ---------------------------------------------------------------------------
+const coerceStr = z.union([z.string(), z.number().transform(String)]);
+
 export const LayoutElement = z.object({
   type: z.enum(['headline', 'subtext', 'stat', 'chart', 'accent', 'logo', 'watermark', 'decorative']),
   content: z.string(),
-  position: z.object({ x: z.string(), y: z.string() }),
-  size: z.object({ width: z.string(), height: z.string() }),
+  position: z.object({ x: coerceStr, y: coerceStr }),
+  size: z.object({ width: coerceStr, height: coerceStr }),
   style: z.object({
-    fontSize: z.string().optional(),
-    fontWeight: z.string().optional(),
+    fontSize: coerceStr.optional(),
+    fontWeight: coerceStr.optional(),
     color: z.string().optional(),
     opacity: z.number().optional(),
     fontFamily: z.string().optional(),
     textTransform: z.string().optional(),
     letterSpacing: z.string().optional(),
-    lineHeight: z.string().optional(),
+    lineHeight: coerceStr.optional(),
     textAlign: z.string().optional(),
     background: z.string().optional(),
   }).optional(),

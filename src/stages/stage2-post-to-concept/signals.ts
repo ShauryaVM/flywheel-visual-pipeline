@@ -22,11 +22,13 @@ export function computeSignals(postText: string): PostSignals {
   const words = postText.split(/\s+/).filter(Boolean);
   const word_count = words.length;
 
-  const has_numbers = /\d+/.test(postText);
+  const has_numbers = /(?<![A-Za-z])\d+/.test(postText) || /\d+[%x×$]/.test(postText);
 
   const has_list_structure =
     /(?:^|\n)\s*(?:\d+[\.\)\-]|[-*\u2022])\s/m.test(postText) ||
-    /(?:^|\n)\s*\d+\s*[-\.)\u2013]\s/m.test(postText);
+    /(?:^|\n)\s*\d+\s*[-\.)\u2013]\s/m.test(postText) ||
+    /(?::\s*|\.\s+)\d+\)\s/m.test(postText) ||
+    /\b\d+\)\s+\w+/g.test(postText) && (postText.match(/\d+\)\s/g) || []).length >= 3;
 
   const has_questions = /\?/.test(postText);
 
@@ -43,7 +45,7 @@ export function computeSignals(postText: string): PostSignals {
   const metricPatterns = [
     /\d+[%x×]/,
     /\$\d+/,
-    /\d+\s*(?:million|billion|M|B|K)\b/i,
+    /(?<![A-Za-z])\d+\s*(?:million|billion|M|B|K)\b/i,
     /\b(?:revenue|ARR|MRR|growth|raised|funding|valuation)\b/i,
     /\d+\+\s*(?:stars|forks|users|customers|companies|employees)/i,
   ];
@@ -64,6 +66,10 @@ export function computeSignals(postText: string): PostSignals {
     /\bless than\b/i,
     /\bhigher\b.*\blower\b/i,
     /\b\d+.*\bvs\b.*\d+/i,
+    /\d+x\s+(?:better|worse|faster|slower|more|less|higher|lower)/i,
+    /\d+%\s+(?:better|worse|faster|slower|more|less|higher|lower)/i,
+    /\b(?:counterparts|competitors|comparison|benchmark)\b/i,
+    /\b(?:breakdown|breakdown by)\b/i,
   ];
   const has_comparison_data = comparisonPatterns.some((p) => p.test(postText));
 
@@ -73,17 +79,21 @@ export function computeSignals(postText: string): PostSignals {
     /\b(?:year[- ]over[- ]year|YoY|QoQ|MoM|quarter[- ]over[- ]quarter)\b/i,
     /\b(?:trend|trajectory|over time)\b/i,
     /\d+[%x×].*\b(?:YoY|QoQ|growth|increase)\b/i,
+    /\b(?:from \d+.*to \d+)\b/i,
+    /\b(?:time[- ]to[- ]value|time to market)\b/i,
   ];
   const has_trend_data = trendPatterns.some((p) => p.test(postText));
 
   const proportionPatterns = [
     /\d+%\s*(?:of|say|report|are|were|think|believe)/i,
-    /\b(?:share|portion|proportion|distribution|breakdown)\b/i,
-    /\b(?:majority|minority)\b/i,
+    /\b(?:share|portion|proportion)\b.*\d+/i,
+    /\d+.*\b(?:share|portion|proportion)\b/i,
+    /\b(?:breakdown)\b.*\d+%/i,
+    /\b(?:majority|minority)\b.*\d+/i,
   ];
   const has_proportion_data = proportionPatterns.some((p) => p.test(postText));
 
-  const numericMatches = postText.match(/\d+(?:\.\d+)?[%x×]?/g) || [];
+  const numericMatches = postText.match(/(?<![A-Za-z])\d+(?:\.\d+)?[%x×]?/g) || [];
   const numeric_count = numericMatches.length;
 
   return {

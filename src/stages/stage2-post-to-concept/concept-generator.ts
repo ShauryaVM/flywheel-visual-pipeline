@@ -241,9 +241,9 @@ ${prohibitions.length > 0
 
 ${JSON.stringify(candidateModalities, null, 2)}
 
-## All Available Modalities
+## All Available Modalities (fallback only)
 
-You may also use these modalities if they are a better fit for the content:
+You may use these modalities ONLY IF none of the candidates above fit the content. Strongly prefer the candidate modalities listed above:
 - headline_subtext_card: Simple headline with supporting text
 - key_takeaway_card: Single key insight or lesson in a card
 - numbered_list_graphic: Ordered list of items (best for how-to, steps, rankings)
@@ -258,7 +258,18 @@ You may also use these modalities if they are a better fit for the content:
 - line_sparkline: Trend line chart for data over time (use when post describes growth, trends, changes)
 - pie_donut_chart: Pie/donut chart for proportional data (use when post describes shares, percentages, distributions)
 
-IMPORTANT: Choose the modality that genuinely fits the content best. If the post contains a quote, use quote_card or attribution_quote_card. If it highlights a single hero statistic, use stat_callout. If it makes a bold declaration, use bold_statement_card. Do NOT default to multi_stat_panel or numbered_list_graphic unless the content truly warrants multiple stats or an ordered list.
+IMPORTANT MODALITY SELECTION RULES (follow strictly):
+- If the post contains QUANTITATIVE COMPARISONS (X vs Y, A is better than B by N%), use bar_chart.
+- If the post mentions GROWTH/TRENDS over time, use line_sparkline.
+- If the post describes PROPORTIONS/SHARES/DISTRIBUTIONS, use pie_donut_chart.
+- If the post contains 3+ distinct metrics/statistics, use multi_stat_panel.
+- If the post highlights ONE hero statistic with context, use stat_callout.
+- If the post is a NUMBERED LIST of tips/lessons/steps, use numbered_list_graphic.
+- If the post is a FEATURE LIST or benefits, use feature_list_graphic.
+- If the post is a STRONG OPINION or hot take (short, punchy), use bold_statement_card.
+- If the post quotes someone with attribution, use attribution_quote_card or pull_quote_card.
+- If the post is a simple headline + context, use headline_subtext_card.
+Do NOT default to bold_statement_card or headline_subtext_card when a more specific modality fits. Prefer chart modalities for data-heavy posts. Each concept in your output MUST use a DIFFERENT modality.
 
 ## Layout Patterns to Reference
 
@@ -281,9 +292,9 @@ ${layoutDescriptions.length > 0 ? layoutDescriptions.join('\n') : `- **Left-anch
 10. ALL concepts must use light backgrounds. No dark/black backgrounds.
 11. Design with editorial restraint: every element must earn its place on the canvas.
 
-## Chart Modalities (for data-heavy posts)
+## Chart Modalities (ONLY for data-heavy posts)
 
-When a post contains quantitative comparisons, trends, or distributions, prefer chart modalities (bar_chart, line_sparkline, pie_donut_chart). For these, include a "chart_data" array with {label, value} objects.
+ONLY use chart modalities (bar_chart, line_sparkline, pie_donut_chart) when the post contains ACTUAL NUMERIC DATA with specific values to chart. Do NOT fabricate data for opinion posts or abstract statements. If a post says "distribution problem" as a metaphor (not actual data distribution), do NOT use pie_donut_chart. Chart modalities require real, chartable numbers from the post. When used, include a "chart_data" array with {label, value} objects.
 
 ## Layout Specification (optional, encouraged for varied compositions)
 

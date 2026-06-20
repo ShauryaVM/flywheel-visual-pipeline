@@ -10,7 +10,7 @@
       width: 1200px;
       height: 630px;
       font-family: {{{ds.fontFamily}}};
-      background: {{ds.surface}};
+      background: {{{ds.backgroundStyle}}};
       color: {{ds.textPrimary}};
       overflow: hidden;
     }
@@ -23,11 +23,12 @@
       position: relative;
     }
 
-    .dot-field {
+    .decorative-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
       z-index: 0;
+      opacity: 1.0;
     }
 
     .warm-bar {
@@ -78,9 +79,7 @@
 
     .stat-tile {
       flex: 1;
-      background: {{ds.background}};
-      border: 1px solid rgba(215, 200, 175, 0.5);
-      box-shadow: rgba(215, 200, 175, 0.25) 0px 4px 20px 0px, rgba(0, 0, 0, 0.06) 0px 1px 4px 0px, rgba(255, 252, 248, 0.5) 0px 1px 1px 0px inset, rgba(215, 200, 175, 0.15) 0px -1px 1px 0px inset;
+      {{{ds.cardStyle}}};
       padding: 28px 24px;
       display: flex;
       flex-direction: column;
@@ -143,13 +142,16 @@
       font-size: 11px;
       color: {{ds.textFaint}};
     }
+
+    {{{ds.animationsCss}}}
   </style>
 </head>
 <body>
   <div class="canvas">
-    <div class="dot-field">
+    <div class="decorative-bg">
       {{{ds.decorativePatternSvg}}}
     </div>
+    {{{ds.animationHintsSvg}}}
     <div class="warm-bar"></div>
     <div class="header">
       <div class="eyebrow">By the Numbers</div>

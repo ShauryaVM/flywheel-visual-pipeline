@@ -16,10 +16,12 @@
     "pipeline": "tsx src/cli.ts --run",
     "demo": "tsx src/demo.ts",
     "stage1": "tsx src/stages/stage1-design-system/index.ts",
+    "audit-tokens": "tsx src/stages/stage1-design-system/audit-tokens-vision.ts",
     "stage2": "tsx src/stages/stage2-post-to-concept/index.ts",
     "stage3": "tsx src/stages/stage3-concept-to-html/index.ts",
     "workstream-b": "tsx src/workstream-b/index.ts",
-    "workstream-b:refine": "tsx src/workstream-b/refinement-split-quote-card.ts && tsx src/workstream-b/validation-inter-rater.ts && tsx src/workstream-b/validation-held-out.ts && tsx src/workstream-b/analysis-engagement.ts"
+    "workstream-b:refine": "tsx src/workstream-b/refinement-split-quote-card.ts && tsx src/workstream-b/validation-inter-rater.ts && tsx src/workstream-b/validation-held-out.ts && tsx src/workstream-b/analysis-engagement.ts",
+    "harness": "tsx src/server.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",

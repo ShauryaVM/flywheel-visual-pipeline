@@ -16,6 +16,48 @@ export interface BrandIdentity {
   decorative_pattern_svg: string;
 }
 
+export interface DesignPortfolio {
+  background_style: string;
+  hero_treatment: string;
+  card_style: string;
+  accent_treatment: string;
+  spacing_density: 'compact' | 'balanced' | 'airy';
+  visual_motifs: string[];
+  illustration_style: string;
+  composition_rules: string[];
+  signature_elements: string[];
+}
+
+// ---------------------------------------------------------------------------
+// Brand assets extracted directly from the DOM via Playwright
+// ---------------------------------------------------------------------------
+
+export interface BrandAssets {
+  logo: {
+    svg?: string;
+    imgUrl?: string;
+    imgBase64?: string;
+    source: string;
+  } | null;
+  decorativeSvgs: Array<{
+    svg: string;
+    context: string;
+    dimensions: { width: number; height: number };
+  }>;
+  animations: Array<{
+    name: string;
+    keyframes: string;
+    duration: string;
+    easing: string;
+    appliedTo: string;
+  }>;
+  gradients: Array<{
+    css: string;
+    context: string;
+  }>;
+  favicon?: string;
+}
+
 export interface DesignSystemData {
   metadata: {
     source_url: string;
@@ -23,6 +65,8 @@ export interface DesignSystemData {
     pages_analyzed: string[];
   };
   brand_identity?: BrandIdentity;
+  design_portfolio?: DesignPortfolio;
+  brand_assets?: BrandAssets;
   colors: {
     primary: { hex: string; usage: string };
     secondary: { hex: string; usage: string };

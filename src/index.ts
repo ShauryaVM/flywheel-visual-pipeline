@@ -1,10 +1,14 @@
 import 'dotenv/config';
+import { readFile } from 'node:fs/promises';
+import { runStage1 } from './stages/stage1-design-system/index.js';
 import { runStage2 } from './stages/stage2-post-to-concept/index.js';
 import { runStage3 } from './stages/stage3-concept-to-html/index.js';
 import { runStage4 } from './stages/stage4-eval/index.js';
 import { runWithFeedback } from './stages/stage4-eval/feedback-loop.js';
 import { createStageLogger } from './observability/logger.js';
-import { loadDesignSystemSummary } from './utils/design-system-summary.js';
+import { loadDesignSystemSummary, clearDesignSystemSummaryCache } from './utils/design-system-summary.js';
+import { clearRendererDesignSystemCache } from './stages/stage3-concept-to-html/renderer.js';
+import { loadConfig } from './config.js';
 import type { PipelineInput, PipelineResult } from './types/index.js';
 
 export { runWithFeedback } from './stages/stage4-eval/feedback-loop.js';
@@ -13,6 +17,45 @@ export type { FeedbackLoopInput, FeedbackLoopResult } from './stages/stage4-eval
 const log = createStageLogger('pipeline');
 
 const EVAL_THRESHOLD = 7.0;
+const DESIGN_SYSTEM_PATH = 'data/design-system.json';
+
+/**
+ * Ensure the cached design system matches the current TARGET_URL.
+ * If the file doesn't exist or was crawled from a different URL, re-run Stage 1.
+ */
+async function ensureDesignSystem(targetUrl: string): Promise<void> {
+  clearDesignSystemSummaryCache();
+  clearRendererDesignSystemCache();
+
+  try {
+    const raw = await readFile(DESIGN_SYSTEM_PATH, 'utf-8');
+    const ds = JSON.parse(raw) as { metadata?: { source_url?: string } };
+    const cachedUrl = ds.metadata?.source_url;
+
+    if (cachedUrl && normalizeUrl(cachedUrl) === normalizeUrl(targetUrl)) {
+      log.info({ cachedUrl, targetUrl }, 'Design system cache is valid for current TARGET_URL');
+      return;
+    }
+
+    log.warn(
+      { cachedUrl, targetUrl },
+      'Design system cache is for a different URL — re-running Stage 1',
+    );
+  } catch {
+    log.info({ targetUrl }, 'No cached design system found — running Stage 1');
+  }
+
+  await runStage1(targetUrl);
+}
+
+function normalizeUrl(url: string): string {
+  try {
+    const u = new URL(url.startsWith('http') ? url : `https://${url}`);
+    return u.hostname.replace(/^www\./, '');
+  } catch {
+    return url.toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/+$/, '');
+  }
+}
 
 /**
  * Run the visual pipeline: Post -> Concept -> HTML -> PDF + PNG -> Eval.
@@ -22,6 +65,10 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
 
   const pipelineStart = Date.now();
   log.info({ postId, outputDir }, 'Starting pipeline');
+
+  // Stage 1: Ensure design system is for the current TARGET_URL
+  const config = loadConfig();
+  await ensureDesignSystem(config.targetUrl);
 
   // Stage 2: Generate visual concepts from post
   const stage2Start = Date.now();
@@ -112,5 +159,9 @@ export async function runPipelineWithFeedback(
   input: PipelineInput & { maxRetries?: number },
 ): Promise<PipelineResult> {
   const { postText, postId, outputDir = 'data/outputs', maxRetries = 1 } = input;
+
+  const config = loadConfig();
+  await ensureDesignSystem(config.targetUrl);
+
   return runWithFeedback({ postText, postId, outputDir, maxRetries });
 }

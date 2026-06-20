@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flywheel Visual Pipeline</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0e11;
+    --surface: #18181b;
+    --surface-2: #222225;
+    --border: #2e2e33;
+    --text: #ececef;
+    --text-muted: #8e8e96;
+    --accent: #6d5dfc;
+    --accent-hover: #8577ff;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --red: #f87171;
+    --radius: 10px;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  header {
+    margin-bottom: 2.5rem;
+  }
+  header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  header p {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  /* ── Input section ─────────────────────────────── */
+  .input-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+  }
+
+  textarea, input[type="text"] {
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 0.9rem;
+    padding: 0.65rem 0.75rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  textarea:focus, input[type="text"]:focus {
+    border-color: var(--accent);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .field + .field { margin-top: 1rem; }
+
+  .actions {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  button {
+    font-family: var(--font);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0.6rem 1.5rem;
+    transition: background 0.15s, opacity 0.15s;
+  }
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+
+  .status {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* ── Loading overlay ──────────────────────────── */
+  .loading {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+  }
+  .loading.active { display: flex; }
+
+  .spinner {
+    width: 22px; height: 22px;
+    border: 2.5px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .loading-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+
+  /* ── Error ─────────────────────────────────────── */
+  .error-box {
+    display: none;
+    background: rgba(248, 113, 113, 0.08);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    color: var(--red);
+    font-size: 0.9rem;
+  }
+  .error-box.active { display: block; }
+
+  /* ── Output section ────────────────────────────── */
+  .output-section {
+    display: none;
+  }
+  .output-section.active { display: block; }
+
+  .section-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ── Visual preview ───────────────────────────── */
+  .preview-container {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    justify-content: center;
+  }
+  .preview-container img {
+    max-width: 100%;
+    border-radius: 6px;
+  }
+
+  /* ── Scores ───────────────────────────────────── */
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.65rem;
+  }
+
+  .score-item {
+    background: var(--surface-2);
+    border-radius: 6px;
+    padding: 0.75rem 0.85rem;
+    text-align: center;
+  }
+  .score-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .score-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  .score-good { color: var(--green); }
+  .score-mid  { color: var(--amber); }
+  .score-bad  { color: var(--red); }
+
+  /* ── Critique ─────────────────────────────────── */
+  .critique {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-top: 0.75rem;
+    white-space: pre-wrap;
+  }
+
+  /* ── Color swatches ───────────────────────────── */
+  .swatch-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .swatch-color {
+    width: 42px; height: 42px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .swatch-hex {
+    font-size: 0.7rem;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: var(--text-muted);
+  }
+  .swatch-name {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+
+  /* ── Modality / concept info ──────────────────── */
+  .modality-badge {
+    display: inline-block;
+    background: rgba(109, 93, 252, 0.15);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    margin-right: 0.5rem;
+  }
+
+  .concept-headline {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+  .concept-subhead {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  .concept-alternatives {
+    margin-top: 0.75rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .concept-alternatives strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .typo-info {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+  }
+
+  /* ── HTML source toggle ───────────────────────── */
+  .toggle-btn {
+    font-size: 0.78rem;
+    color: var(--accent);
+    background: none;
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.7rem;
+    margin-top: 0.75rem;
+    cursor: pointer;
+  }
+  .toggle-btn:hover { border-color: var(--accent); }
+
+  .html-source {
+    display: none;
+    margin-top: 0.75rem;
+    background: var(--surface-2);
+    border-radius: 6px;
+    padding: 0.85rem;
+    font-size: 0.75rem;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    color: var(--text-muted);
+    max-height: 300px;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .html-source.active { display: block; }
+
+  /* ── Regeneration banner ────────────────────────── */
+  .regen-banner {
+    display: none;
+    background: rgba(251, 191, 36, 0.06);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .regen-banner.active { display: block; }
+
+  .regen-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--amber);
+  }
+
+  .regen-critique {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    background: var(--surface-2);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    white-space: pre-wrap;
+  }
+
+  .btn-regen {
+    margin-top: 1rem;
+    background: var(--amber);
+    color: #1a1a1a;
+    font-weight: 700;
+    padding: 0.65rem 1.5rem;
+  }
+  .btn-regen:hover:not(:disabled) {
+    background: #fcd34d;
+  }
+
+  /* ── Improvement banner ─────────────────────────── */
+  .improvement-banner {
+    display: none;
+    background: rgba(52, 211, 153, 0.06);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .improvement-banner.active { display: block; }
+
+  .improvement-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green);
+  }
+
+  .improvement-axes {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Flywheel Visual Pipeline</h1>
+    <p>Paste a post and brand URL to generate an on-brand visual</p>
+  </header>
+
+  <!-- Input -->
+  <div class="input-section">
+    <div class="field">
+      <label for="postText">Post Content</label>
+      <textarea id="postText" placeholder="Paste your LinkedIn post text here..."></textarea>
+    </div>
+    <div class="field">
+      <label for="targetUrl">Brand Website URL</label>
+      <input type="text" id="targetUrl" placeholder="https://example.com" />
+    </div>
+    <div class="actions">
+      <button class="btn-primary" id="generateBtn">Generate Visual</button>
+      <span class="status" id="statusText"></span>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <div>
+      <div class="loading-text" id="loadingText">Running pipeline...</div>
+      <div class="loading-sub" id="loadingSub">This typically takes 30–60 seconds</div>
+    </div>
+  </div>
+
+  <!-- Error -->
+  <div class="error-box" id="errorBox"></div>
+
+  <!-- Output -->
+  <div class="output-section" id="output">
+
+    <!-- Visual preview -->
+    <div class="section-title">Generated Visual</div>
+    <div class="preview-container">
+      <img id="previewImg" alt="Generated visual" />
+    </div>
+
+    <!-- Concept info -->
+    <div class="card" id="conceptCard">
+      <div class="section-title" style="border:0;padding:0;margin-bottom:0.5rem">Concept</div>
+      <div id="conceptInfo"></div>
+    </div>
+
+    <!-- Eval scores -->
+    <div class="card" id="evalCard">
+      <div class="section-title" style="border:0;padding:0;margin-bottom:0.65rem">Eval Scores</div>
+      <div class="score-grid" id="scoreGrid"></div>
+      <div class="critique" id="critique"></div>
+    </div>
+
+    <!-- Regeneration banner (shown when below threshold) -->
+    <div class="regen-banner" id="regenBanner">
+      <div class="regen-header">
+        <span>&#9888;&#65039;</span>
+        <span id="regenTitle">Score below threshold</span>
+      </div>
+      <div class="regen-critique" id="regenCritique"></div>
+      <button class="btn-regen" id="regenBtn">&#128260; Regenerate with Feedback</button>
+    </div>
+
+    <!-- Improvement banner (shown after successful regen) -->
+    <div class="improvement-banner" id="improvementBanner">
+      <div class="improvement-header">
+        <span>&#10003;</span>
+        <span id="improvementTitle">Improved!</span>
+      </div>
+      <div class="improvement-axes" id="improvementAxes"></div>
+    </div>
+
+    <!-- Design system -->
+    <div class="card" id="dsCard">
+      <div class="section-title" style="border:0;padding:0;margin-bottom:0.65rem">Design System</div>
+      <div class="swatch-row" id="swatches"></div>
+      <div class="typo-info" id="typoInfo"></div>
+    </div>
+
+    <!-- HTML source -->
+    <div class="card">
+      <div class="section-title" style="border:0;padding:0;margin-bottom:0.5rem">HTML Source</div>
+      <button class="toggle-btn" id="toggleHtml">Show HTML</button>
+      <div class="html-source" id="htmlSource"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+
+const postText    = $('#postText');
+const targetUrl   = $('#targetUrl');
+const generateBtn = $('#generateBtn');
+const statusText  = $('#statusText');
+const loading     = $('#loading');
+const loadingText = $('#loadingText');
+const loadingSub  = $('#loadingSub');
+const errorBox    = $('#errorBox');
+const output      = $('#output');
+const regenBanner = $('#regenBanner');
+const regenBtn    = $('#regenBtn');
+const improvementBanner = $('#improvementBanner');
+
+let lastResult = null;
+
+const POLL_INTERVAL_MS = 2000;
+const POLL_TIMEOUT_MS = 20 * 60 * 1000; // 20 minutes
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function pollJob(jobId) {
+  const deadline = Date.now() + POLL_TIMEOUT_MS;
+  while (Date.now() < deadline) {
+    const res = await fetch(`/api/jobs/${encodeURIComponent(jobId)}`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+    if (data.status === 'complete') return data.result;
+    if (data.status === 'failed') throw new Error(data.error || 'Pipeline failed');
+    await sleep(POLL_INTERVAL_MS);
+  }
+  throw new Error('Pipeline timed out waiting for results. Check the terminal — output files may still have been written.');
+}
+
+async function startPipeline(endpoint, body) {
+  const res = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+  if (!data.jobId) throw new Error('Server did not return a job id');
+  return pollJob(data.jobId);
+}
+
+generateBtn.addEventListener('click', run);
+regenBtn.addEventListener('click', regenerate);
+
+async function run() {
+  const text = postText.value.trim();
+  const url  = targetUrl.value.trim();
+  if (!text) { postText.focus(); return; }
+  if (!url)  { targetUrl.focus(); return; }
+
+  generateBtn.disabled = true;
+  loading.classList.add('active');
+  errorBox.classList.remove('active');
+  output.classList.remove('active');
+  regenBanner.classList.remove('active');
+  improvementBanner.classList.remove('active');
+  statusText.textContent = '';
+
+  const stages = [
+    'Crawling brand website for design tokens...',
+    'Classifying post and generating concepts...',
+    'Rendering HTML visual...',
+    'Evaluating quality with vision model...',
+  ];
+  let stageIdx = 0;
+  loadingText.textContent = stages[0];
+  loadingSub.textContent = 'Stage 1 crawl + vision audit can take several minutes';
+
+  const stageTimer = setInterval(() => {
+    stageIdx++;
+    if (stageIdx < stages.length) {
+      loadingText.textContent = stages[stageIdx];
+    }
+  }, 12000);
+
+  const start = Date.now();
+  const elapsed = () => `${((Date.now() - start) / 1000).toFixed(0)}s`;
+
+  try {
+    const data = await startPipeline('/api/generate', { postText: text, targetUrl: url });
+
+    clearInterval(stageTimer);
+    loading.classList.remove('active');
+    statusText.textContent = `Done in ${elapsed()}`;
+    lastResult = data;
+    render(data);
+    showRegenBannerIfNeeded(data);
+  } catch (err) {
+    clearInterval(stageTimer);
+    loading.classList.remove('active');
+    errorBox.textContent = err.message;
+    errorBox.classList.add('active');
+    statusText.textContent = `Failed after ${elapsed()}`;
+  } finally {
+    generateBtn.disabled = false;
+  }
+}
+
+async function regenerate() {
+  if (!lastResult) return;
+
+  const text = postText.value.trim();
+  const url  = targetUrl.value.trim();
+  const ev   = lastResult.evalScore;
+  if (!ev) return;
+
+  const critique = [ev.critique, ev.visionCritique].filter(Boolean).join(' ');
+  const previousScores = {
+    onBrand: ev.onBrand,
+    legible: ev.legible,
+    clearHierarchy: ev.clearHierarchy,
+    notGeneric: ev.notGeneric,
+    overall: ev.overall,
+  };
+  if (ev.compositeScore != null) previousScores.compositeScore = ev.compositeScore;
+  if (ev.visionAbsolute) {
+    previousScores.visionLayout = ev.visionAbsolute.layout;
+    previousScores.visionLegibility = ev.visionAbsolute.legibility;
+    previousScores.visionPolish = ev.visionAbsolute.polish;
+  }
+  if (ev.visionComparative) {
+    previousScores.visionColorMatch = ev.visionComparative.colorMatch;
+    previousScores.visionTypographyMatch = ev.visionComparative.typographyMatch;
+    previousScores.visionAestheticMatch = ev.visionComparative.aestheticMatch;
+  }
+
+  regenBtn.disabled = true;
+  regenBanner.classList.remove('active');
+  loading.classList.add('active');
+  loadingText.textContent = 'Regenerating with feedback...';
+  loadingSub.textContent = 'Feeding critique back into the pipeline';
+  errorBox.classList.remove('active');
+
+  const regenStages = [
+    'Regenerating with feedback...',
+    'Rendering improved visual...',
+    'Re-evaluating quality...',
+  ];
+  let stageIdx = 0;
+  const stageTimer = setInterval(() => {
+    stageIdx++;
+    if (stageIdx < regenStages.length) {
+      loadingText.textContent = regenStages[stageIdx];
+    }
+  }, 10000);
+
+  const start = Date.now();
+  const elapsed = () => `${((Date.now() - start) / 1000).toFixed(0)}s`;
+
+  try {
+    const data = await startPipeline('/api/regenerate', {
+      postText: text,
+      targetUrl: url,
+      critique,
+      previousScores,
+    });
+
+    clearInterval(stageTimer);
+    loading.classList.remove('active');
+    statusText.textContent = `Regenerated in ${elapsed()}`;
+
+    const prevResult = lastResult;
+    lastResult = data;
+    render(data);
+    showImprovementBanner(data, prevResult);
+    showRegenBannerIfNeeded(data);
+  } catch (err) {
+    clearInterval(stageTimer);
+    loading.classList.remove('active');
+    errorBox.textContent = err.message;
+    errorBox.classList.add('active');
+    statusText.textContent = `Regeneration failed after ${elapsed()}`;
+    regenBanner.classList.add('active');
+  } finally {
+    regenBtn.disabled = false;
+  }
+}
+
+function showRegenBannerIfNeeded(data) {
+  regenBanner.classList.remove('active');
+  const ev = data.evalScore;
+  if (!ev) return;
+
+  const composite = ev.compositeScore ?? ev.overall;
+  if (composite >= 7.0 && ev.passesThreshold) return;
+
+  const critique = [ev.critique, ev.visionCritique].filter(Boolean).join('\n\n');
+  $('#regenTitle').textContent = `Score below threshold (${composite.toFixed(2)} / 7.0). Regeneration recommended.`;
+  $('#regenCritique').textContent = critique || 'No specific critique available.';
+  regenBanner.classList.add('active');
+}
+
+function showImprovementBanner(newData, prevData) {
+  improvementBanner.classList.remove('active');
+  if (!newData.evalScore || !prevData.evalScore) return;
+
+  const oldScore = prevData.evalScore.compositeScore ?? prevData.evalScore.overall;
+  const newScore = newData.evalScore.compositeScore ?? newData.evalScore.overall;
+  const delta = newScore - oldScore;
+
+  const sign = delta >= 0 ? '+' : '';
+  $('#improvementTitle').textContent = delta >= 0
+    ? `Improved! ${oldScore.toFixed(2)} \u2192 ${newScore.toFixed(2)} (\u0394${sign}${delta.toFixed(2)})`
+    : `Score changed: ${oldScore.toFixed(2)} \u2192 ${newScore.toFixed(2)} (\u0394${delta.toFixed(2)})`;
+
+  const comparison = newData.comparison;
+  if (comparison && comparison.axesImproved && comparison.axesImproved.length > 0) {
+    $('#improvementAxes').textContent = `Axes improved: ${comparison.axesImproved.join(', ')}`;
+  } else {
+    $('#improvementAxes').textContent = '';
+  }
+
+  improvementBanner.classList.add('active');
+}
+
+function scoreClass(v) {
+  if (v >= 7) return 'score-good';
+  if (v >= 5) return 'score-mid';
+  return 'score-bad';
+}
+
+function render(data) {
+  output.classList.add('active');
+
+  // Preview image
+  const img = $('#previewImg');
+  if (data.pngBase64) {
+    img.src = `data:image/png;base64,${data.pngBase64}`;
+    img.style.display = '';
+  } else {
+    img.style.display = 'none';
+  }
+
+  // Concept info
+  const c = data.concept;
+  let conceptHtml = `<span class="modality-badge">${esc(c.modality)}</span>`;
+  conceptHtml += `<div class="concept-headline">${esc(c.headline)}</div>`;
+  if (c.subhead) conceptHtml += `<div class="concept-subhead">${esc(c.subhead)}</div>`;
+  if (c.all && c.all.length > 1) {
+    const alts = c.all
+      .filter((_, i) => i !== c.selectedIndex)
+      .map((a) => `${a.modality}: ${a.headline}`)
+      .join(' | ');
+    conceptHtml += `<div class="concept-alternatives"><strong>Alternatives:</strong> ${esc(alts)}</div>`;
+  }
+  $('#conceptInfo').innerHTML = conceptHtml;
+
+  // Eval scores
+  const ev = data.evalScore;
+  if (ev) {
+    const axes = [
+      ['Composite', ev.compositeScore ?? ev.overall],
+      ['On-Brand', ev.onBrand],
+      ['Legible', ev.legible],
+      ['Hierarchy', ev.clearHierarchy],
+      ['Not Generic', ev.notGeneric],
+    ];
+    if (ev.visionAbsolute) {
+      axes.push(['Layout (V)', ev.visionAbsolute.layout]);
+      axes.push(['Legibility (V)', ev.visionAbsolute.legibility]);
+      axes.push(['Polish (V)', ev.visionAbsolute.polish]);
+    }
+    if (ev.visionComparative) {
+      axes.push(['Color Match', ev.visionComparative.colorMatch]);
+      axes.push(['Type Match', ev.visionComparative.typographyMatch]);
+      axes.push(['Aesthetic', ev.visionComparative.aestheticMatch]);
+    }
+
+    $('#scoreGrid').innerHTML = axes
+      .map(([label, val]) => {
+        const v = Number(val);
+        return `<div class="score-item">
+          <div class="score-value ${scoreClass(v)}">${v.toFixed(1)}</div>
+          <div class="score-label">${esc(label)}</div>
+        </div>`;
+      })
+      .join('');
+
+    let critiqueText = '';
+    if (ev.critique) critiqueText += ev.critique;
+    if (ev.visionCritique) critiqueText += (critiqueText ? '\n\n' : '') + ev.visionCritique;
+    $('#critique').textContent = critiqueText;
+    $('#evalCard').style.display = '';
+  } else {
+    $('#evalCard').style.display = 'none';
+  }
+
+  // Design system
+  const ds = data.designSystem;
+  if (ds) {
+    const colors = ds.colors;
+    const named = [
+      { name: 'Primary', ...colors.primary },
+      { name: 'Secondary', ...colors.secondary },
+      { name: 'Accent', ...colors.accent },
+      { name: 'Background', ...colors.background },
+      { name: 'Text', ...colors.text },
+    ];
+    if (colors.palette) {
+      colors.palette.forEach((p) => named.push({ name: p.name, hex: p.hex }));
+    }
+    $('#swatches').innerHTML = named
+      .map((c) => `<div class="swatch">
+        <div class="swatch-color" style="background:${esc(c.hex)}"></div>
+        <span class="swatch-hex">${esc(c.hex)}</span>
+        <span class="swatch-name">${esc(c.name)}</span>
+      </div>`)
+      .join('');
+
+    const families = ds.typography?.families?.join(', ') ?? '';
+    $('#typoInfo').textContent = families ? `Fonts: ${families}` : '';
+    $('#dsCard').style.display = '';
+  } else {
+    $('#dsCard').style.display = 'none';
+  }
+
+  // HTML source
+  const htmlSrc = $('#htmlSource');
+  const toggleBtn = $('#toggleHtml');
+  htmlSrc.textContent = data.html || '';
+  htmlSrc.classList.remove('active');
+  toggleBtn.textContent = 'Show HTML';
+  toggleBtn.onclick = () => {
+    const open = htmlSrc.classList.toggle('active');
+    toggleBtn.textContent = open ? 'Hide HTML' : 'Show HTML';
+  };
+}
+
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = String(s);
+  return d.innerHTML;
+}
+</script>
+</body>
+</html>

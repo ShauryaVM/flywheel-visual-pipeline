@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { parseArgs } from 'node:util';
-import { runPipeline } from './index.js';
+import { runPipeline, runPipelineWithFeedback } from './index.js';
 import { runStage2 } from './stages/stage2-post-to-concept/index.js';
 import { runStage3 } from './stages/stage3-concept-to-html/index.js';
 import { logger } from './observability/logger.js';
@@ -46,11 +46,12 @@ async function main(): Promise<void> {
       logger.error('--post is required for full pipeline run');
       process.exit(1);
     }
-    const result = await runPipeline({
+    const result = await runPipelineWithFeedback({
       postText: String(values.post),
       outputDir: String(values.output ?? 'data/outputs'),
+      maxRetries: 1,
     });
-    logger.info({ pdfPath: result.pdfPath, pngPath: result.pngPath }, 'Pipeline complete');
+    logger.info({ pdfPath: result.pdfPath, pngPath: result.pngPath, regenerated: (result as any).regenerated }, 'Pipeline complete');
     return;
   }
 

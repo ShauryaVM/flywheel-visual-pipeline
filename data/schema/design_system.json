@@ -1,128 +1,98 @@
 {
   "version": "1.0.0",
-  "sourceUrl": "https://flywheelos.com",
-  "crawledAt": "2026-06-19T00:31:35.395Z",
+  "sourceUrl": "https://mercor.com",
+  "crawledAt": "2026-06-20T06:03:06.887Z",
   "colors": {
-    "primary": "#000000",
-    "secondary": "#6b7a7c",
-    "accent": "#e6ff00",
+    "primary": "#4f46e5",
+    "secondary": "#1f2937",
+    "accent": "#8274ff",
     "background": "#ffffff",
     "text": "#000000",
     "allExtracted": [
       {
         "name": "black",
         "hex": "#000000",
-        "usage": "Primary text, foreground, --color-black, --color-nav-dark base"
+        "usage": "Primary text, headings, nav links"
       },
       {
-        "name": "gray-900",
-        "hex": "#111111",
-        "usage": "--color-gray-900, --color-text-primary, h1/h4 headings, active nav links"
+        "name": "gray-950",
+        "hex": "#030712",
+        "usage": "Near-black used in enterprise page headings (rgb(3,7,18))"
       },
       {
-        "name": "nav-hamburger-bg",
-        "hex": "#222828",
-        "usage": "--color-nav-hamburger-bg, mobile hamburger menu background"
-      },
-      {
-        "name": "gray-850",
-        "hex": "#333333",
-        "usage": "--color-gray-850, --color-text-secondary, secondary text"
-      },
-      {
-        "name": "gray-800",
-        "hex": "#444444",
-        "usage": "--color-gray-800, --color-text-tertiary, tertiary text"
-      },
-      {
-        "name": "gray-750",
-        "hex": "#555555",
-        "usage": "--color-gray-750, --color-text-subtle, subtle paragraph text"
-      },
-      {
-        "name": "gray-700",
-        "hex": "#666666",
-        "usage": "--color-gray-700, --color-text-muted, muted paragraph text"
-      },
-      {
-        "name": "gray-600",
-        "hex": "#888888",
-        "usage": "--color-gray-600, --color-text-faint, faint text"
-      },
-      {
-        "name": "gray-500",
-        "hex": "#999999",
-        "usage": "--color-gray-500, --color-text-placeholder, --color-text-disabled placeholder and disabled text"
-      },
-      {
-        "name": "gray-400",
-        "hex": "#aaaaaa",
-        "usage": "--color-gray-400, --color-text-disabled, disabled state text"
-      },
-      {
-        "name": "gray-300",
-        "hex": "#cccccc",
-        "usage": "--color-gray-300, light decorative borders"
-      },
-      {
-        "name": "border",
-        "hex": "#e5e5e5",
-        "usage": "--color-border, --color-gray-200, default border color throughout UI"
-      },
-      {
-        "name": "gray-100",
-        "hex": "#eeeeee",
-        "usage": "--color-gray-100, --color-surface-active, active surface state, nav button bg variant"
-      },
-      {
-        "name": "gray-50",
-        "hex": "#f5f5f5",
-        "usage": "--color-gray-50, --color-surface-hover, hover surface state"
+        "name": "foreground",
+        "hex": "#020817",
+        "usage": "Foreground text color in experts/resources pages (rgb(2,8,23))"
       },
       {
         "name": "white",
         "hex": "#ffffff",
-        "usage": "--color-white, backgrounds, primary-foreground text on dark surfaces"
+        "usage": "Page backgrounds, toast backgrounds, input text on dark surfaces"
       },
       {
-        "name": "surface",
-        "hex": "#faf9f6",
-        "usage": "--color-surface, --color-sand-50, footer background, login side panel, section backgrounds"
+        "name": "gray-50",
+        "hex": "#f9fafb",
+        "usage": "Subtle background fills for cards and sections"
       },
       {
-        "name": "nav-button-bg",
-        "hex": "#f1f3f3",
-        "usage": "--color-nav-button-bg, navigation button background"
+        "name": "gray-100",
+        "hex": "#f3f4f6",
+        "usage": "Hero image placeholder background, hover states on nav links"
       },
       {
-        "name": "nav-text",
-        "hex": "#6b7a7c",
-        "usage": "--color-nav-text, --color-nav-link, secondary/inactive navigation links"
+        "name": "gray-200",
+        "hex": "#e5e7eb",
+        "usage": "Border color for badges, cards, inputs, and dividers"
       },
       {
-        "name": "shadow-warm",
-        "hex": "#d7c8af",
-        "usage": "--color-shadow-warm, --color-shadow-sand, warm box shadow and border tints on CTA buttons"
+        "name": "gray-500",
+        "hex": "#6b7280",
+        "usage": "Secondary text labels, stat descriptions"
       },
       {
-        "name": "accent-yellow",
-        "hex": "#e6ff00",
-        "usage": "--color-accent, --color-yellow, brand accent highlight color"
+        "name": "gray-600",
+        "hex": "#4b5563",
+        "usage": "Badge text, section summary text, muted UI labels"
       },
       {
-        "name": "card-bg",
-        "hex": "#f0efe9",
-        "usage": "Card background color (rgba(240,239,233,0.85)), schedule/content cards"
+        "name": "gray-800",
+        "hex": "#1f2937",
+        "usage": "Secondary text emphasis"
       },
       {
-        "name": "overlay-dark",
-        "hex": "#0c0d0e",
-        "usage": "--color-nav-dark, base of overlay-dark (rgba(12,13,14,0.75)), dark overlays"
+        "name": "indigo-600",
+        "hex": "#4f46e5",
+        "usage": "Primary brand color, CTA buttons, interactive elements"
       },
       {
-        "name": "text-primary",
-        "hex": "#111111",
-        "usage": "rgb(17,17,17), heading text, active nav link text, CTA button text"
+        "name": "indigo-primary-alpha",
+        "hex": "#4e46e5",
+        "usage": "Brand color at 50% opacity for ring/focus states (rgba(78,70,229,0.5))"
+      },
+      {
+        "name": "purple-accent",
+        "hex": "#8274ff",
+        "usage": "Lighter purple in gradient and decorative blob animations (rgb(130,116,255))"
+      },
+      {
+        "name": "orange-muted",
+        "hex": "#e6836c",
+        "usage": "Decorative gradient warm color element (rgb(230,131,108))"
+      },
+      {
+        "name": "amber-soft",
+        "hex": "#fbc682",
+        "usage": "Decorative warm highlight element (rgb(251,198,130))"
+      },
+      {
+        "name": "indigo-c3",
+        "hex": "#453fe4",
+        "usage": "CSS custom color variable --c3 used in animated gradient backgrounds"
+      },
+      {
+        "name": "indigo-dark-c6",
+        "hex": "#3f38c7",
+        "usage": "CSS custom color variable --c6 for dark indigo gradient stops"
       }
     ]
   },
@@ -135,41 +105,44 @@
         "600",
         "700"
       ],
-      "source": "google-fonts"
+      "source": "self-hosted"
     },
     "bodyFont": {
-      "family": "DM Mono",
+      "family": "Inter",
       "weights": [
-        "400"
+        "400",
+        "500",
+        "600",
+        "700"
       ],
-      "source": "google-fonts"
+      "source": "self-hosted"
     },
     "baseSizePx": 16,
     "lineHeight": 1.5,
     "scale": [
       {
         "level": "h1",
-        "sizePx": 84,
-        "weight": "600",
-        "lineHeight": 0.92
+        "sizePx": 48,
+        "weight": "400",
+        "lineHeight": 1.1
       },
       {
         "level": "h2",
-        "sizePx": 64,
-        "weight": "600",
-        "lineHeight": 1
+        "sizePx": 36,
+        "weight": "400",
+        "lineHeight": 1.22
       },
       {
         "level": "h3",
-        "sizePx": 20,
-        "weight": "600",
+        "sizePx": 24,
+        "weight": "400",
         "lineHeight": 1.5
       },
       {
         "level": "h4",
-        "sizePx": 16,
-        "weight": "600",
-        "lineHeight": 1.5
+        "sizePx": 18,
+        "weight": "500",
+        "lineHeight": 1.56
       },
       {
         "level": "body",
@@ -178,27 +151,15 @@
         "lineHeight": 1.5
       },
       {
-        "level": "body_lg",
-        "sizePx": 18,
-        "weight": "500",
+        "level": "small",
+        "sizePx": 14,
+        "weight": "400",
         "lineHeight": 1.5
       },
       {
-        "level": "small",
-        "sizePx": 15,
-        "weight": "400",
-        "lineHeight": 1.625
-      },
-      {
         "level": "caption",
-        "sizePx": 14,
-        "weight": "400",
-        "lineHeight": 1.43
-      },
-      {
-        "level": "mono",
-        "sizePx": 14,
-        "weight": "400",
+        "sizePx": 12,
+        "weight": "500",
         "lineHeight": 1.5
       }
     ]
@@ -208,47 +169,51 @@
     "borderRadiusPx": 6
   },
   "logo": {
-    "widthPx": 94,
-    "heightPx": 20,
-    "format": "svg",
-    "base64": "PHN2ZyBkaXNwbGF5PSJibG9jayIgcm9sZT0icHJlc2VudGF0aW9uIiB2aWV3Qm94PSIwIDAgMjMgMjMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJaQ1BXOVVVN2siIHgxPSIwLjQ5NzUiIHgyPSIwLjUwMDMiIHkxPSIwIiB5Mj0iMC41NyI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSJyZ2IoODEsIDgzLCA4NCkiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9InJnYigxLDEsMSkiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48L3N2Zz4="
+    "url": "https://www.mercor.com/_next/static/media/logo.4e773633.png",
+    "widthPx": 500,
+    "heightPx": 500,
+    "format": "png"
   },
   "components": [
     {
-      "name": "buttons-primary-cta",
-      "notes": "background-color: transparent; color: #111111; border-radius: 0px; border: 1px solid rgba(215, 200, 175, 0.5); padding: 16px 32px; font-weight: 600; font-size: 14px; box-shadow: rgba(215, 200, 175, 0.25) 0px 4px 20px 0px, rgba(0, 0, 0, 0.06) 0px 1px 4px 0px, rgba(255, 252, 248, 0.5) 0px 1px 1px 0px inset, rgba(215, 200, 175, 0.15) 0px -1px 1px 0px inset"
+      "name": "buttons-primary",
+      "notes": "background-color: #4f46e5; color: #ffffff; border-radius: 9999px; padding: 8px 20px; font-weight: 500; font-size: 14px; border: none"
     },
     {
-      "name": "buttons-nav-link",
-      "notes": "background-color: transparent; color: #6b7a7c; border-radius: 6px; padding: 8px 16px; font-weight: 500; font-size: 15px; border: none"
+      "name": "buttons-ghost",
+      "notes": "background-color: transparent; color: #000000; border-radius: 6px; padding: 8px 14px; font-weight: 400; font-size: 14px; border: none"
     },
     {
-      "name": "buttons-nav-active",
-      "notes": "background-color: transparent; color: #111111; border-radius: 6px; padding: 8px 16px; font-weight: 500; font-size: 15px; border: none"
+      "name": "buttons-outline",
+      "notes": "background-color: transparent; color: #000000; border-radius: 9999px; padding: 8px 14px; font-weight: 400; font-size: 14px; border: 1px solid #e5e7eb"
     },
     {
-      "name": "cards-content-schedule",
-      "notes": "background-color: rgba(240, 239, 233, 0.85); border-radius: 8px; border: 1px solid #e5e5e5; padding: 12px; box-shadow: none"
+      "name": "cards-default",
+      "notes": "background-color: #ffffff; border-radius: 8px; padding: 16px; border: 1px solid #e5e7eb; box-shadow: rgba(0,0,0,0.05) 0px 1px 2px 0px"
+    },
+    {
+      "name": "cards-muted",
+      "notes": "background-color: #f3f4f6; border-radius: 8px; padding: 16px; border: none; box-shadow: none"
+    },
+    {
+      "name": "badges-default",
+      "notes": "background-color: transparent; color: #4b5563; border-radius: 9999px; padding: 6px 16px; font-size: 14px; font-weight: 400; border: 1px solid #e5e7eb; box-shadow: rgba(0,0,0,0.05) 0px 1px 2px 0px"
     },
     {
       "name": "sections-hero",
-      "notes": "background-color: #ffffff; padding: 48px; text-align: left"
+      "notes": "background-color: #ffffff; padding: 96px 0px; text-align: center"
     },
     {
-      "name": "sections-surface",
-      "notes": "background-color: #faf9f6; padding: 16px; text-align: left"
+      "name": "sections-stat-bar",
+      "notes": "background-color: transparent; border-radius: 9999px; border: 1px solid #e5e7eb; padding: 2px 20px; font-size: 12.75px; font-weight: 500; color: #4b5563; box-shadow: rgba(0,0,0,0.05) 0px 1px 2px 0px"
     },
     {
-      "name": "sections-footer",
-      "notes": "background-color: #faf9f6; padding: 0px; text-align: left"
+      "name": "inputs-dark",
+      "notes": "background-color: transparent; color: #ffffff; border: none; padding: 0px 12px; font-size: 16px; font-weight: 400; outline: none"
     },
     {
-      "name": "navigation-header",
-      "notes": "background-color: #ffffff; border-bottom: 1px solid #e5e5e5; position: sticky; top: 0; z-index: 50"
-    },
-    {
-      "name": "inputs-default",
-      "notes": "background-color: transparent; border: 1px solid #e5e5e5; padding: 16px; font-size: 14px; color: #000000; border-radius: 0px"
+      "name": "navigation-topnav",
+      "notes": "background-color: transparent; color: #000000; font-size: 14px; font-weight: 400; gap: 8px; padding: 8px 14px"
     }
   ],
   "rawCssVariables": [
@@ -259,427 +224,267 @@
     },
     {
       "property": "--foreground",
-      "value": "0 0% 0%",
+      "value": "222.2 84% 4.9%",
       "selector": ":root"
     },
     {
-      "property": "--border",
-      "value": "0 0% 89.8%",
-      "selector": ":root"
-    },
-    {
-      "property": "--primary",
-      "value": "0 0% 0%",
-      "selector": ":root"
-    },
-    {
-      "property": "--primary-foreground",
+      "property": "--card",
       "value": "0 0% 100%",
       "selector": ":root"
     },
     {
+      "property": "--card-foreground",
+      "value": "222.2 84% 4.9%",
+      "selector": ":root"
+    },
+    {
+      "property": "--popover",
+      "value": "0 0% 100%",
+      "selector": ":root"
+    },
+    {
+      "property": "--popover-foreground",
+      "value": "222.2 84% 4.9%",
+      "selector": ":root"
+    },
+    {
+      "property": "--primary",
+      "value": "222.2 47.4% 11.2%",
+      "selector": ":root"
+    },
+    {
+      "property": "--primary-foreground",
+      "value": "210 40% 98%",
+      "selector": ":root"
+    },
+    {
+      "property": "--secondary",
+      "value": "210 40% 96.1%",
+      "selector": ":root"
+    },
+    {
+      "property": "--secondary-foreground",
+      "value": "222.2 47.4% 11.2%",
+      "selector": ":root"
+    },
+    {
+      "property": "--muted",
+      "value": "210 40% 96.1%",
+      "selector": ":root"
+    },
+    {
+      "property": "--muted-foreground",
+      "value": "215.4 16.3% 46.9%",
+      "selector": ":root"
+    },
+    {
+      "property": "--accent",
+      "value": "210 40% 96.1%",
+      "selector": ":root"
+    },
+    {
+      "property": "--accent-foreground",
+      "value": "222.2 47.4% 11.2%",
+      "selector": ":root"
+    },
+    {
+      "property": "--destructive",
+      "value": "0 84.2% 60.2%",
+      "selector": ":root"
+    },
+    {
+      "property": "--destructive-foreground",
+      "value": "210 40% 98%",
+      "selector": ":root"
+    },
+    {
+      "property": "--border",
+      "value": "214.3 31.8% 91.4%",
+      "selector": ":root"
+    },
+    {
+      "property": "--input",
+      "value": "214.3 31.8% 91.4%",
+      "selector": ":root"
+    },
+    {
+      "property": "--ring",
+      "value": "222.2 84% 4.9%",
+      "selector": ":root"
+    },
+    {
       "property": "--radius",
-      "value": "0px",
-      "selector": ":root"
-    },
-    {
-      "property": "--radius-sm",
-      "value": "0.25rem",
-      "selector": ":root"
-    },
-    {
-      "property": "--radius-md",
-      "value": "0.375rem",
-      "selector": ":root"
-    },
-    {
-      "property": "--radius-lg",
       "value": "0.5rem",
       "selector": ":root"
     },
     {
-      "property": "--radius-xl",
-      "value": "0.75rem",
+      "property": "--shiki-color-text",
+      "value": "#ffffff",
       "selector": ":root"
     },
     {
-      "property": "--radius-2xl",
-      "value": "1rem",
+      "property": "--shiki-token-constant",
+      "value": "#a5b4fc",
       "selector": ":root"
     },
     {
-      "property": "--container-sm",
-      "value": "24rem",
+      "property": "--shiki-token-string",
+      "value": "#a5b4fc",
       "selector": ":root"
     },
     {
-      "property": "--container-md",
-      "value": "28rem",
+      "property": "--shiki-token-comment",
+      "value": "#71717a",
       "selector": ":root"
     },
     {
-      "property": "--container-lg",
-      "value": "32rem",
+      "property": "--shiki-token-keyword",
+      "value": "#7dd3fc",
       "selector": ":root"
     },
     {
-      "property": "--container-7xl",
-      "value": "80rem",
+      "property": "--shiki-token-parameter",
+      "value": "#f9a8d4",
       "selector": ":root"
     },
     {
-      "property": "--color-accent",
-      "value": "#e6ff00",
+      "property": "--shiki-token-function",
+      "value": "#c4b5fd",
       "selector": ":root"
     },
     {
-      "property": "--color-yellow",
-      "value": "#e6ff00",
+      "property": "--shiki-token-string-expression",
+      "value": "#a5b4fc",
       "selector": ":root"
     },
     {
-      "property": "--color-black",
-      "value": "#000",
+      "property": "--shiki-token-punctuation",
+      "value": "#e4e4e7",
       "selector": ":root"
     },
     {
-      "property": "--color-white",
-      "value": "#fff",
+      "property": "--c1",
+      "value": "#4137c8",
       "selector": ":root"
     },
     {
-      "property": "--color-surface",
-      "value": "#faf9f6",
+      "property": "--c2",
+      "value": "#cba0d9",
       "selector": ":root"
     },
     {
-      "property": "--color-sand-50",
-      "value": "#faf9f6",
+      "property": "--c3",
+      "value": "#453fe4",
       "selector": ":root"
     },
     {
-      "property": "--color-surface-hover",
-      "value": "#f5f5f5",
+      "property": "--c4",
+      "value": "#cda3db",
       "selector": ":root"
     },
     {
-      "property": "--color-surface-active",
-      "value": "#eee",
+      "property": "--c5",
+      "value": "#ffe2b8",
       "selector": ":root"
     },
     {
-      "property": "--color-border",
-      "value": "#e5e5e5",
+      "property": "--c6",
+      "value": "#3f38c7",
       "selector": ":root"
     },
     {
-      "property": "--color-nav-dark",
-      "value": "#0c0d0e",
+      "property": "--c7",
+      "value": "#453fe4",
       "selector": ":root"
     },
     {
-      "property": "--color-nav-hamburger-bg",
-      "value": "#222828",
+      "property": "--toastify-color-light",
+      "value": "#ffffff",
       "selector": ":root"
     },
     {
-      "property": "--color-nav-button-bg",
-      "value": "#f1f3f3",
+      "property": "--toastify-color-dark",
+      "value": "#121212",
       "selector": ":root"
     },
     {
-      "property": "--color-nav-text",
-      "value": "#6b7a7c",
+      "property": "--toastify-color-info",
+      "value": "#3498db",
       "selector": ":root"
     },
     {
-      "property": "--color-nav-link",
-      "value": "#6b7a7c",
+      "property": "--toastify-color-success",
+      "value": "#07bc0c",
       "selector": ":root"
     },
     {
-      "property": "--color-text-primary",
-      "value": "#111",
+      "property": "--toastify-color-warning",
+      "value": "#f1c40f",
       "selector": ":root"
     },
     {
-      "property": "--color-text-secondary",
-      "value": "#333",
+      "property": "--toastify-color-error",
+      "value": "#e74c3c",
       "selector": ":root"
     },
     {
-      "property": "--color-text-tertiary",
-      "value": "#444",
+      "property": "--toastify-toast-width",
+      "value": "320px",
       "selector": ":root"
     },
     {
-      "property": "--color-text-subtle",
-      "value": "#555",
+      "property": "--toastify-toast-offset",
+      "value": "16px",
       "selector": ":root"
     },
     {
-      "property": "--color-text-muted",
-      "value": "#666",
+      "property": "--toastify-toast-background",
+      "value": "#ffffff",
       "selector": ":root"
     },
     {
-      "property": "--color-text-faint",
-      "value": "#888",
+      "property": "--toastify-toast-min-height",
+      "value": "64px",
       "selector": ":root"
     },
     {
-      "property": "--color-text-placeholder",
-      "value": "#999",
+      "property": "--toastify-toast-max-height",
+      "value": "800px",
       "selector": ":root"
     },
     {
-      "property": "--color-text-disabled",
-      "value": "#aaa",
+      "property": "--toastify-toast-bd-radius",
+      "value": "6px",
       "selector": ":root"
     },
     {
-      "property": "--color-shadow-warm",
-      "value": "#d7c8af",
+      "property": "--toastify-z-index",
+      "value": "9999",
       "selector": ":root"
     },
     {
-      "property": "--color-shadow-sand",
-      "value": "#d7c8af",
+      "property": "--toastify-text-color-light",
+      "value": "#757575",
       "selector": ":root"
     },
     {
-      "property": "--color-overlay-dark",
-      "value": "#0c0d0ebf",
+      "property": "--toastify-text-color-dark",
+      "value": "#ffffff",
       "selector": ":root"
     },
     {
-      "property": "--color-gray-50",
-      "value": "#f5f5f5",
+      "property": "--toastify-spinner-color",
+      "value": "#616161",
       "selector": ":root"
     },
     {
-      "property": "--color-gray-100",
-      "value": "#eee",
+      "property": "--toastify-spinner-color-empty-area",
+      "value": "#e0e0e0",
       "selector": ":root"
     },
     {
-      "property": "--color-gray-200",
-      "value": "#e5e5e5",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-gray-300",
-      "value": "#ccc",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-gray-400",
-      "value": "#aaa",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-gray-500",
-      "value": "#999",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-gray-600",
-      "value": "#888",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-gray-700",
-      "value": "#666",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-gray-750",
-      "value": "#555",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-gray-800",
-      "value": "#444",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-gray-850",
-      "value": "#333",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-gray-900",
-      "value": "#111",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-neutral-50",
-      "value": "oklch(98.5% 0 0)",
-      "selector": ":root"
-    },
-    {
-      "property": "--color-neutral-950",
-      "value": "oklch(14.5% 0 0)",
-      "selector": ":root"
-    },
-    {
-      "property": "--text-xs",
-      "value": "0.75rem",
-      "selector": ":root"
-    },
-    {
-      "property": "--text-sm",
-      "value": "0.875rem",
-      "selector": ":root"
-    },
-    {
-      "property": "--text-base",
-      "value": "1rem",
-      "selector": ":root"
-    },
-    {
-      "property": "--text-lg",
-      "value": "1.125rem",
-      "selector": ":root"
-    },
-    {
-      "property": "--text-2xl",
-      "value": "1.5rem",
-      "selector": ":root"
-    },
-    {
-      "property": "--text-4xl",
-      "value": "2.25rem",
-      "selector": ":root"
-    },
-    {
-      "property": "--text-5xl",
-      "value": "3rem",
-      "selector": ":root"
-    },
-    {
-      "property": "--text-6xl",
-      "value": "3.75rem",
-      "selector": ":root"
-    },
-    {
-      "property": "--leading-tight",
-      "value": "1.25",
-      "selector": ":root"
-    },
-    {
-      "property": "--leading-snug",
-      "value": "1.375",
-      "selector": ":root"
-    },
-    {
-      "property": "--leading-normal",
-      "value": "1.5",
-      "selector": ":root"
-    },
-    {
-      "property": "--leading-relaxed",
-      "value": "1.625",
-      "selector": ":root"
-    },
-    {
-      "property": "--tracking-tight",
-      "value": "-0.025em",
-      "selector": ":root"
-    },
-    {
-      "property": "--tracking-wide",
-      "value": "0.025em",
-      "selector": ":root"
-    },
-    {
-      "property": "--tracking-wider",
-      "value": "0.05em",
-      "selector": ":root"
-    },
-    {
-      "property": "--tracking-widest",
-      "value": "0.1em",
-      "selector": ":root"
-    },
-    {
-      "property": "--font-weight-normal",
-      "value": "400",
-      "selector": ":root"
-    },
-    {
-      "property": "--font-weight-medium",
-      "value": "500",
-      "selector": ":root"
-    },
-    {
-      "property": "--font-weight-semibold",
-      "value": "600",
-      "selector": ":root"
-    },
-    {
-      "property": "--font-weight-bold",
-      "value": "700",
-      "selector": ":root"
-    },
-    {
-      "property": "--spacing",
-      "value": "0.25rem",
-      "selector": ":root"
-    },
-    {
-      "property": "--default-font-family",
-      "value": "\"Inter\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif",
-      "selector": ":root"
-    },
-    {
-      "property": "--default-mono-font-family",
-      "value": "\"DM Mono\",Monaco,Consolas,monospace",
-      "selector": ":root"
-    },
-    {
-      "property": "--default-transition-duration",
-      "value": "0.15s",
-      "selector": ":root"
-    },
-    {
-      "property": "--default-transition-timing-function",
-      "value": "cubic-bezier(.4,0,.2,1)",
-      "selector": ":root"
-    },
-    {
-      "property": "--blur-sm",
-      "value": "8px",
-      "selector": ":root"
-    },
-    {
-      "property": "--blur-md",
-      "value": "12px",
-      "selector": ":root"
-    },
-    {
-      "property": "--blur-xl",
-      "value": "24px",
-      "selector": ":root"
-    },
-    {
-      "property": "--blur-2xl",
-      "value": "40px",
-      "selector": ":root"
-    },
-    {
-      "property": "--drop-shadow-lg",
-      "value": "0 4px 4px #00000026",
-      "selector": ":root"
-    },
-    {
-      "property": "--animate-pulse",
-      "value": "pulse 2s cubic-bezier(.4,0,.6,1) infinite",
-      "selector": ":root"
-    },
-    {
-      "property": "--animate-spin",
-      "value": "spin 1s linear infinite",
+      "property": "--toastify-color-progress-dark",
+      "value": "#bb86fc",
       "selector": ":root"
     }
   ]

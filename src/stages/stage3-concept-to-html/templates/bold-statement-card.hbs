@@ -10,7 +10,7 @@
       width: 1200px;
       height: 630px;
       font-family: {{{ds.fontFamily}}};
-      background: {{ds.surface}};
+      background: {{{ds.backgroundStyle}}};
       color: {{ds.textPrimary}};
       overflow: hidden;
     }
@@ -29,10 +29,12 @@
       flex-shrink: 0;
     }
 
-    .dot-field {
+    .decorative-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
+      z-index: 0;
+      opacity: 1.0;
     }
 
     .brand {
@@ -106,42 +108,16 @@
       color: {{ds.textFaint}};
     }
 
-    .glow {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(215, 200, 175, 0.08) 0%, transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-
-    .brand-watermark {
-      position: absolute;
-      bottom: 60px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      font-size: 140px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: rgba(0, 0, 0, 0.03);
-      text-transform: uppercase;
-      pointer-events: none;
-      line-height: 1;
-    }
+    {{{ds.animationsCss}}}
   </style>
 </head>
 <body>
   <div class="canvas">
     <div class="warm-bar"></div>
-    <div class="dot-field">
+    <div class="decorative-bg">
       {{{ds.decorativePatternSvg}}}
     </div>
-    <div class="glow"></div>
-    <div class="brand-watermark">{{ds.logoText}}</div>
+    {{{ds.animationHintsSvg}}}
     <div class="brand">
       {{#if ds.logoSvg}}{{{ds.logoSvg}}}{{/if}}
       <span class="brand-name">{{ds.brandName}}</span>

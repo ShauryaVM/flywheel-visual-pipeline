@@ -1,6 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import type { ImageBlockParam, TextBlockParam } from '@anthropic-ai/sdk/resources/messages.js';
-import { readFile, access } from 'node:fs/promises';
+import { readFile, access, mkdir } from 'node:fs/promises';
+import { join } from 'node:path';
 import { chromium } from 'playwright';
 import { loadConfig } from '../../config.js';
 import { createStageLogger } from '../../observability/logger.js';
@@ -14,7 +15,7 @@ import type {
 const log = createStageLogger('stage4:judge');
 
 const SCORE_THRESHOLD = 7.0;
-const REFERENCE_SCREENSHOT_PATH = 'data/reference-brand-screenshot.png';
+const REFERENCE_SCREENSHOTS_DIR = 'data/reference-screenshots';
 
 // Weight allocation for composite score
 const WEIGHT_TEXT = 0.30;
@@ -22,7 +23,7 @@ const WEIGHT_VISION_ABSOLUTE = 0.35;
 const WEIGHT_VISION_COMPARATIVE = 0.35;
 
 // ---------------------------------------------------------------------------
-// Reference brand screenshot
+// Reference brand screenshot — per-URL to avoid cross-brand contamination
 // ---------------------------------------------------------------------------
 
 async function fileExists(path: string): Promise<boolean> {
@@ -35,17 +36,35 @@ async function fileExists(path: string): Promise<boolean> {
 }
 
 /**
- * Ensure we have a reference brand screenshot. Uses a cached version if
- * available, otherwise takes a fresh screenshot of TARGET_URL via Playwright.
+ * Derive a filesystem-safe filename from a URL's hostname.
+ * e.g. "https://effluent.ai" → "effluent-ai.png"
+ */
+function screenshotPathForUrl(url: string): string {
+  try {
+    const hostname = new URL(url.startsWith('http') ? url : `https://${url}`).hostname;
+    const safeName = hostname.replace(/^www\./, '').replace(/[^a-zA-Z0-9.-]/g, '-');
+    return join(REFERENCE_SCREENSHOTS_DIR, `${safeName}.png`);
+  } catch {
+    return join(REFERENCE_SCREENSHOTS_DIR, 'fallback.png');
+  }
+}
+
+/**
+ * Ensure we have a reference brand screenshot for the current TARGET_URL.
+ * Each URL gets its own cached screenshot so brands are never compared
+ * against a stale screenshot from a different site.
  */
 async function ensureReferenceScreenshot(): Promise<string | null> {
-  if (await fileExists(REFERENCE_SCREENSHOT_PATH)) {
-    log.info({ path: REFERENCE_SCREENSHOT_PATH }, 'Using cached reference screenshot');
-    return REFERENCE_SCREENSHOT_PATH;
+  const config = loadConfig();
+  const screenshotPath = screenshotPathForUrl(config.targetUrl);
+
+  if (await fileExists(screenshotPath)) {
+    log.info({ path: screenshotPath, url: config.targetUrl }, 'Using cached reference screenshot for this URL');
+    return screenshotPath;
   }
 
-  const config = loadConfig();
-  log.info({ url: config.targetUrl }, 'Capturing reference brand screenshot');
+  log.info({ url: config.targetUrl, path: screenshotPath }, 'Capturing reference brand screenshot');
+  await mkdir(REFERENCE_SCREENSHOTS_DIR, { recursive: true });
 
   let browser;
   try {
@@ -56,13 +75,13 @@ async function ensureReferenceScreenshot(): Promise<string | null> {
     await new Promise((r) => setTimeout(r, 500));
 
     await page.screenshot({
-      path: REFERENCE_SCREENSHOT_PATH,
+      path: screenshotPath,
       fullPage: false,
       type: 'png',
       clip: { x: 0, y: 0, width: 1440, height: 900 },
     });
-    log.info({ path: REFERENCE_SCREENSHOT_PATH }, 'Reference screenshot captured');
-    return REFERENCE_SCREENSHOT_PATH;
+    log.info({ path: screenshotPath }, 'Reference screenshot captured');
+    return screenshotPath;
   } catch (err) {
     log.warn({ err }, 'Failed to capture reference screenshot; comparative eval will be skipped');
     return null;

@@ -1,6 +1,8 @@
 import { renderConceptToHtml } from './renderer.js';
 import { exportVisual } from './exporter.js';
 import { createStageLogger } from '../../observability/logger.js';
+import { applyRenderingOverrides } from '../../utils/rendering-overrides.js';
+import type { RenderingOverrides } from '../../utils/rendering-overrides.js';
 import type { VisualConcept } from '../../schemas/concept.schema.js';
 import type { Stage3Result } from '../../types/index.js';
 
@@ -10,6 +12,7 @@ export interface Stage3Input {
   concept: VisualConcept;
   postId?: string;
   outputDir?: string;
+  renderingOverrides?: RenderingOverrides;
 }
 
 /**
@@ -20,13 +23,20 @@ export async function runStage3(input: Stage3Input): Promise<Stage3Result> {
     concept,
     postId = 'default',
     outputDir = 'data/outputs',
+    renderingOverrides,
   } = input;
 
   log.info({ modality: concept.modality, headline: concept.headline }, 'Input');
 
   const stageStart = Date.now();
 
-  const html = await renderConceptToHtml(concept);
+  let html = await renderConceptToHtml(concept);
+
+  // Apply rendering overrides from feedback critique if present
+  if (renderingOverrides) {
+    log.info({ rules: renderingOverrides.appliedRules }, 'Applying rendering overrides');
+    html = applyRenderingOverrides(html, renderingOverrides);
+  }
 
   const subDir = postId ? `${outputDir}/${postId}` : outputDir;
 

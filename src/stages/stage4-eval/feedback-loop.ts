@@ -5,6 +5,7 @@ import { runStage3 } from '../stage3-concept-to-html/index.js';
 import { runStage4 } from './index.js';
 import { createStageLogger } from '../../observability/logger.js';
 import { loadDesignSystemSummary } from '../../utils/design-system-summary.js';
+import { classifyCritique, generateRenderingOverrides, applyRenderingOverrides } from '../../utils/rendering-overrides.js';
 import type { EvalScore, FeedbackLog, FeedbackAttempt, PipelineResult } from '../../types/index.js';
 
 const log = createStageLogger('feedback-loop');
@@ -145,6 +146,22 @@ export async function runWithFeedback(input: FeedbackLoopInput): Promise<Feedbac
       `Regenerating due to: ${initialCritique.substring(0, 120)}`,
     );
 
+    // Classify critique to determine strategy
+    const classification = classifyCritique(initialCritique);
+    const renderingOverrides = generateRenderingOverrides(initialCritique);
+
+    log.info(
+      {
+        isRenderingOnly: classification.isRenderingOnly,
+        isConceptOnly: classification.isConceptOnly,
+        isBoth: classification.isBoth,
+        renderingIssues: classification.renderingIssues,
+        conceptIssues: classification.conceptIssues,
+        hasOverrides: !!renderingOverrides,
+      },
+      'Critique classified',
+    );
+
     const previousScores: Record<string, number> = {
       onBrand: evalScore.onBrand,
       legible: evalScore.legible,
@@ -160,25 +177,33 @@ export async function runWithFeedback(input: FeedbackLoopInput): Promise<Feedbac
       previousScores.compositeScore = evalScore.compositeScore;
     }
 
-    const retryConceptOutput = await runStage2(postText, {
-      postId: `${postId}-retry${attemptNum}`,
-      outputDir,
-      feedback: {
-        previousScores,
-        critique: initialCritique,
-        previousConcept: selectedConcept.headline,
-      },
-    });
+    let retrySelectedConcept = selectedConcept;
+    let retryConceptOutput = conceptOutput;
+    let conceptChanges = 'Rendering overrides only (no concept change)';
 
-    const retrySelectedConcept = retryConceptOutput.concepts[retryConceptOutput.selected]!;
-    const conceptChanges = `Modality: ${selectedConcept.modality} → ${retrySelectedConcept.modality}; Headline: "${selectedConcept.headline}" → "${retrySelectedConcept.headline}"`;
-    log.info({ conceptChanges }, 'Regenerated concept');
+    // If concept issues: regenerate the concept
+    if (!classification.isRenderingOnly) {
+      retryConceptOutput = await runStage2(postText, {
+        postId: `${postId}-retry${attemptNum}`,
+        outputDir,
+        feedback: {
+          previousScores,
+          critique: initialCritique,
+          previousConcept: selectedConcept.headline,
+        },
+      });
+
+      retrySelectedConcept = retryConceptOutput.concepts[retryConceptOutput.selected]!;
+      conceptChanges = `Modality: ${selectedConcept.modality} → ${retrySelectedConcept.modality}; Headline: "${selectedConcept.headline}" → "${retrySelectedConcept.headline}"`;
+      log.info({ conceptChanges }, 'Regenerated concept');
+    }
 
     const retryPostId = `${postId}-retry${attemptNum}`;
     const retryStage3 = await runStage3({
       concept: retrySelectedConcept,
       postId: retryPostId,
       outputDir,
+      renderingOverrides: renderingOverrides ?? undefined,
     });
 
     const retrySubDir = `${outputDir}/${retryPostId}`;
@@ -219,6 +244,7 @@ export async function runWithFeedback(input: FeedbackLoopInput): Promise<Feedbac
         retryScore,
         delta: retryScore - initialScore,
         passes: retryEvalScore.passesThreshold,
+        strategy: classification.isRenderingOnly ? 'rendering-overrides' : classification.isBoth ? 'concept+rendering' : 'concept-only',
       },
       'Retry evaluation complete',
     );

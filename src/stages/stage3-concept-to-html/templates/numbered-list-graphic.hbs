@@ -10,7 +10,7 @@
       width: 1200px;
       height: 630px;
       font-family: {{{ds.fontFamily}}};
-      background: {{ds.background}};
+      background: {{{ds.backgroundStyle}}};
       color: {{ds.textPrimary}};
       overflow: hidden;
     }
@@ -37,7 +37,7 @@
       flex-direction: column;
       justify-content: center;
       padding: 52px 48px 52px 64px;
-      border-right: 1px solid rgba(215, 200, 175, 0.3);
+      border-right: 1px solid rgba({{ds.accentRgb}}, 0.3);
     }
 
     .accent-mark {
@@ -95,7 +95,7 @@
       align-items: center;
       gap: 16px;
       padding: 10px 16px;
-      border-bottom: 1px solid rgba(215, 200, 175, 0.2);
+      border-bottom: 1px solid rgba({{ds.accentRgb}}, 0.2);
     }
 
     .list-item:last-child {
@@ -113,7 +113,7 @@
       font-family: {{{ds.monoFamily}}};
       font-size: 13px;
       font-weight: 500;
-      border-radius: 0;
+      border-radius: {{ds.radiusSm}};
     }
 
     .item-text {
@@ -133,11 +133,12 @@
       color: {{ds.textFaint}};
     }
 
-    .dot-field {
+    .decorative-bg {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
       z-index: 0;
+      opacity: 1.0;
     }
 
     .warm-border {
@@ -146,15 +147,18 @@
       left: 0;
       width: 100%;
       height: 1px;
-      background: rgba(215, 200, 175, 0.4);
+      background: rgba({{ds.accentRgb}}, 0.4);
     }
+
+    {{{ds.animationsCss}}}
   </style>
 </head>
 <body>
   <div class="canvas">
-    <div class="dot-field">
+    <div class="decorative-bg">
       {{{ds.decorativePatternSvg}}}
     </div>
+    {{{ds.animationHintsSvg}}}
     <div class="warm-bar"></div>
     <div class="left">
       <div class="accent-mark"></div>
