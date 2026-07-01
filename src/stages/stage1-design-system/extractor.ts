@@ -806,12 +806,12 @@ function buildFallbackPortfolio(): DesignPortfolio {
 // actually observed on the rendered page (crawl ground truth)
 // ---------------------------------------------------------------------------
 
-const ACCENT_VISION_CSS_FIELDS: Array<keyof DesignPortfolio> = [
+const ACCENT_VISION_CSS_FIELDS = [
   'background_style',
   'hero_treatment',
   'card_style',
   'accent_treatment',
-];
+] as const satisfies ReadonlyArray<keyof DesignPortfolio>;
 
 export function isAccentCssVariableKey(key: string): boolean {
   return key.toLowerCase().includes('accent');

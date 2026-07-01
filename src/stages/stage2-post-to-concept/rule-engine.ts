@@ -30,6 +30,7 @@ function evaluateCondition(condition: string, signals: PostSignals): boolean {
     has_trend_data: signals.has_trend_data,
     has_proportion_data: signals.has_proportion_data,
     numeric_count: signals.numeric_count,
+    has_mafia_framing: signals.has_mafia_framing,
   };
 
   try {
@@ -141,6 +142,15 @@ export function evaluateRules(
       modality: 'multi_stat_panel',
       confidence: 78,
       source_content_type: 'data_research_insight',
+    });
+  }
+
+  // Flywheel mafia ecosystem posts: numbered company lists with "mafia" framing
+  if (signals.has_mafia_framing) {
+    candidates.push({
+      modality: 'mafia_ecosystem_graphic',
+      confidence: 88,
+      source_content_type: 'industry_news_commentary',
     });
   }
 

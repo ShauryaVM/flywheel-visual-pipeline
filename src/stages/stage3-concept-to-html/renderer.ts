@@ -7,6 +7,10 @@ import type { LayoutProtocol, ChartDataItem } from '../../schemas/concept.schema
 import { MODALITY_TEMPLATE_MAP } from '../../schemas/concept.schema.js';
 import { createStageLogger } from '../../observability/logger.js';
 import type { DesignSystemData, DesignPortfolio, BrandAssets } from '../../types/index.js';
+import {
+  buildInfographicDesignTokens,
+  loadFlywheelLogoSvg,
+} from '../../utils/flywheel-infographic.js';
 
 const log = createStageLogger('stage3:renderer');
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -266,6 +270,38 @@ Handlebars.registerHelper('gt', (a: number, b: number) => a > b);
 Handlebars.registerHelper('truncate', (str: string, len: number) => {
   if (typeof str !== 'string') return str;
   return str.length > len ? str.slice(0, len) + '...' : str;
+});
+
+function parsePillString(str: string): { index: string; name: string; stat: string; domain: string } {
+  if (typeof str !== 'string') {
+    return { index: '', name: String(str), stat: '', domain: '' };
+  }
+  let s = str.trim();
+  let index = '';
+  const indexMatch = s.match(/^(\d+)\s*[\/\.]\s*/);
+  if (indexMatch) {
+    index = indexMatch[1]!;
+    s = s.slice(indexMatch[0].length).trim();
+  }
+  const parts = s.split('|').map((p) => p.trim());
+  const name = parts[0] ?? s;
+  const stat = parts[1] ?? '';
+  let domain = parts[2] ?? '';
+  if (!domain && stat && /^[\w.-]+\.\w{2,}$/i.test(stat)) {
+    domain = stat;
+    return { index, name, stat: '', domain };
+  }
+  return { index, name, stat, domain };
+}
+
+Handlebars.registerHelper('pillIndex', (str: string) => parsePillString(str).index);
+Handlebars.registerHelper('pillName', (str: string) => parsePillString(str).name);
+Handlebars.registerHelper('pillStat', (str: string) => parsePillString(str).stat);
+Handlebars.registerHelper('pillDomain', (str: string) => parsePillString(str).domain);
+Handlebars.registerHelper('faviconUrl', (domain: string) => {
+  if (typeof domain !== 'string' || !domain.trim()) return '';
+  const clean = domain.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+  return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(clean)}&sz=128`;
 });
 
 async function loadDesignSystem(
@@ -772,11 +808,15 @@ export async function renderConceptToHtml(
   concept: VisualConcept,
   designSystemPath?: string,
 ): Promise<string> {
-  const [designSystem, fontCss] = await Promise.all([
+  const [designSystem, fontCss, flywheelLogoSvg] = await Promise.all([
     loadDesignSystem(designSystemPath),
     loadFontCss(),
+    loadFlywheelLogoSvg(),
   ]);
-  const ds = buildDesignTokens(designSystem);
+  const ds = {
+    ...buildDesignTokens(designSystem),
+    infographic: buildInfographicDesignTokens(flywheelLogoSvg),
+  };
 
   // Path 1: Graphist layout protocol
   if (concept.layout_protocol) {

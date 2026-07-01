@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      font-family: {{{ds.fontFamily}}};
+      background: {{{ds.infographic.creamGradient}}};
+      color: {{ds.infographic.bodyColor}};
+      overflow: hidden;
+    }
+
+    .canvas {
+      width: 1200px;
+      height: 630px;
+      display: flex;
+      flex-direction: column;
+      padding: 32px 52px 24px;
+      box-shadow: {{{ds.infographic.cardShadow}}};
+    }
+
+    .header {
+      margin-bottom: 14px;
+    }
+
+    .summary-pill {
+      display: inline-block;
+      background: {{{ds.infographic.summaryPillBg}}};
+      border: {{{ds.infographic.summaryPillBorder}}};
+      box-shadow: 0 2px 8px rgba(215,200,175,0.15), inset 0 1px 1px rgba(255,252,248,0.4);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: {{ds.infographic.mutedColor}};
+      margin-bottom: 12px;
+    }
+
+    .headline {
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: {{ds.infographic.headingColor}};
+      max-width: 1000px;
+    }
+
+    .subtext {
+      font-size: 13px;
+      color: {{ds.infographic.subtitleColor}};
+      margin-top: 8px;
+      max-width: 800px;
+      line-height: 1.4;
+    }
+
+    .divider {
+      height: 1px;
+      background: {{{ds.infographic.sandDivider}}};
+      margin: 12px 0 16px;
+    }
+
+    .grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 10px 12px;
+      align-content: center;
+    }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: {{{ds.infographic.pillBg}}};
+      border: {{{ds.infographic.pillBorder}}};
+      box-shadow: {{{ds.infographic.pillShadow}}};
+      border-radius: 999px;
+      padding: 5px 12px 5px 6px;
+      min-height: 36px;
+      overflow: hidden;
+    }
+
+    .pill-index {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 10px;
+      font-weight: 500;
+      color: {{ds.infographic.subtitleColor}};
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 5px;
+      padding: 2px 6px;
+      flex-shrink: 0;
+    }
+
+    .pill-favicon {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    .pill-body {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .pill-name {
+      font-size: 11px;
+      font-weight: 600;
+      color: {{ds.infographic.bodyColor}};
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.2;
+    }
+
+    .pill-stat {
+      font-size: 10px;
+      font-weight: 500;
+      color: {{ds.infographic.mutedColor}};
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.2;
+      margin-top: 1px;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.6;
+    }
+
+    .brand svg { width: 18px; height: 18px; }
+
+    .brand-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: {{ds.infographic.subtitleColor}};
+    }
+
+    .url {
+      font-size: 12px;
+      font-weight: 600;
+      color: {{ds.infographic.subtitleColor}};
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="header">
+      <div class="summary-pill">Ecosystem map</div>
+      <h1 class="headline">{{headline}}</h1>
+      {{#if subtext}}
+      <p class="subtext">{{subtext}}</p>
+      {{/if}}
+    </div>
+    <div class="divider"></div>
+    <div class="grid">
+      {{#each data_points}}
+      <div class="pill">
+        {{#if (pillIndex this)}}
+        <span class="pill-index">{{pillIndex this}}</span>
+        {{/if}}
+        {{#if (pillDomain this)}}
+        <img class="pill-favicon" src="{{faviconUrl (pillDomain this)}}" alt="" />
+        {{/if}}
+        <div class="pill-body">
+          <div class="pill-name">{{pillName this}}</div>
+          {{#if (pillStat this)}}
+          <div class="pill-stat">{{pillStat this}}</div>
+          {{/if}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <div class="footer">
+      <div class="brand">
+        {{#if ds.infographic.flywheelLogoSvg}}{{{ds.infographic.flywheelLogoSvg}}}{{else}}{{#if ds.logoSvg}}{{{ds.logoSvg}}}{{/if}}{{/if}}
+        <span class="brand-name">Flywheel</span>
+      </div>
+      <span class="url">flywheel.so</span>
+    </div>
+  </div>
+</body>
+</html>

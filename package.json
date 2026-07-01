@@ -15,6 +15,7 @@
     "format": "prettier --write src/",
     "pipeline": "tsx src/cli.ts --run",
     "demo": "tsx src/demo.ts",
+    "demo:flywheel": "tsx src/demo-flywheel-formats.ts",
     "stage1": "tsx src/stages/stage1-design-system/index.ts",
     "audit-tokens": "tsx src/stages/stage1-design-system/audit-tokens-vision.ts",
     "stage2": "tsx src/stages/stage2-post-to-concept/index.ts",

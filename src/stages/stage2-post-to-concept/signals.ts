@@ -16,6 +16,7 @@ export interface PostSignals {
   has_trend_data: boolean;
   has_proportion_data: boolean;
   numeric_count: number;
+  has_mafia_framing: boolean;
 }
 
 export function computeSignals(postText: string): PostSignals {
@@ -96,6 +97,17 @@ export function computeSignals(postText: string): PostSignals {
   const numericMatches = postText.match(/(?<![A-Za-z])\d+(?:\.\d+)?[%x×]?/g) || [];
   const numeric_count = numericMatches.length;
 
+  const mafiaPatterns = [
+    /\bmafia\b/i,
+    /\becosystem\b.*\b(?:companies|startups|founders)\b/i,
+    /\b(?:top|here are)\s+\d+\s+(?:companies|startups|ai companies)\b/i,
+    /\bwho else belongs on this list\b/i,
+    /\bconcentrated talent\b/i,
+  ];
+  const has_mafia_framing =
+    mafiaPatterns.some((p) => p.test(postText)) &&
+    (has_list_structure || numeric_count >= 3);
+
   return {
     word_count,
     has_numbers,
@@ -109,5 +121,6 @@ export function computeSignals(postText: string): PostSignals {
     has_trend_data,
     has_proportion_data,
     numeric_count,
+    has_mafia_framing,
   };
 }

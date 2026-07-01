@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      font-family: {{{ds.fontFamily}}};
+      background: {{{ds.infographic.creamGradient}}};
+      color: {{ds.infographic.bodyColor}};
+      overflow: hidden;
+    }
+
+    .canvas {
+      width: 1200px;
+      height: 630px;
+      display: flex;
+      flex-direction: column;
+      padding: 36px 56px 28px;
+      box-shadow: {{{ds.infographic.cardShadow}}};
+    }
+
+    .header {
+      margin-bottom: 20px;
+    }
+
+    .summary-pill {
+      display: inline-block;
+      background: {{{ds.infographic.summaryPillBg}}};
+      border: {{{ds.infographic.summaryPillBorder}}};
+      box-shadow: 0 2px 8px rgba(215,200,175,0.15), inset 0 1px 1px rgba(255,252,248,0.4);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: {{ds.infographic.mutedColor}};
+      margin-bottom: 14px;
+    }
+
+    .headline {
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: {{ds.infographic.headingColor}};
+      max-width: 900px;
+    }
+
+    .subtext {
+      font-size: 14px;
+      font-weight: 400;
+      color: {{ds.infographic.subtitleColor}};
+      margin-top: 10px;
+      max-width: 700px;
+      line-height: 1.45;
+      letter-spacing: 0.02em;
+    }
+
+    .divider {
+      height: 1px;
+      background: {{{ds.infographic.sandDivider}}};
+      margin: 16px 0 20px;
+    }
+
+    .stats-grid {
+      flex: 1;
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: {{{ds.infographic.glassCardBg}}};
+      border: {{{ds.infographic.glassCardBorder}}};
+      box-shadow: {{{ds.infographic.glassCardShadow}}};
+      border-radius: 14px;
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .stat-value {
+      font-family: {{{ds.monoFamily}}};
+      font-size: 38px;
+      font-weight: 500;
+      color: {{ds.infographic.headingColor}};
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: {{ds.infographic.mutedColor}};
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.3;
+    }
+
+    .stat-text-only {
+      font-size: 15px;
+      font-weight: 500;
+      color: {{ds.infographic.bodyColor}};
+      line-height: 1.4;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px;
+      padding-top: 8px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.6;
+    }
+
+    .brand svg { width: 18px; height: 18px; }
+
+    .brand-name {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: {{ds.infographic.subtitleColor}};
+    }
+
+    .url {
+      font-size: 12px;
+      font-weight: 600;
+      color: {{ds.infographic.subtitleColor}};
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="header">
+      <div class="summary-pill">By the numbers</div>
+      <h1 class="headline">{{headline}}</h1>
+      {{#if subtext}}
+      <p class="subtext">{{subtext}}</p>
+      {{/if}}
+    </div>
+    <div class="divider"></div>
+    <div class="stats-grid">
+      {{#each data_points}}
+      <div class="stat-card">
+        {{#if (contains this "|")}}
+        <div class="stat-value">{{statValue this}}</div>
+        <div class="stat-label">{{statLabel this}}</div>
+        {{else}}
+        <div class="stat-text-only">{{this}}</div>
+        {{/if}}
+      </div>
+      {{/each}}
+    </div>
+    <div class="footer">
+      <div class="brand">
+        {{#if ds.infographic.flywheelLogoSvg}}{{{ds.infographic.flywheelLogoSvg}}}{{else}}{{#if ds.logoSvg}}{{{ds.logoSvg}}}{{/if}}{{/if}}
+        <span class="brand-name">Flywheel</span>
+      </div>
+      <span class="url">flywheel.so</span>
+    </div>
+  </div>
+</body>
+</html>

@@ -49,8 +49,8 @@ A standalone service that takes a finished LinkedIn-style post + a brand's desig
 | Category | Templates |
 |----------|-----------|
 | **Text-focused** | `headline-subtext-card`, `bold-statement-card`, `key-takeaway-card`, `pull-quote-card` |
-| **Data-focused** | `stat-callout`, `multi-stat-panel`, `bar-chart`, `line-sparkline`, `pie-donut-chart` |
-| **List-focused** | `numbered-list-graphic`, `feature-list-graphic` |
+| **Data-focused** | `stat-callout`, `flywheel-stat-panel`, `bar-chart`, `line-sparkline`, `pie-donut-chart` |
+| **List-focused** | `numbered-list-graphic`, `feature-list-graphic`, `mafia-ecosystem` |
 | **Quote** | `quote-card`, `attribution-quote-card` |
 | **Dynamic** | Layout protocol renderer (any composition via JSON) |
 
@@ -122,8 +122,18 @@ npx playwright install chromium
 | `LANGFUSE_SECRET_KEY` | No | Langfuse secret key for tracing |
 | `LANGFUSE_PUBLIC_KEY` | No | Langfuse public key for tracing |
 | `LANGFUSE_HOST` | No | Langfuse host (defaults to cloud) |
+| `FLYWHEEL_SCRAPER_PATH` | No | Path to Flywheel-scraper clone for infographic logo/tokens (defaults to `../Flywheel-scraper`) |
 
-## Usage
+### Flywheel production formats
+
+Templates for Flywheel's LinkedIn infographic formats (mafia ecosystem grids + stat panels) use tokens from `Design/infographic-design-system.md` in the Flywheel-scraper repo. See `docs/flywheel-design-audit.md`.
+
+```bash
+# Run demo posts matching Mafias + Stats reference formats
+npm run demo:flywheel
+```
+
+Outputs land in `data/outputs/demo-flywheel-stats/` and `data/outputs/demo-flywheel-mafias/`.
 
 ### Run the Full Pipeline
 

@@ -250,7 +250,8 @@ You may use these modalities ONLY IF none of the candidates above fit the conten
 - bold_statement_card: Centered bold statement for punchy quotes or declarations
 - pull_quote_card: Quote with attribution in a card container
 - quote_card: Clean centered quote without card container
-- multi_stat_panel: Multiple statistics displayed in tiles
+- multi_stat_panel: Multiple statistics in Flywheel infographic glass cards (VALUE | LABEL format)
+- mafia_ecosystem_graphic: Grid of company pills with favicons for ecosystem/mafia list posts
 - feature_list_graphic: Bullet-point feature/benefit list
 - stat_callout: Single hero statistic with supporting context
 - attribution_quote_card: Quote with speaker attribution
@@ -262,6 +263,7 @@ IMPORTANT MODALITY SELECTION RULES (follow strictly):
 - If the post contains QUANTITATIVE COMPARISONS (X vs Y, A is better than B by N%), use bar_chart.
 - If the post mentions GROWTH/TRENDS over time, use line_sparkline.
 - If the post describes PROPORTIONS/SHARES/DISTRIBUTIONS, use pie_donut_chart.
+- If the post is an ECOSYSTEM/MAFIA list (numbered companies with funding stats), use mafia_ecosystem_graphic.
 - If the post contains 3+ distinct metrics/statistics, use multi_stat_panel.
 - If the post highlights ONE hero statistic with context, use stat_callout.
 - If the post is a NUMBERED LIST of tips/lessons/steps, use numbered_list_graphic.
@@ -287,10 +289,11 @@ ${layoutDescriptions.length > 0 ? layoutDescriptions.join('\n') : `- **Left-anch
 5. Data points must be real facts/numbers from the post, never invented.
 6. For numbered_list_graphic: data_points should be concise items (under 12 words each). Limit to 7 items max.
 7. For multi_stat_panel: data_points should use "VALUE | LABEL" format (e.g. "900+ | GitHub Stars").
-8. For feature_list_graphic: data_points should be short feature descriptions (under 10 words each).
-9. The accent color (${designSystem.colors.accent.hex}) is for thin accent bars, borders, and shadows ONLY. Never as text color or large fill.
-10. ALL concepts must use light backgrounds. No dark/black backgrounds.
-11. Design with editorial restraint: every element must earn its place on the canvas.
+8. For mafia_ecosystem_graphic: data_points use "Company | stat | domain.com" (optional leading "N/" index). Limit to 8 items max for the canvas.
+9. For feature_list_graphic: data_points should be short feature descriptions (under 10 words each).
+10. The accent color (${designSystem.colors.accent.hex}) is for thin accent bars, borders, and shadows ONLY. Never as text color or large fill.
+11. ALL concepts must use light backgrounds. No dark/black backgrounds.
+12. Design with editorial restraint: every element must earn its place on the canvas.
 
 ## Chart Modalities (ONLY for data-heavy posts)
 

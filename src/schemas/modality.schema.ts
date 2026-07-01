@@ -46,6 +46,7 @@ export const VisualModality = z.enum([
   'bar_chart',
   'line_sparkline',
   'pie_donut_chart',
+  'mafia_ecosystem_graphic',
 ]);
 export type VisualModality = z.infer<typeof VisualModality>;
 
