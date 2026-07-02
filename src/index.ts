@@ -8,7 +8,7 @@ import { runWithFeedback } from './stages/stage4-eval/feedback-loop.js';
 import { createStageLogger } from './observability/logger.js';
 import { loadDesignSystemSummary, clearDesignSystemSummaryCache } from './utils/design-system-summary.js';
 import { clearRendererDesignSystemCache } from './stages/stage3-concept-to-html/renderer.js';
-import { loadConfig } from './config.js';
+import { normalizeTargetUrl, hostnameFromUrl } from './utils/target-url.js';
 import type { PipelineInput, PipelineResult } from './types/index.js';
 
 export { runWithFeedback } from './stages/stage4-eval/feedback-loop.js';
@@ -20,10 +20,11 @@ const EVAL_THRESHOLD = 7.0;
 const DESIGN_SYSTEM_PATH = 'data/design-system.json';
 
 /**
- * Ensure the cached design system matches the current TARGET_URL.
+ * Ensure the cached design system matches the requested brand URL.
  * If the file doesn't exist or was crawled from a different URL, re-run Stage 1.
  */
-async function ensureDesignSystem(targetUrl: string): Promise<void> {
+export async function ensureBrandDesignSystem(targetUrl: string): Promise<void> {
+  const url = normalizeTargetUrl(targetUrl);
   clearDesignSystemSummaryCache();
   clearRendererDesignSystemCache();
 
@@ -32,43 +33,33 @@ async function ensureDesignSystem(targetUrl: string): Promise<void> {
     const ds = JSON.parse(raw) as { metadata?: { source_url?: string } };
     const cachedUrl = ds.metadata?.source_url;
 
-    if (cachedUrl && normalizeUrl(cachedUrl) === normalizeUrl(targetUrl)) {
-      log.info({ cachedUrl, targetUrl }, 'Design system cache is valid for current TARGET_URL');
+    if (cachedUrl && hostnameFromUrl(cachedUrl) === hostnameFromUrl(url)) {
+      log.info({ cachedUrl, targetUrl: url }, 'Design system cache is valid for brand URL');
       return;
     }
 
     log.warn(
-      { cachedUrl, targetUrl },
+      { cachedUrl, targetUrl: url },
       'Design system cache is for a different URL — re-running Stage 1',
     );
   } catch {
-    log.info({ targetUrl }, 'No cached design system found — running Stage 1');
+    log.info({ targetUrl: url }, 'No cached design system found — running Stage 1');
   }
 
-  await runStage1(targetUrl);
-}
-
-function normalizeUrl(url: string): string {
-  try {
-    const u = new URL(url.startsWith('http') ? url : `https://${url}`);
-    return u.hostname.replace(/^www\./, '');
-  } catch {
-    return url.toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/+$/, '');
-  }
+  await runStage1(url);
 }
 
 /**
  * Run the visual pipeline: Post -> Concept -> HTML -> PDF + PNG -> Eval.
  */
 export async function runPipeline(input: PipelineInput): Promise<PipelineResult> {
-  const { postText, postId, outputDir = 'data/outputs' } = input;
+  const { postText, postId, outputDir = 'data/outputs', targetUrl } = input;
+  const brandUrl = normalizeTargetUrl(targetUrl);
 
   const pipelineStart = Date.now();
-  log.info({ postId, outputDir }, 'Starting pipeline');
+  log.info({ postId, outputDir, targetUrl: brandUrl }, 'Starting pipeline');
 
-  // Stage 1: Ensure design system is for the current TARGET_URL
-  const config = loadConfig();
-  await ensureDesignSystem(config.targetUrl);
+  await ensureBrandDesignSystem(brandUrl);
 
   // Stage 2: Generate visual concepts from post
   const stage2Start = Date.now();
@@ -103,6 +94,7 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
       designSystemSummary,
       pngPath: stage3.pngPath,
       outputDir: subDir,
+      targetUrl: brandUrl,
     });
     const stage4Latency = Date.now() - stage4Start;
 
@@ -158,10 +150,10 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
 export async function runPipelineWithFeedback(
   input: PipelineInput & { maxRetries?: number },
 ): Promise<PipelineResult> {
-  const { postText, postId, outputDir = 'data/outputs', maxRetries = 1 } = input;
+  const { targetUrl, maxRetries = 1, ...rest } = input;
+  const brandUrl = normalizeTargetUrl(targetUrl);
 
-  const config = loadConfig();
-  await ensureDesignSystem(config.targetUrl);
+  await ensureBrandDesignSystem(brandUrl);
 
-  return runWithFeedback({ postText, postId, outputDir, maxRetries });
+  return runWithFeedback({ ...rest, targetUrl: brandUrl, maxRetries });
 }

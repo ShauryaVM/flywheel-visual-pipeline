@@ -7,10 +7,7 @@ import type { LayoutProtocol, ChartDataItem } from '../../schemas/concept.schema
 import { MODALITY_TEMPLATE_MAP } from '../../schemas/concept.schema.js';
 import { createStageLogger } from '../../observability/logger.js';
 import type { DesignSystemData, DesignPortfolio, BrandAssets } from '../../types/index.js';
-import {
-  buildInfographicDesignTokens,
-  loadFlywheelLogoSvg,
-} from '../../utils/flywheel-infographic.js';
+import { buildInfographicDesignTokens } from '../../utils/infographic-tokens.js';
 
 const log = createStageLogger('stage3:renderer');
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -81,7 +78,7 @@ function injectFontsIntoHtml(html: string, fontCss: string): string {
 const templateCache = new Map<string, HandlebarsTemplateDelegate>();
 let cachedDesignSystem: DesignSystemData | null = null;
 
-/** Clear the in-memory design system cache (called when TARGET_URL changes). */
+/** Clear the in-memory design system cache (called when the brand URL changes). */
 export function clearRendererDesignSystemCache(): void {
   cachedDesignSystem = null;
 }
@@ -808,14 +805,23 @@ export async function renderConceptToHtml(
   concept: VisualConcept,
   designSystemPath?: string,
 ): Promise<string> {
-  const [designSystem, fontCss, flywheelLogoSvg] = await Promise.all([
+  const [designSystem, fontCss] = await Promise.all([
     loadDesignSystem(designSystemPath),
     loadFontCss(),
-    loadFlywheelLogoSvg(),
   ]);
+  const baseDs = buildDesignTokens(designSystem);
   const ds = {
-    ...buildDesignTokens(designSystem),
-    infographic: buildInfographicDesignTokens(flywheelLogoSvg),
+    ...baseDs,
+    infographic: buildInfographicDesignTokens({
+      primary: baseDs.primary,
+      accent: baseDs.accent,
+      background: baseDs.background,
+      text: baseDs.textPrimary,
+      textMuted: baseDs.textMuted,
+      textSubtle: baseDs.textSubtle,
+      surface: baseDs.surface,
+      backgroundStyle: baseDs.backgroundStyle,
+    }),
   };
 
   // Path 1: Graphist layout protocol

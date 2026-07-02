@@ -3,11 +3,10 @@ import { createServer, type IncomingMessage, type ServerResponse } from 'node:ht
 import { readFile } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { runPipeline } from './index.js';
+import { runPipeline, ensureBrandDesignSystem } from './index.js';
 import { runStage2 } from './stages/stage2-post-to-concept/index.js';
 import { runStage3 } from './stages/stage3-concept-to-html/index.js';
 import { runStage4 } from './stages/stage4-eval/index.js';
-import { resetConfig } from './config.js';
 import { clearDesignSystemSummaryCache, loadDesignSystemSummary } from './utils/design-system-summary.js';
 import { clearRendererDesignSystemCache } from './stages/stage3-concept-to-html/renderer.js';
 import { classifyCritique, generateRenderingOverrides } from './utils/rendering-overrides.js';
@@ -180,9 +179,6 @@ async function handleRegenerate(req: IncomingMessage, res: ServerResponse): Prom
     return;
   }
 
-  process.env.TARGET_URL = targetUrl;
-  resetConfig();
-
   const postId = `harness-regen-${Date.now()}`;
   const outputDir = 'data/outputs';
   const jobId = postId;
@@ -192,6 +188,9 @@ async function handleRegenerate(req: IncomingMessage, res: ServerResponse): Prom
 
   void (async () => {
     try {
+      clearDesignSystemSummaryCache();
+      clearRendererDesignSystemCache();
+      await ensureBrandDesignSystem(targetUrl);
       // Classify critique to determine regeneration strategy
       const classification = classifyCritique(critique);
       const renderingOverrides = generateRenderingOverrides(critique);
@@ -237,6 +236,7 @@ async function handleRegenerate(req: IncomingMessage, res: ServerResponse): Prom
         htmlPath: stage3.htmlPath,
         postText,
         designSystemSummary,
+        targetUrl,
         pngPath: stage3.pngPath,
         outputDir: subDir,
       });
@@ -317,11 +317,6 @@ async function handleGenerate(req: IncomingMessage, res: ServerResponse): Promis
     return;
   }
 
-  process.env.TARGET_URL = targetUrl;
-  resetConfig();
-  clearDesignSystemSummaryCache();
-  clearRendererDesignSystemCache();
-
   const postId = `harness-${Date.now()}`;
   const jobId = postId;
 
@@ -330,7 +325,7 @@ async function handleGenerate(req: IncomingMessage, res: ServerResponse): Promis
 
   void (async () => {
     try {
-      const result = await runPipeline({ postText, postId });
+      const result = await runPipeline({ postText, postId, targetUrl });
       lastRunState = { postText, targetUrl, evalScore: result.evalScore };
       completeJob(jobId, await buildGeneratePayload(result));
     } catch (err) {

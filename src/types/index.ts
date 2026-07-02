@@ -165,6 +165,7 @@ export interface SchemaV1 {
 
 export interface PipelineInput {
   postText: string;
+  targetUrl: string;
   postId?: string;
   outputDir?: string;
 }

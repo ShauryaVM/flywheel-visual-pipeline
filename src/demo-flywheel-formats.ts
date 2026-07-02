@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { runPipelineWithFeedback } from './index.js';
 import { createStageLogger } from './observability/logger.js';
+import { parseTargetUrlFromArgv } from './utils/target-url.js';
 
 const log = createStageLogger('demo:flywheel-formats');
 
@@ -55,7 +56,8 @@ Who else belongs on this list?`,
 ];
 
 async function main() {
-  log.info(`Running Flywheel format demo with ${FLYWHEEL_FORMAT_POSTS.length} posts`);
+  const targetUrl = parseTargetUrlFromArgv();
+  log.info({ targetUrl, postCount: FLYWHEEL_FORMAT_POSTS.length }, 'Running Flywheel format demo');
 
   for (const post of FLYWHEEL_FORMAT_POSTS) {
     log.info({ id: post.id, expected: post.expectedModality }, `Processing: ${post.id}`);
@@ -63,6 +65,7 @@ async function main() {
     try {
       const result = await runPipelineWithFeedback({
         postText: post.text,
+        targetUrl,
         postId: post.id,
         outputDir: 'data/outputs',
         maxRetries: 1,

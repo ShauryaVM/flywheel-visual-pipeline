@@ -11,7 +11,7 @@ export const MODALITY_TEMPLATE_MAP: Record<string, string> = {
   bold_statement_card: 'bold-statement-card',
   pull_quote_card: 'pull-quote-card',
   quote_card: 'quote-card',
-  multi_stat_panel: 'flywheel-stat-panel',
+  multi_stat_panel: 'infographic-stat-panel',
   mafia_ecosystem_graphic: 'mafia-ecosystem',
   feature_list_graphic: 'feature-list-graphic',
   stat_callout: 'stat-callout',

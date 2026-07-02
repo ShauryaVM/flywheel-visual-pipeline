@@ -3,6 +3,7 @@ import { readFile, access, writeFile, mkdir } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
+import { hostnameFromUrl } from '../../utils/target-url.js';
 import { loadConfig } from '../../config.js';
 import { createStageLogger } from '../../observability/logger.js';
 import type { PageScreenshot } from './crawler.js';
@@ -324,14 +325,14 @@ async function main(): Promise<void> {
 
   const ds = JSON.parse(await readFile(designSystemPath, 'utf-8')) as Record<string, unknown>;
   const metadata = ds.metadata as { source_url?: string } | undefined;
-  const sourceUrl = metadata?.source_url ?? config.targetUrl;
+  const sourceUrl = metadata?.source_url;
 
-  let hostname: string;
-  try {
-    hostname = new URL(sourceUrl).hostname.replace(/^www\./, '');
-  } catch {
-    hostname = 'flywheelos.com';
+  if (!sourceUrl) {
+    log.fatal('design-system.json has no metadata.source_url — run Stage 1 with a brand URL first');
+    process.exit(1);
   }
+
+  const hostname = hostnameFromUrl(sourceUrl);
 
   const defaultScreenshot = join('data', 'reference-screenshots', `${hostname}.png`);
   const screenshotPaths = screenshotArg

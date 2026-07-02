@@ -36,21 +36,22 @@ describe('Stage 3: Rendering', () => {
     expect(html).toContain('47%');
   });
 
-  it('renders flywheel-stat-panel template', async () => {
+  it('renders infographic-stat-panel template with brand from design system', async () => {
     const concept: VisualConcept = {
       modality: 'multi_stat_panel',
       headline: 'Impressions are vanity.',
       subtext: 'Pipeline is the point.',
       data_points: ['2.75x | Personal vs company impressions', '1-2% | Regular posters on LinkedIn'],
-      layout_description: 'Glass stat cards on cream gradient',
-      color_usage: 'Flywheel infographic tokens',
+      layout_description: 'Glass stat cards on brand gradient',
+      color_usage: 'Brand infographic tokens',
       reasoning: 'Multiple metrics from the post.',
     };
 
     const html = await renderConceptToHtml(concept);
 
     expect(html).toContain('Impressions are vanity.');
-    expect(html).toContain('faf9f6');
+    expect(html).not.toContain('>Flywheel<');
+    expect(html).not.toContain('flywheel.so');
   });
 
   it('renders mafia-ecosystem template', async () => {
@@ -63,7 +64,7 @@ describe('Stage 3: Rendering', () => {
         '2/ Wayve | $8.6B valuation | wayve.ai',
       ],
       layout_description: 'Grid of glass company pills',
-      color_usage: 'Flywheel infographic tokens',
+      color_usage: 'Brand infographic tokens',
       reasoning: 'Ecosystem list post.',
     };
 

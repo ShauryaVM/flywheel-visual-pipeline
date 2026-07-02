@@ -250,7 +250,7 @@ You may use these modalities ONLY IF none of the candidates above fit the conten
 - bold_statement_card: Centered bold statement for punchy quotes or declarations
 - pull_quote_card: Quote with attribution in a card container
 - quote_card: Clean centered quote without card container
-- multi_stat_panel: Multiple statistics in Flywheel infographic glass cards (VALUE | LABEL format)
+- multi_stat_panel: Multiple statistics in glass infographic cards (VALUE | LABEL format)
 - mafia_ecosystem_graphic: Grid of company pills with favicons for ecosystem/mafia list posts
 - feature_list_graphic: Bullet-point feature/benefit list
 - stat_callout: Single hero statistic with supporting context

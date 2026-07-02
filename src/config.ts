@@ -5,7 +5,6 @@ const ConfigSchema = z.object({
   langfuseSecretKey: z.string().default(''),
   langfusePublicKey: z.string().default(''),
   langfuseHost: z.string().url().default('https://cloud.langfuse.com'),
-  targetUrl: z.string().url({ message: 'TARGET_URL is required (e.g. https://example.com)' }),
 });
 
 export type Config = z.infer<typeof ConfigSchema>;
@@ -24,7 +23,6 @@ export function loadConfig(): Config {
     langfuseSecretKey: process.env.LANGFUSE_SECRET_KEY,
     langfusePublicKey: process.env.LANGFUSE_PUBLIC_KEY,
     langfuseHost: process.env.LANGFUSE_HOST,
-    targetUrl: process.env.TARGET_URL,
   });
 
   if (!result.success) {

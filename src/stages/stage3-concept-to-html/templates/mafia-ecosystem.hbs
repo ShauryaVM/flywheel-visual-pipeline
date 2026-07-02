@@ -193,10 +193,10 @@
     </div>
     <div class="footer">
       <div class="brand">
-        {{#if ds.infographic.flywheelLogoSvg}}{{{ds.infographic.flywheelLogoSvg}}}{{else}}{{#if ds.logoSvg}}{{{ds.logoSvg}}}{{/if}}{{/if}}
-        <span class="brand-name">Flywheel</span>
+        {{#if ds.logoSvg}}{{{ds.logoSvg}}}{{/if}}
+        <span class="brand-name">{{ds.brandName}}</span>
       </div>
-      <span class="url">flywheel.so</span>
+      <span class="url">{{ds.brandUrl}}</span>
     </div>
   </div>
 </body>

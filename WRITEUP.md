@@ -77,9 +77,9 @@ The pipeline is now fully generic. When pointed at any company's website, it pro
 
 ### Using with a new company
 
-1. Set `TARGET_URL=https://newcompany.com` in `.env`
-2. Run Stage 1: `npx tsx src/stages/stage1-design-system/index.ts` — this re-crawls the target site and produces a new `data/design-system.json` with the new brand's identity, colors, typography, and design portfolio.
-3. Run the full pipeline as normal — Stages 2–4 will automatically use the new brand data.
+1. Pass the brand URL when running the pipeline or harness (e.g. `https://newcompany.com` in the harness, or `npm run pipeline -- --url https://newcompany.com --post "..."`).
+2. Stage 1 re-crawls the target site and produces a new `data/design-system.json` with that brand's identity, colors, typography, and design portfolio.
+3. Stages 2–4 automatically use the new brand data.
 
 ### Backward compatibility
 

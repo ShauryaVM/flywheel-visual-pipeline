@@ -14,6 +14,7 @@ const EVAL_THRESHOLD = 7.0;
 
 export interface FeedbackLoopInput {
   postText: string;
+  targetUrl: string;
   postId?: string;
   outputDir?: string;
   maxRetries?: number;
@@ -60,7 +61,7 @@ function computeAxesImproved(original: EvalScore, final: EvalScore): string[] {
  * Returns the best result across all attempts.
  */
 export async function runWithFeedback(input: FeedbackLoopInput): Promise<FeedbackLoopResult> {
-  const { postText, postId = 'default', outputDir = 'data/outputs', maxRetries = 1 } = input;
+  const { postText, targetUrl, postId = 'default', outputDir = 'data/outputs', maxRetries = 1 } = input;
 
   const subDir = postId ? `${outputDir}/${postId}` : outputDir;
   const attempts: FeedbackAttempt[] = [];
@@ -86,6 +87,7 @@ export async function runWithFeedback(input: FeedbackLoopInput): Promise<Feedbac
       htmlPath: stage3.htmlPath,
       postText,
       designSystemSummary,
+      targetUrl,
       pngPath: stage3.pngPath,
       outputDir: subDir,
     });
@@ -213,6 +215,7 @@ export async function runWithFeedback(input: FeedbackLoopInput): Promise<Feedbac
         htmlPath: retryStage3.htmlPath,
         postText,
         designSystemSummary,
+        targetUrl,
         pngPath: retryStage3.pngPath,
         outputDir: retrySubDir,
       });

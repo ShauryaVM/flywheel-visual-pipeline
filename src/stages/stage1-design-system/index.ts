@@ -11,6 +11,7 @@ import { DesignSystem } from '../../schemas/design-system.schema.js';
 import { createStageLogger } from '../../observability/logger.js';
 import { loadConfig } from '../../config.js';
 import type { Stage1Result, DesignPortfolio, BrandAssets } from '../../types/index.js';
+import { normalizeTargetUrl } from '../../utils/target-url.js';
 
 const log = createStageLogger('stage1');
 
@@ -42,11 +43,11 @@ function loadEnvFile(): void {
 // Main stage orchestrator
 // ---------------------------------------------------------------------------
 
-export async function runStage1(targetUrl?: string): Promise<Stage1Result> {
+export async function runStage1(targetUrl: string): Promise<Stage1Result> {
   loadEnvFile();
 
+  const url = normalizeTargetUrl(targetUrl);
   const config = loadConfig();
-  const url = targetUrl ?? config.targetUrl;
   const startTime = Date.now();
 
   log.info({ url }, 'Stage 1: Website → Design System');
@@ -306,7 +307,12 @@ const currentFile = fileURLToPath(import.meta.url);
 const entryFile = process.argv[1] ? resolve(process.argv[1]) : '';
 
 if (currentFile === entryFile) {
-  runStage1().catch((err) => {
+  const urlArg = process.argv[2];
+  if (!urlArg?.trim()) {
+    log.fatal('Usage: npm run stage1 -- <brand-website-url>');
+    process.exit(1);
+  }
+  runStage1(urlArg).catch((err) => {
     log.fatal(err, 'Stage 1 failed');
     process.exit(1);
   });

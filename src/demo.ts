@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { runPipelineWithFeedback } from './index.js';
 import { createStageLogger } from './observability/logger.js';
+import { parseTargetUrlFromArgv } from './utils/target-url.js';
 import type { FeedbackLog } from './types/index.js';
 
 const log = createStageLogger('demo');
@@ -165,9 +166,10 @@ If you're building in AI, follow the infrastructure money. That's where the next
 ];
 
 async function main() {
+  const targetUrl = parseTargetUrlFromArgv();
   const maxPosts = parseInt(process.env.DEMO_MAX_POSTS ?? '0', 10) || DEMO_POSTS.length;
   const posts = DEMO_POSTS.slice(0, maxPosts);
-  log.info(`Running demo with ${posts.length} posts`);
+  log.info({ targetUrl, postCount: posts.length }, 'Running demo');
 
   const results = [];
 
@@ -180,6 +182,7 @@ async function main() {
     try {
       const result = await runPipelineWithFeedback({
         postText: post.text,
+        targetUrl,
         postId: post.id,
         outputDir: 'data/outputs',
         maxRetries: 1,

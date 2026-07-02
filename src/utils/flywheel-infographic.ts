@@ -51,7 +51,7 @@ export async function loadFlywheelLogoSvg(): Promise<string> {
   }
 }
 
-export function buildInfographicDesignTokens(logoSvgOverride?: string) {
+export function buildFlywheelInfographicTokens(logoSvgOverride?: string) {
   const t = FLYWHEEL_INFOGRAPHIC_DEFAULTS;
   return {
     ...t,

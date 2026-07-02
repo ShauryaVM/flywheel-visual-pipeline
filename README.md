@@ -49,7 +49,7 @@ A standalone service that takes a finished LinkedIn-style post + a brand's desig
 | Category | Templates |
 |----------|-----------|
 | **Text-focused** | `headline-subtext-card`, `bold-statement-card`, `key-takeaway-card`, `pull-quote-card` |
-| **Data-focused** | `stat-callout`, `flywheel-stat-panel`, `bar-chart`, `line-sparkline`, `pie-donut-chart` |
+| **Data-focused** | `stat-callout`, `infographic-stat-panel`, `bar-chart`, `line-sparkline`, `pie-donut-chart` |
 | **List-focused** | `numbered-list-graphic`, `feature-list-graphic`, `mafia-ecosystem` |
 | **Quote** | `quote-card`, `attribution-quote-card` |
 | **Dynamic** | Layout protocol renderer (any composition via JSON) |
@@ -118,7 +118,6 @@ npx playwright install chromium
 | Variable | Required | Description |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | Yes | API key for Claude LLM calls |
-| `TARGET_URL` | Yes | Website to crawl for design context (e.g. `https://example.com`) |
 | `LANGFUSE_SECRET_KEY` | No | Langfuse secret key for tracing |
 | `LANGFUSE_PUBLIC_KEY` | No | Langfuse public key for tracing |
 | `LANGFUSE_HOST` | No | Langfuse host (defaults to cloud) |
@@ -130,7 +129,7 @@ Templates for Flywheel's LinkedIn infographic formats (mafia ecosystem grids + s
 
 ```bash
 # Run demo posts matching Mafias + Stats reference formats
-npm run demo:flywheel
+npm run demo:flywheel -- --url https://flywheelos.com
 ```
 
 Outputs land in `data/outputs/demo-flywheel-stats/` and `data/outputs/demo-flywheel-mafias/`.
@@ -138,14 +137,14 @@ Outputs land in `data/outputs/demo-flywheel-stats/` and `data/outputs/demo-flywh
 ### Run the Full Pipeline
 
 ```bash
-npm run pipeline -- --post "Your LinkedIn post text here"
+npm run pipeline -- --url https://example.com --post "Your LinkedIn post text here"
 ```
 
 ### Run Individual Stages
 
 ```bash
 # Stage 1: Crawl website and extract design system
-npm run stage1
+npm run stage1 -- https://example.com
 
 # Stage 2: Generate visual concepts from a post
 npm run stage2 -- "Your post text here"

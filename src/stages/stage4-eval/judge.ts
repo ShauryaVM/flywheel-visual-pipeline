@@ -4,6 +4,7 @@ import { readFile, access, mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { chromium } from 'playwright';
 import { loadConfig } from '../../config.js';
+import { normalizeTargetUrl } from '../../utils/target-url.js';
 import { createStageLogger } from '../../observability/logger.js';
 import { traceGeneration } from '../../observability/tracer.js';
 import type {
@@ -50,27 +51,27 @@ function screenshotPathForUrl(url: string): string {
 }
 
 /**
- * Ensure we have a reference brand screenshot for the current TARGET_URL.
+ * Ensure we have a reference brand screenshot for the given URL.
  * Each URL gets its own cached screenshot so brands are never compared
  * against a stale screenshot from a different site.
  */
-async function ensureReferenceScreenshot(): Promise<string | null> {
-  const config = loadConfig();
-  const screenshotPath = screenshotPathForUrl(config.targetUrl);
+async function ensureReferenceScreenshot(targetUrl: string): Promise<string | null> {
+  const url = normalizeTargetUrl(targetUrl);
+  const screenshotPath = screenshotPathForUrl(url);
 
   if (await fileExists(screenshotPath)) {
-    log.info({ path: screenshotPath, url: config.targetUrl }, 'Using cached reference screenshot for this URL');
+    log.info({ path: screenshotPath, url }, 'Using cached reference screenshot for this URL');
     return screenshotPath;
   }
 
-  log.info({ url: config.targetUrl, path: screenshotPath }, 'Capturing reference brand screenshot');
+  log.info({ url, path: screenshotPath }, 'Capturing reference brand screenshot');
   await mkdir(REFERENCE_SCREENSHOTS_DIR, { recursive: true });
 
   let browser;
   try {
     browser = await chromium.launch({ headless: true });
     const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-    await page.goto(config.targetUrl, { waitUntil: 'networkidle', timeout: 30_000 });
+    await page.goto(url, { waitUntil: 'networkidle', timeout: 30_000 });
     await page.evaluate(() => document.fonts.ready);
     await new Promise((r) => setTimeout(r, 500));
 
@@ -299,6 +300,7 @@ export async function judgeVisual(
   html: string,
   postText: string,
   designSystemSummary: string,
+  targetUrl: string,
   pngPath?: string,
 ): Promise<EvalScore> {
   const config = loadConfig();
@@ -321,7 +323,7 @@ export async function judgeVisual(
 
   // Run vision eval if PNG exists
   if (pngPath && (await fileExists(pngPath))) {
-    const referencePath = await ensureReferenceScreenshot();
+    const referencePath = await ensureReferenceScreenshot(targetUrl);
 
     const visionResult = await judgeVisualVision(client, pngPath, referencePath);
     score.visionAbsolute = visionResult.absolute;

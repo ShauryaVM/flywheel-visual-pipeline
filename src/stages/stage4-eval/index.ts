@@ -11,6 +11,7 @@ export interface EvalInput {
   htmlPath: string;
   postText: string;
   designSystemSummary: string;
+  targetUrl: string;
   pngPath?: string;
   outputDir?: string;
 }
@@ -21,13 +22,13 @@ export interface EvalInput {
  * If the score is below threshold, returns the critique for use in a retry loop.
  */
 export async function runStage4(input: EvalInput): Promise<EvalScore> {
-  const { htmlPath, postText, designSystemSummary, pngPath, outputDir = 'data/outputs' } = input;
+  const { htmlPath, postText, designSystemSummary, targetUrl, pngPath, outputDir = 'data/outputs' } = input;
 
   log.info({ htmlPath, pngPath }, 'Input');
 
   const stageStart = Date.now();
   const html = await readFile(htmlPath, 'utf-8');
-  const score = await judgeVisual(html, postText, designSystemSummary, pngPath);
+  const score = await judgeVisual(html, postText, designSystemSummary, targetUrl, pngPath);
   const latencyMs = Date.now() - stageStart;
 
   const effectiveScore = score.compositeScore ?? score.overall;
@@ -65,13 +66,22 @@ export async function runStage4(input: EvalInput): Promise<EvalScore> {
 // Allow running directly
 if (import.meta.url === `file://${process.argv[1]}`) {
   loadDesignSystemSummary()
-    .then((designSystemSummary) =>
-      runStage4({
+    .then(async (designSystemSummary) => {
+      let targetUrl = 'https://example.com';
+      try {
+        const raw = await readFile('data/design-system.json', 'utf-8');
+        const ds = JSON.parse(raw) as { metadata?: { source_url?: string } };
+        if (ds.metadata?.source_url) targetUrl = ds.metadata.source_url;
+      } catch {
+        /* use default */
+      }
+      return runStage4({
         htmlPath: process.argv[2] ?? 'data/outputs/visual-concept-1.html',
         postText: 'Sample post text',
         designSystemSummary,
-      }),
-    )
+        targetUrl,
+      });
+    })
     .catch((err) => {
       log.fatal(err, 'Stage 4 failed');
       process.exit(1);

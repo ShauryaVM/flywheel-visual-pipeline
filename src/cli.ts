@@ -22,14 +22,15 @@ function printHelp(): void {
 flywheel-visual-pipeline
 
 Usage:
-  npx tsx src/cli.ts --run --post "Your post text here"
+  npx tsx src/cli.ts --run --url https://example.com --post "Your post text here"
   npx tsx src/cli.ts --stage 2 --post "Your post text"
-  npx tsx src/demo.ts    (run 5 demo posts)
+  npx tsx src/demo.ts -- --url https://example.com
 
 Options:
-  --run       Run the full pipeline (stages 2+3)
+  --run       Run the full pipeline (stages 1+2+3+4)
   --stage     Run a specific stage (2, 3)
   --post      Post text to process (required for pipeline and stage 2)
+  --url       Brand website URL (required for --run)
   --output    Output directory (default: data/outputs)
   --help      Show this help message
 `);
@@ -46,8 +47,13 @@ async function main(): Promise<void> {
       logger.error('--post is required for full pipeline run');
       process.exit(1);
     }
+    if (!values.url) {
+      logger.error('--url is required for full pipeline run');
+      process.exit(1);
+    }
     const result = await runPipelineWithFeedback({
       postText: String(values.post),
+      targetUrl: String(values.url),
       outputDir: String(values.output ?? 'data/outputs'),
       maxRetries: 1,
     });
