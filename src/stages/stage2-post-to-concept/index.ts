@@ -21,6 +21,7 @@ export interface Stage2Input {
   decisionRulesPath?: string;
   outputDir?: string;
   feedback?: ConceptGeneratorOptions['feedback'];
+  forceModality?: string;
 }
 
 export async function runStage2(
@@ -34,6 +35,7 @@ export async function runStage2(
     decisionRulesPath = 'data/schema/decision-rules.json',
     outputDir = 'data/outputs',
     feedback,
+    forceModality,
   } = opts;
 
   log.info(
@@ -67,6 +69,7 @@ export async function runStage2(
   const result = await generateConcepts(postText, designSystem, schema, candidates, {
     visualizationGoals,
     feedback,
+    forceModality,
   });
 
   const selectedConcept = result.concepts[result.selected];

@@ -114,6 +114,53 @@
     cursor: not-allowed;
   }
 
+  .btn-secondary {
+    background: var(--surface-2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.55rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .btn-secondary:hover:not(:disabled) { background: var(--border); }
+  .btn-secondary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .stress-gallery {
+    display: none;
+    margin-top: 2rem;
+  }
+  .stress-gallery.active { display: block; }
+  .stress-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .stress-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.75rem;
+  }
+  .stress-card img {
+    width: 100%;
+    border-radius: 6px;
+    background: #fff;
+  }
+  .stress-card-meta {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .stress-card-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.35rem;
+  }
+
   .btn-primary {
     background: var(--accent);
     color: #fff;
@@ -436,8 +483,14 @@
     </div>
     <div class="actions">
       <button class="btn-primary" id="generateBtn">Generate Visual</button>
+      <button class="btn-secondary" id="stressTestBtn" type="button">Run all visual types (stress test)</button>
       <span class="status" id="statusText"></span>
     </div>
+  </div>
+
+  <div class="stress-gallery" id="stressGallery">
+    <div class="section-title">Stress test results</div>
+    <div class="stress-grid" id="stressGrid"></div>
   </div>
 
   <!-- Loading -->
@@ -516,6 +569,7 @@ const $ = (s) => document.querySelector(s);
 const postText    = $('#postText');
 const targetUrl   = $('#targetUrl');
 const generateBtn = $('#generateBtn');
+const stressTestBtn = $('#stressTestBtn');
 const statusText  = $('#statusText');
 const loading     = $('#loading');
 const loadingText = $('#loadingText');
@@ -561,7 +615,74 @@ async function startPipeline(endpoint, body) {
 }
 
 generateBtn.addEventListener('click', run);
+stressTestBtn.addEventListener('click', runStressTest);
 regenBtn.addEventListener('click', regenerate);
+
+async function runStressTest() {
+  stressTestBtn.disabled = true;
+  generateBtn.disabled = true;
+  loading.classList.add('active');
+  errorBox.classList.remove('active');
+  output.classList.remove('active');
+  $('#stressGallery').classList.remove('active');
+  $('#stressGrid').innerHTML = '';
+  loadingText.textContent = 'Loading stress test suite...';
+  loadingSub.textContent = `${cases.length} posts across different startup brands`;
+
+  try {
+    const suiteRes = await fetch('/api/stress-test-suite');
+    const suite = await suiteRes.json();
+    if (!suiteRes.ok) throw new Error(suite.error || 'Failed to load stress test suite');
+
+    const cases = suite.cases || [];
+    const results = [];
+
+    for (let i = 0; i < cases.length; i++) {
+      const c = cases[i];
+      loadingText.textContent = `Stress test ${i + 1}/${cases.length}: ${c.startup}`;
+      loadingSub.textContent = `${c.expectedModality} → ${c.targetUrl}`;
+
+      try {
+        const data = await startPipeline('/api/generate', {
+          postText: c.text,
+          targetUrl: c.targetUrl,
+          forceModality: c.expectedModality,
+          postId: c.id,
+        });
+        results.push({ case: c, data, ok: data.concept?.modality === c.expectedModality });
+      } catch (err) {
+        results.push({ case: c, error: err.message, ok: false });
+      }
+    }
+
+    loading.classList.remove('active');
+    statusText.textContent = `Stress test complete: ${results.filter((r) => r.ok).length}/${results.length} matched`;
+
+    const grid = $('#stressGrid');
+    grid.innerHTML = results.map((r) => {
+      const c = r.case;
+      const modality = r.data?.concept?.modality || 'failed';
+      const img = r.data?.pngBase64
+        ? `<img src="data:image/png;base64,${r.data.pngBase64}" alt="${esc(c.startup)}" />`
+        : '<div style="padding:2rem;text-align:center;color:var(--text-muted)">No preview</div>';
+      return `<div class="stress-card">
+        ${img}
+        <div class="stress-card-title">${esc(c.startup)} · ${esc(modality)}</div>
+        <div class="stress-card-meta">${esc(c.targetUrl)}${r.error ? ' · ' + esc(r.error) : ''}</div>
+      </div>`;
+    }).join('');
+
+    $('#stressGallery').classList.add('active');
+  } catch (err) {
+    loading.classList.remove('active');
+    errorBox.textContent = err.message;
+    errorBox.classList.add('active');
+    statusText.textContent = 'Stress test failed';
+  } finally {
+    stressTestBtn.disabled = false;
+    generateBtn.disabled = false;
+  }
+}
 
 async function run() {
   const text = postText.value.trim();

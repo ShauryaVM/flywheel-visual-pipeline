@@ -18,6 +18,7 @@ export interface FeedbackLoopInput {
   postId?: string;
   outputDir?: string;
   maxRetries?: number;
+  forceModality?: string;
 }
 
 export interface FeedbackLoopResult extends PipelineResult {
@@ -61,7 +62,7 @@ function computeAxesImproved(original: EvalScore, final: EvalScore): string[] {
  * Returns the best result across all attempts.
  */
 export async function runWithFeedback(input: FeedbackLoopInput): Promise<FeedbackLoopResult> {
-  const { postText, targetUrl, postId = 'default', outputDir = 'data/outputs', maxRetries = 1 } = input;
+  const { postText, targetUrl, postId = 'default', outputDir = 'data/outputs', maxRetries = 1, forceModality } = input;
 
   const subDir = postId ? `${outputDir}/${postId}` : outputDir;
   const attempts: FeedbackAttempt[] = [];
@@ -72,7 +73,7 @@ export async function runWithFeedback(input: FeedbackLoopInput): Promise<Feedbac
 
   // --- Attempt 1: initial generation ---
   const stage2Start = Date.now();
-  const conceptOutput = await runStage2(postText, { postId, outputDir });
+  const conceptOutput = await runStage2(postText, { postId, outputDir, forceModality });
   const selectedConcept = conceptOutput.concepts[conceptOutput.selected]!;
   log.info(
     { modality: selectedConcept.modality, headline: selectedConcept.headline, latencyMs: Date.now() - stage2Start },
@@ -188,6 +189,7 @@ export async function runWithFeedback(input: FeedbackLoopInput): Promise<Feedbac
       retryConceptOutput = await runStage2(postText, {
         postId: `${postId}-retry${attemptNum}`,
         outputDir,
+        forceModality,
         feedback: {
           previousScores,
           critique: initialCritique,

@@ -53,7 +53,7 @@ export async function ensureBrandDesignSystem(targetUrl: string): Promise<void> 
  * Run the visual pipeline: Post -> Concept -> HTML -> PDF + PNG -> Eval.
  */
 export async function runPipeline(input: PipelineInput): Promise<PipelineResult> {
-  const { postText, postId, outputDir = 'data/outputs', targetUrl } = input;
+  const { postText, postId, outputDir = 'data/outputs', targetUrl, forceModality } = input;
   const brandUrl = normalizeTargetUrl(targetUrl);
 
   const pipelineStart = Date.now();
@@ -63,7 +63,7 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
 
   // Stage 2: Generate visual concepts from post
   const stage2Start = Date.now();
-  const conceptOutput = await runStage2(postText, { postId, outputDir });
+  const conceptOutput = await runStage2(postText, { postId, outputDir, forceModality });
   const stage2Latency = Date.now() - stage2Start;
   const selectedConcept = conceptOutput.concepts[conceptOutput.selected]!;
   log.info(
@@ -150,10 +150,10 @@ export async function runPipeline(input: PipelineInput): Promise<PipelineResult>
 export async function runPipelineWithFeedback(
   input: PipelineInput & { maxRetries?: number },
 ): Promise<PipelineResult> {
-  const { targetUrl, maxRetries = 1, ...rest } = input;
+  const { targetUrl, maxRetries = 1, forceModality, ...rest } = input;
   const brandUrl = normalizeTargetUrl(targetUrl);
 
   await ensureBrandDesignSystem(brandUrl);
 
-  return runWithFeedback({ ...rest, targetUrl: brandUrl, maxRetries });
+  return runWithFeedback({ ...rest, targetUrl: brandUrl, maxRetries, forceModality });
 }

@@ -168,6 +168,8 @@ export interface PipelineInput {
   targetUrl: string;
   postId?: string;
   outputDir?: string;
+  /** Stress test: guarantee a specific visual modality is selected. */
+  forceModality?: string;
 }
 
 export interface FeedbackAttempt {

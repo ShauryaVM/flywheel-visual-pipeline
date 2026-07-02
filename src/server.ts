@@ -10,6 +10,7 @@ import { runStage4 } from './stages/stage4-eval/index.js';
 import { clearDesignSystemSummaryCache, loadDesignSystemSummary } from './utils/design-system-summary.js';
 import { clearRendererDesignSystemCache } from './stages/stage3-concept-to-html/renderer.js';
 import { classifyCritique, generateRenderingOverrides } from './utils/rendering-overrides.js';
+import { STRESS_TEST_CASES } from './stress-test-suite.js';
 import type { DesignSystemData, EvalScore, PipelineResult } from './types/index.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -299,7 +300,7 @@ async function handleRegenerate(req: IncomingMessage, res: ServerResponse): Prom
 }
 
 async function handleGenerate(req: IncomingMessage, res: ServerResponse): Promise<void> {
-  let body: { postText?: string; targetUrl?: string };
+  let body: { postText?: string; targetUrl?: string; forceModality?: string; postId?: string };
   try {
     body = JSON.parse(await readBody(req));
   } catch {
@@ -307,7 +308,7 @@ async function handleGenerate(req: IncomingMessage, res: ServerResponse): Promis
     return;
   }
 
-  const { postText, targetUrl } = body;
+  const { postText, targetUrl, forceModality, postId: clientPostId } = body;
   if (!postText?.trim()) {
     json(res, 400, { error: 'postText is required' });
     return;
@@ -317,7 +318,7 @@ async function handleGenerate(req: IncomingMessage, res: ServerResponse): Promis
     return;
   }
 
-  const postId = `harness-${Date.now()}`;
+  const postId = clientPostId?.trim() || `harness-${Date.now()}`;
   const jobId = postId;
 
   startJob(jobId);
@@ -325,7 +326,7 @@ async function handleGenerate(req: IncomingMessage, res: ServerResponse): Promis
 
   void (async () => {
     try {
-      const result = await runPipeline({ postText, postId, targetUrl });
+      const result = await runPipeline({ postText, postId, targetUrl, forceModality });
       lastRunState = { postText, targetUrl, evalScore: result.evalScore };
       completeJob(jobId, await buildGeneratePayload(result));
     } catch (err) {
@@ -333,6 +334,21 @@ async function handleGenerate(req: IncomingMessage, res: ServerResponse): Promis
       failJob(jobId, `Pipeline failed: ${message}`);
     }
   })();
+}
+
+async function handleStressTestSuite(_req: IncomingMessage, res: ServerResponse): Promise<void> {
+  json(res, 200, {
+    count: STRESS_TEST_CASES.length,
+    cases: STRESS_TEST_CASES.map((c) => ({
+      id: c.id,
+      startup: c.startup,
+      targetUrl: c.targetUrl,
+      expectedModality: c.expectedModality,
+      expectedTemplate: c.expectedTemplate,
+      routing: c.routing ?? 'forced',
+      text: c.text,
+    })),
+  });
 }
 
 async function handleRoot(_req: IncomingMessage, res: ServerResponse): Promise<void> {
@@ -365,6 +381,8 @@ const server = createServer(async (req, res) => {
     } else if (req.method === 'GET' && url.pathname.startsWith('/api/jobs/')) {
       const jobId = decodeURIComponent(url.pathname.slice('/api/jobs/'.length));
       await handleJobStatus(req, res, jobId);
+    } else if (req.method === 'GET' && url.pathname === '/api/stress-test-suite') {
+      await handleStressTestSuite(req, res);
     } else if (req.method === 'POST' && url.pathname === '/api/generate') {
       await handleGenerate(req, res);
     } else if (req.method === 'POST' && url.pathname === '/api/regenerate') {

@@ -71,6 +71,7 @@ Return a JSON array of 3-4 strings, each describing one visualization goal. No m
 
 export interface ConceptGeneratorOptions {
   visualizationGoals?: string[];
+  forceModality?: string;
   feedback?: {
     previousScores: Record<string, number>;
     critique: string;
@@ -93,7 +94,7 @@ export async function generateConcepts(
     'Generating visual concepts',
   );
 
-  const systemPrompt = buildSystemPrompt(designSystem, schema, candidates);
+  const systemPrompt = buildSystemPrompt(designSystem, schema, candidates, options?.forceModality);
   const userPrompt = buildUserPrompt(postText, options?.visualizationGoals, options?.feedback);
 
   const llmStart = Date.now();
@@ -126,6 +127,17 @@ export async function generateConcepts(
     }
   }
 
+  if (options?.forceModality) {
+    let idx = validated.concepts.findIndex((c) => c.modality === options.forceModality);
+    if (idx < 0) {
+      validated.concepts[0]!.modality = options.forceModality as VisualConcept['modality'];
+      idx = 0;
+    }
+    validated.selected = idx;
+    validated.selection_reasoning = `Stress test: forced modality ${options.forceModality}`;
+    log.info({ forceModality: options.forceModality, selected: idx }, 'Modality forced for stress test');
+  }
+
   log.info(
     {
       conceptCount: validated.concepts.length,
@@ -142,6 +154,7 @@ function buildSystemPrompt(
   designSystem: DesignSystemData,
   schema: SchemaV1,
   candidates: CandidateModality[],
+  forceModality?: string,
 ): string {
   const candidateModalities = candidates.map((c) => {
     const modalityDef = schema.visual_modalities.find((m) => m.name === c.modality);
@@ -240,6 +253,7 @@ ${prohibitions.length > 0
 ## Candidate Visual Modalities (Preferred)
 
 ${JSON.stringify(candidateModalities, null, 2)}
+${forceModality ? `\n## STRESS TEST MODE\nThe selected concept MUST use modality "${forceModality}". At least one concept must use this modality and it must be the selected index.\n` : ''}
 
 ## All Available Modalities (fallback only)
 

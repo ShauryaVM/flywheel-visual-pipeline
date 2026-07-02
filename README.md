@@ -162,7 +162,23 @@ npm run workstream-b
 npm run harness
 ```
 
-Opens a local web UI at `http://localhost:3737` where you can paste post text, enter a brand URL, generate visuals interactively, view eval scores, and trigger regeneration with feedback.
+Opens a local web UI at `http://localhost:3737` where you can paste post text, enter a brand URL, generate visuals interactively, view eval scores, trigger regeneration with feedback, or run the **full visual-type stress test** (18 posts across different startups, one modality each).
+
+### Visual modality stress test
+
+Covers all 13 primary templates plus fallback modalities (event card, comparison table, timeline, checklist):
+
+```bash
+# Preview routing matrix only (no API calls)
+npm run demo:stress -- --dry-run
+
+# Generate all visuals (requires ANTHROPIC_API_KEY, long-running)
+npm run demo:stress
+
+# Or in the harness UI: click "Run all visual types (stress test)"
+```
+
+Outputs land in `data/outputs/stress-*` with one folder per case.
 
 ### CLI Options
 
